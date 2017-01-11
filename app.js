@@ -18,7 +18,7 @@ app.set('view engine', 'jade');
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.disable('etag');
-// app.use(logger('dev'));
+app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static(path.join(__dirname, 'public')));
@@ -26,28 +26,19 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(serveStatic('bower_components'));
 app.use(cookieParser('fy_'));
 
-// app.use(session({
+// app.use(cookieParser());
+//app.use(session({
 //    secret: 'felix yin',
 //    name: 'LrsGame',   //这里的name值得是cookie的name，默认cookie的name是：connect.sid
 //    cookie: {maxAge: 60000 * 300},  //设置maxAge是80000ms，即80s后session和相应的cookie失效过期
 //    resave: true,
 //    saveUninitialized: true
-// }));
+//}));
 app.use(session({
-    name: 'sid',
-    secret: 'sysm-felix-',
+    secret: 'felix yin',
     resave: true,
-    rolling: true,
-    saveUninitialized: true,
     cookie: {maxAge: 60000 * 3000},
-    store: new RedisStore({
-        "host": "139.224.1.36",
-        "port": "6379",
-        "pass": "123456",
-        "db": 1,
-        "ttl": 1800,
-        "logErrors": true
-    })
+    saveUninitialized: true
 }));
 
 app.use(function (req, res, next) {
@@ -84,8 +75,6 @@ app.use('/dna/operate', require('./routes/dna/operate'));
 app.use('/dna/report', require('./routes/dna/report'));
 //超级管理
 app.use('/dna/admin', require('./routes/dna/admin'));
-//重做模块
-app.use('/dna/redo', require('./routes/dna/redo'));
 
 //用户管理模块
 let user = require('./routes/user');

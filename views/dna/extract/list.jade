@@ -19,25 +19,25 @@ block content
             form#search-form-id
                 table.searchTable
                     tr
-                        td 条码编号
+                        td 短条码编号
                         td
-                            input.col-xs-10.col-sm-5(type='text' , name='barcode_long', placeholder='请输入条码编号')
-                        td Qubit浓度(ng/ul)
+                            input.col-xs-10.col-sm-5(type='text' , name='barcode_short', placeholder='请输入短条码编号')
+                        td qbite浓度
                         td
-                            input.col-xs-10.col-sm-5(type='text' , name='extract_qbite_deep', placeholder='请输入Qubit浓度(ng/ul)')
-                        td epoch浓度(ng/ul)
+                            input.col-xs-10.col-sm-5(type='text' , name='extract_qbite_deep', placeholder='请输入qbite浓度')
+                        td epoch浓度
                         td
-                            input.col-xs-10.col-sm-5(type='text' , name='extract_epoch_deep', placeholder='请输入epoch浓度(ng/ul)')
+                            input.col-xs-10.col-sm-5(type='text' , name='extract_epoch_deep', placeholder='请输入epoch浓度')
                     tr
-                        td 纯度(%)
+                        td 纯度
                         td
-                            input.col-xs-10.col-sm-5(type='text' , name='extract_purity_deep', placeholder='请输入纯度(%)')
-                        td 片段大小(bp)
+                            input.col-xs-10.col-sm-5(type='text' , name='extract_purity_deep', placeholder='请输入纯度')
+                        td 片段大小
                         td
-                            input.col-xs-10.col-sm-5(type='text' , name='extract_part_size', placeholder='请输入片段大小(bp)')
-                        td 打断后片段(bp)
+                            input.col-xs-10.col-sm-5(type='text' , name='extract_part_size', placeholder='请输入片段大小')
+                        td 打断后片段
                         td
-                            input.col-xs-10.col-sm-5(type='text' , name='extract_part_after_break', placeholder='请输入打断后片段(bp)')
+                            input.col-xs-10.col-sm-5(type='text' , name='extract_part_after_break', placeholder='请输入打断后片段')
                     tr
                         td 提取人员
                         td
@@ -55,22 +55,33 @@ block content
                         td 提取出库人
                         td
                             input.col-xs-10.col-sm-5.ipt-person(type='text' , name='extract_outer', placeholder='请选择提取出库人')
-                        td 提取组样本剩余量
+                        td 提取组试管剩余数量
                         td
-                            input.col-xs-10.col-sm-5(type='text' , name='extract_out_residue', placeholder='请输入提取组样本剩余量')
+                            input.col-xs-10.col-sm-5(type='text' , name='extract_out_residue', placeholder='请输入提取组试管剩余数量')
                     tr
+                        td 建库组接收人
+                        td
+                            input.col-xs-10.col-sm-5.ipt-person(type='text' , name='storage_handover', placeholder='请选择建库组接收人')
+                        td 建库组接收时间
+                        td
+                            input.col-xs-10.col-sm-5.ipt-date(type='text' , name='storage_handover_date', placeholder='请选择建库组接收时间')
+                        td 提取组接收人
+                        td
+                            input.col-xs-10.col-sm-5.ipt-person(type='text' , name='extract_handover', placeholder='请选择提取组接收人')
+                    tr
+                        td 提取组接收时间
+                        td
+                            input.col-xs-10.col-sm-5.ipt-date(type='text' , name='extract_handover_date', placeholder='请选择提取组接收时间')
                         td 状态
                         td
                             select#status.col-xs-12.clo-sm-10(style="width:180px;", name='status',placeholder='')
                                 option(value='-1') 全部
-                                option(value='4') 未提取
-                                option(value='5') 已提取
-                                option(value='6') 合格
-                                option(value='7') 废弃
-                                option(value='8') 重提取
-                                option(value='9') 已交接
-                        td
-                        td
+                                option(value='4') 交接后未提取
+                                option(value='5') 提取且已保存
+                                option(value='6') 提取审核-合格
+                                option(value='7') 提取审核-废弃
+                                option(value='8') 提取审核-重提取
+                                option(value='9') 交接后未建库
                         td
                         td
                             #btn-search.btn-group
@@ -118,9 +129,9 @@ block content
                         li
                             a(href='javascript:clearUser("交接人员")') 不记住交接人员
                 span
-                button#btn-dc-id.btn.btn-info.btn-sm(onclick="exportCvs(this)")
+                button#btn-dc-id.btn.btn-default.btn-sm(onclick="exportCvs(this)")
                     i.icon-download-alt.bigger-110 导出EXCEL
-                //button#btn-dy-id.btn.btn-info.btn-sm(onclick="dy(this)")
+                //button#btn-dy-id.btn.btn-default.btn-sm(onclick="dy(this)")
                     i.icon-print.bigger-110 打印
 
             table#grid-table

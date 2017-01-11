@@ -24,8 +24,18 @@ router.get('/preAddCxd', (req, res) => {
         action: '/dna/receive/addCxd',
         inputter: req.query.userId,
         status: 1,
-        sample_date: utils.now(),
-        receive_date: utils.now()
+
+        hospital: 'test2',
+        sample_code: 'test3',
+        sample_date: '2016-12-31 15:40:35',
+        receive_date: '2016-12-31 15:40:35',
+        real_name: 'test6',
+        id_card: 'test7',
+        age: '2016-12-31 15:40:35',
+        pregnancy_week: 889,
+        pregnancy_condition: 'test10',
+        pregnancy_bad_history: 'test11',
+        comments: 'test12',
     });
 });
 
@@ -103,29 +113,6 @@ router.post('/addSh', (req, res) => {
 });
 
 /**
- * 入库
- */
-router.post('/addRk', (req, res) => {
-    receiveService.updateRk(req.body, (err, result) => {
-        console.error(err);
-        let errMsg = JSON.stringify(err);
-        utils.jsonpAndEnd(res, `parent.addRkCb(${result ? result.changedRows : null}, '${errMsg}');`);
-    });
-});
-
-/**
- * 导出条码打印机
- */
-router.post('/printBarcode', (req, res) => {
-    receiveService.printBarcode(req.body.ids, (err, result) => {
-        res.send({
-            affectedRows: result.affectedRows,
-            err: err
-        });
-    });
-});
-
-/**
  * 显示出库界面
  */
 router.get('/preAddCk', (req, res) => {
@@ -152,7 +139,7 @@ router.post('/addCk', (req, res) => {
  * 查询剩余数量
  */
 router.post('/getByBarcodeShort', (req, res) => {
-    receiveService.selectDnaFlowByBarcodeShort(req.body.barcode_long, (err, rows) => {
+    receiveService.selectDnaFlowByBarcodeShort(req.body.barcode_short, (err, rows) => {
         console.log(err);
         if (err)throw err;
         res.send(rows);
@@ -180,8 +167,8 @@ router.post('/exportExcel', (req, res) => {
                 header: {
                     // fill: {
                     //     fgColor: {
-                    // rgb: '00000000'
-                    // }
+                            // rgb: '00000000'
+                        // }
                     // },
                     font: {
                         color: {
@@ -196,7 +183,7 @@ router.post('/exportExcel', (req, res) => {
                     // fill: {
                     //     fgColor: {
                     //         rgb: '00000000'
-                    // }
+                        // }
                     // }
                 }
             };
@@ -207,11 +194,11 @@ router.post('/exportExcel', (req, res) => {
 
             let specification = {
                 barcode_long: {
-                    displayName: '条码编号',
+                    displayName: '长条码编号',
                     headerStyle: styles.header,
                     cellStyle: styles.cell,
                     cellFormat: function (value, row) {
-                        return value || '';
+                        return value;
                     },
                     width: '15'
                 },
@@ -220,7 +207,7 @@ router.post('/exportExcel', (req, res) => {
                     headerStyle: styles.header,
                     cellStyle: styles.cell,
                     cellFormat: function (value, row) {
-                        return value || '';
+                        return value;
                     },
                     width: '15'
                 },
@@ -229,7 +216,7 @@ router.post('/exportExcel', (req, res) => {
                     headerStyle: styles.header,
                     cellStyle: styles.cell,
                     cellFormat: function (value, row) {
-                        return value || '';
+                        return value;
                     },
                     width: '15'
                 },
@@ -238,7 +225,7 @@ router.post('/exportExcel', (req, res) => {
                     headerStyle: styles.header,
                     cellStyle: styles.cell,
                     cellFormat: function (value, row) {
-                        return value || '';
+                        return value;
                     },
                     width: '15'
                 },
@@ -247,7 +234,7 @@ router.post('/exportExcel', (req, res) => {
                     headerStyle: styles.header,
                     cellStyle: styles.cell,
                     cellFormat: function (value, row) {
-                        return value || '';
+                        return value;
                     },
                     width: '15'
                 },
@@ -256,7 +243,7 @@ router.post('/exportExcel', (req, res) => {
                     headerStyle: styles.header,
                     cellStyle: styles.cell,
                     cellFormat: function (value, row) {
-                        return value || '';
+                        return value;
                     },
                     width: '15'
                 },
@@ -265,16 +252,16 @@ router.post('/exportExcel', (req, res) => {
                     headerStyle: styles.header,
                     cellStyle: styles.cell,
                     cellFormat: function (value, row) {
-                        return value || '';
+                        return value;
                     },
                     width: '15'
                 },
                 age: {
-                    displayName: '年龄',
+                    displayName: '出生日期',
                     headerStyle: styles.header,
                     cellStyle: styles.cell,
                     cellFormat: function (value, row) {
-                        return value || '';
+                        return value;
                     },
                     width: '15'
                 },
@@ -283,7 +270,7 @@ router.post('/exportExcel', (req, res) => {
                     headerStyle: styles.header,
                     cellStyle: styles.cell,
                     cellFormat: function (value, row) {
-                        return value || '';
+                        return value;
                     },
                     width: '15'
                 },
@@ -292,7 +279,7 @@ router.post('/exportExcel', (req, res) => {
                     headerStyle: styles.header,
                     cellStyle: styles.cell,
                     cellFormat: function (value, row) {
-                        return value || '';
+                        return value;
                     },
                     width: '15'
                 },
@@ -301,7 +288,7 @@ router.post('/exportExcel', (req, res) => {
                     headerStyle: styles.header,
                     cellStyle: styles.cell,
                     cellFormat: function (value, row) {
-                        return value || '';
+                        return value;
                     },
                     width: '15'
                 },
@@ -310,7 +297,7 @@ router.post('/exportExcel', (req, res) => {
                     headerStyle: styles.header,
                     cellStyle: styles.cell,
                     cellFormat: function (value, row) {
-                        return value || '';
+                        return value;
                     },
                     width: '15'
                 },
@@ -319,7 +306,7 @@ router.post('/exportExcel', (req, res) => {
                     headerStyle: styles.header,
                     cellStyle: styles.cell,
                     cellFormat: function (value, row) {
-                        return value || '';
+                        return value;
                     },
                     width: '15'
                 },
@@ -328,7 +315,7 @@ router.post('/exportExcel', (req, res) => {
                     headerStyle: styles.header,
                     cellStyle: styles.cell,
                     cellFormat: function (value, row) {
-                        return value || '';
+                        return value;
                     },
                     width: '15'
                 },
@@ -337,7 +324,7 @@ router.post('/exportExcel', (req, res) => {
                     headerStyle: styles.header,
                     cellStyle: styles.cell,
                     cellFormat: function (value, row) {
-                        return value || '';
+                        return value;
                     },
                     width: '15'
                 },
@@ -346,7 +333,7 @@ router.post('/exportExcel', (req, res) => {
                     headerStyle: styles.header,
                     cellStyle: styles.cell,
                     cellFormat: function (value, row) {
-                        return value || '';
+                        return value;
                     },
                     width: '15'
                 },
@@ -355,7 +342,7 @@ router.post('/exportExcel', (req, res) => {
                     headerStyle: styles.header,
                     cellStyle: styles.cell,
                     cellFormat: function (value, row) {
-                        return value || '';
+                        return value;
                     },
                     width: '15'
                 },
@@ -364,61 +351,52 @@ router.post('/exportExcel', (req, res) => {
                     headerStyle: styles.header,
                     cellStyle: styles.cell,
                     cellFormat: function (value, row) {
-                        return value || '';
+                        return value;
                     },
                     width: '15'
                 },
-                warehouser: {
-                    displayName: '采血管入库人',
+                barcode_short: {
+                    displayName: '短条码编号',
                     headerStyle: styles.header,
                     cellStyle: styles.cell,
                     cellFormat: function (value, row) {
-                        return value || '';
+                        return value;
                     },
                     width: '15'
                 },
-                warehouse_place: {
-                    displayName: '采血管入库位置',
-                    headerStyle: styles.header,
-                    cellStyle: styles.cell,
-                    cellFormat: function (value, row) {
-                        return value || '';
-                    },
-                    width: '15'
-                },
-                warehouse_date: {
-                    displayName: '采血管入库时间',
-                    headerStyle: styles.header,
-                    cellStyle: styles.cell,
-                    cellFormat: function (value, row) {
-                        return value || '';
-                    },
-                    width: '15'
-                },
-                // barcode_short: {
-                //     displayName: '短条码编号',
-                //     headerStyle: styles.header,
-                //     cellStyle: styles.cell,
-                //     cellFormat: function (value, row) {
-                //         return value || '';
-                //     },
-                //     width: '15'
-                // },
                 sample_outer: {
-                    displayName: '采血管出库人',
+                    displayName: '短采血管出库人',
                     headerStyle: styles.header,
                     cellStyle: styles.cell,
                     cellFormat: function (value, row) {
-                        return value || '';
+                        return value;
                     },
                     width: '15'
                 },
                 sample_out_residue: {
-                    displayName: '接收组样本剩余量',
+                    displayName: '接收组试管剩余数量',
                     headerStyle: styles.header,
                     cellStyle: styles.cell,
                     cellFormat: function (value, row) {
-                        return value || '';
+                        return value;
+                    },
+                    width: '15'
+                },
+                extract_handover: {
+                    displayName: '提取组接收人',
+                    headerStyle: styles.header,
+                    cellStyle: styles.cell,
+                    cellFormat: function (value, row) {
+                        return value;
+                    },
+                    width: '15'
+                },
+                extract_handover_date: {
+                    displayName: '提取组接收时间',
+                    headerStyle: styles.header,
+                    cellStyle: styles.cell,
+                    cellFormat: function (value, row) {
+                        return value;
                     },
                     width: '15'
                 },
@@ -433,64 +411,64 @@ router.post('/exportExcel', (req, res) => {
                                 text = '已删除';
                                 break;
                             case 1:
-                                text = '已录入';
+                                text = '已录入采血单';
                                 break;
                             case 2:
-                                text = '已审批';
+                                text = '已更换采血管';
                                 break;
                             case 3:
-                                text = '已入库';
+                                text = '已审批且入库';
                                 break;
                             case 4:
-                                text = '已出库';
+                                text = '交接后未提取';
                                 break;
                             case 5:
-                                text = '已提取';
+                                text = '提取且已保存';
                                 break;
                             case 6:
-                                text = '提取合格';
+                                text = '提取审核-合格';
                                 break;
                             case 7:
-                                text = '提取废弃';
+                                text = '提取审核-废弃';
                                 break;
                             case 8:
-                                text = '重提取';
+                                text = '提取审核-重提取';
                                 break;
                             case 9:
-                                text = '提取已交接';
+                                text = '交接后未建库';
                                 break;
                             case 10:
-                                text = '已建库';
+                                text = '建库且已保存';
                                 break;
                             case 11:
-                                text = '建库合格';
+                                text = '建库审核-合格';
                                 break;
                             case 12:
-                                text = '建库废弃';
+                                text = '建库审核-废弃';
                                 break;
                             case 13:
-                                text = '重建库';
+                                text = '建库审核-重建库';
                                 break;
                             case 14:
-                                text = '建库已交接';
+                                text = '交接后未上机';
                                 break;
                             case 15:
-                                text = '已上机';
+                                text = '上机已保存';
                                 break;
                             case 16:
-                                text = '上机合格';
+                                text = '上机审核-合格';
                                 break;
                             case 17:
-                                text = '上机废弃';
+                                text = '上机审核-废弃';
                                 break;
                             case 18:
-                                text = '重上机';
+                                text = '上机审核-重上机';
                                 break;
                             case 19:
-                                text = '上机已交接';
+                                text = '交接后未分析';
                                 break;
                             case 20:
-                                text = '已分析';
+                                text = '分析已保存';
                                 break;
                             case 21:
                                 text = '报告已发送';

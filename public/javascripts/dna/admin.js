@@ -14,95 +14,22 @@
         W._sortname = 'input_date';
         W._sortorder = 'ASC';
         W._postData = {};
-        W._colNames = ['序号', '条码编号', '医院名称', '样本编号', '状态', '采样日期', '接收日期', '姓名', '身份证号', '年龄', '孕周', '妊娠情况', '不良孕产史',
-            '备注', '录入人员', '录入日期', '审批人员', '审批日期', '采血管入库人', '采血管入库位置', '采血管入库时间', '采血管出库人', '接收组样本剩余量', '提取组接收人',
-            '提取组接收时间', 'Qubit浓度(ng/ul)', 'epoch浓度(ng/ul)', '纯度(%)', '片段大小(bp)', '打断后片段(bp)', '提取人员', '提取时间', '提取审核人', '提取审核时间', '提取出库人',
-            '提取组样本剩余量', '建库组接收人', '建库组接收时间', '建库浓度(ng/ul)', '建库片段大小(bp)', '建库人', '建库时间', '建库审查人', '建库审查时间', '建库组出库人',
-            '建库组样本剩余量', '上机组接收人', '上机组接收时间', '上机芯片编码', '上机reads数', '上机q30值', '上机人', '上机时间', '上机审查人', '上机审查时间',
-            '上机组出库人', '上机组样本剩余量', '分析报告组接收人', '分析报告组接收时间', '分析结果', '建议', '是否发送', '分析人', '分析时间',
-            '报告发送人', '报告发送时间', ''];
+        W._colNames = ['序号', '长条码编号', '医院名称', '样本编号', '采样日期', '接收日期', '姓名', '身份证号', '出生日期', '孕周', '妊娠情况', '不良孕产史',
+            '备注', '录入人员', '录入日期', '换管人员', '换管日期', '审批人员', '审批日期', '短条码编号', '短采血管出库人', '接收组试管剩余数量', '提取组接收人',
+            '提取组接收时间', 'qbite浓度', 'epoch浓度', '纯度', '片段大小', '打断后片段', '提取人员', '提取时间', '提取审核人', '提取审核时间', '提取出库人',
+            '提取组试管剩余数量', '建库组接收人', '建库组接收时间', '建库浓度', '建库片段大小', '建库人', '建库时间', '建库审查人', '建库审查时间', '建库组出库人',
+            '建库组试管剩余数量', '上机组接收人', '上机组接收时间', '上机芯片编码', '上机reads数', '上机q30值', '上机人', '上机时间', '上机审查人', '上机审查时间',
+            '上机组出库人', '上机组试管剩余数量', '分析报告组接收人', '分析报告组接收时间', '分析结果', '建议', '是否发送（1、不发送；2、发送）', '分析人', '分析时间',
+            '报告发送人', '报告发送时间', '', '状态'];
         W._colModel = [
-            {name: 'id', width: 100, index: 'id', align: 'center', sortable: false, frozen: true},
-            {name: 'barcode_long', width: 100, index: 'barcode_long', align: 'center', sortable: false, frozen: true},
-            {name: 'hospital', width: 100, index: 'hospital', align: 'center', sortable: false, frozen: true},
-            {name: 'sample_code', width: 100, index: 'sample_code', align: 'center', sortable: false, frozen: true},
-             {
-                name: 'status1', width: 100, index: 'status', align: 'center', sortable: false, frozen: true,
-                formatter: function (value, options, row) {
-                    var text = '';
-                    switch (row.status) {
-                        case 0:
-                            text = ['<span class="label label-danger">','已删除',''].join('');
-                            break;
-                        case 1:
-                            text = ['<span class="label label-info">','已录入',''].join('');
-                            break;
-                        case 2:
-                            text = ['<span class="label label-success">','已审批',''].join('');
-                            break;
-                        case 3:
-                            text = ['<span class="label label-primary">','已入库',''].join('');
-                            break;
-                        case 4:
-                            text = ['<span class="label label-purple">','已出库',''].join('');
-                            break;
-                        case 5:
-                            text = ['<span class="label label-info">','已提取',''].join('');
-                            break;
-                        case 6:
-                            text = ['<span class="label label-success">','提取合格',''].join('');
-                            break;
-                        case 7:
-                            text = ['<span class="label label-danger">','提取废弃',''].join('');
-                            break;
-                        case 8:
-                            text = ['<span class="label label-warning">','重提取',''].join('');
-                            break;
-                        case 9:
-                            text = ['<span class="label label-default">','提取已交接',''].join('');
-                            break;
-                        case 10:
-                            text = ['<span class="label label-info">','已建库',''].join('');
-                            break;
-                        case 11:
-                            text = ['<span class="label label-success">','建库合格',''].join('');
-                            break;
-                        case 12:
-                            text = ['<span class="label label-danger">','建库废弃',''].join('');
-                            break;
-                        case 13:
-                            text = ['<span class="label label-warning">','重建库',''].join('');
-                            break;
-                        case 14:
-                            text = ['<span class="label label-default">','建库已交接',''].join('');
-                            break;
-                        case 15:
-                            text = ['<span class="label label-info">','已上机',''].join('');
-                            break;
-                        case 16:
-                            text = ['<span class="label label-success">','上机合格',''].join('');
-                            break;
-                        case 17:
-                            text = ['<span class="label label-danger">','上机废弃',''].join('');
-                            break;
-                        case 18:
-                            text = ['<span class="label label-warning">','重上机',''].join('');
-                            break;
-                        case 19:
-                            text = ['<span class="label label-default">','上机已交接',''].join('');
-                            break;
-                        case 20:
-                            text = ['<span class="label label-info">','已分析',''].join('');
-                            break;
-                        case 21:
-                            text = ['<span class="label label-success">','报告已发送',''].join('');
-                            break;
-                        default:
-                            text = '';
-                    }
-                    return text;
-                }
+            {
+                name: 'id', width: 100, index: 'id', align: 'center', sortable: false, formatter: function (value, options, row) {
+                return value;
+            }
             },
+            {name: 'barcode_long', width: 100, index: 'barcode_long', align: 'center', sortable: false},
+            {name: 'hospital', width: 100, index: 'hospital', align: 'center', sortable: false},
+            {name: 'sample_code', width: 100, index: 'sample_code', align: 'center', sortable: false},
             {name: 'sample_date', width: 130, index: 'sample_date', align: 'center', sortable: false},
             {name: 'receive_date', width: 130, index: 'receive_date', align: 'center', sortable: false},
             {name: 'real_name', width: 100, index: 'real_name', align: 'center', sortable: false},
@@ -118,14 +45,22 @@
             {name: 'comments', width: 100, index: 'comments', align: 'center', sortable: false},
             {name: 'inputter', width: 100, index: 'inputter', align: 'center', sortable: false},
             {name: 'input_date', width: 130, index: 'input_date', align: 'center', sortable: false},
+            {name: 'changer', width: 100, index: 'changer', align: 'center', sortable: false},
+            {name: 'change_date', width: 130, index: 'change_date', align: 'center', sortable: false},
             {name: 'checker', width: 100, index: 'checker', align: 'center', sortable: false},
             {name: 'check_date', width: 130, index: 'check_date', align: 'center', sortable: false},
-            {name: 'warehouser', width: 100, index: 'warehouser', align: 'center', sortable: false},
-            {name: 'warehouse_place', width: 100, index: 'warehouse_place', align: 'center', sortable: false},
-            {name: 'warehouse_date', width: 130, index: 'warehouse_date', align: 'center', sortable: false},
-            // {name: 'barcode_short', width: 100, index: 'barcode_short', align: 'center', sortable: false},
+            {name: 'barcode_short', width: 100, index: 'barcode_short', align: 'center', sortable: false},
             {name: 'sample_outer', width: 100, index: 'sample_outer', align: 'center', sortable: false},
-            {name: 'sample_out_residue', width: 100, index: 'sample_out_residue', align: 'center', sortable: false},
+            {
+                name: 'sample_out_residue',
+                width: 100,
+                index: 'sample_out_residue',
+                align: 'center',
+                sortable: false,
+                formatter: function (value, options, row) {
+                    return value;
+                }
+            },
             {name: 'extract_handover', width: 100, index: 'extract_handover', align: 'center', sortable: false},
             {name: 'extract_handover_date', width: 130, index: 'extract_handover_date', align: 'center', sortable: false},
             {name: 'extract_qbite_deep', width: 100, index: 'extract_qbite_deep', align: 'center', sortable: false},
@@ -143,7 +78,10 @@
                 width: 100,
                 index: 'extract_out_residue',
                 align: 'center',
-                sortable: false
+                sortable: false,
+                formatter: function (value, options, row) {
+                    return value;
+                }
             },
             {name: 'storage_handover', width: 100, index: 'storage_handover', align: 'center', sortable: false},
             {name: 'storage_handover_date', width: 130, index: 'storage_handover_date', align: 'center', sortable: false},
@@ -154,7 +92,16 @@
             {name: 'storage_checker', width: 100, index: 'storage_checker', align: 'center', sortable: false},
             {name: 'storage_check_date', width: 130, index: 'storage_check_date', align: 'center', sortable: false},
             {name: 'storage_outer', width: 100, index: 'storage_outer', align: 'center', sortable: false},
-            {name: 'storage_out_residue', width: 100, index: 'storage_out_residue', align: 'center', sortable: false},
+            {
+                name: 'storage_out_residue',
+                width: 100,
+                index: 'storage_out_residue',
+                align: 'center',
+                sortable: false,
+                formatter: function (value, options, row) {
+                    return value;
+                }
+            },
             {name: 'operate_handover', width: 100, index: 'operate_handover', align: 'center', sortable: false},
             {name: 'operate_handover_date', width: 130, index: 'operate_handover_date', align: 'center', sortable: false},
             {name: 'operate_chip_code', width: 100, index: 'operate_chip_code', align: 'center', sortable: false},
@@ -165,28 +112,107 @@
             {name: 'operate_checker', width: 100, index: 'operate_checker', align: 'center', sortable: false},
             {name: 'operate_check_date', width: 130, index: 'operate_check_date', align: 'center', sortable: false},
             {name: 'operate_outer', width: 100, index: 'operate_outer', align: 'center', sortable: false},
-            {name: 'operate_out_residue', width: 100, index: 'operate_out_residue', align: 'center', sortable: false},
+            {
+                name: 'operate_out_residue',
+                width: 100,
+                index: 'operate_out_residue',
+                align: 'center',
+                sortable: false,
+                formatter: function (value, options, row) {
+                    return value;
+                }
+            },
             {name: 'report_handover', width: 100, index: 'report_handover', align: 'center', sortable: false},
             {name: 'report_handover_date', width: 130, index: 'report_handover_date', align: 'center', sortable: false},
             {name: 'report_result', width: 100, index: 'report_result', align: 'center', sortable: false},
             {name: 'report_advice', width: 100, index: 'report_advice', align: 'center', sortable: false},
             {
                 name: 'report_is_send', width: 100, index: 'report_is_send', align: 'center', sortable: false, formatter: function (value, options, row) {
-                if (value == 1) {
-                    return '不发送';
-                } else if (value == 2) {
-                    return '发送';
-                } else {
-                    return '';
-                }
+                return value;
             }
             },
             {name: 'reporter', width: 100, index: 'reporter', align: 'center', sortable: false},
             {name: 'report_date', width: 130, index: 'report_date', align: 'center', sortable: false},
             {name: 'report_sender', width: 100, index: 'report_sender', align: 'center', sortable: false},
             {name: 'report_send_date', width: 130, index: 'report_send_date', align: 'center', sortable: false},
-            {name: 'status', hidden: true, hidedlg: true}
-
+            {name: 'status', hidden: true, hidedlg: true},
+            {
+                name: 'status1', width: 100, index: 'status', align: 'center', sortable: false,
+                formatter: function (value, options, row) {
+                    var text = '';
+                    switch (row.status) {
+                        case 0:
+                            text = '已删除';
+                            break;
+                        case 1:
+                            text = '已录入采血单';
+                            break;
+                        case 2:
+                            text = '已更换采血管';
+                            break;
+                        case 3:
+                            text = '已审批且入库';
+                            break;
+                        case 4:
+                            text = '交接后未提取';
+                            break;
+                        case 5:
+                            text = '提取且已保存';
+                            break;
+                        case 6:
+                            text = '提取审核-合格';
+                            break;
+                        case 7:
+                            text = '提取审核-废弃';
+                            break;
+                        case 8:
+                            text = '提取审核-重提取';
+                            break;
+                        case 9:
+                            text = '交接后未建库';
+                            break;
+                        case 10:
+                            text = '建库且已保存';
+                            break;
+                        case 11:
+                            text = '建库审核-合格';
+                            break;
+                        case 12:
+                            text = '建库审核-废弃';
+                            break;
+                        case 13:
+                            text = '建库审核-重建库';
+                            break;
+                        case 14:
+                            text = '交接后未上机';
+                            break;
+                        case 15:
+                            text = '上机已保存';
+                            break;
+                        case 16:
+                            text = '上机审核-合格';
+                            break;
+                        case 17:
+                            text = '上机审核-废弃';
+                            break;
+                        case 18:
+                            text = '上机审核-重上机';
+                            break;
+                        case 19:
+                            text = '交接后未分析';
+                            break;
+                        case 20:
+                            text = '分析已保存';
+                            break;
+                        case 21:
+                            text = '报告已发送';
+                            break;
+                        default:
+                            text = '';
+                    }
+                    return text;
+                }
+            }
         ];
 
         W.updateActionIcons = function () {
@@ -207,8 +233,26 @@
         $('.ipt-person').selectUser();
 
         var trRowArray = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
-        showSearchMore($('#btn-search-more'), trRowArray, '_dna_report_is_search_more');
-
+        var _dna_extract_is_search_more = localStorage.getItem('_dna_extract_is_search_more');
+        if (_dna_extract_is_search_more == 'true') {
+            getSearchTr(trRowArray).show();
+            $('#btn-search-more').text('隐藏更多搜索项');
+        } else {
+            getSearchTr(trRowArray).hide();
+            $('#btn-search-more').text('显示更多搜索项');
+        }
+        $('#btn-search-more').click(function () {
+            var _dna_extract_is_search_more = localStorage.getItem('_dna_extract_is_search_more');
+            if (_dna_extract_is_search_more == 'false') {
+                getSearchTr(trRowArray).show();
+                $(this).text('隐藏更多搜索项');
+                localStorage.setItem('_dna_extract_is_search_more', 'true');
+            } else {
+                getSearchTr(trRowArray).hide();
+                $(this).text('显示更多搜索项');
+                localStorage.setItem('_dna_extract_is_search_more', 'false');
+            }
+        });
     }();
 
     /**
@@ -238,9 +282,9 @@
             Toast.show('保存成功');
             $('#preEdit').dialog('close').remove();
             jQuery(grid_selector).trigger('reloadGrid');
-        } else if (changedRows == -1) {
+        } else if(changedRows == -1){
             Toast.show('数据没有变化,不能保存!');
-        } else {
+        }else{
             Toast.show('保存失败,请联系管理员!');
             localStorage.setItem('_error_editExtract_Cb', error);
         }

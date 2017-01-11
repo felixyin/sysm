@@ -9,36 +9,59 @@ const _ = require('underscore');
 
 function getSql(params) {
     let selectSql = `SELECT 
-        id, barcode_long, hospital, sample_code, sample_date, receive_date, real_name, id_card, age, pregnancy_week, pregnancy_condition,
-        pregnancy_bad_history, comments, inputter, input_date, checker, check_date, warehouser, warehouse_place, warehouse_date,
-        sample_outer, sample_out_residue, status
+        id,
+        barcode_long,
+        hospital,
+        sample_code,
+        sample_date,
+        receive_date,
+        real_name,
+        id_card,
+        age,
+        pregnancy_week,
+        pregnancy_condition,
+        pregnancy_bad_history,
+        comments,
+        inputter,
+        input_date,
+        changer,
+        change_date,
+        checker,
+        check_date,
+        barcode_short,
+        sample_outer,
+        sample_out_residue,
+        extract_handover,
+        extract_handover_date,
+        status
     FROM dna_flow `;
     let whereSql = " WHERE 1 = 1 \n";
-    params.barcode_long && (whereSql += " AND barcode_long LIKE '%:barcode_long%' /*条码编号*/\n");
+    params.barcode_long && (whereSql += " AND barcode_long LIKE '%:barcode_long%' /*长条码编号*/\n");
     params.hospital && (whereSql += " AND hospital LIKE '%:hospital%' /*医院名称*/\n");
     params.sample_code && (whereSql += " AND sample_code LIKE '%:sample_code%' /*样本编号*/\n");
     params.sample_date && (whereSql += " AND sample_date LIKE '%:sample_date%' /*采样日期*/\n");
     params.receive_date && (whereSql += " AND receive_date LIKE '%:receive_date%' /*接收日期*/\n");
     params.real_name && (whereSql += " AND real_name LIKE '%:real_name%' /*姓名*/\n");
     params.id_card && (whereSql += " AND id_card LIKE '%:id_card%' /*身份证*/\n");
-    params.age && (whereSql += " AND age LIKE '%:age%' /*年龄*/\n");
+    params.age && (whereSql += " AND age LIKE '%:age%' /*出生日期*/\n");
     params.pregnancy_week && (whereSql += " AND pregnancy_week LIKE '%:pregnancy_week%' /*孕周*/\n");
     params.pregnancy_condition && (whereSql += " AND pregnancy_condition LIKE '%:pregnancy_condition%' /*妊娠情况*/\n");
     params.pregnancy_bad_history && (whereSql += " AND pregnancy_bad_history LIKE '%:pregnancy_bad_history%' /*不良孕产史*/\n");
     params.comments && (whereSql += " AND comments LIKE '%:comments%' /*备注*/\n");
     params.inputter && (whereSql += " AND inputter LIKE '%:inputter%' /*录入人员*/\n");
     params.input_date && (whereSql += " AND input_date LIKE '%:input_date%' /*录入日期*/\n");
+    params.changer && (whereSql += " AND changer LIKE '%:changer%' /*换管人员*/\n");
+    params.change_date && (whereSql += " AND change_date LIKE '%:change_date%' /*换管日期*/\n");
     params.checker && (whereSql += " AND checker LIKE '%:checker%' /*审批人员*/\n");
     params.check_date && (whereSql += " AND check_date LIKE '%:check_date%' /*审批日期*/\n");
-    params.warehouser && (whereSql += " AND warehouser LIKE '%:warehouser%' /*入库人*/\n");
-    params.warehouse_place && (whereSql += " AND warehouse_place LIKE '%:warehouse_place%' /*入库位置*/\n");
-    params.warehouse_date && (whereSql += " AND warehouse_date LIKE '%:warehouse_date%' /*入库时间*/\n");
-    // params.barcode_short && (whereSql += " AND barcode_short LIKE '%:barcode_short%' /*短条码编号*/\n");
-    params.sample_outer && (whereSql += " AND sample_outer LIKE '%:sample_outer%' /*采血管出库人*/\n");
-    params.sample_out_residue && (whereSql += " AND sample_out_residue LIKE '%:sample_out_residue%' /*接收组样本剩余量*/\n");
+    params.barcode_short && (whereSql += " AND barcode_short LIKE '%:barcode_short%' /*短条码编号*/\n");
+    params.sample_outer && (whereSql += " AND sample_outer LIKE '%:sample_outer%' /*短采血管出库人*/\n");
+    params.sample_out_residue && (whereSql += " AND sample_out_residue LIKE '%:sample_out_residue%' /*接收组试管剩余数量*/\n");
+    params.extract_handover && (whereSql += " AND extract_handover LIKE '%:extract_handover%' /*提取组接收人*/\n");
+    params.extract_handover_date && (whereSql += " AND extract_handover_date LIKE '%:extract_handover_date%' /*提取组接收时间*/\n");
     let status = params.status;
     if (status == '-1' || status == undefined) { // 全部
-        whereSql += " AND status IN (1,2,3,4) /*状态*/\n";
+        whereSql += " AND status IN (1,2,3) /*状态*/\n";
     } else {
         whereSql += " AND status = :status /*状态*/\n";
     }
@@ -66,7 +89,7 @@ exports.list = (req, res) => {
  * @params cb
  */
 exports.listAll = (params, cb) => {
-    let sqls = getSql(params);
+    let sqls = getSqls(params);
     sp.selectAll(db, sqls.sql, params, cb);
 };
 
@@ -127,32 +150,9 @@ exports.updateCxg = (cxg, cb) => {
  */
 exports.updateSh = (sh, cb) => {
     console.log(sh.ids);
-    let sql = 'UPDATE dna_flow AS t SET t.checker="' + sh.checker + '", t.check_date=NOW(), t.sample_out_residue =2, t.status=2 WHERE t.id in (' + sh.ids + ')';
+    let sql = 'UPDATE dna_flow AS t SET t.checker="' + sh.checker + '", t.check_date=NOW(), t.sample_out_residue =3, t.status=3 WHERE t.id in (' + sh.ids + ')';
     console.log(sql);
     db.pool.query(sql, cb);
-};
-
-/**
- * 入库
- * @param rk
- * @param cb
- */
-exports.updateRk = (rk, cb) => {
-    console.log(rk);
-    let sql = 'UPDATE dna_flow AS t SET t.warehouser="' + rk.warehouser + '", t.warehouse_place="' + rk.warehouse_place + '", t.warehouse_date=NOW(), t.status =3 WHERE t.id in (' + rk.ids + ')';
-    db.pool.query(sql, cb);
-};
-
-/**
- * 导出条码编码到barcode表中
- * @param barcodes
- * @param cb
- */
-exports.printBarcode = (barcodes, cb) => {
-    db.pool.query('DELETE FROM dna_print', (err, result) => {
-        if (err)throw err;
-        db.pool.query(`INSERT INTO dna_print (barcode) SELECT barcode_long FROM dna_flow t WHERE t.id in (${barcodes}) ORDER BY sample_date DESC`, cb);
-    });
 };
 
 /**
@@ -163,10 +163,10 @@ exports.printBarcode = (barcodes, cb) => {
 exports.insertCk = (ck, cb) => {
     let sample_outer = ck.sample_outer;
     let extract_handover = ck.extract_handover;
-    let bsArray = ck.barcode_long;
+    let bsArray = ck.barcode_short;
     bsArray.pop();
     console.log(bsArray);
-    let updateSql = ['UPDATE dna_flow SET sample_outer="', sample_outer, '", extract_handover="', extract_handover, '", extract_handover_date=NOW(), status=4  WHERE barcode_long IN ("', bsArray.join('", "'), '")'].join('');
+    let updateSql = ['UPDATE dna_flow SET sample_outer="', sample_outer, '", extract_handover="', extract_handover, '", extract_handover_date=NOW(), sample_out_residue=(sample_out_residue - 1), status=4  WHERE barcode_short IN ("', bsArray.join('", "'), '")'].join('');
     console.log(updateSql);
     db.pool.query(updateSql, cb);
 };
@@ -177,5 +177,5 @@ exports.insertCk = (ck, cb) => {
  * @param cb
  */
 exports.selectDnaFlowByBarcodeShort = (barcodeShort, cb) => {
-    db.pool.query('SELECT * FROM dna_flow AS t WHERE t.barcode_long=?', barcodeShort, cb);
+    db.pool.query('SELECT * FROM dna_flow AS t WHERE t.barcode_short=?', barcodeShort, cb);
 };

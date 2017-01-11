@@ -7,7 +7,7 @@ block content
                 iframe#edit-cxg-iframe.hide(name='edit-cxg-iframe')
                 form#edit-cxg-form.form-horizontal(role='form', action='#{action}', method='post', target='edit-cxg-iframe', style='height:400x;overflow-x:hidden;overflow-y:scroll;')
                     .form-group
-                        label.col-xs-3.control-label.no-padding-right(for='ff-ctmbh') 条码编号
+                        label.col-xs-3.control-label.no-padding-right(for='ff-ctmbh') 长条码编号
                         .col-xs-9
                             input#ff-ctmbh.col-xs-6(type='text', name='barcode_long', value='#{barcode_long || ""}',  placeholder='请扫描长采血管条码或录入条码编号')
                             span.help-inline.col-xs-6
@@ -15,15 +15,15 @@ block content
                                     i.icon-undo 重扫
                                 span.middle.hide Inline help text
                     .space-4
-                    //.form-group
-                    //    label.col-xs-3.control-label.no-padding-right(for='ff-dtmbh') 短条码编号
-                    //    .col-xs-9
-                    //        input#ff-dtmbh.col-xs-6(type='text', name='barcode_short', value='#{barcode_short || ""}', readonly, placeholder='请扫描短采血管条码或录入条码编号')
-                    //        span.help-inline.col-xs-6
-                    //            button#btn-dtm-scan-id.btn.btn-xs.btn-warning(type='button')
-                    //                i.icon-undo 重扫
-                    //            span.middle.hide Inline help text
-                    //.space-4
+                    .form-group
+                        label.col-xs-3.control-label.no-padding-right(for='ff-dtmbh') 短条码编号
+                        .col-xs-9
+                            input#ff-dtmbh.col-xs-6(type='text', name='barcode_short', value='#{barcode_short || ""}', readonly, placeholder='请扫描短采血管条码或录入条码编号')
+                            span.help-inline.col-xs-6
+                                button#btn-dtm-scan-id.btn.btn-xs.btn-warning(type='button')
+                                    i.icon-undo 重扫
+                                span.middle.hide Inline help text
+                    .space-4
                     .form-group
                         label.col-xs-3.control-label.no-padding-right(for='ff-15') 换管人员
                         .col-xs-9

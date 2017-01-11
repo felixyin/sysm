@@ -26,7 +26,7 @@ router.get('/preEdit', (req, res) => {
             let row = rows[0];
             row.action = '/dna/report/edit';
             row.reporter = req.query.userId;
-            row.status = 20;// 已分析
+            row.status = 20;// 分析已保存
             res.render('dna/report/edit', row);
         }
     });
@@ -61,7 +61,7 @@ router.post('/addFs', (req, res) => {
  * 查询剩余数量
  */
 router.post('/getByBarcodeShort', (req, res) => {
-    reportService.selectDnaFlowByBarcodeShort(req.body.barcode_long, (err, rows) => {
+    reportService.selectDnaFlowByBarcodeShort(req.body.barcode_short, (err, rows) => {
         console.log(err);
         if (err)throw err;
         res.send(rows);
@@ -116,7 +116,7 @@ router.post('/exportExcel', (req, res) => {
 
             let specification = {
                 barcode_long: {
-                    displayName: '条码编号',
+                    displayName: '长条码编号',
                     headerStyle: styles.header,
                     cellStyle: styles.cell,
                     cellFormat: function (value, row) {
@@ -134,7 +134,7 @@ router.post('/exportExcel', (req, res) => {
                     width: '15'
                 },
                 operate_out_residue: {
-                    displayName: '上机组样本剩余量',
+                    displayName: '上机组试管剩余数量',
                     headerStyle: styles.header,
                     cellStyle: styles.cell,
                     cellFormat: function (value, row) {
@@ -153,33 +153,6 @@ router.post('/exportExcel', (req, res) => {
                 },
                 report_handover_date: {
                     displayName: '分析报告组接收时间',
-                    headerStyle: styles.header,
-                    cellStyle: styles.cell,
-                    cellFormat: function (value, row) {
-                        return value || '';
-                    },
-                    width: '15'
-                },
-                operate_chip_code: {
-                    displayName: '上机芯片编码',
-                    headerStyle: styles.header,
-                    cellStyle: styles.cell,
-                    cellFormat: function (value, row) {
-                        return value || '';
-                    },
-                    width: '15'
-                },
-                operate_reads_val: {
-                    displayName: '上机reads数',
-                    headerStyle: styles.header,
-                    cellStyle: styles.cell,
-                    cellFormat: function (value, row) {
-                        return value || '';
-                    },
-                    width: '15'
-                },
-                operate_q30_val: {
-                    displayName: '上机q30值',
                     headerStyle: styles.header,
                     cellStyle: styles.cell,
                     cellFormat: function (value, row) {
@@ -206,17 +179,11 @@ router.post('/exportExcel', (req, res) => {
                     width: '15'
                 },
                 report_is_send: {
-                    displayName: '是否发送',
+                    displayName: '是否发送（1、不发送；2、发送）',
                     headerStyle: styles.header,
                     cellStyle: styles.cell,
                     cellFormat: function (value, row) {
-                        if (value == 1) {
-                            return '不发送';
-                        } else if (value == 2) {
-                            return '发送';
-                        } else {
-                            return '未知';
-                        }
+                        return value || '';
                     },
                     width: '15'
                 },
@@ -267,64 +234,64 @@ router.post('/exportExcel', (req, res) => {
                                 text = '已删除';
                                 break;
                             case 1:
-                                text = '已录入';
+                                text = '已录入采血单';
                                 break;
                             case 2:
-                                text = '已审批';
+                                text = '已更换采血管';
                                 break;
                             case 3:
-                                text = '已入库';
+                                text = '已审批且入库';
                                 break;
                             case 4:
-                                text = '已出库';
+                                text = '交接后未提取';
                                 break;
                             case 5:
-                                text = '已提取';
+                                text = '提取且已保存';
                                 break;
                             case 6:
-                                text = '提取合格';
+                                text = '提取审核-合格';
                                 break;
                             case 7:
-                                text = '提取废弃';
+                                text = '提取审核-废弃';
                                 break;
                             case 8:
-                                text = '重提取';
+                                text = '提取审核-重提取';
                                 break;
                             case 9:
-                                text = '提取已交接';
+                                text = '交接后未建库';
                                 break;
                             case 10:
-                                text = '已建库';
+                                text = '建库且已保存';
                                 break;
                             case 11:
-                                text = '建库合格';
+                                text = '建库审核-合格';
                                 break;
                             case 12:
-                                text = '建库废弃';
+                                text = '建库审核-废弃';
                                 break;
                             case 13:
-                                text = '重建库';
+                                text = '建库审核-重建库';
                                 break;
                             case 14:
-                                text = '建库已交接';
+                                text = '交接后未上机';
                                 break;
                             case 15:
-                                text = '已上机';
+                                text = '上机已保存';
                                 break;
                             case 16:
-                                text = '上机合格';
+                                text = '上机审核-合格';
                                 break;
                             case 17:
-                                text = '上机废弃';
+                                text = '上机审核-废弃';
                                 break;
                             case 18:
-                                text = '重上机';
+                                text = '上机审核-重上机';
                                 break;
                             case 19:
-                                text = '上机已交接';
+                                text = '交接后未分析';
                                 break;
                             case 20:
-                                text = '已分析';
+                                text = '分析已保存';
                                 break;
                             case 21:
                                 text = '报告已发送';

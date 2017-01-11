@@ -14,7 +14,7 @@ block content
                                 span.middle.hide Inline help text
                     .space-4
                     .form-group
-                        label.col-xs-3.control-label.no-padding-right(for='ff-1') 条码编号
+                        label.col-xs-3.control-label.no-padding-right(for='ff-1') 长条码编号
                         .col-xs-9
                             input#ff-1.col-xs-6(type='text', name='barcode_long', value='#{barcode_long || ""}',  placeholder='请扫描条码或录入条码编号')
                             span.help-inline.col-xs-6
@@ -65,9 +65,9 @@ block content
                                 span.middle.hide Inline help text
                     .space-4
                     .form-group
-                        label.col-xs-3.control-label.no-padding-right(for='ff-cs-date') 年龄
+                        label.col-xs-3.control-label.no-padding-right(for='ff-cs-date') 出生日期
                         .col-xs-9
-                            input#ff-cs-date.col-xs-6(type='number', name='age', value='#{age || ""}', placeholder='')
+                            input#ff-cs-date.col-xs-6(type='text', name='age', value='#{age || ""}', placeholder='')
                             span.help-inline.col-xs-6
                                 span.middle.hide Inline help text
                     .space-4
@@ -190,6 +190,12 @@ block content
             });
         });
 
+        $("#ff-cs-date").datetimepicker({
+            language: 'zh-CN',
+            format: "yyyy-mm-dd",
+            autoclose: true,
+            pickerPosition: "bottom-right"
+        });
 
 
 

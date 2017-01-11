@@ -6,12 +6,12 @@ const sp = require('../../lib/pager/select-pager');
 const db = require('../../config/db');
 const util = require('../../lib/utils');
 const _ = require('underscore');
-const dnaService = require('../../service/dna/index');
 
 function getSqls(params) {
     let selectSql = `SELECT 
         id,
         barcode_long,
+        barcode_short,
         sample_outer,
         sample_out_residue,
         extract_handover,
@@ -27,30 +27,34 @@ function getSqls(params) {
         extract_check_date,
         extract_outer,
         extract_out_residue,
+        storage_handover,
+        storage_handover_date,
         status
     FROM dna_flow `;
 
     let whereSql = " WHERE 1 = 1 \n";
-    params.barcode_long && (whereSql += " AND barcode_long LIKE '%:barcode_long%' /*条码编号*/\n");
-    // params.barcode_short && (whereSql += " AND barcode_short LIKE '%:barcode_short%' /*短条码编号*/\n");
-    params.sample_outer && (whereSql += " AND sample_outer LIKE '%:sample_outer%' /*采血管出库人*/\n");
-    params.sample_out_residue && (whereSql += " AND sample_out_residue LIKE '%:sample_out_residue%' /*接收组样本剩余量*/\n");
+    params.barcode_long && (whereSql += " AND barcode_long LIKE '%:barcode_long%' /*长条码编号*/\n");
+    params.barcode_short && (whereSql += " AND barcode_short LIKE '%:barcode_short%' /*短条码编号*/\n");
+    params.sample_outer && (whereSql += " AND sample_outer LIKE '%:sample_outer%' /*短采血管出库人*/\n");
+    params.sample_out_residue && (whereSql += " AND sample_out_residue LIKE '%:sample_out_residue%' /*接收组试管剩余数量*/\n");
     params.extract_handover && (whereSql += " AND extract_handover LIKE '%:extract_handover%' /*提取组接收人*/\n");
     params.extract_handover_date && (whereSql += " AND extract_handover_date LIKE '%:extract_handover_date%' /*提取组接收时间*/\n");
-    params.extract_qbite_deep && (whereSql += " AND extract_qbite_deep LIKE '%:extract_qbite_deep%' /*Qubit浓度(ng/ul)*/\n");
-    params.extract_epoch_deep && (whereSql += " AND extract_epoch_deep LIKE '%:extract_epoch_deep%' /*epoch浓度(ng/ul)*/\n");
-    params.extract_purity_deep && (whereSql += " AND extract_purity_deep LIKE '%:extract_purity_deep%' /*纯度(%)*/\n");
-    params.extract_part_size && (whereSql += " AND extract_part_size LIKE '%:extract_part_size%' /*片段大小(bp)*/\n");
-    params.extract_part_after_break && (whereSql += " AND extract_part_after_break LIKE '%:extract_part_after_break%' /*打断后片段(bp)*/\n");
+    params.extract_qbite_deep && (whereSql += " AND extract_qbite_deep LIKE '%:extract_qbite_deep%' /*qbite浓度*/\n");
+    params.extract_epoch_deep && (whereSql += " AND extract_epoch_deep LIKE '%:extract_epoch_deep%' /*epoch浓度*/\n");
+    params.extract_purity_deep && (whereSql += " AND extract_purity_deep LIKE '%:extract_purity_deep%' /*纯度*/\n");
+    params.extract_part_size && (whereSql += " AND extract_part_size LIKE '%:extract_part_size%' /*片段大小*/\n");
+    params.extract_part_after_break && (whereSql += " AND extract_part_after_break LIKE '%:extract_part_after_break%' /*打断后片段*/\n");
     params.extracter && (whereSql += " AND extracter LIKE '%:extracter%' /*提取人员*/\n");
     params.extract_date && (whereSql += " AND extract_date LIKE '%:extract_date%' /*提取时间*/\n");
     params.extract_checker && (whereSql += " AND extract_checker LIKE '%:extract_checker%' /*提取审核人*/\n");
     params.extract_check_date && (whereSql += " AND extract_check_date LIKE '%:extract_check_date%' /*提取审核时间*/\n");
     params.extract_outer && (whereSql += " AND extract_outer LIKE '%:extract_outer%' /*提取出库人*/\n");
-    params.extract_out_residue && (whereSql += " AND extract_out_residue LIKE '%:extract_out_residue%' /*提取组样本剩余量*/\n");
+    params.extract_out_residue && (whereSql += " AND extract_out_residue LIKE '%:extract_out_residue%' /*提取组试管剩余数量*/\n");
+    params.storage_handover && (whereSql += " AND storage_handover LIKE '%:storage_handover%' /*建库组接收人*/\n");
+    params.storage_handover_date && (whereSql += " AND storage_handover_date LIKE '%:storage_handover_date%' /*建库组接收时间*/\n");
     let status = params.status;
     if (status == '-1' || status == undefined) { // 全部
-        whereSql += " AND status IN (4,5,6,7,8,9) /*状态*/\n";
+        whereSql += " AND status IN (4,5,6,7,8) /*状态*/\n";
     } else {
         whereSql += " AND status = :status /*状态*/\n";
     }
@@ -112,7 +116,7 @@ exports.selectDnaFlowById = (id, cb) => {
  */
 exports.updateSh = (sh, cb) => {
     console.log(sh.ids);
-    let sql = 'UPDATE dna_flow AS t SET t.extract_checker="' + sh.checker + '", t.extract_check_date=NOW(), t.status=6 WHERE t.id in (' + sh.ids + ')';
+    let sql = 'UPDATE dna_flow AS t SET t.extract_checker="' + sh.checker + '", t.extract_check_date=NOW(), t.extract_out_residue =2, t.status=6 WHERE t.id in (' + sh.ids + ')';
     console.log(sql);
     db.pool.query(sql, cb);
 };
@@ -127,7 +131,7 @@ exports.insertCk = (ck, cb) => {
     let storage_handover = ck.jjUserId;
     let ids = ck.ids;
     console.log(ids);
-    let updateSql = ['UPDATE dna_flow SET extract_outer="', extract_outer, '", storage_handover="', storage_handover, '", storage_handover_date=NOW(), status=9 /*提取已交接*/  WHERE id IN (', ids, ')'].join('');
+    let updateSql = ['UPDATE dna_flow SET extract_outer="', extract_outer, '", storage_handover="', storage_handover, '", storage_handover_date=NOW(), extract_out_residue=(extract_out_residue - 1), status=9 /*交接后未建库*/  WHERE id IN (', ids, ')'].join('');
     console.log(updateSql);
     db.pool.query(updateSql, cb);
 };
@@ -138,25 +142,5 @@ exports.insertCk = (ck, cb) => {
  * @param cb
  */
 exports.selectDnaFlowByBarcodeShort = (barcodeShort, cb) => {
-    db.pool.query('SELECT * FROM dna_flow AS t WHERE t.barcode_long=?', barcodeShort, cb);
-};
-
-/**
- * 重做
- * @param params
- * @param cb
- */
-exports.redo = (params, cb) => {
-    dnaService.backup(params.checker, params.ids, (err, result) => {
-        if (err)throw err;
-        if (result && result.insertId) {
-            let clearColumnSql = `UPDATE dna_flow SET extract_handover=null, extract_handover_date=null, extract_qbite_deep=null,
-                extract_epoch_deep=null, extract_purity_deep=null, extract_part_size=null, extract_part_after_break=null, extracter=null,
-                extract_date=null, extract_checker=null, extract_check_date=null, extract_outer=null, extract_out_residue=null,status=8
-            WHERE id IN (${params.ids})`;
-            db.pool.query(clearColumnSql, cb);
-        } else {
-            cb(new Error('保存失败!'), null);
-        }
-    });
+    db.pool.query('SELECT * FROM dna_flow AS t WHERE t.barcode_short=?', barcodeShort, cb);
 };

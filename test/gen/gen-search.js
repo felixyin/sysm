@@ -10,18 +10,18 @@ let sql = `SELECT  t.COLUMN_NAME as cn, t.COLUMN_COMMENT as cc, t.COLUMN_TYPE as
 
 db.pool.getConnection(function (err, conn) {
 
-	conn.query(sql, function (err, result) {
-		for (let idx in result) {
-			let row = result[idx];
+    conn.query(sql, function (err, result) {
+        for (let idx in result) {
+            let row = result[idx];
 
-			let input =
+            let input =
 `td ${row.cc}
 td
     input.col-xs-10.col-sm-5(type='text' , name='${row.cn}', placeholder='请输入${row.cc}')`;
-			console.log(input);
+            console.log(input);
 
-		}
-	});
+        }
+    });
 
-	conn.release();
+    conn.release();
 });

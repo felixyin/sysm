@@ -68,8 +68,7 @@ app.load = function (type) {
 		// default json document
 		//var json = {"名字":"消费账户设置","现金账户可消费":{"游戏":1,"商品":1},"赠送账户可消费":{"游戏":1,"商品":0},"赠送账户金额":10};
 		var json = "";
-        $.post('/settings/getJsonFromFile', {type: type}, function (data) {
-
+		SettingsIndex.getJsonFromFile(type, function(data){
 			if(data.err != null){
 
 			}else{
@@ -141,7 +140,7 @@ app.load = function (type) {
 						app.editorToFormatter();
 						var temp = editor.get();
 						var dataString = JSON.stringify(temp);
-                        $.post('settings/setJsonToFile', {type: type, dataString: dataString}, function (err) {
+						SettingsIndex.setJsonToFile(type,dataString, function (err) {
 							var toShow = new Object();
 							toShow.type = "notification";
 							toShow.closeButton = "false";

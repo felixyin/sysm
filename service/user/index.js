@@ -72,9 +72,9 @@ exports.updateUserInfo = function (id, user, cb) {
 };
 exports.login = function (username, password, callback) {
     if (!username) return callback({rs: false, ms: '用户名不能为空'});
-    if (username.length < 5 || username.length > 25) return callback({rs: false, ms: '用户名长度需在5到25之间'});
+    if (username.length < 1 || username.length > 15) return callback({rs: false, ms: '用户名长度需在1到15之间'});
     if (!password) return callback({rs: false, ms: '密码不能为空'});
-    if (password.length < 6 || password.length > 20) return callback({rs: false, ms: '密码长度需在6到20之间'});
+    if (password.length < 4 || password.length > 10) return callback({rs: false, ms: '密码长度需在４到10之间'});
     let loginSql = 'SELECT id,password,status,role FROM user WHERE username = ?';
     db.pool.query(loginSql, username, function (error, row, field) {
         if (row && row[0]) {

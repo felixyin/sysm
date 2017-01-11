@@ -73,7 +73,7 @@ router.post('/addCk', (req, res) => {
  * 查询剩余数量
  */
 router.post('/getByBarcodeShort', (req, res) => {
-    storageService.selectDnaFlowByBarcodeShort(req.body.barcode_long, (err, rows) => {
+    storageService.selectDnaFlowByBarcodeShort(req.body.barcode_short, (err, rows) => {
         console.log(err);
         if (err)throw err;
         res.send(rows);
@@ -123,12 +123,12 @@ router.post('/exportExcel', (req, res) => {
             };
 
             let heading = [
-                [{value: '建库组数据导出', style: styles.header}],
+                [{value: '标签接收数据导出', style: styles.header}],
             ];
 
             let specification = {
                 barcode_long: {
-                    displayName: '条码编号',
+                    displayName: '长条码编号',
                     headerStyle: styles.header,
                     cellStyle: styles.cell,
                     cellFormat: function (value, row) {
@@ -146,7 +146,7 @@ router.post('/exportExcel', (req, res) => {
                     width: '15'
                 },
                 extract_out_residue: {
-                    displayName: '提取组样本剩余量',
+                    displayName: '提取组试管剩余数量',
                     headerStyle: styles.header,
                     cellStyle: styles.cell,
                     cellFormat: function (value, row) {
@@ -172,53 +172,8 @@ router.post('/exportExcel', (req, res) => {
                     },
                     width: '15'
                 },
-                extract_qbite_deep: {
-                    displayName: 'Qubit浓度(ng/ul)',
-                    headerStyle: styles.header,
-                    cellStyle: styles.cell,
-                    cellFormat: function (value, row) {
-                        return value || '';
-                    },
-                    width: '15'
-                },
-                extract_epoch_deep: {
-                    displayName: 'epoch浓度(ng/ul)',
-                    headerStyle: styles.header,
-                    cellStyle: styles.cell,
-                    cellFormat: function (value, row) {
-                        return value || '';
-                    },
-                    width: '15'
-                },
-                extract_purity_deep: {
-                    displayName: '纯度(%)',
-                    headerStyle: styles.header,
-                    cellStyle: styles.cell,
-                    cellFormat: function (value, row) {
-                        return value || '';
-                    },
-                    width: '15'
-                },
-                extract_part_size: {
-                    displayName: '片段大小(bp)',
-                    headerStyle: styles.header,
-                    cellStyle: styles.cell,
-                    cellFormat: function (value, row) {
-                        return value || '';
-                    },
-                    width: '15'
-                },
-                extract_part_after_break: {
-                    displayName: '打断后片段(bp)',
-                    headerStyle: styles.header,
-                    cellStyle: styles.cell,
-                    cellFormat: function (value, row) {
-                        return value || '';
-                    },
-                    width: '15'
-                },
                 storage_deep: {
-                    displayName: '建库浓度(ng/ul)',
+                    displayName: '建库浓度',
                     headerStyle: styles.header,
                     cellStyle: styles.cell,
                     cellFormat: function (value, row) {
@@ -227,7 +182,7 @@ router.post('/exportExcel', (req, res) => {
                     width: '15'
                 },
                 storage_part_size: {
-                    displayName: '建库片段大小(bp)',
+                    displayName: '建库片段大小',
                     headerStyle: styles.header,
                     cellStyle: styles.cell,
                     cellFormat: function (value, row) {
@@ -281,7 +236,7 @@ router.post('/exportExcel', (req, res) => {
                     width: '15'
                 },
                 storage_out_residue: {
-                    displayName: '建库组样本剩余量',
+                    displayName: '建库组试管剩余数量',
                     headerStyle: styles.header,
                     cellStyle: styles.cell,
                     cellFormat: function (value, row) {
@@ -318,64 +273,64 @@ router.post('/exportExcel', (req, res) => {
                                 text = '已删除';
                                 break;
                             case 1:
-                                text = '已录入';
+                                text = '已录入采血单';
                                 break;
                             case 2:
-                                text = '已审批';
+                                text = '已更换采血管';
                                 break;
                             case 3:
-                                text = '已入库';
+                                text = '已审批且入库';
                                 break;
                             case 4:
-                                text = '已出库';
+                                text = '交接后未提取';
                                 break;
                             case 5:
-                                text = '已提取';
+                                text = '提取且已保存';
                                 break;
                             case 6:
-                                text = '提取合格';
+                                text = '提取审核-合格';
                                 break;
                             case 7:
-                                text = '提取废弃';
+                                text = '提取审核-废弃';
                                 break;
                             case 8:
-                                text = '重提取';
+                                text = '提取审核-重提取';
                                 break;
                             case 9:
-                                text = '提取已交接';
+                                text = '交接后未建库';
                                 break;
                             case 10:
-                                text = '已建库';
+                                text = '建库且已保存';
                                 break;
                             case 11:
-                                text = '建库合格';
+                                text = '建库审核-合格';
                                 break;
                             case 12:
-                                text = '建库废弃';
+                                text = '建库审核-废弃';
                                 break;
                             case 13:
-                                text = '重建库';
+                                text = '建库审核-重建库';
                                 break;
                             case 14:
-                                text = '建库已交接';
+                                text = '交接后未上机';
                                 break;
                             case 15:
-                                text = '已上机';
+                                text = '上机已保存';
                                 break;
                             case 16:
-                                text = '上机合格';
+                                text = '上机审核-合格';
                                 break;
                             case 17:
-                                text = '上机废弃';
+                                text = '上机审核-废弃';
                                 break;
                             case 18:
-                                text = '重上机';
+                                text = '上机审核-重上机';
                                 break;
                             case 19:
-                                text = '上机已交接';
+                                text = '交接后未分析';
                                 break;
                             case 20:
-                                text = '已分析';
+                                text = '分析已保存';
                                 break;
                             case 21:
                                 text = '报告已发送';

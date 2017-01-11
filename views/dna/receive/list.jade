@@ -20,12 +20,12 @@ block content
             form#search-form-id
                 table.searchTable
                     tr
-                        td 条码编号
+                        td 长条码编号
                         td
                             input.col-xs-10.col-sm-5(type='text' , name='barcode_long', placeholder='请扫描条码或输入编号')
-                        td 样本编号
+                        td 短条码编号
                         td
-                            input.col-xs-10.col-sm-5(type='text' , name='sample_code', placeholder='请输入样本编号')
+                            input.col-xs-10.col-sm-5(type='text' , name='barcode_short', placeholder='请扫描条码或输入编号')
                         td 医院名称
                         td
                             input.col-xs-10.col-sm-5(type='text' , name='hospital', placeholder='请输入医院名称')
@@ -43,13 +43,13 @@ block content
                         td 身份证号
                         td
                             input.col-xs-10.col-sm-5(type='text' , name='id_card', placeholder='请输入身份证号')
-                        td 年龄
+                        td 出生日期
                         td
-                            input.col-xs-10.col-sm-5(type='number' , name='age', placeholder='请选择年龄')
+                            input.col-xs-10.col-sm-5.ipt-date(type='text' , name='age', placeholder='请选择出生日期')
                         td 孕周
                         td
                             input.col-xs-10.col-sm-5(type='text' , name='pregnancy_week', placeholder='请输入孕周')
-                    //tr
+                    tr
                         td 提取组接收人
                         td
                             input.col-xs-10.col-sm-5.ipt-person(type='text' , name='extract_handover', placeholder='请选择提取组接收人')
@@ -64,11 +64,10 @@ block content
                         td
                             select#status.col-xs-12.clo-sm-10(style="width:180px;", name='status',placeholder='')
                                 option(value='-1') 全部
-                                option(value='0') 已废弃
-                                option(value='1') 已录入
-                                option(value='2') 已审批
-                                option(value='3') 已入库
-                                option(value='4') 已出库
+                                option(value='1') 已录入采血单
+                                option(value='2') 已更换采血管
+                                option(value='3') 已审批且入库
+                                option(value='4') 交接后未提取
                         td
                         td
                         td
@@ -98,8 +97,8 @@ block content
                         //li.divider
                         //li
                             a(href='#') Separated link
-                //span
-                //#btn-cxg.btn-group
+                span
+                #btn-cxg.btn-group
                     button.btn.btn-info.btn-sm(onclick="showCxgDialog(this)")
                         i.icon-edit.bigger-110 &nbsp;&nbsp;&nbsp;更换采血管
                     button.btn.btn-info.dropdown-toggle.btn-sm(data-toggle='dropdown')
@@ -117,14 +116,8 @@ block content
                         li
                             a(href='javascript:clearUser("审核人员")') 不记住审核人员
                 span
-                #btn-rk.btn-group
-                    button.btn.btn-info.btn-sm(onclick="showRkDialog(this)",disabled)
-                        i.icon-edit.bigger-110 &nbsp;&nbsp;&nbsp;入库
-                    button.btn.btn-info.dropdown-toggle.btn-sm(data-toggle='dropdown',disabled)
-                        i.icon-angle-down.icon-only
-                    ul.dropdown-menu.dropdown-yellow
-                        li
-                            a(href='javascript:clearUser("入库人员")') 不记住入库人员
+                //button#btn-rk-id.btn.btn-info.btn-sm(onclick="rk(this)")
+                    i.icon-inbox.bigger-110 入库
                 #btn-ck.btn-group
                     button.btn.btn-info.btn-sm(onclick="showCkDialog(this)")
                         i.icon-edit.bigger-110 &nbsp;&nbsp;&nbsp;批量出库
@@ -136,19 +129,11 @@ block content
                         li
                             a(href='javascript:clearUser("交接人员")') 不记住交接人员
                 span
-                textarea#barcode-copy-ta(style='width:0px;height:0px;position:absolute;z-index:-100;margin-top:5px;margin-left:5px;')
-                button#btn-copy-id.btn.btn-info.btn-sm(onclick="copyBarcode(this)",data-clipboard-target="#barcode-copy-ta")
-                    i.icon-download-alt.bigger-110 复制条码编号
-                span
-                button#btn-print-id.btn.btn-info.btn-sm(onclick="printBarcode(this)")
-                    i.icon-download-alt.bigger-110  导出条码打印机
-                span
-                button#btn-dc-id.btn.btn-info.btn-sm(onclick="exportCvs(this)")
+                button#btn-dc-id.btn.btn-default.btn-sm(onclick="exportCvs(this)")
                     i.icon-download-alt.bigger-110 导出EXCEL
-                //button#btn-dy-id.btn.btn-info.btn-sm(onclick="dy(this)")
+                //button#btn-dy-id.btn.btn-default.btn-sm(onclick="dy(this)")
                     i.icon-print.bigger-110 打印
 
             table#grid-table
             #grid-pager
-    script(type='text/javascript',src='clipboard/dist/clipboard.min.js')
     script(type='text/javascript',src="javascripts/dna/receive.js")

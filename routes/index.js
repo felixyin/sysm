@@ -44,7 +44,7 @@ function getAllMenus(json, auth) {
     return allMenus;
 }
 
-router.post('/', function (req, res, next) {
+router.post('/login', function (req, res, next) {
 
     let params = req.body;
     userService.login(params.username, params.password, function (data) {
@@ -56,7 +56,7 @@ router.post('/', function (req, res, next) {
                 req.session.auth = data.auth;
 
                 let allMenus = getAllMenus(json, data.auth);
-                // console.log(allMenus);
+                console.log(allMenus);
 
                 res.render('home', {menus: allMenus});// 默认不在显示首页，而是直接默认显示用户管理页面
             });

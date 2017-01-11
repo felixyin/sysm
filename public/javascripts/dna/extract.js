@@ -14,58 +14,126 @@
         W._sortname = 'input_date';
         W._sortorder = 'ASC';
         W._postData = {};
-        W._colNames = ['序号', '条码编号', 'Qubit浓度(ng/ul)', '纯度(%)', '片段大小(bp)', '状态', '采血管出库人', '接收组样本剩余量', '提取组接收人',
-            '提取组接收时间', 'epoch浓度(ng/ul)', '打断后片段(bp)', '提取人员', '提取时间', '提取审核人', '提取审核时间', '提取出库人', ''];
+        W._colNames = ['序号', '长条码编号', '短条码编号', '短采血管出库人', '接收组试管剩余数量', '提取组接收人', '提取组接收时间',
+            'qbite浓度', 'epoch浓度', '纯度', '片段大小', '打断后片段', '提取人员', '提取时间', '提取审核人', '提取审核时间',
+            '提取出库人', '提取组试管剩余数量', '建库组接收人', '建库组接收时间', '', '状态'];
         W._colModel = [
             {name: 'id', width: 40, index: 'id', align: 'center', sortable: false, frozen: true},
             {name: 'barcode_long', width: 120, index: 'barcode_long', align: 'center', sortable: false, frozen: true},
-            // {name: 'barcode_short', width: 100, index: 'barcode_short', align: 'center', sortable: false, frozen: true},
-            {name: 'extract_qbite_deep', width: 100, index: 'extract_qbite_deep', align: 'center', sortable: false, frozen: true},
-            {name: 'extract_purity_deep', width: 100, index: 'extract_purity_deep', align: 'center', sortable: false, frozen: true},
-            {name: 'extract_part_size', width: 100, index: 'extract_part_size', align: 'center', sortable: false, frozen: true},
-            {
-                name: 'status1', width: 100, index: 'status', align: 'center', sortable: false,
-                formatter: function (value, options, row) {
-                    var text = '';
-                    switch (row.status) {
-                        case 4:
-                            text = ['<span class="label label-default">','未提取',''].join('');
-                            break;
-                        case 5:
-                            text = ['<span class="label label-info">','已提取',''].join('');
-                            break;
-                        case 6:
-                            text = ['<span class="label label-success">','合格',''].join('');
-                            break;
-                        case 7:
-                            text = ['<span class="label label-danger">','废弃',''].join('');
-                            break;
-                        case 8:
-                            text = ['<span class="label label-warning">','重提取',''].join('');
-                            break;
-                        case 9:
-                            text = ['<span class="label label-purple">','已交接',''].join('');
-                            break;
-                        default:
-                            text = '';
-                    }
-                    return text;
-                },
-                frozen: true
-            },
+            {name: 'barcode_short', width: 100, index: 'barcode_short', align: 'center', sortable: false, frozen: true},
             {name: 'sample_outer', width: 100, index: 'sample_outer', align: 'center', sortable: false},
-            {name: 'sample_out_residue', width: 100, index: 'sample_out_residue', align: 'center', sortable: false},
+            {
+                name: 'sample_out_residue',
+                width: 100,
+                index: 'sample_out_residue',
+                align: 'center',
+                sortable: false,
+                formatter: function (value, options, row) {
+                    return value;
+                }
+            },
             {name: 'extract_handover', width: 100, index: 'extract_handover', align: 'center', sortable: false},
             {name: 'extract_handover_date', width: 130, index: 'extract_handover_date', align: 'center', sortable: false},
+            {name: 'extract_qbite_deep', width: 100, index: 'extract_qbite_deep', align: 'center', sortable: false},
             {name: 'extract_epoch_deep', width: 100, index: 'extract_epoch_deep', align: 'center', sortable: false},
+            {name: 'extract_purity_deep', width: 100, index: 'extract_purity_deep', align: 'center', sortable: false},
+            {name: 'extract_part_size', width: 100, index: 'extract_part_size', align: 'center', sortable: false},
             {name: 'extract_part_after_break', width: 100, index: 'extract_part_after_break', align: 'center', sortable: false},
             {name: 'extracter', width: 100, index: 'extracter', align: 'center', sortable: false},
             {name: 'extract_date', width: 130, index: 'extract_date', align: 'center', sortable: false},
             {name: 'extract_checker', width: 100, index: 'extract_checker', align: 'center', sortable: false},
             {name: 'extract_check_date', width: 130, index: 'extract_check_date', align: 'center', sortable: false},
             {name: 'extract_outer', width: 100, index: 'extract_outer', align: 'center', sortable: false},
+            {
+                name: 'extract_out_residue',
+                width: 100,
+                index: 'extract_out_residue',
+                align: 'center',
+                sortable: false,
+                formatter: function (value, options, row) {
+                    return value;
+                }
+            },
+            {name: 'storage_handover', width: 100, index: 'storage_handover', align: 'center', sortable: false},
+            {name: 'storage_handover_date', width: 130, index: 'storage_handover_date', align: 'center', sortable: false},
             {name: 'status', hidden: true, hidedlg: true},
-
+            {
+                name: 'status1', width: 100, index: 'status', align: 'center', sortable: false,
+                formatter: function (value, options, row) {
+                    var text = '';
+                    switch (row.status) {
+                        case 0:
+                            text = '已删除';
+                            break;
+                        case 1:
+                            text = '已录入采血单';
+                            break;
+                        case 2:
+                            text = '已更换采血管';
+                            break;
+                        case 3:
+                            text = '已审批且入库';
+                            break;
+                        case 4:
+                            text = '交接后未提取';
+                            break;
+                        case 5:
+                            text = '提取且已保存';
+                            break;
+                        case 6:
+                            text = '提取审核-合格';
+                            break;
+                        case 7:
+                            text = '提取审核-废弃';
+                            break;
+                        case 8:
+                            text = '提取审核-重提取';
+                            break;
+                        case 9:
+                            text = '交接后未建库';
+                            break;
+                        case 10:
+                            text = '建库且已保存';
+                            break;
+                        case 11:
+                            text = '建库审核-合格';
+                            break;
+                        case 12:
+                            text = '建库审核-废弃';
+                            break;
+                        case 13:
+                            text = '建库审核-重建库';
+                            break;
+                        case 14:
+                            text = '交接后未上机';
+                            break;
+                        case 15:
+                            text = '上机已保存';
+                            break;
+                        case 16:
+                            text = '上机审核-合格';
+                            break;
+                        case 17:
+                            text = '上机审核-废弃';
+                            break;
+                        case 18:
+                            text = '上机审核-重上机';
+                            break;
+                        case 19:
+                            text = '交接后未分析';
+                            break;
+                        case 20:
+                            text = '分析已保存';
+                            break;
+                        case 21:
+                            text = '报告已发送';
+                            break;
+                        default:
+                            text = '';
+                    }
+                    return text;
+                }
+            }
         ];
 
         W.updateActionIcons = function () {
@@ -107,7 +175,27 @@
 
         $('.ipt-person').selectUser();
 
-        showSearchMore($('#btn-search-more'), [2, 3], '_dna_extract_is_search_more');
+        var _dna_extract_is_search_more = localStorage.getItem('_dna_extract_is_search_more');
+        if (_dna_extract_is_search_more == 'true') {
+            getSearchTr([2, 3, 4]).show();
+            $('#btn-search-more').text('隐藏更多搜索项');
+        } else {
+            getSearchTr([2, 3, 4]).hide();
+            $('#btn-search-more').text('显示更多搜索项');
+        }
+
+        $('#btn-search-more').click(function () {
+            var _dna_extract_is_search_more = localStorage.getItem('_dna_extract_is_search_more');
+            if (_dna_extract_is_search_more == 'false') {
+                getSearchTr([2, 3, 4]).show();
+                $(this).text('隐藏更多搜索项');
+                localStorage.setItem('_dna_extract_is_search_more', 'true');
+            } else {
+                getSearchTr([2, 3, 4]).hide();
+                $(this).text('显示更多搜索项');
+                localStorage.setItem('_dna_extract_is_search_more', 'false');
+            }
+        });
     }();
 
     /**
@@ -120,15 +208,15 @@
             if (ids && ids.length == 1) {
                 var row = $(grid_selector).jqGrid('getRowData', ids[0]);
                 var id = row.id;
-                var barcode_long = row.barcode_long;
+                var barcode_short = row.barcode_short;
                 var status = parseInt(row.status);
                 if (status < 6) { // 未审批状态
-                    W.showDialog('preEdit', '/dna/extract/preEdit?id=' + id + '&userId=' + userId, '录入DNA提取数据:' + barcode_long,
+                    W.showDialog('preEdit', '/dna/extract/preEdit?id=' + id + '&userId=' + userId, '录入DNA提取数据:' + barcode_short,
                         '70%', '350px', function (contextWindow, dialog) {
                             $('#edit-form', contextWindow.document).submit();
                         });
                 } else {
-                    Toast.show('此记录已审批,不能修改:' + barcode_long);
+                    Toast.show('此记录已审批,不能修改:' + barcode_short);
                 }
             } else {
                 Toast.show('请先勾选一行数据');
@@ -165,16 +253,16 @@
                 var id = ids[i];
                 if (id) {
                     var row = $(grid_selector).jqGrid('getRowData', id);
-                    if (row.status != 5 /*已提取*/) { // 已提取
+                    if (!row.extract_date) {
                         $(grid_selector).jqGrid('setSelection', id, false);
-                        warnRows.push(row.barcode_long);
+                        warnRows.push(row.barcode_short);
                         // }else{
                         //     okRows.push(row.barcode_short);
                     }
                 }
             }
             if (warnRows.length > 0) {
-                Toast.show('您选择的这些行不符合审批要求,已经取消选中:' + warnRows.join(','));
+                Toast.show('您选择的这些行不符合审批要求(未录入),已经取消选中:' + warnRows.join(','));
             }
             ids = $(grid_selector).jqGrid('getGridParam', 'selarrrow');
 
@@ -207,21 +295,7 @@
                                 "label": "重提取!",
                                 "className": "btn-sm btn-warning",
                                 "callback": function () {
-                                    var warnRows = [];
-                                    for (var i in ids) {
-                                        var id = ids[i];
-                                        var row = $(grid_selector).jqGrid('getRowData', id);
-                                        var count = parseInt(row.sample_out_residue);
-                                        if (count < 1) { // 没有剩余试管用于重做
-                                            $(grid_selector).jqGrid('setSelection', id, false);
-                                            warnRows.push(id);
-                                        }
-                                    }
-                                    if (warnRows.length > 0) {
-                                        Toast.show('部分选中行,在上一环节已没有剩余试管,已取消选中');
-                                    }
-                                    ids = $(grid_selector).jqGrid('getGridParam', 'selarrrow');
-                                    $.post('dna/redo/extract', {checker: userId, ids: ids.join(',')}, function (result) {
+                                    $.post('dna/extract/addSh', {checker: userId, ids: ids.join(',')}, function (result) {
                                         if (result.changedRows > 0) {
                                             if (result.changedRows == 1) {
                                                 Toast.show(userId + ',审核成功!');
@@ -240,31 +314,17 @@
                                 "label": "废弃!",
                                 "className": "btn-sm btn-danger",
                                 "callback": function () {
-                                    var warnRows = [];
-                                    for (var i in ids) {
-                                        var id = ids[i];
-                                        var row = $(grid_selector).jqGrid('getRowData', id);
-                                        var count = parseInt(row.sample_out_residue);
-                                        if (count < 1) { // 没有剩余试管用于重做
-                                            $(grid_selector).jqGrid('setSelection', id, false);
-                                            warnRows.push(id);
-                                        }
-                                    }
-                                    if (warnRows.length > 0) {
-                                        Toast.show('部分选中行,在上一环节已没有剩余试管,已取消选中');
-                                    }
-                                    ids = $(grid_selector).jqGrid('getGridParam', 'selarrrow');
-                                    $.post('dna/redo/delete', {checker: userId, ids: ids.join(',')}, function (result) {
+                                    $.post('dna/extract/addSh', {checker: userId, ids: ids.join(',')}, function (result) {
                                         if (result.changedRows > 0) {
                                             if (result.changedRows == 1) {
-                                                Toast.show(userId + ',已废弃,审核成功!');
+                                                Toast.show(userId + ',审核成功!');
                                             } else {
-                                                Toast.show(userId + ',已废弃,批量审核成功!');
+                                                Toast.show(userId + ',批量审核成功!');
                                             }
                                             jQuery(grid_selector).trigger('reloadGrid');
                                         } else {
                                             Toast.show(userId + ',审核失败,请联系管理员!');
-                                            localStorage.setItem('_error_addSh', result.err);
+                                            localStorage.setItem('_error_addSh_extract', result.err);
                                         }
                                     });
                                 }
@@ -292,16 +352,16 @@
                 var id = ids[i];
                 var row = $(grid_selector).jqGrid('getRowData', id);
                 var status = row.status;
-                if (status == 6 /*提取合格*/) { // 6为审核通过
+                if (status == 6) { // 6为审核通过
                     idArray.push(id);
                 } else {
                     $(grid_selector).jqGrid('setSelection', id, false);
-                    warnRows.push(row.barcode_long);
+                    warnRows.push(row.barcode_short);
                 }
             }
 
             if (warnRows.length > 0) {
-                Toast.show('您选择的这些行不符合出库要求,已经取消选中:' + warnRows.join(','));
+                Toast.show('您选择的这些行不符合出库要求(未审批),已经取消选中:' + warnRows.join(','));
             }
             ids = $(grid_selector).jqGrid('getGridParam', 'selarrrow');
 

@@ -14,58 +14,114 @@
         W._sortname = 'input_date';
         W._sortorder = 'ASC';
         W._postData = {};
-        W._colNames = ['序号', '条码编号', '分析结果', '建议', '是否需要发送', '状态', '上机组发送人', '分析报告组接收人', '分析报告组接收时间', '上机芯片编码',
-            '上机reads数', '上机q30值', '分析人', '分析时间', '报告发送人', '报告发送时间', ''];
+        W._colNames = ['序号', '长条码编号', '短条码编号', '上机组发送人', '上机组试管剩余数量', '分析报告组接收人', '分析报告组接收时间', '分析结果',
+            '建议', '是否发送', '分析人', '分析时间', '报告发送人', '报告发送时间', '', '状态'];
         W._colModel = [
             {name: 'id', width: 40, index: 'id', align: 'center', sortable: false, frozen: true},
             {name: 'barcode_long', width: 120, index: 'barcode_long', align: 'center', sortable: false, frozen: true},
-            {name: 'report_result', width: 100, index: 'report_result', align: 'center', sortable: false, frozen: true},
-            {name: 'report_advice', width: 100, index: 'report_advice', align: 'center', sortable: false, frozen: true},
-            {
-                name: 'report_is_send', width: 100, index: 'report_is_send', align: 'center', sortable: false, formatter: function (value, options, row) {
-                if (value == 1) {
-                    return '不发送';
-                } else if (value == 2) {
-                    return '发送';
-                } else {
-                    return '';
-                }
-            }, frozen: true
-            },
-            {
-                name: 'status1', width: 100, index: 'status', align: 'center', sortable: false,
-                formatter: function (value, options, row) {
-                    var text = '';
-                    switch (row.status) {
-                        case 19:
-                            text = ['<span class="label label-default">','未分析',''].join('');
-                            break;
-                        case 20:
-                            text = ['<span class="label label-info">','已分析',''].join('');
-                            break;
-                        case 21:
-                            text = ['<span class="label label-success">','报告已发送',''].join('');
-                            break;
-                        default:
-                            text = '';
-                    }
-                    return text;
-                }, frozen: true
-            },
-            // {name: 'barcode_short', width: 100, index: 'barcode_short', align: 'center', sortable: false, frozen: true},
+            {name: 'barcode_short', width: 100, index: 'barcode_short', align: 'center', sortable: false, frozen: true},
             {name: 'operate_outer', width: 100, index: 'operate_outer', align: 'center', sortable: false},
-            // {name: 'operate_out_residue', width: 100, index: 'operate_out_residue', align: 'center'},
+            {
+                name: 'operate_out_residue',
+                width: 100,
+                index: 'operate_out_residue',
+                align: 'center',
+                sortable: false,
+                formatter: function (value, options, row) {
+                    return value;
+                }
+            },
             {name: 'report_handover', width: 100, index: 'report_handover', align: 'center', sortable: false},
             {name: 'report_handover_date', width: 130, index: 'report_handover_date', align: 'center', sortable: false},
-            {name: 'operate_chip_code', width: 100, index: 'operate_chip_code', align: 'center', sortable: false},
-            {name: 'operate_reads_val', width: 100, index: 'operate_reads_val', align: 'center', sortable: false},
-            {name: 'operate_q30_val', width: 100, index: 'operate_q30_val', align: 'center', sortable: false},
+            {name: 'report_result', width: 100, index: 'report_result', align: 'center', sortable: false},
+            {name: 'report_advice', width: 100, index: 'report_advice', align: 'center', sortable: false},
+            {
+                name: 'report_is_send', width: 100, index: 'report_is_send', align: 'center', sortable: false, formatter: function (value, options, row) {
+                return value;
+            }
+            },
             {name: 'reporter', width: 100, index: 'reporter', align: 'center', sortable: false},
             {name: 'report_date', width: 130, index: 'report_date', align: 'center', sortable: false},
             {name: 'report_sender', width: 100, index: 'report_sender', align: 'center', sortable: false},
             {name: 'report_send_date', width: 130, index: 'report_send_date', align: 'center', sortable: false},
             {name: 'status', hidden: true, hidedlg: true},
-
+            {
+                name: 'status1', width: 100, index: 'status', align: 'center', sortable: false,
+                formatter: function (value, options, row) {
+                    var text = '';
+                    switch (row.status) {
+                        case 0:
+                            text = '已删除';
+                            break;
+                        case 1:
+                            text = '已录入采血单';
+                            break;
+                        case 2:
+                            text = '已更换采血管';
+                            break;
+                        case 3:
+                            text = '已审批且入库';
+                            break;
+                        case 4:
+                            text = '交接后未提取';
+                            break;
+                        case 5:
+                            text = '提取且已保存';
+                            break;
+                        case 6:
+                            text = '提取审核-合格';
+                            break;
+                        case 7:
+                            text = '提取审核-废弃';
+                            break;
+                        case 8:
+                            text = '提取审核-重提取';
+                            break;
+                        case 9:
+                            text = '交接后未建库';
+                            break;
+                        case 10:
+                            text = '建库且已保存';
+                            break;
+                        case 11:
+                            text = '建库审核-合格';
+                            break;
+                        case 12:
+                            text = '建库审核-废弃';
+                            break;
+                        case 13:
+                            text = '建库审核-重建库';
+                            break;
+                        case 14:
+                            text = '交接后未上机';
+                            break;
+                        case 15:
+                            text = '上机已保存';
+                            break;
+                        case 16:
+                            text = '上机审核-合格';
+                            break;
+                        case 17:
+                            text = '上机审核-废弃';
+                            break;
+                        case 18:
+                            text = '上机审核-重上机';
+                            break;
+                        case 19:
+                            text = '交接后未分析';
+                            break;
+                        case 20:
+                            text = '分析已保存';
+                            break;
+                        case 21:
+                            text = '报告已发送';
+                            break;
+                        default:
+                            text = '';
+                    }
+                    return text;
+                }
+            }
         ];
 
         W.updateActionIcons = function () {
@@ -109,8 +165,27 @@
             pickerPosition: "bottom-right"
         });
 
-        showSearchMore($('#btn-search-more'), [1, 2], '_dna_report_is_search_more');
+        var _dna_report_is_search_more = localStorage.getItem('_dna_report_is_search_more');
+        if (_dna_report_is_search_more == 'true') {
+            getSearchTr([1, 2]).show();
+            $('#btn-search-more').text('隐藏更多搜索项');
+        } else {
+            getSearchTr([1, 2]).hide();
+            $('#btn-search-more').text('显示更多搜索项');
+        }
 
+        $('#btn-search-more').click(function () {
+            var _dna_report_is_search_more = localStorage.getItem('_dna_report_is_search_more');
+            if (_dna_report_is_search_more == 'false') {
+                getSearchTr([1, 2]).show();
+                $(this).text('隐藏更多搜索项');
+                localStorage.setItem('_dna_report_is_search_more', 'true');
+            } else {
+                getSearchTr([1, 2]).hide();
+                $(this).text('显示更多搜索项');
+                localStorage.setItem('_dna_report_is_search_more', 'false');
+            }
+        });
     }();
 
     /**
@@ -122,17 +197,17 @@
         if (ids && ids.length == 1) {
             var row = $(grid_selector).jqGrid('getRowData', ids[0]);
             var id = row.id;
-            var barcode_long = row.barcode_long;
+            var barcode_short = row.barcode_short;
             var status = parseInt(row.status);
-            if (status == 19 || status == 21) { // 未发送状态
+            if (status < 21) { // 未发送状态
                 W.selectUser('分析报告录入人员', function (userId) {
-                    W.showDialog('preEdit', '/dna/report/preEdit?id=' + id + '&userId=' + userId, '录入分析报告数据:' + barcode_long,
+                    W.showDialog('preEdit', '/dna/report/preEdit?id=' + id + '&userId=' + userId, '录入分析报告数据:' + barcode_short,
                         '70%', '350px', function (contextWindow, dialog) {
                             $('#edit-form', contextWindow.document).submit();
                         });
                 });
             } else {
-                Toast.show('此报告不能修改:' + barcode_long);
+                Toast.show('此报告已发送,不能修改:' + barcode_short);
             }
         } else {
             Toast.show('请先勾选一行数据');
@@ -174,12 +249,12 @@
                     idArray.push(id);
                 } else {
                     $(grid_selector).jqGrid('setSelection', id, false);
-                    warnRows.push(row.barcode_long);
+                    warnRows.push(row.barcode_short);
                 }
             }
 
             if (warnRows.length > 0) {
-                Toast.show('您选择的这些行不符合发送要求,已经取消选中:' + warnRows.join(','));
+                Toast.show('您选择的这些行不符合发送要求(未分析,或已发送),已经取消选中:' + warnRows.join(','));
             }
             ids = $(grid_selector).jqGrid('getGridParam', 'selarrrow');
 

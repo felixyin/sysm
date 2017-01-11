@@ -10,11 +10,11 @@ let sql = `SELECT  t.COLUMN_NAME as cn, t.COLUMN_COMMENT as cc, t.COLUMN_TYPE as
 
 db.pool.getConnection(function (err, conn) {
 
-	conn.query(sql, function (err, result) {
-		for (let idx in result) {
-			let row = result[idx];
+    conn.query(sql, function (err, result) {
+        for (let idx in result) {
+            let row = result[idx];
 
-			let input = `${row.cn}: {
+            let input = `${row.cn}: {
     displayName: '${row.cc}',
     headerStyle: styles.header,
     cellStyle: styles.cell, 
@@ -23,10 +23,10 @@ db.pool.getConnection(function (err, conn) {
     },
     width: '15' 
 },`;
-			console.log(input);
+            console.log(input);
 
-		}
-	});
+        }
+    });
 
-	conn.release();
+    conn.release();
 });

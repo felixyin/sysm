@@ -14,61 +14,124 @@
         W._sortname = 'input_date';
         W._sortorder = 'ASC';
         W._postData = {};
-        W._colNames = ['序号', '条码编号', '上机芯片编码', '上机reads数', '上机q30值', '状态', '建库组出库人', '建库组样本剩余量', '上机组接收人', '上机组接收时间',
-            '建库浓度(ng/ul)', '建库片段大小(bp)', '上机人', '上机时间', '上机审查人', '上机审查时间', '上机组出库人', '分析报告组接收人', '分析报告组接收时间', ''];
+        W._colNames = ['序号', '长条码编号', '短条码编号', '建库组出库人', '建库组试管剩余数量', '上机组接收人', '上机组接收时间', '上机芯片编码',
+            '上机reads数', '上机q30值', '上机人', '上机时间', '上机审查人', '上机审查时间', '上机组出库人', '上机组试管剩余数量',
+            '分析报告组接收人', '分析报告组接收时间', '', '状态'];
         W._colModel = [
             {name: 'id', width: 40, index: 'id', align: 'center', sortable: false, frozen: true},
             {name: 'barcode_long', width: 120, index: 'barcode_long', align: 'center', sortable: false, frozen: true},
-            // {name: 'barcode_short', width: 100, index: 'barcode_short', align: 'center', sortable: false, frozen: true},
-            {name: 'operate_chip_code', width: 100, index: 'operate_chip_code', align: 'center', sortable: false, frozen: true},
-            {name: 'operate_reads_val', width: 100, index: 'operate_reads_val', align: 'center', sortable: false, frozen: true},
-            {name: 'operate_q30_val', width: 100, index: 'operate_q30_val', align: 'center', sortable: false, frozen: true},
-            {
-                name: 'status1', width: 100, index: 'status', align: 'center', sortable: false,
-                formatter: function (value, options, row) {
-                    var text = '';
-                    switch (row.status) {
-                        case 14:
-                            text = ['<span class="label label-default">','未上机',''].join('');
-                            break;
-                        case 15:
-                            text = ['<span class="label label-info">','已上机',''].join('');
-                            break;
-                        case 16:
-                            text = ['<span class="label label-success">','合格',''].join('');
-                            break;
-                        case 17:
-                            text = ['<span class="label label-danger">','废弃',''].join('');
-                            break;
-                        case 18:
-                            text = ['<span class="label label-warning">','重上机',''].join('');
-                            break;
-                        case 19:
-                            text = ['<span class="label label-purple">','已交接',''].join('');
-                            break;
-                        default:
-                            text = '';
-                    }
-                    return text;
-                },
-                frozen: true
-            },
+            {name: 'barcode_short', width: 100, index: 'barcode_short', align: 'center', sortable: false, frozen: true},
             {name: 'storage_outer', width: 100, index: 'storage_outer', align: 'center', sortable: false},
-            {name: 'storage_out_residue', width: 100, index: 'storage_out_residue', align: 'center', sortable: false},
+            {
+                name: 'storage_out_residue',
+                width: 100,
+                index: 'storage_out_residue',
+                align: 'center',
+                sortable: false,
+                formatter: function (value, options, row) {
+                    return value;
+                }
+            },
             {name: 'operate_handover', width: 100, index: 'operate_handover', align: 'center', sortable: false},
             {name: 'operate_handover_date', width: 130, index: 'operate_handover_date', align: 'center', sortable: false},
-            {name: 'storage_deep', width: 100, index: 'storage_deep', align: 'center', sortable: false},
-            {name: 'storage_part_size', width: 100, index: 'storage_part_size', align: 'center', sortable: false},
+            {name: 'operate_chip_code', width: 100, index: 'operate_chip_code', align: 'center', sortable: false},
+            {name: 'operate_reads_val', width: 100, index: 'operate_reads_val', align: 'center', sortable: false},
+            {name: 'operate_q30_val', width: 100, index: 'operate_q30_val', align: 'center', sortable: false},
             {name: 'operater', width: 100, index: 'operater', align: 'center', sortable: false},
             {name: 'operate_date', width: 130, index: 'operate_date', align: 'center', sortable: false},
             {name: 'operate_checker', width: 100, index: 'operate_checker', align: 'center', sortable: false},
             {name: 'operate_check_date', width: 130, index: 'operate_check_date', align: 'center', sortable: false},
             {name: 'operate_outer', width: 100, index: 'operate_outer', align: 'center', sortable: false},
-            // {name: 'operate_out_residue', width: 100, index: 'operate_out_residue', align: 'center', sortable: false},
+            {
+                name: 'operate_out_residue',
+                width: 100,
+                index: 'operate_out_residue',
+                align: 'center',
+                sortable: false,
+                formatter: function (value, options, row) {
+                    return value;
+                }
+            },
             {name: 'report_handover', width: 100, index: 'report_handover', align: 'center', sortable: false},
             {name: 'report_handover_date', width: 130, index: 'report_handover_date', align: 'center', sortable: false},
             {name: 'status', hidden: true, hidedlg: true},
-
+            {
+                name: 'status1', width: 100, index: 'status', align: 'center', sortable: false,
+                formatter: function (value, options, row) {
+                    var text = '';
+                    switch (row.status) {
+                        case 0:
+                            text = '已删除';
+                            break;
+                        case 1:
+                            text = '已录入采血单';
+                            break;
+                        case 2:
+                            text = '已更换采血管';
+                            break;
+                        case 3:
+                            text = '已审批且入库';
+                            break;
+                        case 4:
+                            text = '交接后未提取';
+                            break;
+                        case 5:
+                            text = '提取且已保存';
+                            break;
+                        case 6:
+                            text = '提取审核-合格';
+                            break;
+                        case 7:
+                            text = '提取审核-废弃';
+                            break;
+                        case 8:
+                            text = '提取审核-重提取';
+                            break;
+                        case 9:
+                            text = '交接后未建库';
+                            break;
+                        case 10:
+                            text = '建库且已保存';
+                            break;
+                        case 11:
+                            text = '建库审核-合格';
+                            break;
+                        case 12:
+                            text = '建库审核-废弃';
+                            break;
+                        case 13:
+                            text = '建库审核-重建库';
+                            break;
+                        case 14:
+                            text = '交接后未上机';
+                            break;
+                        case 15:
+                            text = '上机已保存';
+                            break;
+                        case 16:
+                            text = '上机审核-合格';
+                            break;
+                        case 17:
+                            text = '上机审核-废弃';
+                            break;
+                        case 18:
+                            text = '上机审核-重上机';
+                            break;
+                        case 19:
+                            text = '交接后未分析';
+                            break;
+                        case 20:
+                            text = '分析已保存';
+                            break;
+                        case 21:
+                            text = '报告已发送';
+                            break;
+                        default:
+                            text = '';
+                    }
+                    return text;
+                }
+            }
         ];
 
         W.updateActionIcons = function () {
@@ -110,8 +173,27 @@
 
         $('.ipt-person').selectUser();
 
-        showSearchMore($('#btn-search-more'), [2, 3, 4], '_dna_operate_is_search_more');
+        var _dna_operate_is_search_more = localStorage.getItem('_dna_operate_is_search_more');
+        if (_dna_operate_is_search_more == 'true') {
+            getSearchTr([2, 3, 4]).show();
+            $('#btn-search-more').text('隐藏更多搜索项');
+        } else {
+            getSearchTr([2, 3, 4]).hide();
+            $('#btn-search-more').text('显示更多搜索项');
+        }
 
+        $('#btn-search-more').click(function () {
+            var _dna_operate_is_search_more = localStorage.getItem('_dna_operate_is_search_more');
+            if (_dna_operate_is_search_more == 'false') {
+                getSearchTr([2, 3, 4]).show();
+                $(this).text('隐藏更多搜索项');
+                localStorage.setItem('_dna_operate_is_search_more', 'true');
+            } else {
+                getSearchTr([2, 3, 4]).hide();
+                $(this).text('显示更多搜索项');
+                localStorage.setItem('_dna_operate_is_search_more', 'false');
+            }
+        });
     }();
 
     /**
@@ -124,15 +206,15 @@
             if (ids && ids.length == 1) {
                 var row = $(grid_selector).jqGrid('getRowData', ids[0]);
                 var id = row.id;
-                var barcode_long = row.barcode_long;
+                var barcode_short = row.barcode_short;
                 var status = parseInt(row.status);
-                if (status == 14 || status == 15) { // 未审批状态
-                    W.showDialog('preEdit', '/dna/operate/preEdit?id=' + id + '&userId=' + userId, '录入上机数据:' + barcode_long,
+                if (status < 16) { // 未审批状态
+                    W.showDialog('preEdit', '/dna/operate/preEdit?id=' + id + '&userId=' + userId, '录入上机数据:' + barcode_short,
                         '70%', '350px', function (contextWindow, dialog) {
                             $('#edit-form', contextWindow.document).submit();
                         });
                 } else {
-                    Toast.show('此记录不能修改:' + barcode_long);
+                    Toast.show('此记录已审批,不能修改:' + barcode_short);
                 }
             } else {
                 Toast.show('请先勾选一行数据');
@@ -169,16 +251,16 @@
                 var id = ids[i];
                 if (id) {
                     var row = $(grid_selector).jqGrid('getRowData', id);
-                    if (row.status != 15 /*已上机*/) {
+                    if (!row.operate_date) {
                         $(grid_selector).jqGrid('setSelection', id, false);
-                        warnRows.push(row.barcode_long);
+                        warnRows.push(row.barcode_short);
                         // }else{
                         //     okRows.push(row.barcode_short);
                     }
                 }
             }
             if (warnRows.length > 0) {
-                Toast.show('您选择的这些行不符合审批要求,已经取消选中:' + warnRows.join(','));
+                Toast.show('您选择的这些行不符合审批要求(未录入),已经取消选中:' + warnRows.join(','));
             }
             ids = $(grid_selector).jqGrid('getGridParam', 'selarrrow');
 
@@ -208,24 +290,10 @@
                                 }
                             },
                             "click": {
-                                "label": "重上机!",
+                                "label": "重提取!",
                                 "className": "btn-sm btn-warning",
                                 "callback": function () {
-                                    var warnRows = [];
-                                    for (var i in ids) {
-                                        var id = ids[i];
-                                        var row = $(grid_selector).jqGrid('getRowData', id);
-                                        var count = parseInt(row.sample_out_residue);
-                                        if (count < 1) { // 没有剩余试管用于重做
-                                            $(grid_selector).jqGrid('setSelection', id, false);
-                                            warnRows.push(id);
-                                        }
-                                    }
-                                    if (warnRows.length > 0) {
-                                        Toast.show('部分选中行,在上一环节已没有剩余试管,已取消选中');
-                                    }
-                                    ids = $(grid_selector).jqGrid('getGridParam', 'selarrrow');
-                                    $.post('dna/redo/operate', {checker: userId, ids: ids.join(',')}, function (result) {
+                                    $.post('dna/operate/addSh', {checker: userId, ids: ids.join(',')}, function (result) {
                                         if (result.changedRows > 0) {
                                             if (result.changedRows == 1) {
                                                 Toast.show(userId + ',审核成功!');
@@ -244,31 +312,17 @@
                                 "label": "废弃!",
                                 "className": "btn-sm btn-danger",
                                 "callback": function () {
-                                    var warnRows = [];
-                                    for (var i in ids) {
-                                        var id = ids[i];
-                                        var row = $(grid_selector).jqGrid('getRowData', id);
-                                        var count = parseInt(row.sample_out_residue);
-                                        if (count < 1) { // 没有剩余试管用于重做
-                                            $(grid_selector).jqGrid('setSelection', id, false);
-                                            warnRows.push(id);
-                                        }
-                                    }
-                                    if (warnRows.length > 0) {
-                                        Toast.show('部分选中行,在上一环节已没有剩余试管,已取消选中');
-                                    }
-                                    ids = $(grid_selector).jqGrid('getGridParam', 'selarrrow');
-                                    $.post('dna/redo/delete', {checker: userId, ids: ids.join(',')}, function (result) {
+                                    $.post('dna/operate/addSh', {checker: userId, ids: ids.join(',')}, function (result) {
                                         if (result.changedRows > 0) {
                                             if (result.changedRows == 1) {
-                                                Toast.show(userId + ',已废弃,审核成功!');
+                                                Toast.show(userId + ',审核成功!');
                                             } else {
-                                                Toast.show(userId + ',已废弃,批量审核成功!');
+                                                Toast.show(userId + ',批量审核成功!');
                                             }
                                             jQuery(grid_selector).trigger('reloadGrid');
                                         } else {
                                             Toast.show(userId + ',审核失败,请联系管理员!');
-                                            localStorage.setItem('_error_addSh', result.err);
+                                            localStorage.setItem('_error_addSh_operate', result.err);
                                         }
                                     });
                                 }
@@ -300,12 +354,12 @@
                     idArray.push(id);
                 } else {
                     $(grid_selector).jqGrid('setSelection', id, false);
-                    warnRows.push(row.barcode_long);
+                    warnRows.push(row.barcode_short);
                 }
             }
 
             if (warnRows.length > 0) {
-                Toast.show('您选择的这些行不符合出库要求,已经取消选中:' + warnRows.join(','));
+                Toast.show('您选择的这些行不符合出库要求(未审批),已经取消选中:' + warnRows.join(','));
             }
             ids = $(grid_selector).jqGrid('getGridParam', 'selarrrow');
 

@@ -11,13 +11,11 @@ function getSqls(params) {
     let selectSql = `SELECT 
         id,
         barcode_long,
+        barcode_short,
         operate_outer,
         operate_out_residue,
         report_handover,
         report_handover_date,
-        operate_chip_code,
-        operate_reads_val,
-        operate_q30_val,
         report_result,
         report_advice,
         report_is_send,
@@ -30,15 +28,12 @@ function getSqls(params) {
 
     let whereSql = " WHERE 1 = 1 \n";
 
-    params.barcode_long && (whereSql += " AND barcode_long LIKE '%:barcode_long%' /*条码编号*/\n");
-    // params.barcode_short && (whereSql += " AND barcode_short LIKE '%:barcode_short%' /*短条码编号*/\n");
+    params.barcode_long && (whereSql += " AND barcode_long LIKE '%:barcode_long%' /*长条码编号*/\n");
+    params.barcode_short && (whereSql += " AND barcode_short LIKE '%:barcode_short%' /*短条码编号*/\n");
     params.operate_outer && (whereSql += " AND operate_outer LIKE '%:operate_outer%' /*上机组出库人*/\n");
-    params.operate_out_residue && (whereSql += " AND operate_out_residue LIKE '%:operate_out_residue%' /*上机组样本剩余量*/\n");
+    params.operate_out_residue && (whereSql += " AND operate_out_residue LIKE '%:operate_out_residue%' /*上机组试管剩余数量*/\n");
     params.report_handover && (whereSql += " AND report_handover LIKE '%:report_handover%' /*分析报告组接收人*/\n");
     params.report_handover_date && (whereSql += " AND report_handover_date LIKE '%:report_handover_date%' /*分析报告组接收时间*/\n");
-    params.operate_chip_code && (whereSql += " AND operate_chip_code LIKE '%:operate_chip_code%' /*上机芯片编码*/\n");
-    params.operate_reads_val && (whereSql += " AND operate_reads_val LIKE '%:operate_reads_val%' /*上机reads数*/\n");
-    params.operate_q30_val && (whereSql += " AND operate_q30_val LIKE '%:operate_q30_val%' /*上机q30值*/\n");
     params.report_result && (whereSql += " AND report_result LIKE '%:report_result%' /*分析结果*/\n");
     params.report_advice && (whereSql += " AND report_advice LIKE '%:report_advice%' /*建议*/\n");
     params.report_is_send && (whereSql += " AND report_is_send LIKE '%:report_is_send%' /*是否发送（1、不发送；2、发送）*/\n");
@@ -121,5 +116,5 @@ exports.updateFs = (sh, cb) => {
  * @param cb
  */
 exports.selectDnaFlowByBarcodeShort = (barcodeShort, cb) => {
-    db.pool.query('SELECT * FROM dna_flow AS t WHERE t.barcode_long=?', barcodeShort, cb);
+    db.pool.query('SELECT * FROM dna_flow AS t WHERE t.barcode_short=?', barcodeShort, cb);
 };

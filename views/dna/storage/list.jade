@@ -2,16 +2,26 @@
    Created by fy on 15-12-22.
 extends ../../layout_nomenu
 
+
 block content
+
+    style.
+        .my-toolbar > .btn-group, .my-toolbar > button {
+            margin-right: 10px;
+        }
+
+        .btn-group > .btn-sm, .btn-group + .btn-sm {
+            border-width: 4px;
+        }
 
     .main-content
         .page-content
             form#search-form-id
                 table.searchTable
                     tr
-                        td 条码编号
+                        td 短条码编号
                         td
-                            input.col-xs-10.col-sm-5(type='text' , name='barcode_long', placeholder='请输入条码编号')
+                            input.col-xs-10.col-sm-5(type='text' , name='barcode_short', placeholder='请输入短条码编号')
                         td 建库组接收人
                         td
                             input.col-xs-10.col-sm-5(type='text' , name='storage_handover', placeholder='请输入建库组接收人')
@@ -19,12 +29,12 @@ block content
                         td
                             input.col-xs-10.col-sm-5.ipt-date(type='text' , name='storage_handover_date', placeholder='请输入建库组接收时间')
                     tr
-                        td 建库浓度(ng/ul)
+                        td 建库浓度
                         td
-                            input.col-xs-10.col-sm-5(type='text' , name='storage_deep', placeholder='请输入建库浓度(ng/ul)')
-                        td 建库片段(bp)
+                            input.col-xs-10.col-sm-5(type='text' , name='storage_deep', placeholder='请输入建库浓度')
+                        td 建库片段大小
                         td
-                            input.col-xs-10.col-sm-5(type='text' , name='storage_part_size', placeholder='请输入建库片段(bp)')
+                            input.col-xs-10.col-sm-5(type='text' , name='storage_part_size', placeholder='请输入建库片段大小')
                         td 建库人
                         td
                             input.col-xs-10.col-sm-5(type='text' , name='storager', placeholder='请输入建库人')
@@ -42,36 +52,42 @@ block content
                         td 建库组出库人
                         td
                             input.col-xs-10.col-sm-5(type='text' , name='storage_outer', placeholder='请输入建库组出库人')
-                        td DNA剩余量(ul)
+                        td 建库组试管剩余数量
                         td
-                            input.col-xs-10.col-sm-5(type='text' , name='extract_out_residue', placeholder='请输入DNA剩余量(ul)')
-                        td Qubit浓度(ng/ul)
+                            input.col-xs-10.col-sm-5(type='text' , name='storage_out_residue', placeholder='请输入建库组试管剩余数量')
+                        td 上机组接收人
                         td
-                            input.col-xs-10.col-sm-5(type='text' , name='extract_qbite_deep', placeholder='请输入Qubit浓度(ng/ul)')
+                            input.col-xs-10.col-sm-5(type='text' , name='operate_handover', placeholder='请输入上机组接收人')
                     tr
-                        td 提取epoch浓度(ng/ul)
+                        td 上机组接收时间
                         td
-                            input.col-xs-10.col-sm-5(type='text' , name='extract_epoch_deep', placeholder='请输入epoch浓度(ng/ul)')
-                        td 纯度(%)
-                        td
-                            input.col-xs-10.col-sm-5(type='text' , name='extract_purity_deep', placeholder='请输入纯度(%)')
-                        td 提取片段大小(bp)
-                        td
-                            input.col-xs-10.col-sm-5(type='text' , name='extract_part_size', placeholder='请输入片段大小(bp)')
-                    tr
-                        td 提取打断后片段(bp)
-                        td
-                            input.col-xs-10.col-sm-5(type='text' , name='extract_part_after_break', placeholder='请输入打断后片段(bp)')
+                            input.col-xs-10.col-sm-5.ipt-date(type='text' , name='operate_handover_date', placeholder='请输入上机组接收时间')
                         td 状态
                         td
                             select#status.col-xs-12.clo-sm-10(style="width:180px;", name='status',placeholder='')
                                 option(value='-1') 全部
-                                option(value='9') 未建库
-                                option(value='10') 已建库
-                                option(value='11') 合格
-                                option(value='12') 废弃
-                                option(value='13') 重建库
-                                option(value='14') 已交接
+                                //option(value='0') 已删除
+                                //option(value='1') 已录入采血单
+                                //option(value='2') 已更换采血管
+                                //option(value='3') 已审批且入库
+                                //option(value='4') 交接后未提取
+                                //option(value='5') 提取且已保存
+                                //option(value='6') 提取审核-合格
+                                //option(value='7') 提取审核-废弃
+                                //option(value='8') 提取审核-重提取
+                                option(value='9') 交接后未建库
+                                option(value='10') 建库且已保存
+                                option(value='11') 建库审核-合格
+                                option(value='12') 建库审核-废弃
+                                option(value='13') 建库审核-重建库
+                                //option(value='14') 交接后未上机
+                                //option(value='15') 上机已保存
+                                //option(value='16') 上机审核-合格
+                                //option(value='17') 上机审核-废弃
+                                //option(value='18') 上机审核-重上机
+                                //option(value='19') 交接后未分析
+                                //option(value='20') 分析已保存
+                                //option(value='21') 报告已发送
                         td
                         td
                             #btn-search.btn-group
@@ -98,9 +114,9 @@ block content
                             a(href='#') Separated link
                 span
                 #btn-sh.btn-group
-                    button.btn.btn-info(onclick="showShDialog(this)",disabled)
+                    button.btn.btn-info.btn-sm(onclick="showShDialog(this)",disabled)
                         i.icon-edit.bigger-110 &nbsp;&nbsp;&nbsp;审核
-                    button.btn.btn-info.dropdown-toggle(data-toggle='dropdown')
+                    button.btn.btn-info.dropdown-toggle.btn-sm(data-toggle='dropdown',disabled)
                         i.icon-angle-down.icon-only
                     ul.dropdown-menu.dropdown-yellow
                         li
@@ -119,9 +135,9 @@ block content
                         li
                             a(href='javascript:clearUser("交接人员")') 不记住交接人员
                 span
-                button#btn-dc-id.btn.btn-info.btn-sm(onclick="exportCvs(this)")
+                button#btn-dc-id.btn.btn-default.btn-sm(onclick="exportCvs(this)")
                     i.icon-download-alt.bigger-110 导出EXCEL
-                //button#btn-dy-id.btn.btn-info.btn-sm(onclick="dy(this)")
+                //button#btn-dy-id.btn.btn-default.btn-sm(onclick="dy(this)")
                     i.icon-print.bigger-110 打印
 
             table#grid-table

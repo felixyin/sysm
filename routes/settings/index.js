@@ -16,22 +16,5 @@ router.get('/user', function (req, res, next) {
     res.render('settings/user');
 });
 
-router.post('/getJsonFromFile', (req, res) => {
-    settingsService.getJsonFromFile(req.body.type, (err, rows) => {
-        res.send({
-            err: err,
-            data: rows
-        });
-    });
-});
-
-router.post('/setJsonToFile', (req, res) => {
-    settingsService.setJsonToFile(req.body.type, req.body.dataString, (err, result) => {
-        res.send({
-            err: err,
-            data: result
-        });
-    });
-});
 
 module.exports = router;

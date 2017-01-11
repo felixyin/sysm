@@ -20,7 +20,7 @@ block content
                                 span.middle.hide Inline help text
                     .space-4
                     .form-group
-                        label.col-xs-3.control-label.no-padding-right(for='ff-1') 条码编号
+                        label.col-xs-3.control-label.no-padding-right(for='ff-1') 长条码编号
                         .col-xs-9
                             input#ff-1.col-xs-6(type='text', name='barcode_long', value='#{barcode_long || ""}', placeholder='')
                             span.help-inline.col-xs-6
@@ -69,9 +69,9 @@ block content
                                 span.middle.hide Inline help text
                     .space-4
                     .form-group
-                        label.col-xs-3.control-label.no-padding-right(for='ff-8') 年龄
+                        label.col-xs-3.control-label.no-padding-right(for='ff-8') 出生日期
                         .col-xs-9
-                            input#ff-8.col-xs-6(type='number', name='age', value='#{age || ""}', placeholder='')
+                            input#ff-8.col-xs-6.ipt-date(type='text', name='age', value='#{age || ""}', placeholder='')
                             span.help-inline.col-xs-6
                                 span.middle.hide Inline help text
                     .space-4
@@ -117,20 +117,20 @@ block content
                             input#ff-14.col-xs-6.ipt-date(type='text', name='input_date', value='#{input_date || ""}', placeholder='')
                             span.help-inline.col-xs-6
                                 span.middle.hide Inline help text
-                    //.space-4
-                    //.form-group
-                    //    label.col-xs-3.control-label.no-padding-right(for='ff-15') 换管人员
-                    //    .col-xs-9
-                    //        input#ff-15.col-xs-6.ipt-person(type='text', name='changer', value='#{changer || ""}', placeholder='')
-                    //        span.help-inline.col-xs-6
-                    //            span.middle.hide Inline help text
-                    //.space-4
-                    //.form-group
-                    //    label.col-xs-3.control-label.no-padding-right(for='ff-16') 换管日期
-                    //    .col-xs-9
-                    //        input#ff-16.col-xs-6.ipt-date(type='text', name='change_date', value='#{change_date || ""}', placeholder='')
-                    //        span.help-inline.col-xs-6
-                    //            span.middle.hide Inline help text
+                    .space-4
+                    .form-group
+                        label.col-xs-3.control-label.no-padding-right(for='ff-15') 换管人员
+                        .col-xs-9
+                            input#ff-15.col-xs-6.ipt-person(type='text', name='changer', value='#{changer || ""}', placeholder='')
+                            span.help-inline.col-xs-6
+                                span.middle.hide Inline help text
+                    .space-4
+                    .form-group
+                        label.col-xs-3.control-label.no-padding-right(for='ff-16') 换管日期
+                        .col-xs-9
+                            input#ff-16.col-xs-6.ipt-date(type='text', name='change_date', value='#{change_date || ""}', placeholder='')
+                            span.help-inline.col-xs-6
+                                span.middle.hide Inline help text
                     .space-4
                     .form-group
                         label.col-xs-3.control-label.no-padding-right(for='ff-17') 审批人员
@@ -147,50 +147,21 @@ block content
                                 span.middle.hide Inline help text
                     .space-4
                     .form-group
-                        label.col-xs-3.control-label.no-padding-right(for='ff-19') 采血管入库人
+                        label.col-xs-3.control-label.no-padding-right(for='ff-19') 短条码编号
                         .col-xs-9
-                            input#ff-19.col-xs-6.ipt-person(type='text', name='warehouser', value='#{warehouser||""}', placeholder='')
+                            input#ff-19.col-xs-6(type='text', name='barcode_short', value='#{barcode_short || ""}', placeholder='')
                             span.help-inline.col-xs-6
                                 span.middle.hide Inline help text
                     .space-4
                     .form-group
-                        label.col-xs-3.control-label.no-padding-right(for='ff-20') 采血管入库位置
-                        .col-xs-9
-                            select#ff-20.col-xs-6( name='warehouse_place', value='#{warehouse_place || ""}', placeholder='')
-                                option(value='未知') 未知
-                                - var  n = 1;
-                                while n < 1000
-                                    - var value = '冻存盒' + n++;
-                                    if value == warehouse_place
-                                        option(value='#{value}', selected='selected')=value
-                                    else
-                                        option(value='#{value}')=value
-                            span.help-inline.col-xs-6
-                                span.middle.hide Inline help text
-                    .space-4
-                    .form-group
-                        label.col-xs-3.control-label.no-padding-right(for='ff-21') 采血管入库时间
-                        .col-xs-9
-                            input#ff-21.col-xs-6.ipt-date(type='text', name='warehouse_date', value='#{warehouse_date||""}', placeholder='')
-                            span.help-inline.col-xs-6
-                                span.middle.hide Inline help text
-                    .space-4
-                    //.form-group
-                    //    label.col-xs-3.control-label.no-padding-right(for='ff-19') 短条码编号
-                    //    .col-xs-9
-                    //        input#ff-19.col-xs-6(type='text', name='barcode_short', value='#{barcode_short || ""}', placeholder='')
-                    //        span.help-inline.col-xs-6
-                    //            span.middle.hide Inline help text
-                    //.space-4
-                    .form-group
-                        label.col-xs-3.control-label.no-padding-right(for='ff-20') 采血管出库人
+                        label.col-xs-3.control-label.no-padding-right(for='ff-20') 短采血管出库人
                         .col-xs-9
                             input#ff-20.col-xs-6.ipt-person(type='text', name='sample_outer', value='#{sample_outer || ""}', placeholder='')
                             span.help-inline.col-xs-6
                                 span.middle.hide Inline help text
                     .space-4
                     .form-group
-                        label.col-xs-3.control-label.no-padding-right(for='ff-21') 接收组样本剩余量
+                        label.col-xs-3.control-label.no-padding-right(for='ff-21') 接收组试管剩余数量
                         .col-xs-9
                             input#ff-21.col-xs-6(type='text', name='sample_out_residue', value='#{sample_out_residue || ""}', placeholder='')
                             span.help-inline.col-xs-6
@@ -211,35 +182,35 @@ block content
                                 span.middle.hide Inline help text
                     .space-4
                     .form-group
-                        label.col-xs-3.control-label.no-padding-right(for='ff-24') Qubit浓度(ng/ul)
+                        label.col-xs-3.control-label.no-padding-right(for='ff-24') qbite浓度
                         .col-xs-9
                             input#ff-24.col-xs-6(type='text', name='extract_qbite_deep', value='#{extract_qbite_deep || ""}', placeholder='')
                             span.help-inline.col-xs-6
                                 span.middle.hide Inline help text
                     .space-4
                     .form-group
-                        label.col-xs-3.control-label.no-padding-right(for='ff-25') epoch浓度(ng/ul)
+                        label.col-xs-3.control-label.no-padding-right(for='ff-25') epoch浓度
                         .col-xs-9
                             input#ff-25.col-xs-6(type='text', name='extract_epoch_deep', value='#{extract_epoch_deep || ""}', placeholder='')
                             span.help-inline.col-xs-6
                                 span.middle.hide Inline help text
                     .space-4
                     .form-group
-                        label.col-xs-3.control-label.no-padding-right(for='ff-26') 纯度(%)
+                        label.col-xs-3.control-label.no-padding-right(for='ff-26') 纯度
                         .col-xs-9
                             input#ff-26.col-xs-6(type='text', name='extract_purity_deep', value='#{extract_purity_deep || ""}', placeholder='')
                             span.help-inline.col-xs-6
                                 span.middle.hide Inline help text
                     .space-4
                     .form-group
-                        label.col-xs-3.control-label.no-padding-right(for='ff-27') 片段大小(bp)
+                        label.col-xs-3.control-label.no-padding-right(for='ff-27') 片段大小
                         .col-xs-9
                             input#ff-27.col-xs-6(type='text', name='extract_part_size', value='#{extract_part_size || ""}', placeholder='')
                             span.help-inline.col-xs-6
                                 span.middle.hide Inline help text
                     .space-4
                     .form-group
-                        label.col-xs-3.control-label.no-padding-right(for='ff-28') 打断后片段(bp)
+                        label.col-xs-3.control-label.no-padding-right(for='ff-28') 打断后片段
                         .col-xs-9
                             input#ff-28.col-xs-6(type='text', name='extract_part_after_break', value='#{extract_part_after_break || ""}', placeholder='')
                             span.help-inline.col-xs-6
@@ -281,7 +252,7 @@ block content
                                 span.middle.hide Inline help text
                     .space-4
                     .form-group
-                        label.col-xs-3.control-label.no-padding-right(for='ff-34') 提取组样本剩余量
+                        label.col-xs-3.control-label.no-padding-right(for='ff-34') 提取组试管剩余数量
                         .col-xs-9
                             input#ff-34.col-xs-6(type='text', name='extract_out_residue', value='#{extract_out_residue || ""}', placeholder='')
                             span.help-inline.col-xs-6
@@ -302,14 +273,14 @@ block content
                                 span.middle.hide Inline help text
                     .space-4
                     .form-group
-                        label.col-xs-3.control-label.no-padding-right(for='ff-37') 建库浓度(ng/ul)
+                        label.col-xs-3.control-label.no-padding-right(for='ff-37') 建库浓度
                         .col-xs-9
                             input#ff-37.col-xs-6(type='text', name='storage_deep', value='#{storage_deep || ""}', placeholder='')
                             span.help-inline.col-xs-6
                                 span.middle.hide Inline help text
                     .space-4
                     .form-group
-                        label.col-xs-3.control-label.no-padding-right(for='ff-38') 建库片段大小(bp)
+                        label.col-xs-3.control-label.no-padding-right(for='ff-38') 建库片段大小
                         .col-xs-9
                             input#ff-38.col-xs-6(type='text', name='storage_part_size', value='#{storage_part_size || ""}', placeholder='')
                             span.help-inline.col-xs-6
@@ -351,7 +322,7 @@ block content
                                 span.middle.hide Inline help text
                     .space-4
                     .form-group
-                        label.col-xs-3.control-label.no-padding-right(for='ff-44') 建库组样本剩余量
+                        label.col-xs-3.control-label.no-padding-right(for='ff-44') 建库组试管剩余数量
                         .col-xs-9
                             input#ff-44.col-xs-6(type='text', name='storage_out_residue', value='#{storage_out_residue || ""}', placeholder='')
                             span.help-inline.col-xs-6
@@ -428,7 +399,7 @@ block content
                                 span.middle.hide Inline help text
                     .space-4
                     .form-group
-                        label.col-xs-3.control-label.no-padding-right(for='ff-55') 上机组样本剩余量
+                        label.col-xs-3.control-label.no-padding-right(for='ff-55') 上机组试管剩余数量
                         .col-xs-9
                             input#ff-55.col-xs-6(type='text', name='operate_out_residue', value='#{operate_out_residue || ""}', placeholder='')
                             span.help-inline.col-xs-6
@@ -508,7 +479,8 @@ block content
                         label.col-xs-3.control-label.no-padding-right(for='ff-65') 状态
                         .col-xs-9
                             select#ff-65.col-xs-6( name='status', value='#{status || ""}', placeholder='')
-                                each label,value in {0: '已删除', 1: '已录入', 2: '已审批', 3: '已入库', 4: '已出库', 5: '已提取', 6: '提取合格', 7: '提取废弃', 8: '重提取', 9: '提取已交接', 10: '已建库', 11: '建库合格', 12: '建库废弃', 13: '重建库', 14: '建库已交接', 15: '已上机', 16: '上机合格', 17: '上机废弃', 18: '重上机', 19: '上机已交接', 20: '已分析', 21: '报告已发送'}
+                                option(value='-1') 无
+                                each label,value in {0: '已删除', 1: '已录入采血单', 2: '已更换采血管', 3: '已审批且入库', 4: '交接后未提取', 5: '提取且已保存', 6: '提取审核-合格', 7: '提取审核-废弃', 8: '提取审核-重提取', 9: '交接后未建库', 10: '建库且已保存', 11: '建库审核-合格', 12: '建库审核-废弃', 13: '建库审核-重建库', 14: '交接后未上机', 15: '上机已保存', 16: '上机审核-合格', 17: '上机审核-废弃', 18: '上机审核-重上机', 19: '交接后未分析', 20: '分析已保存', 21: '报告已发送'}
                                     if value == status
                                         option(value='#{value}', selected='selected')=label
                                     else

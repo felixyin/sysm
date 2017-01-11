@@ -3,11 +3,11 @@
 /**
  * Module dependencies.
  */
-// require('v8').setFlagsFromString('--harmony_async_await');
 const app = require('./app.js');
 
+const debug = require('debug')('lrs:server');
 const http = require('http');
-// const cluster = require('express-cluster');
+const cluster = require('express-cluster');
 // const numCPUs = require('os').cpus().length;
 const colors = require('colors'),
     portfinder = require('portfinder'),
@@ -74,10 +74,10 @@ function ks() {
 if (argv.g || argv.kill) {
     let pid = fs.readFileSync(__dirname + '/PROCESS_ID', 'UTF-8');
     try {
-        console.log('<兴瑞基因检测实验室管理系统>服务集群已停止运行,主进程id是:' + pid);
+        console.log('<兴瑞生物科技实验室管理系统>服务集群已停止运行,主进程id是:' + pid);
         ks();
     } catch (e) {
-        console.log('<兴瑞基因检测实验室管理系统>服务集群还没启动,不需要停止');
+        console.log('<兴瑞生物科技实验室管理系统>服务集群还没启动,不需要停止');
     }
     process.exit();
 }
@@ -114,38 +114,33 @@ process.on('uncaughtException', function (err) {
 let port = normalizePort(process.env.lrs_PORT);
 app.set('port', port);
 
-// cluster(function(worker) {
-    /**
-     * Create HTTP server.
-     */
-    let server = http.createServer(app);
+/**
+ * Create HTTP server.
+ */
+let server = http.createServer(app);
 
-    /**
-     * Event listener for HTTP server "listening" event.
-     */
-    function onListening() {
-        let addr = server.address();
-        let bind = typeof addr === 'string'
-            ? 'pipe ' + addr
-            : 'port ' + addr.port;
-        console.log('Listening on ' + bind);
-    }
+/**
+ * Event listener for HTTP server "listening" event.
+ */
+function onListening() {
+    let addr = server.address();
+    let bind = typeof addr === 'string'
+        ? 'pipe ' + addr
+        : 'port ' + addr.port;
+    debug('Listening on ' + bind);
+}
 
-    /**
-     * Listen on provided port, on all network interfaces.
-     */
-    server.on('error', onError);
-    server.on('listening', onListening);
-    server.listen(port);
-    // return server.listen(port);
-// }, {count: 3})
-
-
+/**
+ * Listen on provided port, on all network interfaces.
+ */
+server.listen(port);
+server.on('error', onError);
+server.on('listening', onListening);
 
 
 // 保存当前进程id
 if (process.pid) {
-    console.log('<兴瑞基因检测实验室管理系统>服务集群已启动,主进程id是:' + process.pid);
+    console.log('<兴瑞生物科技实验室管理系统>服务集群已启动,主进程id是:' + process.pid);
     fs.writeFileSync(__dirname + '/PROCESS_ID', process.pid);
 }
 
