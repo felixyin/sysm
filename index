@@ -114,7 +114,7 @@ process.on('uncaughtException', function (err) {
 let port = normalizePort(process.env.lrs_PORT);
 app.set('port', port);
 
-cluster(function(worker) {
+// cluster(function(worker) {
     /**
      * Create HTTP server.
      */
@@ -136,8 +136,9 @@ cluster(function(worker) {
      */
     server.on('error', onError);
     server.on('listening', onListening);
-    return server.listen(port);
-}, {count: 3})
+    server.listen(port);
+    // return server.listen(port);
+// }, {count: 3})
 
 
 

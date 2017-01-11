@@ -44,7 +44,7 @@ function getAllMenus(json, auth) {
     return allMenus;
 }
 
-router.post('/login', function (req, res, next) {
+router.post('/', function (req, res, next) {
 
     let params = req.body;
     userService.login(params.username, params.password, function (data) {
