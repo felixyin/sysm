@@ -8,8 +8,8 @@
   "readme": "",
   "private": false,
   "scripts": {
-    "install": "bower install && npm install",
-    "start": "node --harmony ./index"
+    "my-install": "bower install && npm install",
+    "my-start": "node --harmony ./index"
   },
   "main": "index",
   "dependencies": {
