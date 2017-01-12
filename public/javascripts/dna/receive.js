@@ -199,7 +199,7 @@
                 } else {
                     Toast.show('此采血单已审批,不能修改:' + barcode_long);
                 }
-            } else {
+            } else { // 批量录入逻辑
                 W.showDialog('preAddCxd', '/dna/receive/preAddCxd?userId=' + userId, '批量录入采血单', '70%', '450px', function (contextWindow, dialog) {
                     $('#edit-cxd-form', contextWindow.document).submit();
                 });
@@ -251,15 +251,11 @@
             var row = $(grid_selector).jqGrid('getRowData', ids[0]);
             barcode_long = row.barcode_long;
             var status = row.status;
-            if (status >= 3) {
-                Toast.show('已审批后的状态,不能修改:' + barcode_long);
+            if (status >= 3) { // 3 已审批
+                Toast.show('此数据已审批,不能修改:' + barcode_long);
                 return;
             }
-            // } else if (ids && ids.length > 1) {
-            //     Toast.show('一次只能更换一个采血管');
-            //     return;
         }
-
         W.selectUser('采血管更换人员', function (userId) {
             W.showDialog('preAddCxg', '/dna/receive/preAddCxg?userId=' + userId + '&barcode_long=' + barcode_long, '更换采血管:' + barcode_long, '60%', '200px', function (contextWindow, dialog) {
                 var ctm = $('#ff-ctmbh', contextWindow.document).val();
@@ -305,63 +301,86 @@
     W.showShDialog = function (btn) {
         var ids = $(grid_selector).jqGrid('getGridParam', 'selarrrow');
         if (ids && ids.length) {
-            W.selectUser('审核人员', function (userId) {
-                $.post('dna/receive/addSh', {checker: userId, ids: ids.join(',')}, function (result) {
-                    if (result.changedRows > 0) {
-                        if (result.changedRows == 1) {
-                            Toast.show(userId + ',审核成功!');
+            var warnArray = [];
+            var idArray = [];
+            for (var i in ids) {
+                var id = ids[i];
+                var row = $(grid_selector).jqGrid('getRowData', id);
+                if (row.status == 2) {// 已更换采血管
+                    idArray.push(id);
+                } else {
+                    $(grid_selector).jqGrid('setSelection', id, false);
+                    warnArray.push(id);
+                }
+            }
+            if (warnArray.length > 0) {
+                Toast.show('您选择的部分行不符合审核条件(未更换采血管),已经取消选中');
+            }
+            if (idArray.length > 0) {
+                W.selectUser('审核人员', function (userId) {
+                    $.post('dna/receive/addSh', {checker: userId, ids: idArray.join(',')}, function (result) {
+                        if (result.changedRows > 0) {
+                            if (result.changedRows == 1) {
+                                Toast.show(userId + ',审核成功!');
+                            } else {
+                                Toast.show(userId + ',批量审核成功!');
+                            }
+                            jQuery(grid_selector).trigger('reloadGrid');
                         } else {
-                            Toast.show(userId + ',批量审核成功!');
+                            Toast.show(userId + ',审核失败,请联系管理员!');
+                            localStorage.setItem('_error_addSh', result.err);
                         }
-                        jQuery(grid_selector).trigger('reloadGrid');
-                    } else {
-                        Toast.show(userId + ',审核失败,请联系管理员!');
-                        localStorage.setItem('_error_addSh', result.err);
-                    }
-                })
-            });
+                    })
+                });
+            }
         } else {
             Toast.show('请先在列表中勾选您要审核的数据行');
         }
     };
+
     /**
      * 出库
      * @param btn
      */
     W.showCkDialog = function (btn) {
         var barcodeShortArray = [];
+        var warnArray = [];
         var ids = $(grid_selector).jqGrid('getGridParam', 'selarrrow');
-        if (ids) {
+        if (ids && ids.length) {
             for (var i in ids) {
                 var id = ids[i];
                 var row = $(grid_selector).jqGrid('getRowData', id);
-                var barcode_short = row.barcode_short;
-                // var status = row.status;
-                // if (status != 3||!barcode_short) {
-                // $(grid_selector).jqGrid('setSelection', id, false);
-                // }else{
-                if (barcode_short) {
-                    barcodeShortArray.push(barcode_short);
+                if (row.status == 3) {// 已审批且入库
+                    barcodeShortArray.push(row.barcode_short);
+                } else {
+                    $(grid_selector).jqGrid('setSelection', id, false);
+                    warnArray.push(id);
                 }
             }
+            if (warnArray.length > 0) {
+                Toast.show('您选择的部分行不符合出库条件(未审批),已经取消选中');
+            }
+            if (barcodeShortArray.length > 0) {
+                W.selectUser('出库人员', function (ckUserId) {
+                    W.selectUser('交接人员', function (jjUserId) {
+                        W.showDialog('preAddCk', '/dna/receive/preAddCk?sample_outer=' + ckUserId + '&extract_handover=' + jjUserId + '&barcodeShortArray=' + barcodeShortArray, '出库', '60%', '450px',
+                            function (contextWindow, dialog) {
+                                var dtm = $('.my-dtmbh', contextWindow.document).map(function (i, v) {
+                                    var vv = $(v).val();
+                                    if (vv)return vv;
+                                }).get().join(',');
+                                if (dtm) {
+                                    $('#edit-ck-form', contextWindow.document).submit();
+                                } else {
+                                    Toast.show('请先扫描条码再保存出库');
+                                }
+                            });
+                    }, 'DNA提取管理');
+                });
+            }
+        } else {
+            Toast.show('请先在列表中勾选您要出库的数据行');
         }
-        W.selectUser('出库人员', function (ckUserId) {
-            W.selectUser('交接人员', function (jjUserId) {
-                W.showDialog('preAddCk', '/dna/receive/preAddCk?sample_outer=' + ckUserId + '&extract_handover=' + jjUserId + '&barcodeShortArray=' + barcodeShortArray, '出库', '60%', '450px',
-                    function (contextWindow, dialog) {
-                        var dtm = $('.my-dtmbh', contextWindow.document).map(function (i, v) {
-                            var vv = $(v).val();
-                            if (vv)return vv;
-                        }).get().join(',');
-                        alert(dtm);
-                        if (dtm) {
-                            $('#edit-ck-form', contextWindow.document).submit();
-                        } else {
-                            Toast.show('请先扫描条码再保存出库');
-                        }
-                    });
-            }, 'DNA提取管理');
-        });
     };
 
     /**
