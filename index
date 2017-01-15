@@ -3,11 +3,11 @@
 /**
  * Module dependencies.
  */
+// require('v8').setFlagsFromString('--harmony_async_await');
 const app = require('./app.js');
 
-const debug = require('debug')('lrs:server');
 const http = require('http');
-const cluster = require('express-cluster');
+// const cluster = require('express-cluster');
 // const numCPUs = require('os').cpus().length;
 const colors = require('colors'),
     portfinder = require('portfinder'),
@@ -128,7 +128,7 @@ app.set('port', port);
         let bind = typeof addr === 'string'
             ? 'pipe ' + addr
             : 'port ' + addr.port;
-        debug('Listening on ' + bind);
+        console.log('Listening on ' + bind);
     }
 
     /**

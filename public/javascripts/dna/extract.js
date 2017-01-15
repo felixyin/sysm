@@ -295,7 +295,21 @@
                                 "label": "重提取!",
                                 "className": "btn-sm btn-warning",
                                 "callback": function () {
-                                    $.post('dna/extract/addSh', {checker: userId, ids: ids.join(',')}, function (result) {
+                                    var warnRows = [];
+                                    for (var i in ids) {
+                                        var id = ids[i];
+                                        var row = $(grid_selector).jqGrid('getRowData', id);
+                                        var count = parseInt(row.sample_out_residue);
+                                        if (count < 1) { // 没有剩余试管用于重做
+                                            $(grid_selector).jqGrid('setSelection', id, false);
+                                            warnRows.push(id);
+                                        }
+                                    }
+                                    if (warnRows.length > 0) {
+                                        Toast.show('部分选中行,在上一环节已没有剩余试管,已取消选中');
+                                    }
+                                    ids = $(grid_selector).jqGrid('getGridParam', 'selarrrow');
+                                    $.post('dna/extract/redo', {checker: userId, ids: ids.join(',')}, function (result) {
                                         if (result.changedRows > 0) {
                                             if (result.changedRows == 1) {
                                                 Toast.show(userId + ',审核成功!');
