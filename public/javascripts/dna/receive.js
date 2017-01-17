@@ -4,181 +4,179 @@
 'use strict';
 (function (W) {
 
-    !function () {
-        W.grid_selector = "#grid-table";
-        W.pager_selector = "#grid-pager";
-        W.search_form = '#search-form-id';
-        W.str = location.search;
-        W._title = '样本接收管理';
-        W._url = BASE_URL + "dna/receive/list";
-        W._sortname = 'input_date';
-        W._sortorder = 'ASC';
-        W._postData = {};
-        W._colNames = ['序号', '长条码编号', '医院名称', '样本编号', '采样日期', '接收日期', '姓名', '身份证号', '出生日期',
-            '孕周', '妊娠情况', '不良孕产史', '备注', '录入人员', '录入日期', '换管人员', '换管日期', '审批人员', '审批日期',
-            '短条码编号', '', '状态'];
-        W._colModel = [
-            {name: 'id', width: 40, index: 'id', align: 'center', sortable: false, frozen: true},
-            {name: 'barcode_long', width: 120, index: 'barcode_long', align: 'center', sortable: false, frozen: true},
-            {name: 'hospital', width: 120, index: 'hospital', align: 'center', sortable: false, frozen: true},
-            {name: 'sample_code', width: 80, index: 'sample_code', align: 'center', sortable: false, frozen: true},
-            {name: 'sample_date', width: 130, index: 'sample_date', align: 'center', sortable: false, frozen: true},
-            {name: 'receive_date', width: 130, index: 'receive_date', align: 'center', sortable: false, frozen: true},
-            {name: 'real_name', width: 80, index: 'real_name', align: 'center', sortable: false, frozen: true},
-            {name: 'id_card', width: 150, index: 'id_card', align: 'center', sortable: true},
-            {name: 'age', width: 130, index: 'age', align: 'center', sortable: true},
-            {name: 'pregnancy_week', width: 100, index: 'pregnancy_week', align: 'center', sortable: true},
-            {name: 'pregnancy_condition', width: 100, index: 'pregnancy_condition', align: 'center', sortable: false},
-            {name: 'pregnancy_bad_history', width: 100, index: 'pregnancy_bad_history', align: 'center', sortable: false},
-            {name: 'comments', width: 100, index: 'comments', align: 'center', sortable: true},
-            {name: 'inputter', width: 100, index: 'inputter', align: 'center', sortable: true},
-            {name: 'input_date', width: 100, index: 'input_date', align: 'center', sortable: true},
-            {name: 'changer', width: 100, index: 'changer', align: 'center', sortable: true},
-            {name: 'change_date', width: 100, index: 'change_date', align: 'center', sortable: true},
-            {name: 'checker', width: 100, index: 'checker', align: 'center', sortable: true},
-            {name: 'check_date', width: 100, index: 'check_date', align: 'center', sortable: true},
-            {name: 'barcode_short', width: 100, index: 'barcode_short', align: 'center', sortable: false},
-            {name: 'status', hidden: true, hidedlg: true},
-            {
-                name: 'status1', width: 100, index: 'status', align: 'center', sortable: false,
-                formatter: function (value, options, row) {
-                    var text = '';
-                    switch (row.status) {
-                        case 0:
-                            text = '已删除';
-                            break;
-                        case 1:
-                            text = '已录入采血单';
-                            break;
-                        case 2:
-                            text = '已更换采血管';
-                            break;
-                        case 3:
-                            text = '已审批且入库';
-                            break;
-                        case 4:
-                            text = '交接后未提取';
-                            break;
-                        case 5:
-                            text = '提取且已保存';
-                            break;
-                        case 6:
-                            text = '提取审核-合格';
-                            break;
-                        case 7:
-                            text = '提取审核-废弃';
-                            break;
-                        case 8:
-                            text = '提取审核-重提取';
-                            break;
-                        case 9:
-                            text = '交接后未建库';
-                            break;
-                        case 10:
-                            text = '建库且已保存';
-                            break;
-                        case 11:
-                            text = '建库审核-合格';
-                            break;
-                        case 12:
-                            text = '建库审核-废弃';
-                            break;
-                        case 13:
-                            text = '建库审核-重建库';
-                            break;
-                        case 14:
-                            text = '交接后未上机';
-                            break;
-                        case 15:
-                            text = '上机已保存';
-                            break;
-                        case 16:
-                            text = '上机审核-合格';
-                            break;
-                        case 17:
-                            text = '上机审核-废弃';
-                            break;
-                        case 18:
-                            text = '上机审核-重上机';
-                            break;
-                        case 19:
-                            text = '交接后未分析';
-                            break;
-                        case 20:
-                            text = '分析已保存';
-                            break;
-                        case 21:
-                            text = '报告已发送';
-                            break;
-                        default:
-                            text = '';
-                    }
-                    return text;
+    W.grid_selector = "#grid-table";
+    W.pager_selector = "#grid-pager";
+    W.search_form = '#search-form-id';
+    W.str = location.search;
+    W._title = '样本接收管理';
+    W._url = BASE_URL + "dna/receive/list";
+    W._sortname = 'input_date';
+    W._sortorder = 'ASC';
+    W._postData = {};
+    W._colNames = ['序号', '长条码编号', '医院名称', '样本编号', '采样日期', '接收日期', '姓名', '身份证号', '出生日期',
+        '孕周', '妊娠情况', '不良孕产史', '备注', '录入人员', '录入日期', '换管人员', '换管日期', '审批人员', '审批日期',
+        '短条码编号', '', '状态'];
+    W._colModel = [
+        {name: 'id', width: 40, index: 'id', align: 'center', sortable: false, frozen: true},
+        {name: 'barcode_long', width: 120, index: 'barcode_long', align: 'center', sortable: false, frozen: true},
+        {name: 'hospital', width: 120, index: 'hospital', align: 'center', sortable: false, frozen: true},
+        {name: 'sample_code', width: 80, index: 'sample_code', align: 'center', sortable: false, frozen: true},
+        {name: 'sample_date', width: 130, index: 'sample_date', align: 'center', sortable: false, frozen: true},
+        {name: 'receive_date', width: 130, index: 'receive_date', align: 'center', sortable: false, frozen: true},
+        {name: 'real_name', width: 80, index: 'real_name', align: 'center', sortable: false, frozen: true},
+        {name: 'id_card', width: 150, index: 'id_card', align: 'center', sortable: true},
+        {name: 'age', width: 130, index: 'age', align: 'center', sortable: true},
+        {name: 'pregnancy_week', width: 100, index: 'pregnancy_week', align: 'center', sortable: true},
+        {name: 'pregnancy_condition', width: 100, index: 'pregnancy_condition', align: 'center', sortable: false},
+        {name: 'pregnancy_bad_history', width: 100, index: 'pregnancy_bad_history', align: 'center', sortable: false},
+        {name: 'comments', width: 100, index: 'comments', align: 'center', sortable: true},
+        {name: 'inputter', width: 100, index: 'inputter', align: 'center', sortable: true},
+        {name: 'input_date', width: 100, index: 'input_date', align: 'center', sortable: true},
+        {name: 'changer', width: 100, index: 'changer', align: 'center', sortable: true},
+        {name: 'change_date', width: 100, index: 'change_date', align: 'center', sortable: true},
+        {name: 'checker', width: 100, index: 'checker', align: 'center', sortable: true},
+        {name: 'check_date', width: 100, index: 'check_date', align: 'center', sortable: true},
+        {name: 'barcode_short', width: 100, index: 'barcode_short', align: 'center', sortable: false},
+        {name: 'status', hidden: true, hidedlg: true},
+        {
+            name: 'status1', width: 100, index: 'status', align: 'center', sortable: false,
+            formatter: function (value, options, row) {
+                var text = '';
+                switch (row.status) {
+                    case 0:
+                        text = '已删除';
+                        break;
+                    case 1:
+                        text = '已录入采血单';
+                        break;
+                    case 2:
+                        text = '已更换采血管';
+                        break;
+                    case 3:
+                        text = '已审批且入库';
+                        break;
+                    case 4:
+                        text = '交接后未提取';
+                        break;
+                    case 5:
+                        text = '提取且已保存';
+                        break;
+                    case 6:
+                        text = '提取审核-合格';
+                        break;
+                    case 7:
+                        text = '提取审核-废弃';
+                        break;
+                    case 8:
+                        text = '提取审核-重提取';
+                        break;
+                    case 9:
+                        text = '交接后未建库';
+                        break;
+                    case 10:
+                        text = '建库且已保存';
+                        break;
+                    case 11:
+                        text = '建库审核-合格';
+                        break;
+                    case 12:
+                        text = '建库审核-废弃';
+                        break;
+                    case 13:
+                        text = '建库审核-重建库';
+                        break;
+                    case 14:
+                        text = '交接后未上机';
+                        break;
+                    case 15:
+                        text = '上机已保存';
+                        break;
+                    case 16:
+                        text = '上机审核-合格';
+                        break;
+                    case 17:
+                        text = '上机审核-废弃';
+                        break;
+                    case 18:
+                        text = '上机审核-重上机';
+                        break;
+                    case 19:
+                        text = '交接后未分析';
+                        break;
+                    case 20:
+                        text = '分析已保存';
+                        break;
+                    case 21:
+                        text = '报告已发送';
+                        break;
+                    default:
+                        text = '';
                 }
+                return text;
             }
-        ];
+        }
+    ];
 
-        W.updateActionIcons = function () {
+    W.updateActionIcons = function () {
+        $('#btn-cxd').children('button').prop('disabled', false).first().children('i').html('&nbsp;&nbsp;&nbsp;批量录入采血单');
+        $('#btn-cxg').children('button').prop('disabled', false).first().children('i').html('&nbsp;&nbsp;&nbsp;批量更换采血管');
+        $('#btn-sh').children('button').prop('disabled', true).first().children('i').html('&nbsp;&nbsp;&nbsp;审核');
+        $('#btn-ck').children('button').prop('disabled', false).first().children('i').html('&nbsp;&nbsp;&nbsp;批量出库');
+    };
+    W.updateActionIcons();
+
+    W.onSelectRow = function (ids, status) { //单击选择行
+        // if(status)
+        var myIds = $(grid_selector).jqGrid('getGridParam', 'selarrrow');
+        var selectedLength = myIds.length;
+        if (selectedLength == 1) {
+            $('#btn-cxd').children('button').prop('disabled', false).first().children('i').html('&nbsp;&nbsp;&nbsp;修改采血单');
+            $('#btn-cxg').children('button').prop('disabled', false).first().children('i').html('&nbsp;&nbsp;&nbsp;更换采血管');
+            $('#btn-sh').children('button').prop('disabled', false).first().children('i').html('&nbsp;&nbsp;&nbsp;审核');
+            $('#btn-ck').children('button').prop('disabled', false).first().children('i').html('&nbsp;&nbsp;&nbsp;出库');
+        } else if (selectedLength > 1) {
+            $('#btn-cxd').children('button').prop('disabled', true).first().children('i').html('&nbsp;&nbsp;&nbsp;批量录入采血单');
+            $('#btn-cxg').children('button').prop('disabled', true);
+            $('#btn-sh').children('button').prop('disabled', false).first().children('i').html('&nbsp;&nbsp;&nbsp;批量审核');
+            $('#btn-ck').children('button').prop('disabled', false).first().children('i').html('&nbsp;&nbsp;&nbsp;批量出库');
+        } else { // 0
             $('#btn-cxd').children('button').prop('disabled', false).first().children('i').html('&nbsp;&nbsp;&nbsp;批量录入采血单');
             $('#btn-cxg').children('button').prop('disabled', false).first().children('i').html('&nbsp;&nbsp;&nbsp;批量更换采血管');
             $('#btn-sh').children('button').prop('disabled', true).first().children('i').html('&nbsp;&nbsp;&nbsp;审核');
             $('#btn-ck').children('button').prop('disabled', false).first().children('i').html('&nbsp;&nbsp;&nbsp;批量出库');
-        };
-        W.updateActionIcons();
+        }
+    };
 
-        W.onSelectRow = function (ids, status) { //单击选择行
-            // if(status)
-            var myIds = $(grid_selector).jqGrid('getGridParam', 'selarrrow');
-            var selectedLength = myIds.length;
-            if (selectedLength == 1) {
-                $('#btn-cxd').children('button').prop('disabled', false).first().children('i').html('&nbsp;&nbsp;&nbsp;修改采血单');
-                $('#btn-cxg').children('button').prop('disabled', false).first().children('i').html('&nbsp;&nbsp;&nbsp;更换采血管');
-                $('#btn-sh').children('button').prop('disabled', false).first().children('i').html('&nbsp;&nbsp;&nbsp;审核');
-                $('#btn-ck').children('button').prop('disabled', false).first().children('i').html('&nbsp;&nbsp;&nbsp;出库');
-            } else if (selectedLength > 1) {
-                $('#btn-cxd').children('button').prop('disabled', true).first().children('i').html('&nbsp;&nbsp;&nbsp;批量录入采血单');
-                $('#btn-cxg').children('button').prop('disabled', true);
-                $('#btn-sh').children('button').prop('disabled', false).first().children('i').html('&nbsp;&nbsp;&nbsp;批量审核');
-                $('#btn-ck').children('button').prop('disabled', false).first().children('i').html('&nbsp;&nbsp;&nbsp;批量出库');
-            } else { // 0
-                $('#btn-cxd').children('button').prop('disabled', false).first().children('i').html('&nbsp;&nbsp;&nbsp;批量录入采血单');
-                $('#btn-cxg').children('button').prop('disabled', false).first().children('i').html('&nbsp;&nbsp;&nbsp;批量更换采血管');
-                $('#btn-sh').children('button').prop('disabled', true).first().children('i').html('&nbsp;&nbsp;&nbsp;审核');
-                $('#btn-ck').children('button').prop('disabled', false).first().children('i').html('&nbsp;&nbsp;&nbsp;批量出库');
-            }
-        };
+    $(".ipt-date").datepicker({
+        language: 'zh-CN',
+        format: "yyyy-MM-dd",
+        autoclose: true,
+        pickerPosition: "bottom-right"
+    });
 
-        $(".ipt-date").datepicker({
-            language: 'zh-CN',
-            format: "yyyy-MM-dd",
-            autoclose: true,
-            pickerPosition: "bottom-right"
-        });
+    $('.ipt-person').selectUser();
 
-        $('.ipt-person').selectUser();
+    var _dna_receive_is_search_more = localStorage.getItem('_dna_receive_is_search_more');
+    if (_dna_receive_is_search_more == 'true') {
+        getSearchTr([2, 3]).show();
+        $('#btn-search-more').text('隐藏更多搜索项');
+    } else {
+        getSearchTr([2, 3]).hide();
+        $('#btn-search-more').text('显示更多搜索项');
+    }
 
+    $('#btn-search-more').click(function () {
         var _dna_receive_is_search_more = localStorage.getItem('_dna_receive_is_search_more');
-        if (_dna_receive_is_search_more == 'true') {
+        if (_dna_receive_is_search_more == 'false') {
             getSearchTr([2, 3]).show();
-            $('#btn-search-more').text('隐藏更多搜索项');
+            $(this).text('隐藏更多搜索项');
+            localStorage.setItem('_dna_receive_is_search_more', 'true');
         } else {
             getSearchTr([2, 3]).hide();
-            $('#btn-search-more').text('显示更多搜索项');
+            $(this).text('显示更多搜索项');
+            localStorage.setItem('_dna_receive_is_search_more', 'false');
         }
-
-        $('#btn-search-more').click(function () {
-            var _dna_receive_is_search_more = localStorage.getItem('_dna_receive_is_search_more');
-            if (_dna_receive_is_search_more == 'false') {
-                getSearchTr([2, 3]).show();
-                $(this).text('隐藏更多搜索项');
-                localStorage.setItem('_dna_receive_is_search_more', 'true');
-            } else {
-                getSearchTr([2, 3]).hide();
-                $(this).text('显示更多搜索项');
-                localStorage.setItem('_dna_receive_is_search_more', 'false');
-            }
-        });
-    }();
+    });
 
     /**
      * 录入采血单
