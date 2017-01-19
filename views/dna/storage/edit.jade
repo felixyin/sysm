@@ -14,6 +14,13 @@ block content
                                 span.middle.hide Inline help text
                     .space-4
                     .form-group
+                        label.col-xs-3.control-label.no-padding-right(for='ff-36') 样本剩余量
+                        .col-xs-9
+                            input#ff-36.col-xs-6(type='text', name='extract_out_residue', value='#{extract_out_residue || ""}', placeholder='')
+                            span.help-inline.col-xs-6
+                                span.middle.hide Inline help text
+                    .space-4
+                    .form-group
                         label.col-xs-3.control-label.no-padding-right(for='ff-37') 建库浓度
                         .col-xs-9
                             input#ff-37.col-xs-6(type='text', name='storage_deep', value='#{storage_deep || ""}', placeholder='')
