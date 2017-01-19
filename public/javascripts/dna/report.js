@@ -14,8 +14,8 @@
         W._sortname = 'input_date';
         W._sortorder = 'ASC';
         W._postData = {};
-        W._colNames = ['序号', '条码编号', '上机组发送人', '上机组试管剩余数量', '分析报告组接收人', '分析报告组接收时间', '分析结果',
-            '建议', '是否发送', '分析人', '分析时间', '报告发送人', '报告发送时间', '', '状态'];
+        W._colNames = ['序号', '条码编号', '上机组发送人', '上机组试管剩余数量', '分析报告组接收人', '分析报告组接收时间', '上机芯片编码',
+            '上机reads数', '上机q30值', '分析结果', '建议', '是否发送', '分析人', '分析时间', '报告发送人', '报告发送时间', '', '状态'];
         W._colModel = [
             {name: 'id', width: 40, index: 'id', align: 'center', sortable: false, frozen: true},
             {name: 'barcode_long', width: 120, index: 'barcode_long', align: 'center', sortable: false, frozen: true},
@@ -33,6 +33,9 @@
             },
             {name: 'report_handover', width: 100, index: 'report_handover', align: 'center', sortable: false},
             {name: 'report_handover_date', width: 130, index: 'report_handover_date', align: 'center', sortable: false},
+            {name: 'operate_chip_code', width: 100, index: 'operate_chip_code', align: 'center', sortable: false},
+            {name: 'operate_reads_val', width: 100, index: 'operate_reads_val', align: 'center', sortable: false},
+            {name: 'operate_q30_val', width: 100, index: 'operate_q30_val', align: 'center', sortable: false},
             {name: 'report_result', width: 100, index: 'report_result', align: 'center', sortable: false},
             {name: 'report_advice', width: 100, index: 'report_advice', align: 'center', sortable: false},
             {
