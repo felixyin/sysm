@@ -14,18 +14,95 @@
         W._sortname = 'input_date';
         W._sortorder = 'ASC';
         W._postData = {};
-        W._colNames = ['序号', '条码编号', '医院名称', '样本编号', '采样日期', '接收日期', '姓名', '身份证号', '出生日期', '孕周', '妊娠情况', '不良孕产史',
+        W._colNames = ['序号', '条码编号', '医院名称', '样本编号', '状态', '采样日期', '接收日期', '姓名', '身份证号', '出生日期', '孕周', '妊娠情况', '不良孕产史',
             '备注', '录入人员', '录入日期', '审批人员', '审批日期', '采血管入库人', '采血管入库位置', '采血管入库时间', '采血管出库人', '接收组样本剩余量', '提取组接收人',
             '提取组接收时间', 'qbite浓度', 'epoch浓度', '纯度', '片段大小', '打断后片段', '提取人员', '提取时间', '提取审核人', '提取审核时间', '提取出库人',
             '提取组样本剩余量', '建库组接收人', '建库组接收时间', '建库浓度', '建库片段大小', '建库人', '建库时间', '建库审查人', '建库审查时间', '建库组出库人',
             '建库组样本剩余量', '上机组接收人', '上机组接收时间', '上机芯片编码', '上机reads数', '上机q30值', '上机人', '上机时间', '上机审查人', '上机审查时间',
             '上机组出库人', '上机组样本剩余量', '分析报告组接收人', '分析报告组接收时间', '分析结果', '建议', '是否发送', '分析人', '分析时间',
-            '报告发送人', '报告发送时间', '', '状态'];
+            '报告发送人', '报告发送时间', ''];
         W._colModel = [
-            {name: 'id', width: 100, index: 'id', align: 'center', sortable: false},
-            {name: 'barcode_long', width: 100, index: 'barcode_long', align: 'center', sortable: false},
-            {name: 'hospital', width: 100, index: 'hospital', align: 'center', sortable: false},
-            {name: 'sample_code', width: 100, index: 'sample_code', align: 'center', sortable: false},
+            {name: 'id', width: 100, index: 'id', align: 'center', sortable: false, frozen: true},
+            {name: 'barcode_long', width: 100, index: 'barcode_long', align: 'center', sortable: false, frozen: true},
+            {name: 'hospital', width: 100, index: 'hospital', align: 'center', sortable: false, frozen: true},
+            {name: 'sample_code', width: 100, index: 'sample_code', align: 'center', sortable: false, frozen: true},
+             {
+                name: 'status1', width: 100, index: 'status', align: 'center', sortable: false, frozen: true,
+                formatter: function (value, options, row) {
+                    var text = '';
+                    switch (row.status) {
+                        case 0:
+                            text = '已删除';
+                            break;
+                        case 1:
+                            text = '已录入采血单';
+                            break;
+                        case 2:
+                            text = '已审批';
+                            break;
+                        case 3:
+                            text = '已入库';
+                            break;
+                        case 4:
+                            text = '交接后未提取';
+                            break;
+                        case 5:
+                            text = '提取且已保存';
+                            break;
+                        case 6:
+                            text = '提取审核-合格';
+                            break;
+                        case 7:
+                            text = '提取审核-废弃';
+                            break;
+                        case 8:
+                            text = '提取审核-重提取';
+                            break;
+                        case 9:
+                            text = '交接后未建库';
+                            break;
+                        case 10:
+                            text = '建库且已保存';
+                            break;
+                        case 11:
+                            text = '建库审核-合格';
+                            break;
+                        case 12:
+                            text = '建库审核-废弃';
+                            break;
+                        case 13:
+                            text = '建库审核-重建库';
+                            break;
+                        case 14:
+                            text = '交接后未上机';
+                            break;
+                        case 15:
+                            text = '上机已保存';
+                            break;
+                        case 16:
+                            text = '上机审核-合格';
+                            break;
+                        case 17:
+                            text = '上机审核-废弃';
+                            break;
+                        case 18:
+                            text = '上机审核-重上机';
+                            break;
+                        case 19:
+                            text = '交接后未分析';
+                            break;
+                        case 20:
+                            text = '分析已保存';
+                            break;
+                        case 21:
+                            text = '报告已发送';
+                            break;
+                        default:
+                            text = '';
+                    }
+                    return text;
+                }
+            },
             {name: 'sample_date', width: 130, index: 'sample_date', align: 'center', sortable: false},
             {name: 'receive_date', width: 130, index: 'receive_date', align: 'center', sortable: false},
             {name: 'real_name', width: 100, index: 'real_name', align: 'center', sortable: false},
@@ -108,84 +185,8 @@
             {name: 'report_date', width: 130, index: 'report_date', align: 'center', sortable: false},
             {name: 'report_sender', width: 100, index: 'report_sender', align: 'center', sortable: false},
             {name: 'report_send_date', width: 130, index: 'report_send_date', align: 'center', sortable: false},
-            {name: 'status', hidden: true, hidedlg: true},
-            {
-                name: 'status1', width: 100, index: 'status', align: 'center', sortable: false,
-                formatter: function (value, options, row) {
-                    var text = '';
-                    switch (row.status) {
-                        case 0:
-                            text = '已删除';
-                            break;
-                        case 1:
-                            text = '已录入采血单';
-                            break;
-                        case 2:
-                            text = '已审批';
-                            break;
-                        case 3:
-                            text = '已入库';
-                            break;
-                        case 4:
-                            text = '交接后未提取';
-                            break;
-                        case 5:
-                            text = '提取且已保存';
-                            break;
-                        case 6:
-                            text = '提取审核-合格';
-                            break;
-                        case 7:
-                            text = '提取审核-废弃';
-                            break;
-                        case 8:
-                            text = '提取审核-重提取';
-                            break;
-                        case 9:
-                            text = '交接后未建库';
-                            break;
-                        case 10:
-                            text = '建库且已保存';
-                            break;
-                        case 11:
-                            text = '建库审核-合格';
-                            break;
-                        case 12:
-                            text = '建库审核-废弃';
-                            break;
-                        case 13:
-                            text = '建库审核-重建库';
-                            break;
-                        case 14:
-                            text = '交接后未上机';
-                            break;
-                        case 15:
-                            text = '上机已保存';
-                            break;
-                        case 16:
-                            text = '上机审核-合格';
-                            break;
-                        case 17:
-                            text = '上机审核-废弃';
-                            break;
-                        case 18:
-                            text = '上机审核-重上机';
-                            break;
-                        case 19:
-                            text = '交接后未分析';
-                            break;
-                        case 20:
-                            text = '分析已保存';
-                            break;
-                        case 21:
-                            text = '报告已发送';
-                            break;
-                        default:
-                            text = '';
-                    }
-                    return text;
-                }
-            }
+            {name: 'status', hidden: true, hidedlg: true}
+
         ];
 
         W.updateActionIcons = function () {
