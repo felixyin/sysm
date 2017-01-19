@@ -5,8 +5,8 @@
 
 if ($('.animsition').size() === 1) {
     $('.animsition').animsition({
-        inClass: 'zoom-in-sm',
-        outClass: 'zoom-out-sm'
+        inClass: 'fade-in-right-lg' ,
+        outClass: 'fade-out-right-lg'
     });
 }
 

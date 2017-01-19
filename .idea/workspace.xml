@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="976d0898-fc8b-4527-8c5d-bd526aaafd9f" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/dna/admin.js" afterPath="$PROJECT_DIR$/public/javascripts/dna/admin.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/login.jade" afterPath="$PROJECT_DIR$/views/login.jade" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/layout-footer.js" afterPath="$PROJECT_DIR$/public/javascripts/layout-footer.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -25,26 +24,42 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="receive.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/javascripts/dna/receive.js">
+      <file leaf-file-name="layout.jade" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/layout.jade">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="18" column="77" lean-forward="false" selection-start-line="18" selection-start-column="77" selection-end-line="18" selection-end-column="77" />
-              <folding>
-                <element signature="e#6281#8310#0" expanded="false" />
-              </folding>
+            <state relative-caret-position="-1062">
+              <caret line="122" column="29" lean-forward="false" selection-start-line="122" selection-start-column="29" selection-end-line="122" selection-end-column="29" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="admin.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/public/javascripts/dna/admin.js">
+      <file leaf-file-name="layout-footer.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/javascripts/layout-footer.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="37">
-              <caret line="16" column="57" lean-forward="false" selection-start-line="16" selection-start-column="57" selection-end-line="16" selection-end-column="57" />
-              <folding>
-                <element signature="e#1761#4460#0" expanded="false" />
-              </folding>
+            <state relative-caret-position="180">
+              <caret line="10" column="1" lean-forward="true" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="animsition.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/bower_components/animsition/src/js/animsition.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="414">
+              <caret line="74" column="41" lean-forward="false" selection-start-line="74" selection-start-column="41" selection-end-line="74" selection-end-column="41" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="animsition.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bower_components/animsition/dist/css/animsition.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="149">
+              <caret line="878" column="28" lean-forward="false" selection-start-line="878" selection-start-column="28" selection-end-line="878" selection-end-column="28" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -60,7 +75,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>result.insert</find>
       <find>IN (</find>
       <find>console</find>
       <find>$(grid_selector).jqGrid</find>
@@ -90,6 +104,7 @@
       <find>试管剩余数量</find>
       <find>formatter: function (value, options, row) {</find>
       <find>是否发送</find>
+      <find>zoom-in-sm</find>
     </findStrings>
     <replaceStrings>
       <replace>const</replace>
@@ -152,7 +167,6 @@
         <option value="$PROJECT_DIR$/views/dna/receive/edit_cxg.jade" />
         <option value="$PROJECT_DIR$/views/dna/fragment/dnaBarcodeShortInput.jade" />
         <option value="$PROJECT_DIR$/views/layout_nomenu.jade" />
-        <option value="$PROJECT_DIR$/public/javascripts/layout-footer.js" />
         <option value="$PROJECT_DIR$/app.js" />
         <option value="$PROJECT_DIR$/public/javascripts/user/list.js" />
         <option value="$PROJECT_DIR$/views/dna/extract/list.jade" />
@@ -187,6 +201,7 @@
         <option value="$PROJECT_DIR$/views/login.jade" />
         <option value="$PROJECT_DIR$/public/javascripts/dna/receive.js" />
         <option value="$PROJECT_DIR$/public/javascripts/dna/admin.js" />
+        <option value="$PROJECT_DIR$/public/javascripts/layout-footer.js" />
       </list>
     </option>
   </component>
@@ -393,28 +408,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SYSM" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sysm" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="javascripts" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dna" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
     </panes>
@@ -451,7 +444,7 @@
       <recent name="$PROJECT_DIR$/public/assets/js" />
     </key>
   </component>
-  <component name="RunManager" selected="Node.js.gen-edit-form.js">
+  <component name="RunManager" selected="Node.js.debug">
     <configuration default="false" name="my-start" type="js.build_tools.npm" factoryName="npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -715,7 +708,7 @@
       <workItem from="1484191284202" duration="13127000" />
       <workItem from="1484472776068" duration="6447000" />
       <workItem from="1484662937458" duration="7228000" />
-      <workItem from="1484729324172" duration="26788000" />
+      <workItem from="1484729324172" duration="27478000" />
     </task>
     <task id="LOCAL-00010" summary="yarn安装">
       <created>1484143569710</created>
@@ -864,12 +857,19 @@
       <option name="project" value="LOCAL" />
       <updated>1484846330488</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="超级管理模块,优化固定列">
+      <created>1484847454662</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1484847454662</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <option name="clearContext" value="false" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="301675000" />
+    <option name="totallyTimeSpent" value="302365000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1920" height="1122" extended-state="6" />
@@ -965,7 +965,8 @@
     <MESSAGE value="去掉菜单栏横向菜单" />
     <MESSAGE value="建库和上机环节,在录入信息的时候,增加剩余量的输入" />
     <MESSAGE value="表格数据格式化处理,显示null处理" />
-    <option name="LAST_COMMIT_MESSAGE" value="表格数据格式化处理,显示null处理" />
+    <MESSAGE value="超级管理模块,优化固定列" />
+    <option name="LAST_COMMIT_MESSAGE" value="超级管理模块,优化固定列" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -986,34 +987,10 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/config/db.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/service/dna/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/layout_nomenu.jade">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="168">
           <caret line="113" column="14" lean-forward="false" selection-start-line="113" selection-start-column="14" selection-end-line="113" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/javascripts/layout-footer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="630">
-          <caret line="291" column="4" lean-forward="false" selection-start-line="291" selection-start-column="4" selection-end-line="291" selection-end-column="4" />
           <folding />
         </state>
       </provider>
@@ -1205,14 +1182,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
           <caret line="20" column="54" lean-forward="false" selection-start-line="20" selection-start-column="54" selection-end-line="20" selection-end-column="54" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/layout.jade">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2196">
-          <caret line="122" column="29" lean-forward="false" selection-start-line="122" selection-start-column="29" selection-end-line="122" selection-end-column="29" />
           <folding />
         </state>
       </provider>
@@ -1444,14 +1413,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/login.jade">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="576">
-          <caret line="35" column="38" lean-forward="false" selection-start-line="35" selection-start-column="38" selection-end-line="35" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/javascripts/dna/receive.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
@@ -1464,11 +1425,51 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public/javascripts/dna/admin.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="37">
-          <caret line="16" column="57" lean-forward="false" selection-start-line="16" selection-start-column="57" selection-end-line="16" selection-end-column="57" />
+        <state relative-caret-position="55">
+          <caret line="17" column="12" lean-forward="false" selection-start-line="17" selection-start-column="12" selection-end-line="17" selection-end-column="12" />
           <folding>
             <element signature="e#1761#4460#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/login.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="576">
+          <caret line="35" column="38" lean-forward="false" selection-start-line="35" selection-start-column="38" selection-end-line="35" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/layout.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1062">
+          <caret line="122" column="29" lean-forward="false" selection-start-line="122" selection-start-column="29" selection-end-line="122" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bower_components/animsition/dist/css/animsition.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="149">
+          <caret line="878" column="28" lean-forward="false" selection-start-line="878" selection-start-column="28" selection-end-line="878" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/javascripts/layout-footer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="10" column="1" lean-forward="true" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bower_components/animsition/src/js/animsition.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="414">
+          <caret line="74" column="41" lean-forward="false" selection-start-line="74" selection-start-column="41" selection-end-line="74" selection-end-column="41" />
+          <folding />
         </state>
       </provider>
     </entry>
