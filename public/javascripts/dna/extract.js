@@ -14,9 +14,9 @@
         W._sortname = 'input_date';
         W._sortorder = 'ASC';
         W._postData = {};
-        W._colNames = ['序号', '条码编号',  '短采血管出库人', '接收组试管剩余数量', '提取组接收人', '提取组接收时间',
+        W._colNames = ['序号', '条码编号', '短采血管出库人', '接收组试管剩余数量', '提取组接收人', '提取组接收时间',
             'qbite浓度', 'epoch浓度', '纯度', '片段大小', '打断后片段', '提取人员', '提取时间', '提取审核人', '提取审核时间',
-            '提取出库人', '提取组试管剩余数量', '建库组接收人', '建库组接收时间', '', '状态'];
+            '提取出库人', '提取组试管剩余数量', '', '状态'];
         W._colModel = [
             {name: 'id', width: 40, index: 'id', align: 'center', sortable: false, frozen: true},
             {name: 'barcode_long', width: 120, index: 'barcode_long', align: 'center', sortable: false, frozen: true},
@@ -54,8 +54,6 @@
                     return value;
                 }
             },
-            {name: 'storage_handover', width: 100, index: 'storage_handover', align: 'center', sortable: false},
-            {name: 'storage_handover_date', width: 130, index: 'storage_handover_date', align: 'center', sortable: false},
             {name: 'status', hidden: true, hidedlg: true},
             {
                 name: 'status1', width: 100, index: 'status', align: 'center', sortable: false,
@@ -175,27 +173,7 @@
 
         $('.ipt-person').selectUser();
 
-        var _dna_extract_is_search_more = localStorage.getItem('_dna_extract_is_search_more');
-        if (_dna_extract_is_search_more == 'true') {
-            getSearchTr([2, 3, 4]).show();
-            $('#btn-search-more').text('隐藏更多搜索项');
-        } else {
-            getSearchTr([2, 3, 4]).hide();
-            $('#btn-search-more').text('显示更多搜索项');
-        }
-
-        $('#btn-search-more').click(function () {
-            var _dna_extract_is_search_more = localStorage.getItem('_dna_extract_is_search_more');
-            if (_dna_extract_is_search_more == 'false') {
-                getSearchTr([2, 3, 4]).show();
-                $(this).text('隐藏更多搜索项');
-                localStorage.setItem('_dna_extract_is_search_more', 'true');
-            } else {
-                getSearchTr([2, 3, 4]).hide();
-                $(this).text('显示更多搜索项');
-                localStorage.setItem('_dna_extract_is_search_more', 'false');
-            }
-        });
+        showSearchMore($('#btn-search-more'),[2, 3],'_dna_extract_is_search_more');
     }();
 
     /**

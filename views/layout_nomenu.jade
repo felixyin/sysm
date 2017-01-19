@@ -33,8 +33,19 @@ html(lang='en')
             // inline styles related to this page
             link(rel='stylesheet', href='/animsition/dist/css/animsition.min.css')
             link(rel='stylesheet', href='/stylesheets/style.css')
+            style.
+                .my-toolbar > .btn-group, .my-toolbar > button {
+                    margin-right: 10px;
+                }
+
+                .btn-group > .btn-sm, .btn-group + .btn-sm {
+                    border-width: 4px;
+                }
+
+
 
         block script
+
             // ace settings handler
             script(src='/assets/js/ace-extra.min.js')
             // HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries
@@ -100,4 +111,28 @@ html(lang='en')
         // /.main-container
         //input#fileupload(type="file",name="files[]",data-url="/upload" multiple)
         script(type='text/javascript',src="/javascripts/layout-footer.js")
-
+        script.
+            function getBrowser() {
+                var ua = window.navigator.userAgent;
+                var isIE = window.ActiveXObject != undefined && ua.indexOf("MSIE") != -1;
+                var isFirefox = ua.indexOf("Firefox") != -1;
+                var isOpera = window.opr != undefined;
+                var isChrome = ua.indexOf("Chrome") && window.chrome;
+                var isSafari = ua.indexOf("Safari") != -1 && ua.indexOf("Version") != -1;
+                if (isIE) {
+                    return "IE";
+                } else if (isFirefox) {
+                    return "Firefox";
+                } else if (isOpera) {
+                    return "Opera";
+                } else if (isChrome) {
+                    return "Chrome";
+                } else if (isSafari) {
+                    return "Safari";
+                } else {
+                    return "Unkown";
+                }
+            }
+            if (getBrowser() != 'Chrome') {
+                $('body').append("<style>.btn-group > .dropdown-toggle { line-height: 21px; }</style>")
+            }

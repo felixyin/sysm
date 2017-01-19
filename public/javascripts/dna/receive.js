@@ -156,27 +156,7 @@
 
     $('.ipt-person').selectUser();
 
-    var _dna_receive_is_search_more = localStorage.getItem('_dna_receive_is_search_more');
-    if (_dna_receive_is_search_more == 'true') {
-        getSearchTr([2, 3]).show();
-        $('#btn-search-more').text('隐藏更多搜索项');
-    } else {
-        getSearchTr([2, 3]).hide();
-        $('#btn-search-more').text('显示更多搜索项');
-    }
-
-    $('#btn-search-more').click(function () {
-        var _dna_receive_is_search_more = localStorage.getItem('_dna_receive_is_search_more');
-        if (_dna_receive_is_search_more == 'false') {
-            getSearchTr([2, 3]).show();
-            $(this).text('隐藏更多搜索项');
-            localStorage.setItem('_dna_receive_is_search_more', 'true');
-        } else {
-            getSearchTr([2, 3]).hide();
-            $(this).text('显示更多搜索项');
-            localStorage.setItem('_dna_receive_is_search_more', 'false');
-        }
-    });
+    showSearchMore($('#btn-search-more'), [2], '_dna_receive_is_search_more');
 
     /**
      * 录入采血单

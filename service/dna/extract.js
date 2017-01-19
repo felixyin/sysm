@@ -26,8 +26,6 @@ function getSqls(params) {
         extract_check_date,
         extract_outer,
         extract_out_residue,
-        storage_handover,
-        storage_handover_date,
         status
     FROM dna_flow `;
 
@@ -49,8 +47,6 @@ function getSqls(params) {
     params.extract_check_date && (whereSql += " AND extract_check_date LIKE '%:extract_check_date%' /*提取审核时间*/\n");
     params.extract_outer && (whereSql += " AND extract_outer LIKE '%:extract_outer%' /*提取出库人*/\n");
     params.extract_out_residue && (whereSql += " AND extract_out_residue LIKE '%:extract_out_residue%' /*提取组试管剩余数量*/\n");
-    params.storage_handover && (whereSql += " AND storage_handover LIKE '%:storage_handover%' /*建库组接收人*/\n");
-    params.storage_handover_date && (whereSql += " AND storage_handover_date LIKE '%:storage_handover_date%' /*建库组接收时间*/\n");
     let status = params.status;
     if (status == '-1' || status == undefined) { // 全部
         whereSql += " AND status IN (4,5,6,7,8) /*状态*/\n";

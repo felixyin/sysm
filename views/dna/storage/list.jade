@@ -2,17 +2,7 @@
    Created by fy on 15-12-22.
 extends ../../layout_nomenu
 
-
 block content
-
-    style.
-        .my-toolbar > .btn-group, .my-toolbar > button {
-            margin-right: 10px;
-        }
-
-        .btn-group > .btn-sm, .btn-group + .btn-sm {
-            border-width: 4px;
-        }
 
     .main-content
         .page-content
@@ -55,13 +45,9 @@ block content
                         td 建库组试管剩余数量
                         td
                             input.col-xs-10.col-sm-5(type='text' , name='storage_out_residue', placeholder='请输入建库组试管剩余数量')
-                        td 上机组接收人
                         td
-                            input.col-xs-10.col-sm-5(type='text' , name='operate_handover', placeholder='请输入上机组接收人')
+                        td
                     tr
-                        td 上机组接收时间
-                        td
-                            input.col-xs-10.col-sm-5.ipt-date(type='text' , name='operate_handover_date', placeholder='请输入上机组接收时间')
                         td 状态
                         td
                             select#status.col-xs-12.clo-sm-10(style="width:180px;", name='status',placeholder='')
@@ -90,6 +76,8 @@ block content
                                 //option(value='21') 报告已发送
                         td
                         td
+                        td
+                        td
                             #btn-search.btn-group
                                 button.btn.btn-info.btn-sm(type='submit')
                                     i.icon-edit.bigger-110 &nbsp;&nbsp;&nbsp;搜索
@@ -114,9 +102,9 @@ block content
                             a(href='#') Separated link
                 span
                 #btn-sh.btn-group
-                    button.btn.btn-info.btn-sm(onclick="showShDialog(this)",disabled)
+                    button.btn.btn-info(onclick="showShDialog(this)",disabled)
                         i.icon-edit.bigger-110 &nbsp;&nbsp;&nbsp;审核
-                    button.btn.btn-info.dropdown-toggle.btn-sm(data-toggle='dropdown',disabled)
+                    button.btn.btn-info.dropdown-toggle(data-toggle='dropdown')
                         i.icon-angle-down.icon-only
                     ul.dropdown-menu.dropdown-yellow
                         li

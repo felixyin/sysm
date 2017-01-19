@@ -173,27 +173,8 @@
 
         $('.ipt-person').selectUser();
 
-        var _dna_operate_is_search_more = localStorage.getItem('_dna_operate_is_search_more');
-        if (_dna_operate_is_search_more == 'true') {
-            getSearchTr([2, 3, 4]).show();
-            $('#btn-search-more').text('隐藏更多搜索项');
-        } else {
-            getSearchTr([2, 3, 4]).hide();
-            $('#btn-search-more').text('显示更多搜索项');
-        }
+        showSearchMore($('#btn-search-more'), [2, 3, 4], '_dna_operate_is_search_more');
 
-        $('#btn-search-more').click(function () {
-            var _dna_operate_is_search_more = localStorage.getItem('_dna_operate_is_search_more');
-            if (_dna_operate_is_search_more == 'false') {
-                getSearchTr([2, 3, 4]).show();
-                $(this).text('隐藏更多搜索项');
-                localStorage.setItem('_dna_operate_is_search_more', 'true');
-            } else {
-                getSearchTr([2, 3, 4]).hide();
-                $(this).text('显示更多搜索项');
-                localStorage.setItem('_dna_operate_is_search_more', 'false');
-            }
-        });
     }();
 
     /**

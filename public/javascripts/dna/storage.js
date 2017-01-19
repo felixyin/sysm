@@ -14,9 +14,8 @@
         W._sortname = 'input_date';
         W._sortorder = 'ASC';
         W._postData = {};
-        W._colNames = ['序号', '条码编号',  '提取出库人', '提取组试管剩余数量', '建库组接收人', '建库组接收时间', '建库浓度',
-            '建库片段大小', '建库人', '建库时间', '建库审查人', '建库审查时间', '建库组出库人', '建库组试管剩余数量', '上机组接收人',
-            '上机组接收时间', '', '状态'];
+        W._colNames = ['序号', '条码编号', '提取出库人', '提取组试管剩余数量', '建库组接收人', '建库组接收时间', '建库浓度',
+            '建库片段大小', '建库人', '建库时间', '建库审查人', '建库审查时间', '建库组出库人', '建库组试管剩余数量', '', '状态'];
         W._colModel = [
             {name: 'id', width: 40, index: 'id', align: 'center', sortable: false, frozen: true},
             {name: 'barcode_long', width: 120, index: 'barcode_long', align: 'center', sortable: false, frozen: true},
@@ -51,8 +50,6 @@
                     return value;
                 }
             },
-            {name: 'operate_handover', width: 100, index: 'operate_handover', align: 'center', sortable: false},
-            {name: 'operate_handover_date', width: 130, index: 'operate_handover_date', align: 'center', sortable: false},
             {name: 'status', hidden: true, hidedlg: true},
             {
                 name: 'status1', width: 100, index: 'status', align: 'center', sortable: false,
@@ -172,27 +169,7 @@
 
         $('.ipt-person').selectUser();
 
-        var _dna_storage_is_search_more = localStorage.getItem('_dna_storage_is_search_more');
-        if (_dna_storage_is_search_more == 'true') {
-            getSearchTr([2, 3]).show();
-            $('#btn-search-more').text('隐藏更多搜索项');
-        } else {
-            getSearchTr([2, 3]).hide();
-            $('#btn-search-more').text('显示更多搜索项');
-        }
-
-        $('#btn-search-more').click(function () {
-            var _dna_storage_is_search_more = localStorage.getItem('_dna_storage_is_search_more');
-            if (_dna_storage_is_search_more == 'false') {
-                getSearchTr([2, 3]).show();
-                $(this).text('隐藏更多搜索项');
-                localStorage.setItem('_dna_storage_is_search_more', 'true');
-            } else {
-                getSearchTr([2, 3]).hide();
-                $(this).text('显示更多搜索项');
-                localStorage.setItem('_dna_storage_is_search_more', 'false');
-            }
-        });
+        showSearchMore($('#btn-search-more'), [2], '_dna_storage_is_search_more');
     }();
 
     /**
@@ -349,7 +326,7 @@
                 var id = ids[i];
                 var row = $(grid_selector).jqGrid('getRowData', id);
                 var status = row.status;
-                if (status ==11) { // 11为审核通过
+                if (status == 11) { // 11为审核通过
                     idArray.push(id);
                 } else {
                     $(grid_selector).jqGrid('setSelection', id, false);

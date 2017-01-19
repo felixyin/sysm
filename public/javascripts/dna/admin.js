@@ -233,26 +233,8 @@
         $('.ipt-person').selectUser();
 
         var trRowArray = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
-        var _dna_extract_is_search_more = localStorage.getItem('_dna_extract_is_search_more');
-        if (_dna_extract_is_search_more == 'true') {
-            getSearchTr(trRowArray).show();
-            $('#btn-search-more').text('隐藏更多搜索项');
-        } else {
-            getSearchTr(trRowArray).hide();
-            $('#btn-search-more').text('显示更多搜索项');
-        }
-        $('#btn-search-more').click(function () {
-            var _dna_extract_is_search_more = localStorage.getItem('_dna_extract_is_search_more');
-            if (_dna_extract_is_search_more == 'false') {
-                getSearchTr(trRowArray).show();
-                $(this).text('隐藏更多搜索项');
-                localStorage.setItem('_dna_extract_is_search_more', 'true');
-            } else {
-                getSearchTr(trRowArray).hide();
-                $(this).text('显示更多搜索项');
-                localStorage.setItem('_dna_extract_is_search_more', 'false');
-            }
-        });
+        showSearchMore($('#btn-search-more'), trRowArray, '_dna_report_is_search_more');
+
     }();
 
     /**
@@ -282,9 +264,9 @@
             Toast.show('保存成功');
             $('#preEdit').dialog('close').remove();
             jQuery(grid_selector).trigger('reloadGrid');
-        } else if(changedRows == -1){
+        } else if (changedRows == -1) {
             Toast.show('数据没有变化,不能保存!');
-        }else{
+        } else {
             Toast.show('保存失败,请联系管理员!');
             localStorage.setItem('_error_editExtract_Cb', error);
         }

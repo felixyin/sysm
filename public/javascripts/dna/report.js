@@ -14,7 +14,7 @@
         W._sortname = 'input_date';
         W._sortorder = 'ASC';
         W._postData = {};
-        W._colNames = ['序号', '条码编号',  '上机组发送人', '上机组试管剩余数量', '分析报告组接收人', '分析报告组接收时间', '分析结果',
+        W._colNames = ['序号', '条码编号', '上机组发送人', '上机组试管剩余数量', '分析报告组接收人', '分析报告组接收时间', '分析结果',
             '建议', '是否发送', '分析人', '分析时间', '报告发送人', '报告发送时间', '', '状态'];
         W._colModel = [
             {name: 'id', width: 40, index: 'id', align: 'center', sortable: false, frozen: true},
@@ -165,27 +165,8 @@
             pickerPosition: "bottom-right"
         });
 
-        var _dna_report_is_search_more = localStorage.getItem('_dna_report_is_search_more');
-        if (_dna_report_is_search_more == 'true') {
-            getSearchTr([1, 2]).show();
-            $('#btn-search-more').text('隐藏更多搜索项');
-        } else {
-            getSearchTr([1, 2]).hide();
-            $('#btn-search-more').text('显示更多搜索项');
-        }
+        showSearchMore($('#btn-search-more'), [1, 2], '_dna_report_is_search_more');
 
-        $('#btn-search-more').click(function () {
-            var _dna_report_is_search_more = localStorage.getItem('_dna_report_is_search_more');
-            if (_dna_report_is_search_more == 'false') {
-                getSearchTr([1, 2]).show();
-                $(this).text('隐藏更多搜索项');
-                localStorage.setItem('_dna_report_is_search_more', 'true');
-            } else {
-                getSearchTr([1, 2]).hide();
-                $(this).text('显示更多搜索项');
-                localStorage.setItem('_dna_report_is_search_more', 'false');
-            }
-        });
     }();
 
     /**

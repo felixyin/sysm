@@ -59,19 +59,6 @@ block content
                         td
                             input.col-xs-10.col-sm-5(type='text' , name='extract_out_residue', placeholder='请输入提取组试管剩余数量')
                     tr
-                        td 建库组接收人
-                        td
-                            input.col-xs-10.col-sm-5.ipt-person(type='text' , name='storage_handover', placeholder='请选择建库组接收人')
-                        td 建库组接收时间
-                        td
-                            input.col-xs-10.col-sm-5.ipt-date(type='text' , name='storage_handover_date', placeholder='请选择建库组接收时间')
-                        td 提取组接收人
-                        td
-                            input.col-xs-10.col-sm-5.ipt-person(type='text' , name='extract_handover', placeholder='请选择提取组接收人')
-                    tr
-                        td 提取组接收时间
-                        td
-                            input.col-xs-10.col-sm-5.ipt-date(type='text' , name='extract_handover_date', placeholder='请选择提取组接收时间')
                         td 状态
                         td
                             select#status.col-xs-12.clo-sm-10(style="width:180px;", name='status',placeholder='')
@@ -82,6 +69,8 @@ block content
                                 option(value='7') 提取审核-废弃
                                 option(value='8') 提取审核-重提取
                                 option(value='9') 交接后未建库
+                        td
+                        td
                         td
                         td
                             #btn-search.btn-group

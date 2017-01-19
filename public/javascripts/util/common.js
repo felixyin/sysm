@@ -54,6 +54,32 @@ function afterDomReady(selector, cb) {
     });
 }
 
+/**
+ * 显示更多搜索选项
+ */
+function showSearchMore(id,hideSearchRows, localStorageKey) {
+    var _dna_is_search_more = localStorage.getItem(localStorageKey);
+    if (_dna_is_search_more == 'true') {
+        getSearchTr(hideSearchRows).show();
+        $('#btn-search-more').text('隐藏更多搜索项');
+    } else {
+        getSearchTr(hideSearchRows).hide();
+        $('#btn-search-more').text('显示更多搜索项');
+    }
+    $(id).click(function () {
+        var _dna_receive_is_search_more = localStorage.getItem(localStorageKey);
+        if (_dna_receive_is_search_more == 'true') {
+            getSearchTr(hideSearchRows).hide();
+            $(this).text('显示更多搜索项');
+            localStorage.setItem(localStorageKey, 'false');
+        } else {
+            getSearchTr(hideSearchRows).show();
+            $(this).text('隐藏更多搜索项');
+            localStorage.setItem(localStorageKey, 'true');
+        }
+    });
+}
+
 (function (W) {
 
     /**
@@ -257,7 +283,7 @@ function afterDomReady(selector, cb) {
      * 选择用户jquery插件
      */
     jQuery.fn.extend({
-        selectUser:function(){
+        selectUser: function () {
             $(this).click(function () {
                 var self = this;
                 var userMark = $(self).parent().prev().text();

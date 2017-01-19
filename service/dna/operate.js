@@ -24,8 +24,6 @@ function getSqls(params) {
         operate_check_date,
         operate_outer,
         operate_out_residue,
-        report_handover,
-        report_handover_date,
         status
     FROM dna_flow `;
 
@@ -45,8 +43,6 @@ function getSqls(params) {
     params.operate_check_date && (whereSql += " AND operate_check_date LIKE '%:operate_check_date%' /*上机审查时间*/\n");
     params.operate_outer && (whereSql += " AND operate_outer LIKE '%:operate_outer%' /*上机组出库人*/\n");
     params.operate_out_residue && (whereSql += " AND operate_out_residue LIKE '%:operate_out_residue%' /*上机组试管剩余数量*/\n");
-    params.report_handover && (whereSql += " AND report_handover LIKE '%:report_handover%' /*分析报告组接收人*/\n");
-    params.report_handover_date && (whereSql += " AND report_handover_date LIKE '%:report_handover_date%' /*分析报告组接收时间*/\n");
     let status = params.status;
     if (status == '-1' || status == undefined) { // 全部
         whereSql += " AND status IN (14,15,16,17,18) /*状态*/\n";
