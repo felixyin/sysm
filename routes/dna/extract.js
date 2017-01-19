@@ -147,7 +147,7 @@ router.post('/exportExcel', (req, res) => {
                 //     width: '15'
                 // },
                 sample_outer: {
-                    displayName: '短采血管出库人',
+                    displayName: '采血管出库人',
                     headerStyle: styles.header,
                     cellStyle: styles.cell,
                     cellFormat: function (value, row) {
