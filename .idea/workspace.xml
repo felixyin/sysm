@@ -3,22 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="976d0898-fc8b-4527-8c5d-bd526aaafd9f" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/dna/admin.js" afterPath="$PROJECT_DIR$/public/javascripts/dna/admin.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/dna/extract.js" afterPath="$PROJECT_DIR$/public/javascripts/dna/extract.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/dna/operate.js" afterPath="$PROJECT_DIR$/public/javascripts/dna/operate.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/dna/receive.js" afterPath="$PROJECT_DIR$/public/javascripts/dna/receive.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/dna/report.js" afterPath="$PROJECT_DIR$/public/javascripts/dna/report.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/dna/storage.js" afterPath="$PROJECT_DIR$/public/javascripts/dna/storage.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/util/common.js" afterPath="$PROJECT_DIR$/public/javascripts/util/common.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service/dna/extract.js" afterPath="$PROJECT_DIR$/service/dna/extract.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service/dna/operate.js" afterPath="$PROJECT_DIR$/service/dna/operate.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service/dna/receive.js" afterPath="$PROJECT_DIR$/service/dna/receive.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service/dna/storage.js" afterPath="$PROJECT_DIR$/service/dna/storage.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/dna/extract/list.jade" afterPath="$PROJECT_DIR$/views/dna/extract/list.jade" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/dna/operate/list.jade" afterPath="$PROJECT_DIR$/views/dna/operate/list.jade" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/dna/receive/list.jade" afterPath="$PROJECT_DIR$/views/dna/receive/list.jade" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/dna/report/list.jade" afterPath="$PROJECT_DIR$/views/dna/report/list.jade" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/dna/storage/list.jade" afterPath="$PROJECT_DIR$/views/dna/storage/list.jade" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/layout_nomenu.jade" afterPath="$PROJECT_DIR$/views/layout_nomenu.jade" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -157,25 +146,25 @@
         <option value="$PROJECT_DIR$/views/dna/admin/edit.jade" />
         <option value="$PROJECT_DIR$/views/dna/admin/list.jade" />
         <option value="$PROJECT_DIR$/views/dna/receive/edit_cxg.jade" />
-        <option value="$PROJECT_DIR$/views/dna/report/list.jade" />
         <option value="$PROJECT_DIR$/views/dna/fragment/dnaBarcodeShortInput.jade" />
         <option value="$PROJECT_DIR$/routes/dna/receive.js" />
-        <option value="$PROJECT_DIR$/views/dna/receive/list.jade" />
-        <option value="$PROJECT_DIR$/views/dna/extract/list.jade" />
         <option value="$PROJECT_DIR$/public/javascripts/util/common.js" />
         <option value="$PROJECT_DIR$/public/javascripts/dna/receive.js" />
         <option value="$PROJECT_DIR$/public/javascripts/dna/extract.js" />
         <option value="$PROJECT_DIR$/public/javascripts/dna/operate.js" />
         <option value="$PROJECT_DIR$/public/javascripts/dna/report.js" />
         <option value="$PROJECT_DIR$/public/javascripts/dna/admin.js" />
-        <option value="$PROJECT_DIR$/views/dna/storage/list.jade" />
         <option value="$PROJECT_DIR$/public/javascripts/dna/storage.js" />
-        <option value="$PROJECT_DIR$/views/dna/operate/list.jade" />
         <option value="$PROJECT_DIR$/service/dna/receive.js" />
         <option value="$PROJECT_DIR$/service/dna/extract.js" />
         <option value="$PROJECT_DIR$/service/dna/storage.js" />
         <option value="$PROJECT_DIR$/service/dna/operate.js" />
         <option value="$PROJECT_DIR$/views/layout_nomenu.jade" />
+        <option value="$PROJECT_DIR$/views/dna/extract/list.jade" />
+        <option value="$PROJECT_DIR$/views/dna/receive/list.jade" />
+        <option value="$PROJECT_DIR$/views/dna/report/list.jade" />
+        <option value="$PROJECT_DIR$/views/dna/storage/list.jade" />
+        <option value="$PROJECT_DIR$/views/dna/operate/list.jade" />
       </list>
     </option>
   </component>
@@ -1036,7 +1025,7 @@
       <workItem from="1484191284202" duration="13127000" />
       <workItem from="1484472776068" duration="6447000" />
       <workItem from="1484662937458" duration="7228000" />
-      <workItem from="1484729324172" duration="6455000" />
+      <workItem from="1484729324172" duration="6804000" />
     </task>
     <task id="LOCAL-00010" summary="yarn安装">
       <created>1484143569710</created>
@@ -1108,12 +1097,19 @@
       <option name="project" value="LOCAL" />
       <updated>1484806561379</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="去掉下一步的接收人和接收时间的显示和搜索&#10;解决非chrome浏览器下拉按钮变小的问题">
+      <created>1484814183591</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1484814183591</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <option name="clearContext" value="false" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="281342000" />
+    <option name="totallyTimeSpent" value="281691000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1920" height="1123" extended-state="6" />
@@ -1198,7 +1194,8 @@
     <MESSAGE value="优化font文件的加载" />
     <MESSAGE value="修复 基本管理数据查询和保存的bug" />
     <MESSAGE value="去掉短条码编号" />
-    <option name="LAST_COMMIT_MESSAGE" value="去掉短条码编号" />
+    <MESSAGE value="去掉下一步的接收人和接收时间的显示和搜索&#10;解决非chrome浏览器下拉按钮变小的问题" />
+    <option name="LAST_COMMIT_MESSAGE" value="去掉下一步的接收人和接收时间的显示和搜索&#10;解决非chrome浏览器下拉按钮变小的问题" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1373,24 +1370,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/dna/admin/list.jade">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="84" column="0" lean-forward="false" selection-start-line="84" selection-start-column="0" selection-end-line="84" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/dna/receive/edit_cxg.jade">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="297">
           <caret line="25" column="29" lean-forward="false" selection-start-line="25" selection-start-column="29" selection-end-line="25" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/dna/report/list.jade">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="23" column="104" lean-forward="false" selection-start-line="23" selection-start-column="104" selection-end-line="23" selection-end-column="104" />
         </state>
       </provider>
     </entry>
@@ -1419,22 +1402,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-180">
           <caret line="0" column="2" lean-forward="false" selection-start-line="0" selection-start-column="2" selection-end-line="0" selection-end-column="2" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/dna/receive/list.jade">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="486">
-          <caret line="52" column="23" lean-forward="false" selection-start-line="52" selection-start-column="23" selection-end-line="52" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/dna/extract/list.jade">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="600">
-          <caret line="127" column="39" lean-forward="false" selection-start-line="127" selection-start-column="39" selection-end-line="127" selection-end-column="39" />
           <folding />
         </state>
       </provider>
@@ -1536,14 +1503,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/dna/storage/list.jade">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="666">
-          <caret line="132" column="39" lean-forward="false" selection-start-line="132" selection-start-column="39" selection-end-line="132" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/javascripts/dna/storage.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-6222">
@@ -1568,14 +1527,6 @@
             <marker date="1484813138000" expanded="true" signature="11075:11081" ph=" " />
             <marker date="1484813138000" expanded="true" signature="11081:11087" ph=" " />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/dna/operate/list.jade">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="105" column="19" lean-forward="false" selection-start-line="105" selection-start-column="19" selection-end-line="105" selection-end-column="19" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1647,6 +1598,54 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="168">
           <caret line="113" column="14" lean-forward="false" selection-start-line="113" selection-start-column="14" selection-end-line="113" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/dna/admin/list.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="531">
+          <caret line="260" column="56" lean-forward="false" selection-start-line="260" selection-start-column="56" selection-end-line="260" selection-end-column="56" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/dna/receive/list.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="66" column="32" lean-forward="false" selection-start-line="66" selection-start-column="32" selection-end-line="66" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/dna/report/list.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="58" column="32" lean-forward="false" selection-start-line="58" selection-start-column="32" selection-end-line="58" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/dna/storage/list.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="504">
+          <caret line="75" column="55" lean-forward="false" selection-start-line="75" selection-start-column="55" selection-end-line="75" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/dna/extract/list.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="65" column="32" lean-forward="false" selection-start-line="65" selection-start-column="32" selection-end-line="65" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/dna/operate/list.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="504">
+          <caret line="95" column="55" lean-forward="false" selection-start-line="95" selection-start-column="55" selection-end-line="95" selection-end-column="55" />
           <folding />
         </state>
       </provider>
