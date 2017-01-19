@@ -85,7 +85,6 @@ function getSqls(params) {
     params.report_date && (whereSql += " AND report_date LIKE '%:report_date%' /*分析时间*/\n");
     params.report_sender && (whereSql += " AND report_sender LIKE '%:report_sender%' /*报告发送人*/\n");
     params.report_send_date && (whereSql += " AND report_send_date LIKE '%:report_send_date%' /*报告发送时间*/\n");
-    // params.status && (whereSql += " AND status LIKE '%:status%' /*状态（０、已删除；1、已录入采血单；2、已更换采血管；3、已审批且入库；４、交接后未提取；５、提取且已保存；６、提取审核-合格；７、提取审核-废弃；８、提取审核-重提取；９、交接后未建库；10、建库且已保存；11、建库审核-合格；12、建库审核-废弃；13、建库审核-重建库；14、交接后未上机；15、上机已保存；16、上机审核-合格；17、上机审核-废弃；18、上机审核-重上机；19、交接后未分析；20、分析已保存；21、报告已发送）*/\n");
 
     let status = params.status;
     if (status == '-1' || status == undefined) { // 全部

@@ -66,8 +66,8 @@ block content
                                 option(value='-1') 全部
                                 option(value='0') 已废弃
                                 option(value='1') 已录入采血单
-                                option(value='2') 已更换采血管
-                                option(value='3') 已审批且入库
+                                option(value='2') 已审批
+                                option(value='3') 已入库
                                 option(value='4') 交接后未提取
                                 option(value='5') 提取且已保存
                                 option(value='6') 提取审核-合格
@@ -153,6 +153,10 @@ block content
                         li
                             a(href='javascript:clearUser("交接人员")') 不记住交接人员
                 span
+                textarea#barcode-copy-ta(style='width:0px;height:0px;position:absolute;z-index:-100;margin-top:5px;margin-left:5px;')
+                button#btn-copy-id.btn.btn-default.btn-sm(onclick="copyBarcode(this)",data-clipboard-target="#barcode-copy-ta")
+                    i.icon-download-alt.bigger-110 复制条码编号
+                span
                 button#btn-dc-id.btn.btn-default.btn-sm(onclick="exportCvs(this)")
                     i.icon-download-alt.bigger-110 导出EXCEL
                 //button#btn-dy-id.btn.btn-default.btn-sm(onclick="dy(this)")
@@ -160,4 +164,5 @@ block content
 
             table#grid-table
             #grid-pager
+    script(type='text/javascript',src='clipboard/dist/clipboard.min.js')
     script(type='text/javascript',src="javascripts/dna/receive.js")

@@ -289,6 +289,6 @@ $(document.body).keyup(function (event) {
     }
 });
 
-document.body.onselectstart = document.body.oncontextmenu = function () {
-    return false;
-};
+// document.body.onselectstart = document.body.oncontextmenu = function () {
+//     return false;
+// };

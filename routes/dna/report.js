@@ -237,10 +237,10 @@ router.post('/exportExcel', (req, res) => {
                                 text = '已录入采血单';
                                 break;
                             case 2:
-                                text = '已更换采血管';
+                                text = '已审批';
                                 break;
                             case 3:
-                                text = '已审批且入库';
+                                text = '已入库';
                                 break;
                             case 4:
                                 text = '交接后未提取';

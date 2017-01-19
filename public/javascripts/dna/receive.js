@@ -50,10 +50,10 @@
                         text = '已录入采血单';
                         break;
                     case 2:
-                        text = '已更换采血管';
+                        text = '已审批';
                         break;
                     case 3:
-                        text = '已审批且入库';
+                        text = '已入库';
                         break;
                     case 4:
                         text = '交接后未提取';
@@ -121,28 +121,31 @@
         $('#btn-cxd').children('button').prop('disabled', false).first().children('i').html('&nbsp;&nbsp;&nbsp;批量录入采血单');
         // $('#btn-cxg').children('button').prop('disabled', false).first().children('i').html('&nbsp;&nbsp;&nbsp;批量更换采血管');
         $('#btn-sh').children('button').prop('disabled', true).first().children('i').html('&nbsp;&nbsp;&nbsp;审核');
+        $('#btn-rk').children('button').prop('disabled', true).first().children('i').html('&nbsp;&nbsp;&nbsp;入库');
         $('#btn-ck').children('button').prop('disabled', false).first().children('i').html('&nbsp;&nbsp;&nbsp;批量出库');
     };
     W.updateActionIcons();
 
     W.onSelectRow = function (ids, status) { //单击选择行
-        // if(status)
         var myIds = $(grid_selector).jqGrid('getGridParam', 'selarrrow');
         var selectedLength = myIds.length;
         if (selectedLength == 1) {
             $('#btn-cxd').children('button').prop('disabled', false).first().children('i').html('&nbsp;&nbsp;&nbsp;修改采血单');
             // $('#btn-cxg').children('button').prop('disabled', false).first().children('i').html('&nbsp;&nbsp;&nbsp;更换采血管');
             $('#btn-sh').children('button').prop('disabled', false).first().children('i').html('&nbsp;&nbsp;&nbsp;审核');
+            $('#btn-rk').children('button').prop('disabled', false).first().children('i').html('&nbsp;&nbsp;&nbsp;入库');
             $('#btn-ck').children('button').prop('disabled', false).first().children('i').html('&nbsp;&nbsp;&nbsp;出库');
         } else if (selectedLength > 1) {
             $('#btn-cxd').children('button').prop('disabled', true).first().children('i').html('&nbsp;&nbsp;&nbsp;批量录入采血单');
             // $('#btn-cxg').children('button').prop('disabled', true);
             $('#btn-sh').children('button').prop('disabled', false).first().children('i').html('&nbsp;&nbsp;&nbsp;批量审核');
+            $('#btn-rk').children('button').prop('disabled', false).first().children('i').html('&nbsp;&nbsp;&nbsp;批量入库');
             $('#btn-ck').children('button').prop('disabled', false).first().children('i').html('&nbsp;&nbsp;&nbsp;批量出库');
         } else { // 0
             $('#btn-cxd').children('button').prop('disabled', false).first().children('i').html('&nbsp;&nbsp;&nbsp;批量录入采血单');
             // $('#btn-cxg').children('button').prop('disabled', false).first().children('i').html('&nbsp;&nbsp;&nbsp;批量更换采血管');
             $('#btn-sh').children('button').prop('disabled', true).first().children('i').html('&nbsp;&nbsp;&nbsp;审核');
+            $('#btn-rk').children('button').prop('disabled', true).first().children('i').html('&nbsp;&nbsp;&nbsp;入库');
             $('#btn-ck').children('button').prop('disabled', false).first().children('i').html('&nbsp;&nbsp;&nbsp;批量出库');
         }
     };
@@ -284,7 +287,7 @@
             for (var i in ids) {
                 var id = ids[i];
                 var row = $(grid_selector).jqGrid('getRowData', id);
-                if (row.status == 2) {// 已更换采血管
+                if (row.status == 1) {// 已录入采血单
                     idArray.push(id);
                 } else {
                     $(grid_selector).jqGrid('setSelection', id, false);
@@ -292,7 +295,7 @@
                 }
             }
             if (warnArray.length > 0) {
-                Toast.show('您选择的部分行不符合审核条件(未更换采血管),已经取消选中');
+                Toast.show('您选择的部分行的状态不符合审核条件,已经取消选中');
             }
             if (idArray.length > 0) {
                 W.selectUser('审核人员', function (userId) {
@@ -339,23 +342,55 @@
             }
             if (idArray.length > 0) {
                 W.selectUser('入库人员', function (userId) {
-                    $.post('dna/receive/addSh', {checker: userId, ids: idArray.join(',')}, function (result) {
-                        if (result.changedRows > 0) {
-                            if (result.changedRows == 1) {
-                                Toast.show(userId + ',入库成功!');
-                            } else {
-                                Toast.show(userId + ',批量入库成功!');
+                    var dnaWarehouse = jade.templates.dnaWarehouse({
+                        action: 'dna/receive/addRk',
+                        ids: idArray.join(','),
+                        warehouser: userId
+                    });
+                    window.__myDialog = bootbox.dialog({
+                        title: '入库',
+                        message: dnaWarehouse,
+                        buttons: {
+                            tiJiao: {
+                                label: "保存",
+                                className: "btn-success my-submit-btn-id",
+                                callback: function () {
+                                    if ($('#edit-form').data('cantSubmit') === 1) {
+                                        return false;
+                                    }
+                                    $('.my-submit-btn-id').hide();
+                                    $('#edit-form').submit();
+                                    return false;
+                                }
                             }
-                            jQuery(grid_selector).trigger('reloadGrid');
-                        } else {
-                            Toast.show(userId + ',入库失败,请联系管理员!');
-                            localStorage.setItem('_error_addSh', result.err);
                         }
-                    })
+                    });
+                    //
+                    // afterDomReady('#role', function ($dom) {
+                    //     $dom.chosen();
+                    //     $('#role_chosen').width(165);
+                    // });
                 });
             }
         } else {
             Toast.show('请先在列表中勾选您要入库的数据行');
+        }
+    };
+
+    /**
+     * 入库回调
+     * @param changedRows
+     * @param error
+     */
+    W.addRkCb = function (changedRows, error) {
+        if (changedRows > 0) {
+            $('#preAddRk').dialog('close').remove();
+            Toast.show('入库成功');
+            window.__myDialog.modal('hide');
+            jQuery(grid_selector).trigger('reloadGrid');
+        } else {
+            Toast.show('更换采血管失败,请联系管理员!');
+            localStorage.setItem('_error_addCxg', error);
         }
     };
 
@@ -428,5 +463,41 @@
             .off('submit').attr('action', 'dna/receive/exportExcel').attr('method', 'post').attr('target', '_blank').submit()
             .on('submit', searchFormSubmitHandler).removeAttr('action').removeAttr('target');
     };
+
+    /**
+     * 复制条码编号
+     */
+    W.copyBarcode = function (owner) {
+        var barcodeShortArray = [];
+        var ids = $(grid_selector).jqGrid('getGridParam', 'selarrrow');
+        if (ids && ids.length) {
+            for (var i in ids) {
+                var row = $(grid_selector).jqGrid('getRowData', ids[i]);
+                barcodeShortArray.push(row.barcode_long);
+            }
+        }
+        console.log(barcodeShortArray.join('\n'));
+        if (barcodeShortArray.length >= 1) {
+            $('#barcode-copy-ta').val(barcodeShortArray.join('\n'));
+        } else {
+            Toast.show('请先勾选要复制的行');
+        }
+    };
+
+    var clipboard = new Clipboard('#btn-copy-id');
+    clipboard.on('success', function (e) {
+        // console.error('Action:', e.action);
+        // console.info('Text:', e.text);
+        // console.info('Trigger:', e.trigger);
+        if (e.text && e.text.length > 0) {
+            Toast.show('已复制到剪贴板');
+        }
+        e.clearSelection();
+    });
+    clipboard.on('error', function (e) {
+        Toast.show('未知原因,复制失败');
+        // console.error('Action:', e.action);
+        // console.error('Trigger:', e.trigger);
+    });
 
 })(window);

@@ -145,8 +145,19 @@ exports.updateCxg = (cxg, cb) => {
  */
 exports.updateSh = (sh, cb) => {
     console.log(sh.ids);
-    let sql = 'UPDATE dna_flow AS t SET t.checker="' + sh.checker + '", t.check_date=NOW(), t.sample_out_residue =3, t.status=3 WHERE t.id in (' + sh.ids + ')';
+    let sql = 'UPDATE dna_flow AS t SET t.checker="' + sh.checker + '", t.check_date=NOW(), t.sample_out_residue =2, t.status=3 WHERE t.id in (' + sh.ids + ')';
     console.log(sql);
+    db.pool.query(sql, cb);
+};
+
+/**
+ * 入库
+ * @param rk
+ * @param cb
+ */
+exports.updateRk = (rk, cb) => {
+    console.log(rk);
+    let sql = 'UPDATE dna_flow AS t SET t.warehouser="' + rk.warehouser + '", t.warehouse_place="' + rk.warehouse_place + '", t.warehouse_date=NOW(), t.status =3 WHERE t.id in (' + rk.ids + ')';
     db.pool.query(sql, cb);
 };
 

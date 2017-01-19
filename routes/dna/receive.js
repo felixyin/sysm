@@ -116,8 +116,10 @@ router.post('/addSh', (req, res) => {
  * 入库
  */
 router.post('/addRk', (req, res) => {
-    receiveService.updateDnaFlowById(req.body, (err, result) => {
-        // res.
+    receiveService.updateRk(req.body, (err, result) => {
+        console.error(err);
+        let errMsg = JSON.stringify(err);
+        utils.jsonpAndEnd(res, `parent.addRkCb(${result ? result.changedRows : null}, '${errMsg}');`);
     });
 });
 
@@ -423,10 +425,10 @@ router.post('/exportExcel', (req, res) => {
                                 text = '已录入采血单';
                                 break;
                             case 2:
-                                text = '已更换采血管';
+                                text = '已审批';
                                 break;
                             case 3:
-                                text = '已审批且入库';
+                                text = '已入库';
                                 break;
                             case 4:
                                 text = '交接后未提取';
