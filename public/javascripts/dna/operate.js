@@ -14,7 +14,7 @@
         W._sortname = 'input_date';
         W._sortorder = 'ASC';
         W._postData = {};
-        W._colNames = ['序号', '条码编号', '建库组出库人', '建库组试管剩余数量', '上机组接收人', '上机组接收时间', '上机芯片编码',
+        W._colNames = ['序号', '条码编号', '建库组出库人', '建库组试管剩余数量', '上机组接收人', '上机组接收时间', '建库浓度', '建库片段大小', '上机芯片编码',
             '上机reads数', '上机q30值', '上机人', '上机时间', '上机审查人', '上机审查时间', '上机组出库人', '上机组试管剩余数量',
             '分析报告组接收人', '分析报告组接收时间', '', '状态'];
         W._colModel = [
@@ -34,6 +34,8 @@
             },
             {name: 'operate_handover', width: 100, index: 'operate_handover', align: 'center', sortable: false},
             {name: 'operate_handover_date', width: 130, index: 'operate_handover_date', align: 'center', sortable: false},
+            {name: 'storage_deep', width: 100, index: 'storage_deep', align: 'center', sortable: false},
+            {name: 'storage_part_size', width: 100, index: 'storage_part_size', align: 'center', sortable: false},
             {name: 'operate_chip_code', width: 100, index: 'operate_chip_code', align: 'center', sortable: false},
             {name: 'operate_reads_val', width: 100, index: 'operate_reads_val', align: 'center', sortable: false},
             {name: 'operate_q30_val', width: 100, index: 'operate_q30_val', align: 'center', sortable: false},

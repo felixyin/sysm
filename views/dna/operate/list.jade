@@ -65,9 +65,13 @@ block content
                         td 上机组试管剩余数量
                         td
                             input.col-xs-10.col-sm-5(type='text' , name='operate_out_residue', placeholder='请输入上机组试管剩余数量')
+                        td 建库浓度
                         td
-                        td
+                            input.col-xs-10.col-sm-5(type='text' , name='storage_deep', placeholder='请输入建库浓度')
                     tr
+                        td 建库片段大小
+                        td
+                            input.col-xs-10.col-sm-5(type='text' , name='storage_part_size', placeholder='请输入建库片段大小')
                         td 状态
                         td
                             select#status.col-xs-12.clo-sm-10(style="width:180px;", name='status',placeholder='')
@@ -94,8 +98,6 @@ block content
                                 option(value='19') 交接后未分析
                                 option(value='20') 分析已保存
                                 option(value='21') 报告已发送
-                        td
-                        td
                         td
                         td
                             #btn-search.btn-group

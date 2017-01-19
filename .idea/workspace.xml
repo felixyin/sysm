@@ -3,9 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="976d0898-fc8b-4527-8c5d-bd526aaafd9f" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/dna/storage.js" afterPath="$PROJECT_DIR$/public/javascripts/dna/storage.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service/dna/storage.js" afterPath="$PROJECT_DIR$/service/dna/storage.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/dna/storage/list.jade" afterPath="$PROJECT_DIR$/views/dna/storage/list.jade" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/dna/operate.js" afterPath="$PROJECT_DIR$/public/javascripts/dna/operate.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service/dna/operate.js" afterPath="$PROJECT_DIR$/service/dna/operate.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/dna/operate/list.jade" afterPath="$PROJECT_DIR$/views/dna/operate/list.jade" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -133,7 +133,6 @@
         <option value="$PROJECT_DIR$/views/dna/receive/edit_cxg.jade" />
         <option value="$PROJECT_DIR$/views/dna/fragment/dnaBarcodeShortInput.jade" />
         <option value="$PROJECT_DIR$/service/dna/extract.js" />
-        <option value="$PROJECT_DIR$/service/dna/operate.js" />
         <option value="$PROJECT_DIR$/views/layout_nomenu.jade" />
         <option value="$PROJECT_DIR$/public/javascripts/layout-footer.js" />
         <option value="$PROJECT_DIR$/app.js" />
@@ -142,12 +141,10 @@
         <option value="$PROJECT_DIR$/views/dna/admin/list.jade" />
         <option value="$PROJECT_DIR$/views/dna/admin/edit.jade" />
         <option value="$PROJECT_DIR$/views/dna/extract/list.jade" />
-        <option value="$PROJECT_DIR$/views/dna/operate/list.jade" />
         <option value="$PROJECT_DIR$/views/dna/report/list.jade" />
         <option value="$PROJECT_DIR$/service/dna/admin.js" />
         <option value="$PROJECT_DIR$/public/javascripts/dna/admin.js" />
         <option value="$PROJECT_DIR$/public/javascripts/dna/extract.js" />
-        <option value="$PROJECT_DIR$/public/javascripts/dna/operate.js" />
         <option value="$PROJECT_DIR$/public/javascripts/dna/report.js" />
         <option value="$PROJECT_DIR$/routes/dna/admin.js" />
         <option value="$PROJECT_DIR$/routes/dna/extract.js" />
@@ -161,8 +158,11 @@
         <option value="$PROJECT_DIR$/public/javascripts/util/common.js" />
         <option value="$PROJECT_DIR$/public/javascripts/dna/receive.js" />
         <option value="$PROJECT_DIR$/service/dna/storage.js" />
-        <option value="$PROJECT_DIR$/public/javascripts/dna/storage.js" />
         <option value="$PROJECT_DIR$/views/dna/storage/list.jade" />
+        <option value="$PROJECT_DIR$/public/javascripts/dna/storage.js" />
+        <option value="$PROJECT_DIR$/public/javascripts/dna/operate.js" />
+        <option value="$PROJECT_DIR$/service/dna/operate.js" />
+        <option value="$PROJECT_DIR$/views/dna/operate/list.jade" />
       </list>
     </option>
   </component>
@@ -1043,7 +1043,7 @@
       <workItem from="1484191284202" duration="13127000" />
       <workItem from="1484472776068" duration="6447000" />
       <workItem from="1484662937458" duration="7228000" />
-      <workItem from="1484729324172" duration="18679000" />
+      <workItem from="1484729324172" duration="19074000" />
     </task>
     <task id="LOCAL-00010" summary="yarn安装">
       <created>1484143569710</created>
@@ -1136,12 +1136,19 @@
       <option name="project" value="LOCAL" />
       <updated>1484838117635</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="建库管理中显示提取的信息">
+      <created>1484838746885</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1484838746885</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <option name="clearContext" value="false" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="293566000" />
+    <option name="totallyTimeSpent" value="293961000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1920" height="1122" extended-state="6" />
@@ -1229,7 +1236,8 @@
     <MESSAGE value="去掉下一步的接收人和接收时间的显示和搜索&#10;解决非chrome浏览器下拉按钮变小的问题" />
     <MESSAGE value="所有的模块,的状态搜索,显示所有选项." />
     <MESSAGE value="去掉采血管更换的状态&#10;标本接收管理增加入库功能" />
-    <option name="LAST_COMMIT_MESSAGE" value="去掉采血管更换的状态&#10;标本接收管理增加入库功能" />
+    <MESSAGE value="建库管理中显示提取的信息" />
+    <option name="LAST_COMMIT_MESSAGE" value="建库管理中显示提取的信息" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1284,14 +1292,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/service/dna/operate.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="45" column="0" lean-forward="false" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1384,14 +1384,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/dna/operate/list.jade">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="77" column="51" lean-forward="false" selection-start-line="77" selection-start-column="51" selection-end-line="77" selection-end-column="51" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/dna/operate/edit.jade">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-252">
@@ -1461,33 +1453,6 @@
         <state relative-caret-position="298">
           <caret line="153" column="37" lean-forward="false" selection-start-line="153" selection-start-column="37" selection-end-line="153" selection-end-column="37" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/javascripts/dna/operate.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="298">
-          <caret line="72" column="37" lean-forward="false" selection-start-line="72" selection-start-column="37" selection-end-line="72" selection-end-column="37" />
-          <folding>
-            <marker date="1484835240000" expanded="true" signature="11195:11210" ph="..." />
-            <marker date="1484835240000" expanded="true" signature="11241:11256" ph="..." />
-            <marker date="1484835240000" expanded="true" signature="11417:11423" ph=" " />
-            <marker date="1484835240000" expanded="true" signature="11423:11429" ph=" " />
-            <marker date="1484835240000" expanded="true" signature="11429:11435" ph=" " />
-            <marker date="1484835240000" expanded="true" signature="11435:11441" ph=" " />
-            <marker date="1484835240000" expanded="true" signature="11442:11448" ph=" " />
-            <marker date="1484835240000" expanded="true" signature="11448:11454" ph=" " />
-            <marker date="1484835240000" expanded="true" signature="11454:11460" ph=" " />
-            <marker date="1484835240000" expanded="true" signature="11460:11466" ph=" " />
-            <marker date="1484835240000" expanded="true" signature="11466:11472" ph=" " />
-            <marker date="1484835240000" expanded="true" signature="11472:11478" ph=" " />
-            <marker date="1484835240000" expanded="true" signature="11478:11484" ph=" " />
-            <marker date="1484835240000" expanded="true" signature="11485:11491" ph=" " />
-            <marker date="1484835240000" expanded="true" signature="11491:11497" ph=" " />
-            <marker date="1484835240000" expanded="true" signature="11497:11503" ph=" " />
-            <marker date="1484835240000" expanded="true" signature="11503:11509" ph=" " />
-            <marker date="1484835240000" expanded="true" signature="11509:11515" ph=" " />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1630,44 +1595,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/javascripts/dna/storage.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1747">
-          <caret line="176" column="54" lean-forward="false" selection-start-line="176" selection-start-column="54" selection-end-line="176" selection-end-column="54" />
-          <folding>
-            <element signature="e#3578#6277#0" expanded="false" />
-            <marker date="1484838643000" expanded="true" signature="11409:11424" ph="..." />
-            <marker date="1484838643000" expanded="true" signature="11455:11470" ph="..." />
-            <marker date="1484838643000" expanded="true" signature="11631:11637" ph=" " />
-            <marker date="1484838643000" expanded="true" signature="11637:11643" ph=" " />
-            <marker date="1484838643000" expanded="true" signature="11643:11649" ph=" " />
-            <marker date="1484838643000" expanded="true" signature="11649:11655" ph=" " />
-            <marker date="1484838643000" expanded="true" signature="11656:11662" ph=" " />
-            <marker date="1484838643000" expanded="true" signature="11662:11668" ph=" " />
-            <marker date="1484838643000" expanded="true" signature="11668:11674" ph=" " />
-            <marker date="1484838643000" expanded="true" signature="11674:11680" ph=" " />
-            <marker date="1484838643000" expanded="true" signature="11680:11686" ph=" " />
-            <marker date="1484838643000" expanded="true" signature="11686:11692" ph=" " />
-            <marker date="1484838643000" expanded="true" signature="11692:11698" ph=" " />
-            <marker date="1484838643000" expanded="true" signature="11699:11705" ph=" " />
-            <marker date="1484838643000" expanded="true" signature="11705:11711" ph=" " />
-            <marker date="1484838643000" expanded="true" signature="11711:11717" ph=" " />
-            <marker date="1484838643000" expanded="true" signature="11717:11723" ph=" " />
-            <marker date="1484838643000" expanded="true" signature="11723:11729" ph=" " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/dna/storage/list.jade">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="505">
-          <caret line="61" column="29" lean-forward="false" selection-start-line="61" selection-start-column="29" selection-end-line="61" selection-end-column="29" />
-          <folding>
-            <element signature="n#select#0;n#td#3;n#tr#5;n#table#0;n#form#0;n#div#0;n#div#0;n#block#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/dna/extract/list.jade">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="432">
@@ -1711,10 +1638,95 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/public/javascripts/dna/operate.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="37" column="12" lean-forward="false" selection-start-line="37" selection-start-column="12" selection-end-line="37" selection-end-column="12" />
+          <folding>
+            <element signature="e#3579#6278#0" expanded="false" />
+            <element signature="e#6804#8507#0" expanded="false" />
+            <marker date="1484838889000" expanded="true" signature="11433:11448" ph="..." />
+            <marker date="1484838889000" expanded="true" signature="11479:11494" ph="..." />
+            <marker date="1484838889000" expanded="true" signature="11655:11661" ph=" " />
+            <marker date="1484838889000" expanded="true" signature="11661:11667" ph=" " />
+            <marker date="1484838889000" expanded="true" signature="11667:11673" ph=" " />
+            <marker date="1484838889000" expanded="true" signature="11673:11679" ph=" " />
+            <marker date="1484838889000" expanded="true" signature="11680:11686" ph=" " />
+            <marker date="1484838889000" expanded="true" signature="11686:11692" ph=" " />
+            <marker date="1484838889000" expanded="true" signature="11692:11698" ph=" " />
+            <marker date="1484838889000" expanded="true" signature="11698:11704" ph=" " />
+            <marker date="1484838889000" expanded="true" signature="11704:11710" ph=" " />
+            <marker date="1484838889000" expanded="true" signature="11710:11716" ph=" " />
+            <marker date="1484838889000" expanded="true" signature="11716:11722" ph=" " />
+            <marker date="1484838889000" expanded="true" signature="11723:11729" ph=" " />
+            <marker date="1484838889000" expanded="true" signature="11729:11735" ph=" " />
+            <marker date="1484838889000" expanded="true" signature="11735:11741" ph=" " />
+            <marker date="1484838889000" expanded="true" signature="11741:11747" ph=" " />
+            <marker date="1484838889000" expanded="true" signature="11747:11753" ph=" " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/dna/operate/list.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="502">
+          <caret line="100" column="0" lean-forward="false" selection-start-line="100" selection-start-column="0" selection-end-line="100" selection-end-column="0" />
+          <folding>
+            <element signature="n#select#0;n#td#3;n#tr#5;n#table#0;n#form#0;n#div#0;n#div#0;n#block#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service/dna/operate.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="38" column="4" lean-forward="false" selection-start-line="38" selection-start-column="4" selection-end-line="38" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/javascripts/dna/storage.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="468">
+          <caret line="41" column="12" lean-forward="false" selection-start-line="41" selection-start-column="12" selection-end-line="41" selection-end-column="12" />
+          <folding>
+            <element signature="e#3578#6277#0" expanded="false" />
+            <marker date="1484838643000" expanded="true" signature="11409:11424" ph="..." />
+            <marker date="1484838643000" expanded="true" signature="11455:11470" ph="..." />
+            <marker date="1484838643000" expanded="true" signature="11631:11637" ph=" " />
+            <marker date="1484838643000" expanded="true" signature="11637:11643" ph=" " />
+            <marker date="1484838643000" expanded="true" signature="11643:11649" ph=" " />
+            <marker date="1484838643000" expanded="true" signature="11649:11655" ph=" " />
+            <marker date="1484838643000" expanded="true" signature="11656:11662" ph=" " />
+            <marker date="1484838643000" expanded="true" signature="11662:11668" ph=" " />
+            <marker date="1484838643000" expanded="true" signature="11668:11674" ph=" " />
+            <marker date="1484838643000" expanded="true" signature="11674:11680" ph=" " />
+            <marker date="1484838643000" expanded="true" signature="11680:11686" ph=" " />
+            <marker date="1484838643000" expanded="true" signature="11686:11692" ph=" " />
+            <marker date="1484838643000" expanded="true" signature="11692:11698" ph=" " />
+            <marker date="1484838643000" expanded="true" signature="11699:11705" ph=" " />
+            <marker date="1484838643000" expanded="true" signature="11705:11711" ph=" " />
+            <marker date="1484838643000" expanded="true" signature="11711:11717" ph=" " />
+            <marker date="1484838643000" expanded="true" signature="11717:11723" ph=" " />
+            <marker date="1484838643000" expanded="true" signature="11723:11729" ph=" " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/dna/storage/list.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="27" column="23" lean-forward="false" selection-start-line="27" selection-start-column="23" selection-end-line="27" selection-end-column="23" />
+          <folding>
+            <element signature="n#select#0;n#td#3;n#tr#5;n#table#0;n#form#0;n#div#0;n#div#0;n#block#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/service/dna/storage.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="45" column="4" lean-forward="false" selection-start-line="45" selection-start-column="4" selection-end-line="45" selection-end-column="4" />
+        <state relative-caret-position="504">
+          <caret line="45" column="16" lean-forward="true" selection-start-line="45" selection-start-column="16" selection-end-line="45" selection-end-column="16" />
           <folding />
         </state>
       </provider>
