@@ -14,13 +14,13 @@
         W._sortname = 'input_date';
         W._sortorder = 'ASC';
         W._postData = {};
-        W._colNames = ['序号', '长条码编号', '短条码编号', '提取出库人', '提取组试管剩余数量', '建库组接收人', '建库组接收时间', '建库浓度',
+        W._colNames = ['序号', '条码编号',  '提取出库人', '提取组试管剩余数量', '建库组接收人', '建库组接收时间', '建库浓度',
             '建库片段大小', '建库人', '建库时间', '建库审查人', '建库审查时间', '建库组出库人', '建库组试管剩余数量', '上机组接收人',
             '上机组接收时间', '', '状态'];
         W._colModel = [
             {name: 'id', width: 40, index: 'id', align: 'center', sortable: false, frozen: true},
             {name: 'barcode_long', width: 120, index: 'barcode_long', align: 'center', sortable: false, frozen: true},
-            {name: 'barcode_short', width: 100, index: 'barcode_short', align: 'center', sortable: false, frozen: true},
+            // {name: 'barcode_short', width: 100, index: 'barcode_short', align: 'center', sortable: false, frozen: true},
             {name: 'extract_outer', width: 100, index: 'extract_outer', align: 'center', sortable: false},
             {
                 name: 'extract_out_residue',
@@ -205,15 +205,15 @@
             if (ids && ids.length == 1) {
                 var row = $(grid_selector).jqGrid('getRowData', ids[0]);
                 var id = row.id;
-                var barcode_short = row.barcode_short;
+                var barcode_long = row.barcode_long;
                 var status = parseInt(row.status);
                 if (status < 11) { // 未审批状态
-                    W.showDialog('preEdit', '/dna/storage/preEdit?id=' + id + '&userId=' + userId, '录入建库数据:' + barcode_short,
+                    W.showDialog('preEdit', '/dna/storage/preEdit?id=' + id + '&userId=' + userId, '录入建库数据:' + barcode_long,
                         '70%', '350px', function (contextWindow, dialog) {
                             $('#edit-form', contextWindow.document).submit();
                         });
                 } else {
-                    Toast.show('此记录已审批,不能修改:' + barcode_short);
+                    Toast.show('此记录已审批,不能修改:' + barcode_long);
                 }
             } else {
                 Toast.show('请先勾选一行数据');
@@ -252,7 +252,7 @@
                     var row = $(grid_selector).jqGrid('getRowData', id);
                     if (!row.storage_date) {
                         $(grid_selector).jqGrid('setSelection', id, false);
-                        warnRows.push(row.barcode_short);
+                        warnRows.push(row.barcode_long);
                         // }else{
                         //     okRows.push(row.barcode_short);
                     }
@@ -353,7 +353,7 @@
                     idArray.push(id);
                 } else {
                     $(grid_selector).jqGrid('setSelection', id, false);
-                    warnRows.push(row.barcode_short);
+                    warnRows.push(row.barcode_long);
                 }
             }
 

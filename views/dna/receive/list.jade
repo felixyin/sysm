@@ -20,12 +20,12 @@ block content
             form#search-form-id
                 table.searchTable
                     tr
-                        td 长条码编号
+                        td 条码编号
                         td
                             input.col-xs-10.col-sm-5(type='text' , name='barcode_long', placeholder='请扫描条码或输入编号')
-                        td 短条码编号
+                        td 样本编号
                         td
-                            input.col-xs-10.col-sm-5(type='text' , name='barcode_short', placeholder='请扫描条码或输入编号')
+                            input.col-xs-10.col-sm-5(type='text' , name='sample_code', placeholder='请输入样本编号')
                         td 医院名称
                         td
                             input.col-xs-10.col-sm-5(type='text' , name='hospital', placeholder='请输入医院名称')
@@ -97,8 +97,8 @@ block content
                         //li.divider
                         //li
                             a(href='#') Separated link
-                span
-                #btn-cxg.btn-group
+                //span
+                //#btn-cxg.btn-group
                     button.btn.btn-info.btn-sm(onclick="showCxgDialog(this)")
                         i.icon-edit.bigger-110 &nbsp;&nbsp;&nbsp;更换采血管
                     button.btn.btn-info.dropdown-toggle.btn-sm(data-toggle='dropdown')
@@ -116,8 +116,14 @@ block content
                         li
                             a(href='javascript:clearUser("审核人员")') 不记住审核人员
                 span
-                //button#btn-rk-id.btn.btn-info.btn-sm(onclick="rk(this)")
-                    i.icon-inbox.bigger-110 入库
+                #btn-rk.btn-group
+                    button.btn.btn-info.btn-sm(onclick="showRkDialog(this)",disabled)
+                        i.icon-edit.bigger-110 &nbsp;&nbsp;&nbsp;入库
+                    button.btn.btn-info.dropdown-toggle.btn-sm(data-toggle='dropdown',disabled)
+                        i.icon-angle-down.icon-only
+                    ul.dropdown-menu.dropdown-yellow
+                        li
+                            a(href='javascript:clearUser("入库人员")') 不记住入库人员
                 #btn-ck.btn-group
                     button.btn.btn-info.btn-sm(onclick="showCkDialog(this)")
                         i.icon-edit.bigger-110 &nbsp;&nbsp;&nbsp;批量出库

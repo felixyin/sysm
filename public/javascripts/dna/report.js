@@ -14,12 +14,12 @@
         W._sortname = 'input_date';
         W._sortorder = 'ASC';
         W._postData = {};
-        W._colNames = ['序号', '长条码编号', '短条码编号', '上机组发送人', '上机组试管剩余数量', '分析报告组接收人', '分析报告组接收时间', '分析结果',
+        W._colNames = ['序号', '条码编号',  '上机组发送人', '上机组试管剩余数量', '分析报告组接收人', '分析报告组接收时间', '分析结果',
             '建议', '是否发送', '分析人', '分析时间', '报告发送人', '报告发送时间', '', '状态'];
         W._colModel = [
             {name: 'id', width: 40, index: 'id', align: 'center', sortable: false, frozen: true},
             {name: 'barcode_long', width: 120, index: 'barcode_long', align: 'center', sortable: false, frozen: true},
-            {name: 'barcode_short', width: 100, index: 'barcode_short', align: 'center', sortable: false, frozen: true},
+            // {name: 'barcode_short', width: 100, index: 'barcode_short', align: 'center', sortable: false, frozen: true},
             {name: 'operate_outer', width: 100, index: 'operate_outer', align: 'center', sortable: false},
             {
                 name: 'operate_out_residue',
@@ -197,17 +197,17 @@
         if (ids && ids.length == 1) {
             var row = $(grid_selector).jqGrid('getRowData', ids[0]);
             var id = row.id;
-            var barcode_short = row.barcode_short;
+            var barcode_long = row.barcode_long;
             var status = parseInt(row.status);
             if (status < 21) { // 未发送状态
                 W.selectUser('分析报告录入人员', function (userId) {
-                    W.showDialog('preEdit', '/dna/report/preEdit?id=' + id + '&userId=' + userId, '录入分析报告数据:' + barcode_short,
+                    W.showDialog('preEdit', '/dna/report/preEdit?id=' + id + '&userId=' + userId, '录入分析报告数据:' + barcode_long,
                         '70%', '350px', function (contextWindow, dialog) {
                             $('#edit-form', contextWindow.document).submit();
                         });
                 });
             } else {
-                Toast.show('此报告已发送,不能修改:' + barcode_short);
+                Toast.show('此报告已发送,不能修改:' + barcode_long);
             }
         } else {
             Toast.show('请先勾选一行数据');
@@ -249,7 +249,7 @@
                     idArray.push(id);
                 } else {
                     $(grid_selector).jqGrid('setSelection', id, false);
-                    warnRows.push(row.barcode_short);
+                    warnRows.push(row.barcode_long);
                 }
             }
 

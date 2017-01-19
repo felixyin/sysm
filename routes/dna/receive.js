@@ -113,6 +113,15 @@ router.post('/addSh', (req, res) => {
 });
 
 /**
+ * 入库
+ */
+router.post('/addRk', (req, res) => {
+    receiveService.updateDnaFlowById(req.body, (err, result) => {
+        // res.
+    });
+});
+
+/**
  * 显示出库界面
  */
 router.get('/preAddCk', (req, res) => {
@@ -139,7 +148,7 @@ router.post('/addCk', (req, res) => {
  * 查询剩余数量
  */
 router.post('/getByBarcodeShort', (req, res) => {
-    receiveService.selectDnaFlowByBarcodeShort(req.body.barcode_short, (err, rows) => {
+    receiveService.selectDnaFlowByBarcodeShort(req.body.barcode_long, (err, rows) => {
         console.log(err);
         if (err)throw err;
         res.send(rows);
@@ -167,8 +176,8 @@ router.post('/exportExcel', (req, res) => {
                 header: {
                     // fill: {
                     //     fgColor: {
-                            // rgb: '00000000'
-                        // }
+                    // rgb: '00000000'
+                    // }
                     // },
                     font: {
                         color: {
@@ -183,7 +192,7 @@ router.post('/exportExcel', (req, res) => {
                     // fill: {
                     //     fgColor: {
                     //         rgb: '00000000'
-                        // }
+                    // }
                     // }
                 }
             };
@@ -194,7 +203,7 @@ router.post('/exportExcel', (req, res) => {
 
             let specification = {
                 barcode_long: {
-                    displayName: '长条码编号',
+                    displayName: '条码编号',
                     headerStyle: styles.header,
                     cellStyle: styles.cell,
                     cellFormat: function (value, row) {
@@ -355,15 +364,15 @@ router.post('/exportExcel', (req, res) => {
                     },
                     width: '15'
                 },
-                barcode_short: {
-                    displayName: '短条码编号',
-                    headerStyle: styles.header,
-                    cellStyle: styles.cell,
-                    cellFormat: function (value, row) {
-                        return value;
-                    },
-                    width: '15'
-                },
+                // barcode_short: {
+                //     displayName: '短条码编号',
+                //     headerStyle: styles.header,
+                //     cellStyle: styles.cell,
+                //     cellFormat: function (value, row) {
+                //         return value;
+                //     },
+                //     width: '15'
+                // },
                 sample_outer: {
                     displayName: '短采血管出库人',
                     headerStyle: styles.header,

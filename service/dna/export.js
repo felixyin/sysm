@@ -49,7 +49,7 @@ let specification = {
         width: '15'
     },
     barcode_long: {
-        displayName: '长条码编号',
+        displayName: '条码编号',
         headerStyle: styles.header,
         cellStyle: styles.cell,
         cellFormat: function (value, row) {
@@ -210,15 +210,15 @@ let specification = {
         },
         width: '15'
     },
-    barcode_short: {
-        displayName: '短条码编号',
-        headerStyle: styles.header,
-        cellStyle: styles.cell,
-        cellFormat: function (value, row) {
-            return value || '';
-        },
-        width: '15'
-    },
+    // barcode_short: {
+    //     displayName: '短条码编号',
+    //     headerStyle: styles.header,
+    //     cellStyle: styles.cell,
+    //     cellFormat: function (value, row) {
+    //         return value || '';
+    //     },
+    //     width: '15'
+    // },
     sample_outer: {
         displayName: '短采血管出库人',
         headerStyle: styles.header,

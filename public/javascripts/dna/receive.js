@@ -13,9 +13,9 @@
     W._sortname = 'input_date';
     W._sortorder = 'ASC';
     W._postData = {};
-    W._colNames = ['序号', '长条码编号', '医院名称', '样本编号', '采样日期', '接收日期', '姓名', '身份证号', '出生日期',
+    W._colNames = ['序号', '条码编号', '医院名称', '样本编号', '采样日期', '接收日期', '姓名', '身份证号', '出生日期',
         '孕周', '妊娠情况', '不良孕产史', '备注', '录入人员', '录入日期', '换管人员', '换管日期', '审批人员', '审批日期',
-        '短条码编号', '', '状态'];
+        '', '状态'];
     W._colModel = [
         {name: 'id', width: 40, index: 'id', align: 'center', sortable: false, frozen: true},
         {name: 'barcode_long', width: 120, index: 'barcode_long', align: 'center', sortable: false, frozen: true},
@@ -36,7 +36,7 @@
         {name: 'change_date', width: 100, index: 'change_date', align: 'center', sortable: true},
         {name: 'checker', width: 100, index: 'checker', align: 'center', sortable: true},
         {name: 'check_date', width: 100, index: 'check_date', align: 'center', sortable: true},
-        {name: 'barcode_short', width: 100, index: 'barcode_short', align: 'center', sortable: false},
+        // {name: 'barcode_short', width: 100, index: 'barcode_short', align: 'center', sortable: false},
         {name: 'status', hidden: true, hidedlg: true},
         {
             name: 'status1', width: 100, index: 'status', align: 'center', sortable: false,
@@ -119,7 +119,7 @@
 
     W.updateActionIcons = function () {
         $('#btn-cxd').children('button').prop('disabled', false).first().children('i').html('&nbsp;&nbsp;&nbsp;批量录入采血单');
-        $('#btn-cxg').children('button').prop('disabled', false).first().children('i').html('&nbsp;&nbsp;&nbsp;批量更换采血管');
+        // $('#btn-cxg').children('button').prop('disabled', false).first().children('i').html('&nbsp;&nbsp;&nbsp;批量更换采血管');
         $('#btn-sh').children('button').prop('disabled', true).first().children('i').html('&nbsp;&nbsp;&nbsp;审核');
         $('#btn-ck').children('button').prop('disabled', false).first().children('i').html('&nbsp;&nbsp;&nbsp;批量出库');
     };
@@ -131,17 +131,17 @@
         var selectedLength = myIds.length;
         if (selectedLength == 1) {
             $('#btn-cxd').children('button').prop('disabled', false).first().children('i').html('&nbsp;&nbsp;&nbsp;修改采血单');
-            $('#btn-cxg').children('button').prop('disabled', false).first().children('i').html('&nbsp;&nbsp;&nbsp;更换采血管');
+            // $('#btn-cxg').children('button').prop('disabled', false).first().children('i').html('&nbsp;&nbsp;&nbsp;更换采血管');
             $('#btn-sh').children('button').prop('disabled', false).first().children('i').html('&nbsp;&nbsp;&nbsp;审核');
             $('#btn-ck').children('button').prop('disabled', false).first().children('i').html('&nbsp;&nbsp;&nbsp;出库');
         } else if (selectedLength > 1) {
             $('#btn-cxd').children('button').prop('disabled', true).first().children('i').html('&nbsp;&nbsp;&nbsp;批量录入采血单');
-            $('#btn-cxg').children('button').prop('disabled', true);
+            // $('#btn-cxg').children('button').prop('disabled', true);
             $('#btn-sh').children('button').prop('disabled', false).first().children('i').html('&nbsp;&nbsp;&nbsp;批量审核');
             $('#btn-ck').children('button').prop('disabled', false).first().children('i').html('&nbsp;&nbsp;&nbsp;批量出库');
         } else { // 0
             $('#btn-cxd').children('button').prop('disabled', false).first().children('i').html('&nbsp;&nbsp;&nbsp;批量录入采血单');
-            $('#btn-cxg').children('button').prop('disabled', false).first().children('i').html('&nbsp;&nbsp;&nbsp;批量更换采血管');
+            // $('#btn-cxg').children('button').prop('disabled', false).first().children('i').html('&nbsp;&nbsp;&nbsp;批量更换采血管');
             $('#btn-sh').children('button').prop('disabled', true).first().children('i').html('&nbsp;&nbsp;&nbsp;审核');
             $('#btn-ck').children('button').prop('disabled', false).first().children('i').html('&nbsp;&nbsp;&nbsp;批量出库');
         }
@@ -337,6 +337,49 @@
     };
 
     /**
+     * 入库
+     */
+    W.showRkDialog = function () {
+        var ids = $(grid_selector).jqGrid('getGridParam', 'selarrrow');
+        if (ids && ids.length) {
+            var warnArray = [];
+            var idArray = [];
+            for (var i in ids) {
+                var id = ids[i];
+                var row = $(grid_selector).jqGrid('getRowData', id);
+                if (row.status == 2) {// 已审批
+                    idArray.push(id);
+                } else {
+                    $(grid_selector).jqGrid('setSelection', id, false);
+                    warnArray.push(id);
+                }
+            }
+            if (warnArray.length > 0) {
+                Toast.show('您选择的部分行不符合入库条件(未审批),已经取消选中');
+            }
+            if (idArray.length > 0) {
+                W.selectUser('入库人员', function (userId) {
+                    $.post('dna/receive/addSh', {checker: userId, ids: idArray.join(',')}, function (result) {
+                        if (result.changedRows > 0) {
+                            if (result.changedRows == 1) {
+                                Toast.show(userId + ',入库成功!');
+                            } else {
+                                Toast.show(userId + ',批量入库成功!');
+                            }
+                            jQuery(grid_selector).trigger('reloadGrid');
+                        } else {
+                            Toast.show(userId + ',入库失败,请联系管理员!');
+                            localStorage.setItem('_error_addSh', result.err);
+                        }
+                    })
+                });
+            }
+        } else {
+            Toast.show('请先在列表中勾选您要入库的数据行');
+        }
+    };
+
+    /**
      * 出库
      * @param btn
      */
@@ -349,7 +392,7 @@
                 var id = ids[i];
                 var row = $(grid_selector).jqGrid('getRowData', id);
                 if (row.status == 3) {// 已审批且入库
-                    barcodeShortArray.push(row.barcode_short);
+                    barcodeShortArray.push(row.barcode_long);
                 } else {
                     $(grid_selector).jqGrid('setSelection', id, false);
                     warnArray.push(id);

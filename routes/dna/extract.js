@@ -73,7 +73,7 @@ router.post('/addCk', (req, res) => {
  * 查询剩余数量
  */
 router.post('/getByBarcodeShort', (req, res) => {
-    extractService.selectDnaFlowByBarcodeShort(req.body.barcode_short, (err, rows) => {
+    extractService.selectDnaFlowByBarcodeShort(req.body.barcode_long, (err, rows) => {
         console.log(err);
         if (err)throw err;
         res.send(rows);
@@ -129,7 +129,7 @@ router.post('/exportExcel', (req, res) => {
 
             let specification = {
                 barcode_long: {
-                    displayName: '长条码编号',
+                    displayName: '条码编号',
                     headerStyle: styles.header,
                     cellStyle: styles.cell,
                     cellFormat: function (value, row) {
@@ -137,15 +137,15 @@ router.post('/exportExcel', (req, res) => {
                     },
                     width: '15'
                 },
-                barcode_short: {
-                    displayName: '短条码编号',
-                    headerStyle: styles.header,
-                    cellStyle: styles.cell,
-                    cellFormat: function (value, row) {
-                        return value || '';
-                    },
-                    width: '15'
-                },
+                // barcode_short: {
+                //     displayName: '短条码编号',
+                //     headerStyle: styles.header,
+                //     cellStyle: styles.cell,
+                //     cellFormat: function (value, row) {
+                //         return value || '';
+                //     },
+                //     width: '15'
+                // },
                 sample_outer: {
                     displayName: '短采血管出库人',
                     headerStyle: styles.header,

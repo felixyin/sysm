@@ -61,7 +61,7 @@ router.post('/addFs', (req, res) => {
  * 查询剩余数量
  */
 router.post('/getByBarcodeShort', (req, res) => {
-    reportService.selectDnaFlowByBarcodeShort(req.body.barcode_short, (err, rows) => {
+    reportService.selectDnaFlowByBarcodeShort(req.body.barcode_long, (err, rows) => {
         console.log(err);
         if (err)throw err;
         res.send(rows);
@@ -116,7 +116,7 @@ router.post('/exportExcel', (req, res) => {
 
             let specification = {
                 barcode_long: {
-                    displayName: '长条码编号',
+                    displayName: '条码编号',
                     headerStyle: styles.header,
                     cellStyle: styles.cell,
                     cellFormat: function (value, row) {

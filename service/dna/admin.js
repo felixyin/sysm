@@ -10,7 +10,7 @@ const _ = require('underscore');
 function getSqls(params) {
     let selectSql = `SELECT 
         id, barcode_long, hospital, sample_code, sample_date, receive_date, real_name, id_card, age, pregnancy_week, pregnancy_condition,
-        pregnancy_bad_history, comments, inputter, input_date, changer, change_date, checker, check_date, barcode_short, sample_outer,
+        pregnancy_bad_history, comments, inputter, input_date, changer, change_date, checker, check_date, sample_outer,
         sample_out_residue, extract_handover, extract_handover_date, extract_qbite_deep, extract_epoch_deep, extract_purity_deep, extract_part_size, 
         extract_part_after_break, extracter, extract_date, extract_checker, extract_check_date, extract_outer, extract_out_residue, storage_handover, 
         storage_handover_date, storage_deep, storage_part_size, storager, storage_date, storage_checker, storage_check_date, storage_outer, 
@@ -21,7 +21,7 @@ function getSqls(params) {
 
     let whereSql = " WHERE 1 = 1 \n";
     params.id && (whereSql += " AND id LIKE '%:id%' /**/\n");
-    params.barcode_long && (whereSql += " AND barcode_long LIKE '%:barcode_long%' /*长条码编号*/\n");
+    params.barcode_long && (whereSql += " AND barcode_long LIKE '%:barcode_long%' /*条码编号*/\n");
     params.hospital && (whereSql += " AND hospital LIKE '%:hospital%' /*医院名称*/\n");
     params.sample_code && (whereSql += " AND sample_code LIKE '%:sample_code%' /*样本编号*/\n");
     params.sample_date && (whereSql += " AND sample_date LIKE '%:sample_date%' /*采样日期*/\n");
@@ -39,7 +39,7 @@ function getSqls(params) {
     params.change_date && (whereSql += " AND change_date LIKE '%:change_date%' /*换管日期*/\n");
     params.checker && (whereSql += " AND checker LIKE '%:checker%' /*审批人员*/\n");
     params.check_date && (whereSql += " AND check_date LIKE '%:check_date%' /*审批日期*/\n");
-    params.barcode_short && (whereSql += " AND barcode_short LIKE '%:barcode_short%' /*短条码编号*/\n");
+    // params.barcode_short && (whereSql += " AND barcode_short LIKE '%:barcode_short%' /*短条码编号*/\n");
     params.sample_outer && (whereSql += " AND sample_outer LIKE '%:sample_outer%' /*短采血管出库人*/\n");
     params.sample_out_residue && (whereSql += " AND sample_out_residue LIKE '%:sample_out_residue%' /*接收组试管剩余数量*/\n");
     params.extract_handover && (whereSql += " AND extract_handover LIKE '%:extract_handover%' /*提取组接收人*/\n");

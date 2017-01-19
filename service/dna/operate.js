@@ -11,7 +11,6 @@ function getSqls(params) {
     let selectSql = `SELECT 
         id,
         barcode_long,
-        barcode_short,
         storage_outer,
         storage_out_residue,
         operate_handover,
@@ -31,8 +30,8 @@ function getSqls(params) {
     FROM dna_flow `;
 
     let whereSql = " WHERE 1 = 1 \n";
-    params.barcode_long && (whereSql += " AND barcode_long LIKE '%:barcode_long%' /*长条码编号*/\n");
-    params.barcode_short && (whereSql += " AND barcode_short LIKE '%:barcode_short%' /*短条码编号*/\n");
+    params.barcode_long && (whereSql += " AND barcode_long LIKE '%:barcode_long%' /*条码编号*/\n");
+    // params.barcode_short && (whereSql += " AND barcode_short LIKE '%:barcode_short%' /*短条码编号*/\n");
     params.storage_outer && (whereSql += " AND storage_outer LIKE '%:storage_outer%' /*建库组出库人*/\n");
     params.storage_out_residue && (whereSql += " AND storage_out_residue LIKE '%:storage_out_residue%' /*建库组试管剩余数量*/\n");
     params.operate_handover && (whereSql += " AND operate_handover LIKE '%:operate_handover%' /*上机组接收人*/\n");
@@ -138,5 +137,5 @@ exports.insertCk = (ck, cb) => {
  * @param cb
  */
 exports.selectDnaFlowByBarcodeShort = (barcodeShort, cb) => {
-    db.pool.query('SELECT * FROM dna_flow AS t WHERE t.barcode_short=?', barcodeShort, cb);
+    db.pool.query('SELECT * FROM dna_flow AS t WHERE t.barcode_long=?', barcodeShort, cb);
 };
