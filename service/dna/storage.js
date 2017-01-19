@@ -15,6 +15,11 @@ function getSqls(params) {
         extract_out_residue,
         storage_handover,
         storage_handover_date,
+        extract_qbite_deep,
+        extract_epoch_deep,
+        extract_purity_deep,
+        extract_part_size,
+        extract_part_after_break,
         storage_deep,
         storage_part_size,
         storager,
@@ -33,6 +38,11 @@ function getSqls(params) {
     params.extract_out_residue && (whereSql += " AND extract_out_residue LIKE '%:extract_out_residue%' /*提取组试管剩余数量*/\n");
     params.storage_handover && (whereSql += " AND storage_handover LIKE '%:storage_handover%' /*建库组接收人*/\n");
     params.storage_handover_date && (whereSql += " AND storage_handover_date LIKE '%:storage_handover_date%' /*建库组接收时间*/\n");
+    params.extract_qbite_deep && (whereSql += " AND extract_qbite_deep LIKE '%:extract_qbite_deep%' /*qbite浓度*/\n");
+    params.extract_epoch_deep && (whereSql += " AND extract_epoch_deep LIKE '%:extract_epoch_deep%' /*epoch浓度*/\n");
+    params.extract_purity_deep && (whereSql += " AND extract_purity_deep LIKE '%:extract_purity_deep%' /*纯度*/\n");
+    params.extract_part_size && (whereSql += " AND extract_part_size LIKE '%:extract_part_size%' /*片段大小*/\n");
+    params.extract_part_after_break && (whereSql += " AND extract_part_after_break LIKE '%:extract_part_after_break%' /*打断后片段*/\n");
     params.storage_deep && (whereSql += " AND storage_deep LIKE '%:storage_deep%' /*建库浓度*/\n");
     params.storage_part_size && (whereSql += " AND storage_part_size LIKE '%:storage_part_size%' /*建库片段大小*/\n");
     params.storager && (whereSql += " AND storager LIKE '%:storager%' /*建库人*/\n");
