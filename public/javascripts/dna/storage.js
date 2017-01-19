@@ -14,23 +14,14 @@
         W._sortname = 'input_date';
         W._sortorder = 'ASC';
         W._postData = {};
-        W._colNames = ['序号', '条码编号', '提取出库人', '提取组试管剩余数量', '建库组接收人', '建库组接收时间', 'qbite浓度', 'epoch浓度', '纯度', '片段大小', '打断后片段',
-            '建库浓度', '建库片段大小', '建库人', '建库时间', '建库审查人', '建库审查时间', '建库组出库人', '建库组试管剩余数量', '', '状态'];
+        W._colNames = ['序号', '条码编号', '提取出库人', '提取组样本剩余量', '建库组接收人', '建库组接收时间', 'qbite浓度', 'epoch浓度', '纯度', '片段大小', '打断后片段',
+            '建库浓度', '建库片段大小', '建库人', '建库时间', '建库审查人', '建库审查时间', '建库组出库人', '建库组样本剩余量', '', '状态'];
         W._colModel = [
             {name: 'id', width: 40, index: 'id', align: 'center', sortable: false, frozen: true},
             {name: 'barcode_long', width: 120, index: 'barcode_long', align: 'center', sortable: false, frozen: true},
             // {name: 'barcode_short', width: 100, index: 'barcode_short', align: 'center', sortable: false, frozen: true},
             {name: 'extract_outer', width: 100, index: 'extract_outer', align: 'center', sortable: false},
-            {
-                name: 'extract_out_residue',
-                width: 100,
-                index: 'extract_out_residue',
-                align: 'center',
-                sortable: false,
-                formatter: function (value, options, row) {
-                    return value;
-                }
-            },
+            {name: 'extract_out_residue', width: 100, index: 'extract_out_residue', align: 'center', sortable: false},
             {name: 'storage_handover', width: 100, index: 'storage_handover', align: 'center', sortable: false},
             {name: 'storage_handover_date', width: 130, index: 'storage_handover_date', align: 'center', sortable: false},
             {name: 'extract_qbite_deep', width: 100, index: 'extract_qbite_deep', align: 'center', sortable: false},
@@ -45,16 +36,7 @@
             {name: 'storage_checker', width: 100, index: 'storage_checker', align: 'center', sortable: false},
             {name: 'storage_check_date', width: 130, index: 'storage_check_date', align: 'center', sortable: false},
             {name: 'storage_outer', width: 100, index: 'storage_outer', align: 'center', sortable: false},
-            {
-                name: 'storage_out_residue',
-                width: 100,
-                index: 'storage_out_residue',
-                align: 'center',
-                sortable: false,
-                formatter: function (value, options, row) {
-                    return value;
-                }
-            },
+            {name: 'storage_out_residue', width: 100, index: 'storage_out_residue', align: 'center', sortable: false},
             {name: 'status', hidden: true, hidedlg: true},
             {
                 name: 'status1', width: 100, index: 'status', align: 'center', sortable: false,
@@ -189,13 +171,13 @@
                 var id = row.id;
                 var barcode_long = row.barcode_long;
                 var status = parseInt(row.status);
-                if (status < 11) { // 未审批状态
+                if (status == 9 || status == 10) { // 未审批状态
                     W.showDialog('preEdit', '/dna/storage/preEdit?id=' + id + '&userId=' + userId, '录入建库数据:' + barcode_long,
                         '70%', '350px', function (contextWindow, dialog) {
                             $('#edit-form', contextWindow.document).submit();
                         });
                 } else {
-                    Toast.show('此记录已审批,不能修改:' + barcode_long);
+                    Toast.show('此记录不能修改:' + barcode_long);
                 }
             } else {
                 Toast.show('请先勾选一行数据');
@@ -232,7 +214,7 @@
                 var id = ids[i];
                 if (id) {
                     var row = $(grid_selector).jqGrid('getRowData', id);
-                    if (!row.storage_date) {
+                    if (row.status != 10) {
                         $(grid_selector).jqGrid('setSelection', id, false);
                         warnRows.push(row.barcode_long);
                         // }else{
@@ -241,7 +223,7 @@
                 }
             }
             if (warnRows.length > 0) {
-                Toast.show('您选择的部分行不符合审批要求(未录入),已经取消选中');
+                Toast.show('您选择的部分行不符合审批要求,已经取消选中');
             }
             ids = $(grid_selector).jqGrid('getGridParam', 'selarrrow');
 
@@ -340,7 +322,7 @@
             }
 
             if (warnRows.length > 0) {
-                Toast.show('您选择的这些行不符合出库要求(未审批),已经取消选中:' + warnRows.join(','));
+                Toast.show('您选择的这些行不符合出库要求,已经取消选中:' + warnRows.join(','));
             }
             ids = $(grid_selector).jqGrid('getGridParam', 'selarrrow');
 

@@ -14,23 +14,14 @@
         W._sortname = 'input_date';
         W._sortorder = 'ASC';
         W._postData = {};
-        W._colNames = ['序号', '条码编号', '上机组发送人', '上机组试管剩余数量', '分析报告组接收人', '分析报告组接收时间', '上机芯片编码',
+        W._colNames = ['序号', '条码编号', '上机组发送人',  '分析报告组接收人', '分析报告组接收时间', '上机芯片编码',
             '上机reads数', '上机q30值', '分析结果', '建议', '是否发送', '分析人', '分析时间', '报告发送人', '报告发送时间', '', '状态'];
         W._colModel = [
             {name: 'id', width: 40, index: 'id', align: 'center', sortable: false, frozen: true},
             {name: 'barcode_long', width: 120, index: 'barcode_long', align: 'center', sortable: false, frozen: true},
             // {name: 'barcode_short', width: 100, index: 'barcode_short', align: 'center', sortable: false, frozen: true},
             {name: 'operate_outer', width: 100, index: 'operate_outer', align: 'center', sortable: false},
-            {
-                name: 'operate_out_residue',
-                width: 100,
-                index: 'operate_out_residue',
-                align: 'center',
-                sortable: false,
-                formatter: function (value, options, row) {
-                    return value;
-                }
-            },
+            // {name: 'operate_out_residue', width: 100, index: 'operate_out_residue', align: 'center'},
             {name: 'report_handover', width: 100, index: 'report_handover', align: 'center', sortable: false},
             {name: 'report_handover_date', width: 130, index: 'report_handover_date', align: 'center', sortable: false},
             {name: 'operate_chip_code', width: 100, index: 'operate_chip_code', align: 'center', sortable: false},
@@ -40,7 +31,13 @@
             {name: 'report_advice', width: 100, index: 'report_advice', align: 'center', sortable: false},
             {
                 name: 'report_is_send', width: 100, index: 'report_is_send', align: 'center', sortable: false, formatter: function (value, options, row) {
-                return value;
+                if (value == 1) {
+                    return '不发送';
+                } else if (value == 2) {
+                    return '发送';
+                } else {
+                    return '';
+                }
             }
             },
             {name: 'reporter', width: 100, index: 'reporter', align: 'center', sortable: false},
@@ -183,7 +180,7 @@
             var id = row.id;
             var barcode_long = row.barcode_long;
             var status = parseInt(row.status);
-            if (status < 21) { // 未发送状态
+            if (status == 19 || status == 21) { // 未发送状态
                 W.selectUser('分析报告录入人员', function (userId) {
                     W.showDialog('preEdit', '/dna/report/preEdit?id=' + id + '&userId=' + userId, '录入分析报告数据:' + barcode_long,
                         '70%', '350px', function (contextWindow, dialog) {
@@ -191,7 +188,7 @@
                         });
                 });
             } else {
-                Toast.show('此报告已发送,不能修改:' + barcode_long);
+                Toast.show('此报告不能修改:' + barcode_long);
             }
         } else {
             Toast.show('请先勾选一行数据');
@@ -238,7 +235,7 @@
             }
 
             if (warnRows.length > 0) {
-                Toast.show('您选择的这些行不符合发送要求(未分析,或已发送),已经取消选中:' + warnRows.join(','));
+                Toast.show('您选择的这些行不符合发送要求,已经取消选中:' + warnRows.join(','));
             }
             ids = $(grid_selector).jqGrid('getGridParam', 'selarrrow');
 

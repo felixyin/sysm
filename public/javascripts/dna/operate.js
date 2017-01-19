@@ -14,24 +14,15 @@
         W._sortname = 'input_date';
         W._sortorder = 'ASC';
         W._postData = {};
-        W._colNames = ['序号', '条码编号', '建库组出库人', '建库组试管剩余数量', '上机组接收人', '上机组接收时间', '建库浓度', '建库片段大小', '上机芯片编码',
-            '上机reads数', '上机q30值', '上机人', '上机时间', '上机审查人', '上机审查时间', '上机组出库人', '上机组试管剩余数量',
+        W._colNames = ['序号', '条码编号', '建库组出库人', '建库组样本剩余量', '上机组接收人', '上机组接收时间', '建库浓度', '建库片段大小', '上机芯片编码',
+            '上机reads数', '上机q30值', '上机人', '上机时间', '上机审查人', '上机审查时间', '上机组出库人', '上机组样本剩余量',
             '分析报告组接收人', '分析报告组接收时间', '', '状态'];
         W._colModel = [
             {name: 'id', width: 40, index: 'id', align: 'center', sortable: false, frozen: true},
             {name: 'barcode_long', width: 120, index: 'barcode_long', align: 'center', sortable: false, frozen: true},
             // {name: 'barcode_short', width: 100, index: 'barcode_short', align: 'center', sortable: false, frozen: true},
             {name: 'storage_outer', width: 100, index: 'storage_outer', align: 'center', sortable: false},
-            {
-                name: 'storage_out_residue',
-                width: 100,
-                index: 'storage_out_residue',
-                align: 'center',
-                sortable: false,
-                formatter: function (value, options, row) {
-                    return value;
-                }
-            },
+            {name: 'storage_out_residue', width: 100, index: 'storage_out_residue', align: 'center', sortable: false},
             {name: 'operate_handover', width: 100, index: 'operate_handover', align: 'center', sortable: false},
             {name: 'operate_handover_date', width: 130, index: 'operate_handover_date', align: 'center', sortable: false},
             {name: 'storage_deep', width: 100, index: 'storage_deep', align: 'center', sortable: false},
@@ -44,16 +35,7 @@
             {name: 'operate_checker', width: 100, index: 'operate_checker', align: 'center', sortable: false},
             {name: 'operate_check_date', width: 130, index: 'operate_check_date', align: 'center', sortable: false},
             {name: 'operate_outer', width: 100, index: 'operate_outer', align: 'center', sortable: false},
-            {
-                name: 'operate_out_residue',
-                width: 100,
-                index: 'operate_out_residue',
-                align: 'center',
-                sortable: false,
-                formatter: function (value, options, row) {
-                    return value;
-                }
-            },
+            {name: 'operate_out_residue', width: 100, index: 'operate_out_residue', align: 'center', sortable: false},
             {name: 'report_handover', width: 100, index: 'report_handover', align: 'center', sortable: false},
             {name: 'report_handover_date', width: 130, index: 'report_handover_date', align: 'center', sortable: false},
             {name: 'status', hidden: true, hidedlg: true},
@@ -191,13 +173,13 @@
                 var id = row.id;
                 var barcode_long = row.barcode_long;
                 var status = parseInt(row.status);
-                if (status < 16) { // 未审批状态
+                if (status == 14 || status == 15) { // 未审批状态
                     W.showDialog('preEdit', '/dna/operate/preEdit?id=' + id + '&userId=' + userId, '录入上机数据:' + barcode_long,
                         '70%', '350px', function (contextWindow, dialog) {
                             $('#edit-form', contextWindow.document).submit();
                         });
                 } else {
-                    Toast.show('此记录已审批,不能修改:' + barcode_long);
+                    Toast.show('此记录不能修改:' + barcode_long);
                 }
             } else {
                 Toast.show('请先勾选一行数据');
@@ -234,7 +216,7 @@
                 var id = ids[i];
                 if (id) {
                     var row = $(grid_selector).jqGrid('getRowData', id);
-                    if (!row.operate_date) {
+                    if (row.status != 15) {
                         $(grid_selector).jqGrid('setSelection', id, false);
                         warnRows.push(row.barcode_long);
                         // }else{

@@ -33,7 +33,7 @@ function getSqls(params) {
     params.barcode_long && (whereSql += " AND barcode_long LIKE '%:barcode_long%' /*条码编号*/\n");
     // params.barcode_short && (whereSql += " AND barcode_short LIKE '%:barcode_short%' /*短条码编号*/\n");
     params.operate_outer && (whereSql += " AND operate_outer LIKE '%:operate_outer%' /*上机组出库人*/\n");
-    params.operate_out_residue && (whereSql += " AND operate_out_residue LIKE '%:operate_out_residue%' /*上机组试管剩余数量*/\n");
+    params.operate_out_residue && (whereSql += " AND operate_out_residue LIKE '%:operate_out_residue%' /*上机组样本剩余量*/\n");
     params.report_handover && (whereSql += " AND report_handover LIKE '%:report_handover%' /*分析报告组接收人*/\n");
     params.report_handover_date && (whereSql += " AND report_handover_date LIKE '%:report_handover_date%' /*分析报告组接收时间*/\n");
     params.operate_chip_code && (whereSql += " AND operate_chip_code LIKE '%:operate_chip_code%' /*上机芯片编码*/\n");
@@ -48,7 +48,7 @@ function getSqls(params) {
     params.report_send_date && (whereSql += " AND report_send_date LIKE '%:report_send_date%' /*报告发送时间*/\n");
     let status = params.status;
     if (status == '-1' || status == undefined) { // 全部
-        whereSql += " AND status IN (19,20,21) /*状态*/\n";
+        // whereSql += " AND status IN (19,20,21) /*状态*/\n";
     } else {
         whereSql += " AND status = :status /*状态*/\n";
     }

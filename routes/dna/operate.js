@@ -146,7 +146,7 @@ router.post('/exportExcel', (req, res) => {
                     width: '15'
                 },
                 storage_out_residue: {
-                    displayName: '建库组试管剩余数量',
+                    displayName: '建库组样本剩余量',
                     headerStyle: styles.header,
                     cellStyle: styles.cell,
                     cellFormat: function (value, row) {
@@ -245,7 +245,7 @@ router.post('/exportExcel', (req, res) => {
                     width: '15'
                 },
                 operate_out_residue: {
-                    displayName: '上机组试管剩余数量',
+                    displayName: '上机组样本剩余量',
                     headerStyle: styles.header,
                     cellStyle: styles.cell,
                     cellFormat: function (value, row) {

@@ -37,7 +37,10 @@ block content
                             input.col-xs-10.col-sm-5(type='text' , name='report_advice', placeholder='请输入建议')
                         td 是否发送
                         td
-                            input.col-xs-10.col-sm-5(type='text' , name='report_is_send', placeholder='请输入是否发送（1、不发送；2、发送）')
+                            select.col-xs-12.clo-sm-10(style="width:180px;", name='report_is_send', placeholder='')
+                                option(value='') 全部
+                                option(value='1') 发送
+                                option(value='2') 不发送
                     tr
                         td 分析人
                         td

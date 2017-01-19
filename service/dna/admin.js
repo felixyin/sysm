@@ -44,7 +44,7 @@ function getSqls(params) {
     params.warehouse_date && (whereSql += " AND warehouse_date LIKE '%:warehouse_date%' /*入库时间*/\n");
     // params.barcode_short && (whereSql += " AND barcode_short LIKE '%:barcode_short%' /*短条码编号*/\n");
     params.sample_outer && (whereSql += " AND sample_outer LIKE '%:sample_outer%' /*采血管出库人*/\n");
-    params.sample_out_residue && (whereSql += " AND sample_out_residue LIKE '%:sample_out_residue%' /*接收组试管剩余数量*/\n");
+    params.sample_out_residue && (whereSql += " AND sample_out_residue LIKE '%:sample_out_residue%' /*接收组样本剩余量*/\n");
     params.extract_handover && (whereSql += " AND extract_handover LIKE '%:extract_handover%' /*提取组接收人*/\n");
     params.extract_handover_date && (whereSql += " AND extract_handover_date LIKE '%:extract_handover_date%' /*提取组接收时间*/\n");
     params.extract_qbite_deep && (whereSql += " AND extract_qbite_deep LIKE '%:extract_qbite_deep%' /*qbite浓度*/\n");
@@ -57,7 +57,7 @@ function getSqls(params) {
     params.extract_checker && (whereSql += " AND extract_checker LIKE '%:extract_checker%' /*提取审核人*/\n");
     params.extract_check_date && (whereSql += " AND extract_check_date LIKE '%:extract_check_date%' /*提取审核时间*/\n");
     params.extract_outer && (whereSql += " AND extract_outer LIKE '%:extract_outer%' /*提取出库人*/\n");
-    params.extract_out_residue && (whereSql += " AND extract_out_residue LIKE '%:extract_out_residue%' /*提取组试管剩余数量*/\n");
+    params.extract_out_residue && (whereSql += " AND extract_out_residue LIKE '%:extract_out_residue%' /*提取组样本剩余量*/\n");
     params.storage_handover && (whereSql += " AND storage_handover LIKE '%:storage_handover%' /*建库组接收人*/\n");
     params.storage_handover_date && (whereSql += " AND storage_handover_date LIKE '%:storage_handover_date%' /*建库组接收时间*/\n");
     params.storage_deep && (whereSql += " AND storage_deep LIKE '%:storage_deep%' /*建库浓度*/\n");
@@ -67,7 +67,7 @@ function getSqls(params) {
     params.storage_checker && (whereSql += " AND storage_checker LIKE '%:storage_checker%' /*建库审查人*/\n");
     params.storage_check_date && (whereSql += " AND storage_check_date LIKE '%:storage_check_date%' /*建库审查时间*/\n");
     params.storage_outer && (whereSql += " AND storage_outer LIKE '%:storage_outer%' /*建库组出库人*/\n");
-    params.storage_out_residue && (whereSql += " AND storage_out_residue LIKE '%:storage_out_residue%' /*建库组试管剩余数量*/\n");
+    params.storage_out_residue && (whereSql += " AND storage_out_residue LIKE '%:storage_out_residue%' /*建库组样本剩余量*/\n");
     params.operate_handover && (whereSql += " AND operate_handover LIKE '%:operate_handover%' /*上机组接收人*/\n");
     params.operate_handover_date && (whereSql += " AND operate_handover_date LIKE '%:operate_handover_date%' /*上机组接收时间*/\n");
     params.operate_chip_code && (whereSql += " AND operate_chip_code LIKE '%:operate_chip_code%' /*上机芯片编码*/\n");
@@ -78,7 +78,7 @@ function getSqls(params) {
     params.operate_checker && (whereSql += " AND operate_checker LIKE '%:operate_checker%' /*上机审查人*/\n");
     params.operate_check_date && (whereSql += " AND operate_check_date LIKE '%:operate_check_date%' /*上机审查时间*/\n");
     params.operate_outer && (whereSql += " AND operate_outer LIKE '%:operate_outer%' /*上机组出库人*/\n");
-    params.operate_out_residue && (whereSql += " AND operate_out_residue LIKE '%:operate_out_residue%' /*上机组试管剩余数量*/\n");
+    params.operate_out_residue && (whereSql += " AND operate_out_residue LIKE '%:operate_out_residue%' /*上机组样本剩余量*/\n");
     params.report_handover && (whereSql += " AND report_handover LIKE '%:report_handover%' /*分析报告组接收人*/\n");
     params.report_handover_date && (whereSql += " AND report_handover_date LIKE '%:report_handover_date%' /*分析报告组接收时间*/\n");
     params.report_result && (whereSql += " AND report_result LIKE '%:report_result%' /*分析结果*/\n");

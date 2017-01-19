@@ -14,24 +14,15 @@
         W._sortname = 'input_date';
         W._sortorder = 'ASC';
         W._postData = {};
-        W._colNames = ['序号', '条码编号', '采血管出库人', '接收组试管剩余数量', '提取组接收人', '提取组接收时间',
+        W._colNames = ['序号', '条码编号', '采血管出库人', '接收组样本剩余量', '提取组接收人', '提取组接收时间',
             'qbite浓度', 'epoch浓度', '纯度', '片段大小', '打断后片段', '提取人员', '提取时间', '提取审核人', '提取审核时间',
-            '提取出库人', '提取组试管剩余数量', '', '状态'];
+            '提取出库人', '提取组样本剩余量', '', '状态'];
         W._colModel = [
             {name: 'id', width: 40, index: 'id', align: 'center', sortable: false, frozen: true},
             {name: 'barcode_long', width: 120, index: 'barcode_long', align: 'center', sortable: false, frozen: true},
             // {name: 'barcode_short', width: 100, index: 'barcode_short', align: 'center', sortable: false, frozen: true},
             {name: 'sample_outer', width: 100, index: 'sample_outer', align: 'center', sortable: false},
-            {
-                name: 'sample_out_residue',
-                width: 100,
-                index: 'sample_out_residue',
-                align: 'center',
-                sortable: false,
-                formatter: function (value, options, row) {
-                    return value;
-                }
-            },
+            {name: 'sample_out_residue', width: 100, index: 'sample_out_residue', align: 'center', sortable: false},
             {name: 'extract_handover', width: 100, index: 'extract_handover', align: 'center', sortable: false},
             {name: 'extract_handover_date', width: 130, index: 'extract_handover_date', align: 'center', sortable: false},
             {name: 'extract_qbite_deep', width: 100, index: 'extract_qbite_deep', align: 'center', sortable: false},
@@ -44,16 +35,7 @@
             {name: 'extract_checker', width: 100, index: 'extract_checker', align: 'center', sortable: false},
             {name: 'extract_check_date', width: 130, index: 'extract_check_date', align: 'center', sortable: false},
             {name: 'extract_outer', width: 100, index: 'extract_outer', align: 'center', sortable: false},
-            {
-                name: 'extract_out_residue',
-                width: 100,
-                index: 'extract_out_residue',
-                align: 'center',
-                sortable: false,
-                formatter: function (value, options, row) {
-                    return value;
-                }
-            },
+            {name: 'extract_out_residue', width: 100, index: 'extract_out_residue', align: 'center', sortable: false},
             {name: 'status', hidden: true, hidedlg: true},
             {
                 name: 'status1', width: 100, index: 'status', align: 'center', sortable: false,
@@ -173,7 +155,7 @@
 
         $('.ipt-person').selectUser();
 
-        showSearchMore($('#btn-search-more'),[2, 3],'_dna_extract_is_search_more');
+        showSearchMore($('#btn-search-more'), [2, 3], '_dna_extract_is_search_more');
     }();
 
     /**
@@ -231,7 +213,7 @@
                 var id = ids[i];
                 if (id) {
                     var row = $(grid_selector).jqGrid('getRowData', id);
-                    if (!row.extract_date) {
+                    if (row.extract_date != 5) { // 提取且已保存
                         $(grid_selector).jqGrid('setSelection', id, false);
                         warnRows.push(row.barcode_long);
                         // }else{

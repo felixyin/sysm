@@ -35,7 +35,7 @@ function getSqls(params) {
     params.barcode_long && (whereSql += " AND barcode_long LIKE '%:barcode_long%' /*条码编号*/\n");
     // params.barcode_short && (whereSql += " AND barcode_short LIKE '%:barcode_short%' /*短条码编号*/\n");
     params.extract_outer && (whereSql += " AND extract_outer LIKE '%:extract_outer%' /*提取出库人*/\n");
-    params.extract_out_residue && (whereSql += " AND extract_out_residue LIKE '%:extract_out_residue%' /*提取组试管剩余数量*/\n");
+    params.extract_out_residue && (whereSql += " AND extract_out_residue LIKE '%:extract_out_residue%' /*提取组样本剩余量*/\n");
     params.storage_handover && (whereSql += " AND storage_handover LIKE '%:storage_handover%' /*建库组接收人*/\n");
     params.storage_handover_date && (whereSql += " AND storage_handover_date LIKE '%:storage_handover_date%' /*建库组接收时间*/\n");
     params.extract_qbite_deep && (whereSql += " AND extract_qbite_deep LIKE '%:extract_qbite_deep%' /*qbite浓度*/\n");
@@ -50,10 +50,10 @@ function getSqls(params) {
     params.storage_checker && (whereSql += " AND storage_checker LIKE '%:storage_checker%' /*建库审查人*/\n");
     params.storage_check_date && (whereSql += " AND storage_check_date LIKE '%:storage_check_date%' /*建库审查时间*/\n");
     params.storage_outer && (whereSql += " AND storage_outer LIKE '%:storage_outer%' /*建库组出库人*/\n");
-    params.storage_out_residue && (whereSql += " AND storage_out_residue LIKE '%:storage_out_residue%' /*建库组试管剩余数量*/\n");
+    params.storage_out_residue && (whereSql += " AND storage_out_residue LIKE '%:storage_out_residue%' /*建库组样本剩余量*/\n");
     let status = params.status;
     if (status == '-1' || status == undefined) { // 全部
-        whereSql += " AND status IN (9,10,11,12,13) /*状态*/\n";
+        // whereSql += " AND status IN (9,10,11,12,13) /*状态*/\n";
     } else {
         whereSql += " AND status = :status /*状态*/\n";
     }

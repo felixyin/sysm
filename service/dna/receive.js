@@ -55,10 +55,10 @@ function getSql(params) {
     params.warehouse_date && (whereSql += " AND warehouse_date LIKE '%:warehouse_date%' /*入库时间*/\n");
     // params.barcode_short && (whereSql += " AND barcode_short LIKE '%:barcode_short%' /*短条码编号*/\n");
     params.sample_outer && (whereSql += " AND sample_outer LIKE '%:sample_outer%' /*采血管出库人*/\n");
-    params.sample_out_residue && (whereSql += " AND sample_out_residue LIKE '%:sample_out_residue%' /*接收组试管剩余数量*/\n");
+    params.sample_out_residue && (whereSql += " AND sample_out_residue LIKE '%:sample_out_residue%' /*接收组样本剩余量*/\n");
     let status = params.status;
     if (status == '-1' || status == undefined) { // 全部
-        whereSql += " AND status IN (1,2,3) /*状态*/\n";
+        // whereSql += " AND status IN (1,2,3) /*状态*/\n";
     } else {
         whereSql += " AND status = :status /*状态*/\n";
     }

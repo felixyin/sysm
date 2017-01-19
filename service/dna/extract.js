@@ -33,7 +33,7 @@ function getSqls(params) {
     params.barcode_long && (whereSql += " AND barcode_long LIKE '%:barcode_long%' /*条码编号*/\n");
     // params.barcode_short && (whereSql += " AND barcode_short LIKE '%:barcode_short%' /*短条码编号*/\n");
     params.sample_outer && (whereSql += " AND sample_outer LIKE '%:sample_outer%' /*采血管出库人*/\n");
-    params.sample_out_residue && (whereSql += " AND sample_out_residue LIKE '%:sample_out_residue%' /*接收组试管剩余数量*/\n");
+    params.sample_out_residue && (whereSql += " AND sample_out_residue LIKE '%:sample_out_residue%' /*接收组样本剩余量*/\n");
     params.extract_handover && (whereSql += " AND extract_handover LIKE '%:extract_handover%' /*提取组接收人*/\n");
     params.extract_handover_date && (whereSql += " AND extract_handover_date LIKE '%:extract_handover_date%' /*提取组接收时间*/\n");
     params.extract_qbite_deep && (whereSql += " AND extract_qbite_deep LIKE '%:extract_qbite_deep%' /*qbite浓度*/\n");
@@ -46,10 +46,10 @@ function getSqls(params) {
     params.extract_checker && (whereSql += " AND extract_checker LIKE '%:extract_checker%' /*提取审核人*/\n");
     params.extract_check_date && (whereSql += " AND extract_check_date LIKE '%:extract_check_date%' /*提取审核时间*/\n");
     params.extract_outer && (whereSql += " AND extract_outer LIKE '%:extract_outer%' /*提取出库人*/\n");
-    params.extract_out_residue && (whereSql += " AND extract_out_residue LIKE '%:extract_out_residue%' /*提取组试管剩余数量*/\n");
+    params.extract_out_residue && (whereSql += " AND extract_out_residue LIKE '%:extract_out_residue%' /*提取组样本剩余量*/\n");
     let status = params.status;
     if (status == '-1' || status == undefined) { // 全部
-        whereSql += " AND status IN (4,5,6,7,8) /*状态*/\n";
+        // whereSql += " AND status IN (4,5,6,7,8) /*状态*/\n";
     } else {
         whereSql += " AND status = :status /*状态*/\n";
     }

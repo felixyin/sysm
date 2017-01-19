@@ -33,7 +33,7 @@ function getSqls(params) {
     params.barcode_long && (whereSql += " AND barcode_long LIKE '%:barcode_long%' /*条码编号*/\n");
     // params.barcode_short && (whereSql += " AND barcode_short LIKE '%:barcode_short%' /*短条码编号*/\n");
     params.storage_outer && (whereSql += " AND storage_outer LIKE '%:storage_outer%' /*建库组出库人*/\n");
-    params.storage_out_residue && (whereSql += " AND storage_out_residue LIKE '%:storage_out_residue%' /*建库组试管剩余数量*/\n");
+    params.storage_out_residue && (whereSql += " AND storage_out_residue LIKE '%:storage_out_residue%' /*建库组样本剩余量*/\n");
     params.operate_handover && (whereSql += " AND operate_handover LIKE '%:operate_handover%' /*上机组接收人*/\n");
     params.operate_handover_date && (whereSql += " AND operate_handover_date LIKE '%:operate_handover_date%' /*上机组接收时间*/\n");
     params.storage_deep && (whereSql += " AND storage_deep LIKE '%:storage_deep%' /*建库浓度*/\n");
@@ -46,10 +46,10 @@ function getSqls(params) {
     params.operate_checker && (whereSql += " AND operate_checker LIKE '%:operate_checker%' /*上机审查人*/\n");
     params.operate_check_date && (whereSql += " AND operate_check_date LIKE '%:operate_check_date%' /*上机审查时间*/\n");
     params.operate_outer && (whereSql += " AND operate_outer LIKE '%:operate_outer%' /*上机组出库人*/\n");
-    params.operate_out_residue && (whereSql += " AND operate_out_residue LIKE '%:operate_out_residue%' /*上机组试管剩余数量*/\n");
+    params.operate_out_residue && (whereSql += " AND operate_out_residue LIKE '%:operate_out_residue%' /*上机组样本剩余量*/\n");
     let status = params.status;
     if (status == '-1' || status == undefined) { // 全部
-        whereSql += " AND status IN (14,15,16,17,18) /*状态*/\n";
+        // whereSql += " AND status IN (14,15,16,17,18) /*状态*/\n";
     } else {
         whereSql += " AND status = :status /*状态*/\n";
     }

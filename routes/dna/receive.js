@@ -385,7 +385,7 @@ router.post('/exportExcel', (req, res) => {
                     width: '15'
                 },
                 sample_out_residue: {
-                    displayName: '接收组试管剩余数量',
+                    displayName: '接收组样本剩余量',
                     headerStyle: styles.header,
                     cellStyle: styles.cell,
                     cellFormat: function (value, row) {
