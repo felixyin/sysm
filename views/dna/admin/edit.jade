@@ -117,20 +117,20 @@ block content
                             input#ff-14.col-xs-6.ipt-date(type='text', name='input_date', value='#{input_date || ""}', placeholder='')
                             span.help-inline.col-xs-6
                                 span.middle.hide Inline help text
-                    .space-4
-                    .form-group
-                        label.col-xs-3.control-label.no-padding-right(for='ff-15') 换管人员
-                        .col-xs-9
-                            input#ff-15.col-xs-6.ipt-person(type='text', name='changer', value='#{changer || ""}', placeholder='')
-                            span.help-inline.col-xs-6
-                                span.middle.hide Inline help text
-                    .space-4
-                    .form-group
-                        label.col-xs-3.control-label.no-padding-right(for='ff-16') 换管日期
-                        .col-xs-9
-                            input#ff-16.col-xs-6.ipt-date(type='text', name='change_date', value='#{change_date || ""}', placeholder='')
-                            span.help-inline.col-xs-6
-                                span.middle.hide Inline help text
+                    //.space-4
+                    //.form-group
+                    //    label.col-xs-3.control-label.no-padding-right(for='ff-15') 换管人员
+                    //    .col-xs-9
+                    //        input#ff-15.col-xs-6.ipt-person(type='text', name='changer', value='#{changer || ""}', placeholder='')
+                    //        span.help-inline.col-xs-6
+                    //            span.middle.hide Inline help text
+                    //.space-4
+                    //.form-group
+                    //    label.col-xs-3.control-label.no-padding-right(for='ff-16') 换管日期
+                    //    .col-xs-9
+                    //        input#ff-16.col-xs-6.ipt-date(type='text', name='change_date', value='#{change_date || ""}', placeholder='')
+                    //        span.help-inline.col-xs-6
+                    //            span.middle.hide Inline help text
                     .space-4
                     .form-group
                         label.col-xs-3.control-label.no-padding-right(for='ff-17') 审批人员
@@ -143,6 +143,35 @@ block content
                         label.col-xs-3.control-label.no-padding-right(for='ff-18') 审批日期
                         .col-xs-9
                             input#ff-18.col-xs-6.ipt-date(type='text', name='check_date', value='#{check_date || ""}', placeholder='')
+                            span.help-inline.col-xs-6
+                                span.middle.hide Inline help text
+                    .space-4
+                    .form-group
+                        label.col-xs-3.control-label.no-padding-right(for='ff-19') 采血管入库人
+                        .col-xs-9
+                            input#ff-19.col-xs-6.ipt-person(type='text', name='warehouser', value='#{warehouser||""}', placeholder='')
+                            span.help-inline.col-xs-6
+                                span.middle.hide Inline help text
+                    .space-4
+                    .form-group
+                        label.col-xs-3.control-label.no-padding-right(for='ff-20') 采血管入库位置
+                        .col-xs-9
+                            select#ff-20.col-xs-6( name='warehouse_place', value='#{warehouse_place || ""}', placeholder='')
+                                option(value='未知') 未知
+                                - var  n = 1;
+                                while n < 100
+                                    - var value = '冻存盒' + n++;
+                                    if value == warehouse_place
+                                        option(value='#{value}', selected='selected')=value
+                                    else
+                                        option(value='#{value}')=value
+                            span.help-inline.col-xs-6
+                                span.middle.hide Inline help text
+                    .space-4
+                    .form-group
+                        label.col-xs-3.control-label.no-padding-right(for='ff-21') 采血管入库时间
+                        .col-xs-9
+                            input#ff-21.col-xs-6.ipt-date(type='text', name='warehouse_date', value='#{warehouse_date||""}', placeholder='')
                             span.help-inline.col-xs-6
                                 span.middle.hide Inline help text
                     .space-4

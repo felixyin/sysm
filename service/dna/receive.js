@@ -24,10 +24,11 @@ function getSql(params) {
         comments,
         inputter,
         input_date,
-        changer,
-        change_date,
         checker,
         check_date,
+        warehouser,
+        warehouse_place,
+        warehouse_date,
         sample_outer,
         sample_out_residue,
         status
@@ -47,10 +48,11 @@ function getSql(params) {
     params.comments && (whereSql += " AND comments LIKE '%:comments%' /*备注*/\n");
     params.inputter && (whereSql += " AND inputter LIKE '%:inputter%' /*录入人员*/\n");
     params.input_date && (whereSql += " AND input_date LIKE '%:input_date%' /*录入日期*/\n");
-    params.changer && (whereSql += " AND changer LIKE '%:changer%' /*换管人员*/\n");
-    params.change_date && (whereSql += " AND change_date LIKE '%:change_date%' /*换管日期*/\n");
     params.checker && (whereSql += " AND checker LIKE '%:checker%' /*审批人员*/\n");
     params.check_date && (whereSql += " AND check_date LIKE '%:check_date%' /*审批日期*/\n");
+    params.warehouser && (whereSql += " AND warehouser LIKE '%:warehouser%' /*入库人*/\n");
+    params.warehouse_place && (whereSql += " AND warehouse_place LIKE '%:warehouse_place%' /*入库位置*/\n");
+    params.warehouse_date && (whereSql += " AND warehouse_date LIKE '%:warehouse_date%' /*入库时间*/\n");
     // params.barcode_short && (whereSql += " AND barcode_short LIKE '%:barcode_short%' /*短条码编号*/\n");
     params.sample_outer && (whereSql += " AND sample_outer LIKE '%:sample_outer%' /*采血管出库人*/\n");
     params.sample_out_residue && (whereSql += " AND sample_out_residue LIKE '%:sample_out_residue%' /*接收组试管剩余数量*/\n");

@@ -9,8 +9,8 @@ const _ = require('underscore');
 
 function getSqls(params) {
     let selectSql = `SELECT 
-        id, barcode_long, hospital, sample_code, sample_date, receive_date, real_name, id_card, age, pregnancy_week, pregnancy_condition,
-        pregnancy_bad_history, comments, inputter, input_date, changer, change_date, checker, check_date, sample_outer,
+        id, barcode_long, hospital, sample_code, sample_date, receive_date, real_name, id_card, age, pregnancy_week, pregnancy_condition, pregnancy_bad_history,
+        comments, inputter, input_date, changer, change_date, checker, check_date, warehouser, warehouse_place, warehouse_date, sample_outer,
         sample_out_residue, extract_handover, extract_handover_date, extract_qbite_deep, extract_epoch_deep, extract_purity_deep, extract_part_size, 
         extract_part_after_break, extracter, extract_date, extract_checker, extract_check_date, extract_outer, extract_out_residue, storage_handover, 
         storage_handover_date, storage_deep, storage_part_size, storager, storage_date, storage_checker, storage_check_date, storage_outer, 
@@ -39,6 +39,9 @@ function getSqls(params) {
     params.change_date && (whereSql += " AND change_date LIKE '%:change_date%' /*换管日期*/\n");
     params.checker && (whereSql += " AND checker LIKE '%:checker%' /*审批人员*/\n");
     params.check_date && (whereSql += " AND check_date LIKE '%:check_date%' /*审批日期*/\n");
+    params.warehouser && (whereSql += " AND warehouser LIKE '%:warehouser%' /*入库人*/\n");
+    params.warehouse_place && (whereSql += " AND warehouse_place LIKE '%:warehouse_place%' /*入库位置*/\n");
+    params.warehouse_date && (whereSql += " AND warehouse_date LIKE '%:warehouse_date%' /*入库时间*/\n");
     // params.barcode_short && (whereSql += " AND barcode_short LIKE '%:barcode_short%' /*短条码编号*/\n");
     params.sample_outer && (whereSql += " AND sample_outer LIKE '%:sample_outer%' /*采血管出库人*/\n");
     params.sample_out_residue && (whereSql += " AND sample_out_residue LIKE '%:sample_out_residue%' /*接收组试管剩余数量*/\n");

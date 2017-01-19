@@ -13,9 +13,8 @@
     W._sortname = 'input_date';
     W._sortorder = 'ASC';
     W._postData = {};
-    W._colNames = ['序号', '条码编号', '医院名称', '样本编号', '采样日期', '接收日期', '姓名', '身份证号', '出生日期',
-        '孕周', '妊娠情况', '不良孕产史', '备注', '录入人员', '录入日期', '换管人员', '换管日期', '审批人员', '审批日期',
-        '', '状态'];
+    W._colNames = ['序号', '条码编号', '医院名称', '样本编号', '采样日期', '接收日期', '姓名', '身份证号', '出生日期', '孕周', '妊娠情况',
+        '不良孕产史', '备注', '录入人员', '录入日期', '审批人员', '审批日期','采血管入库人', '采血管入库位置', '采血管入库时间', '', '状态'];
     W._colModel = [
         {name: 'id', width: 40, index: 'id', align: 'center', sortable: false, frozen: true},
         {name: 'barcode_long', width: 120, index: 'barcode_long', align: 'center', sortable: false, frozen: true},
@@ -32,10 +31,13 @@
         {name: 'comments', width: 100, index: 'comments', align: 'center', sortable: true},
         {name: 'inputter', width: 100, index: 'inputter', align: 'center', sortable: true},
         {name: 'input_date', width: 100, index: 'input_date', align: 'center', sortable: true},
-        {name: 'changer', width: 100, index: 'changer', align: 'center', sortable: true},
-        {name: 'change_date', width: 100, index: 'change_date', align: 'center', sortable: true},
+        // {name: 'changer', width: 100, index: 'changer', align: 'center', sortable: true},
+        // {name: 'change_date', width: 100, index: 'change_date', align: 'center', sortable: true},
         {name: 'checker', width: 100, index: 'checker', align: 'center', sortable: true},
         {name: 'check_date', width: 100, index: 'check_date', align: 'center', sortable: true},
+        {name: 'warehouser', width: 100, index: 'warehouser', align: 'center', sortable: false },
+        {name: 'warehouse_place', width: 100, index: 'warehouse_place', align: 'center', sortable: false },
+        {name: 'warehouse_date', width: 130, index: 'warehouse_date', align: 'center', sortable: false },
         // {name: 'barcode_short', width: 100, index: 'barcode_short', align: 'center', sortable: false},
         {name: 'status', hidden: true, hidedlg: true},
         {

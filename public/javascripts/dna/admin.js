@@ -15,7 +15,7 @@
         W._sortorder = 'ASC';
         W._postData = {};
         W._colNames = ['序号', '条码编号', '医院名称', '样本编号', '采样日期', '接收日期', '姓名', '身份证号', '出生日期', '孕周', '妊娠情况', '不良孕产史',
-            '备注', '录入人员', '录入日期', '换管人员', '换管日期', '审批人员', '审批日期', '采血管出库人', '接收组试管剩余数量', '提取组接收人',
+            '备注', '录入人员', '录入日期', '审批人员', '审批日期', '采血管入库人', '采血管入库位置', '采血管入库时间', '采血管出库人', '接收组试管剩余数量', '提取组接收人',
             '提取组接收时间', 'qbite浓度', 'epoch浓度', '纯度', '片段大小', '打断后片段', '提取人员', '提取时间', '提取审核人', '提取审核时间', '提取出库人',
             '提取组试管剩余数量', '建库组接收人', '建库组接收时间', '建库浓度', '建库片段大小', '建库人', '建库时间', '建库审查人', '建库审查时间', '建库组出库人',
             '建库组试管剩余数量', '上机组接收人', '上机组接收时间', '上机芯片编码', '上机reads数', '上机q30值', '上机人', '上机时间', '上机审查人', '上机审查时间',
@@ -45,10 +45,11 @@
             {name: 'comments', width: 100, index: 'comments', align: 'center', sortable: false},
             {name: 'inputter', width: 100, index: 'inputter', align: 'center', sortable: false},
             {name: 'input_date', width: 130, index: 'input_date', align: 'center', sortable: false},
-            {name: 'changer', width: 100, index: 'changer', align: 'center', sortable: false},
-            {name: 'change_date', width: 130, index: 'change_date', align: 'center', sortable: false},
             {name: 'checker', width: 100, index: 'checker', align: 'center', sortable: false},
             {name: 'check_date', width: 130, index: 'check_date', align: 'center', sortable: false},
+            {name: 'warehouser', width: 100, index: 'warehouser', align: 'center', sortable: false },
+            {name: 'warehouse_place', width: 100, index: 'warehouse_place', align: 'center', sortable: false },
+            {name: 'warehouse_date', width: 130, index: 'warehouse_date', align: 'center', sortable: false },
             // {name: 'barcode_short', width: 100, index: 'barcode_short', align: 'center', sortable: false},
             {name: 'sample_outer', width: 100, index: 'sample_outer', align: 'center', sortable: false},
             {

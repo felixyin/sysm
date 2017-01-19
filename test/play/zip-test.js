@@ -30,5 +30,5 @@ var fs = require('fs');
 fs.createReadStream('/home/fy/Downloads/zip-upload-template.zip')
     .pipe(unzip.Extract({path: '/home/fy/Downloads/'}))
     .on('close', function () {
-	console.log('over');
-});
+        console.log('over');
+    });
