@@ -4,9 +4,10 @@
 'use strict';
 
 if ($('.animsition').size() === 1) {
+
     $('.animsition').animsition({
-        inClass: 'fade-in-right-lg' ,
-        outClass: 'fade-out-right-lg'
+        inClass: 'flip-in-y-fr ' ,
+        outClass: 'flip-out-y-fr '
     });
 }
 
