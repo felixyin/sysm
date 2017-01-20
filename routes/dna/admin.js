@@ -208,24 +208,24 @@ router.post('/exportExcel', (req, res) => {
                     },
                     width: '15'
                 },
-                changer: {
-                    displayName: '换管人员',
-                    headerStyle: styles.header,
-                    cellStyle: styles.cell,
-                    cellFormat: function (value, row) {
-                        return value || '';
-                    },
-                    width: '15'
-                },
-                change_date: {
-                    displayName: '换管日期',
-                    headerStyle: styles.header,
-                    cellStyle: styles.cell,
-                    cellFormat: function (value, row) {
-                        return value || '';
-                    },
-                    width: '15'
-                },
+                // changer: {
+                //     displayName: '换管人员',
+                //     headerStyle: styles.header,
+                //     cellStyle: styles.cell,
+                //     cellFormat: function (value, row) {
+                //         return value || '';
+                //     },
+                //     width: '15'
+                // },
+                // change_date: {
+                //     displayName: '换管日期',
+                //     headerStyle: styles.header,
+                //     cellStyle: styles.cell,
+                //     cellFormat: function (value, row) {
+                //         return value || '';
+                //     },
+                //     width: '15'
+                // },
                 checker: {
                     displayName: '审批人员',
                     headerStyle: styles.header,
@@ -237,6 +237,33 @@ router.post('/exportExcel', (req, res) => {
                 },
                 check_date: {
                     displayName: '审批日期',
+                    headerStyle: styles.header,
+                    cellStyle: styles.cell,
+                    cellFormat: function (value, row) {
+                        return value || '';
+                    },
+                    width: '15'
+                },
+                warehouser: {
+                    displayName: '采血管入库人',
+                    headerStyle: styles.header,
+                    cellStyle: styles.cell,
+                    cellFormat: function (value, row) {
+                        return value || '';
+                    },
+                    width: '15'
+                },
+                warehouse_place: {
+                    displayName: '采血管入库位置',
+                    headerStyle: styles.header,
+                    cellStyle: styles.cell,
+                    cellFormat: function (value, row) {
+                        return value || '';
+                    },
+                    width: '15'
+                },
+                warehouse_date: {
+                    displayName: '采血管入库时间',
                     headerStyle: styles.header,
                     cellStyle: styles.cell,
                     cellFormat: function (value, row) {
@@ -614,11 +641,17 @@ router.post('/exportExcel', (req, res) => {
                     width: '15'
                 },
                 report_is_send: {
-                    displayName: '是否发送（1、不发送；2、发送）',
+                    displayName: '是否发送',
                     headerStyle: styles.header,
                     cellStyle: styles.cell,
                     cellFormat: function (value, row) {
-                        return value || '';
+                        if (value == 1) {
+                            return '不发送';
+                        } else if (value == 2) {
+                            return '发送';
+                        } else {
+                            return '';
+                        }
                     },
                     width: '15'
                 },

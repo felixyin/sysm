@@ -9,29 +9,9 @@ const _ = require('underscore');
 
 function getSql(params) {
     let selectSql = `SELECT 
-        id,
-        barcode_long,
-        hospital,
-        sample_code,
-        sample_date,
-        receive_date,
-        real_name,
-        id_card,
-        age,
-        pregnancy_week,
-        pregnancy_condition,
-        pregnancy_bad_history,
-        comments,
-        inputter,
-        input_date,
-        checker,
-        check_date,
-        warehouser,
-        warehouse_place,
-        warehouse_date,
-        sample_outer,
-        sample_out_residue,
-        status
+        id, barcode_long, hospital, sample_code, sample_date, receive_date, real_name, id_card, age, pregnancy_week, pregnancy_condition,
+        pregnancy_bad_history, comments, inputter, input_date, checker, check_date, warehouser, warehouse_place, warehouse_date,
+        sample_outer, sample_out_residue, status
     FROM dna_flow `;
     let whereSql = " WHERE 1 = 1 \n";
     params.barcode_long && (whereSql += " AND barcode_long LIKE '%:barcode_long%' /*条码编号*/\n");
@@ -86,7 +66,7 @@ exports.list = (req, res) => {
  * @params cb
  */
 exports.listAll = (params, cb) => {
-    let sqls = getSqls(params);
+    let sqls = getSql(params);
     sp.selectAll(db, sqls.sql, params, cb);
 };
 

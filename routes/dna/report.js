@@ -160,6 +160,33 @@ router.post('/exportExcel', (req, res) => {
                     },
                     width: '15'
                 },
+                operate_chip_code: {
+                    displayName: '上机芯片编码',
+                    headerStyle: styles.header,
+                    cellStyle: styles.cell,
+                    cellFormat: function (value, row) {
+                        return value || '';
+                    },
+                    width: '15'
+                },
+                operate_reads_val: {
+                    displayName: '上机reads数',
+                    headerStyle: styles.header,
+                    cellStyle: styles.cell,
+                    cellFormat: function (value, row) {
+                        return value || '';
+                    },
+                    width: '15'
+                },
+                operate_q30_val: {
+                    displayName: '上机q30值',
+                    headerStyle: styles.header,
+                    cellStyle: styles.cell,
+                    cellFormat: function (value, row) {
+                        return value || '';
+                    },
+                    width: '15'
+                },
                 report_result: {
                     displayName: '分析结果',
                     headerStyle: styles.header,
@@ -179,11 +206,17 @@ router.post('/exportExcel', (req, res) => {
                     width: '15'
                 },
                 report_is_send: {
-                    displayName: '是否发送（1、不发送；2、发送）',
+                    displayName: '是否发送',
                     headerStyle: styles.header,
                     cellStyle: styles.cell,
                     cellFormat: function (value, row) {
-                        return value || '';
+                        if (value == 1) {
+                            return '不发送';
+                        } else if (value == 2) {
+                            return '发送';
+                        } else {
+                            return '未知';
+                        }
                     },
                     width: '15'
                 },

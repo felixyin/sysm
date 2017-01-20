@@ -123,7 +123,7 @@ router.post('/exportExcel', (req, res) => {
             };
 
             let heading = [
-                [{value: '标签接收数据导出', style: styles.header}],
+                [{value: '建库组数据导出', style: styles.header}],
             ];
 
             let specification = {
@@ -165,6 +165,51 @@ router.post('/exportExcel', (req, res) => {
                 },
                 storage_handover_date: {
                     displayName: '建库组接收时间',
+                    headerStyle: styles.header,
+                    cellStyle: styles.cell,
+                    cellFormat: function (value, row) {
+                        return value || '';
+                    },
+                    width: '15'
+                },
+                extract_qbite_deep: {
+                    displayName: 'qbite浓度',
+                    headerStyle: styles.header,
+                    cellStyle: styles.cell,
+                    cellFormat: function (value, row) {
+                        return value || '';
+                    },
+                    width: '15'
+                },
+                extract_epoch_deep: {
+                    displayName: 'epoch浓度',
+                    headerStyle: styles.header,
+                    cellStyle: styles.cell,
+                    cellFormat: function (value, row) {
+                        return value || '';
+                    },
+                    width: '15'
+                },
+                extract_purity_deep: {
+                    displayName: '纯度',
+                    headerStyle: styles.header,
+                    cellStyle: styles.cell,
+                    cellFormat: function (value, row) {
+                        return value || '';
+                    },
+                    width: '15'
+                },
+                extract_part_size: {
+                    displayName: '片段大小',
+                    headerStyle: styles.header,
+                    cellStyle: styles.cell,
+                    cellFormat: function (value, row) {
+                        return value || '';
+                    },
+                    width: '15'
+                },
+                extract_part_after_break: {
+                    displayName: '打断后片段',
                     headerStyle: styles.header,
                     cellStyle: styles.cell,
                     cellFormat: function (value, row) {

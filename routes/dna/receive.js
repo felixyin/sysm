@@ -209,7 +209,7 @@ router.post('/exportExcel', (req, res) => {
                     headerStyle: styles.header,
                     cellStyle: styles.cell,
                     cellFormat: function (value, row) {
-                        return value;
+                        return value || '';
                     },
                     width: '15'
                 },
@@ -218,7 +218,7 @@ router.post('/exportExcel', (req, res) => {
                     headerStyle: styles.header,
                     cellStyle: styles.cell,
                     cellFormat: function (value, row) {
-                        return value;
+                        return value || '';
                     },
                     width: '15'
                 },
@@ -227,7 +227,7 @@ router.post('/exportExcel', (req, res) => {
                     headerStyle: styles.header,
                     cellStyle: styles.cell,
                     cellFormat: function (value, row) {
-                        return value;
+                        return value || '';
                     },
                     width: '15'
                 },
@@ -236,7 +236,7 @@ router.post('/exportExcel', (req, res) => {
                     headerStyle: styles.header,
                     cellStyle: styles.cell,
                     cellFormat: function (value, row) {
-                        return value;
+                        return value || '';
                     },
                     width: '15'
                 },
@@ -245,7 +245,7 @@ router.post('/exportExcel', (req, res) => {
                     headerStyle: styles.header,
                     cellStyle: styles.cell,
                     cellFormat: function (value, row) {
-                        return value;
+                        return value || '';
                     },
                     width: '15'
                 },
@@ -254,7 +254,7 @@ router.post('/exportExcel', (req, res) => {
                     headerStyle: styles.header,
                     cellStyle: styles.cell,
                     cellFormat: function (value, row) {
-                        return value;
+                        return value || '';
                     },
                     width: '15'
                 },
@@ -263,7 +263,7 @@ router.post('/exportExcel', (req, res) => {
                     headerStyle: styles.header,
                     cellStyle: styles.cell,
                     cellFormat: function (value, row) {
-                        return value;
+                        return value || '';
                     },
                     width: '15'
                 },
@@ -272,7 +272,7 @@ router.post('/exportExcel', (req, res) => {
                     headerStyle: styles.header,
                     cellStyle: styles.cell,
                     cellFormat: function (value, row) {
-                        return value;
+                        return value || '';
                     },
                     width: '15'
                 },
@@ -281,7 +281,7 @@ router.post('/exportExcel', (req, res) => {
                     headerStyle: styles.header,
                     cellStyle: styles.cell,
                     cellFormat: function (value, row) {
-                        return value;
+                        return value || '';
                     },
                     width: '15'
                 },
@@ -290,7 +290,7 @@ router.post('/exportExcel', (req, res) => {
                     headerStyle: styles.header,
                     cellStyle: styles.cell,
                     cellFormat: function (value, row) {
-                        return value;
+                        return value || '';
                     },
                     width: '15'
                 },
@@ -299,7 +299,7 @@ router.post('/exportExcel', (req, res) => {
                     headerStyle: styles.header,
                     cellStyle: styles.cell,
                     cellFormat: function (value, row) {
-                        return value;
+                        return value || '';
                     },
                     width: '15'
                 },
@@ -308,7 +308,7 @@ router.post('/exportExcel', (req, res) => {
                     headerStyle: styles.header,
                     cellStyle: styles.cell,
                     cellFormat: function (value, row) {
-                        return value;
+                        return value || '';
                     },
                     width: '15'
                 },
@@ -317,7 +317,7 @@ router.post('/exportExcel', (req, res) => {
                     headerStyle: styles.header,
                     cellStyle: styles.cell,
                     cellFormat: function (value, row) {
-                        return value;
+                        return value || '';
                     },
                     width: '15'
                 },
@@ -326,7 +326,7 @@ router.post('/exportExcel', (req, res) => {
                     headerStyle: styles.header,
                     cellStyle: styles.cell,
                     cellFormat: function (value, row) {
-                        return value;
+                        return value || '';
                     },
                     width: '15'
                 },
@@ -335,7 +335,7 @@ router.post('/exportExcel', (req, res) => {
                     headerStyle: styles.header,
                     cellStyle: styles.cell,
                     cellFormat: function (value, row) {
-                        return value;
+                        return value || '';
                     },
                     width: '15'
                 },
@@ -344,7 +344,7 @@ router.post('/exportExcel', (req, res) => {
                     headerStyle: styles.header,
                     cellStyle: styles.cell,
                     cellFormat: function (value, row) {
-                        return value;
+                        return value || '';
                     },
                     width: '15'
                 },
@@ -353,7 +353,7 @@ router.post('/exportExcel', (req, res) => {
                     headerStyle: styles.header,
                     cellStyle: styles.cell,
                     cellFormat: function (value, row) {
-                        return value;
+                        return value || '';
                     },
                     width: '15'
                 },
@@ -362,7 +362,34 @@ router.post('/exportExcel', (req, res) => {
                     headerStyle: styles.header,
                     cellStyle: styles.cell,
                     cellFormat: function (value, row) {
-                        return value;
+                        return value || '';
+                    },
+                    width: '15'
+                },
+                warehouser: {
+                    displayName: '采血管入库人',
+                    headerStyle: styles.header,
+                    cellStyle: styles.cell,
+                    cellFormat: function (value, row) {
+                        return value || '';
+                    },
+                    width: '15'
+                },
+                warehouse_place: {
+                    displayName: '采血管入库位置',
+                    headerStyle: styles.header,
+                    cellStyle: styles.cell,
+                    cellFormat: function (value, row) {
+                        return value || '';
+                    },
+                    width: '15'
+                },
+                warehouse_date: {
+                    displayName: '采血管入库时间',
+                    headerStyle: styles.header,
+                    cellStyle: styles.cell,
+                    cellFormat: function (value, row) {
+                        return value || '';
                     },
                     width: '15'
                 },
@@ -371,7 +398,7 @@ router.post('/exportExcel', (req, res) => {
                 //     headerStyle: styles.header,
                 //     cellStyle: styles.cell,
                 //     cellFormat: function (value, row) {
-                //         return value;
+                //         return value || '';
                 //     },
                 //     width: '15'
                 // },
@@ -380,7 +407,7 @@ router.post('/exportExcel', (req, res) => {
                     headerStyle: styles.header,
                     cellStyle: styles.cell,
                     cellFormat: function (value, row) {
-                        return value;
+                        return value || '';
                     },
                     width: '15'
                 },
@@ -389,25 +416,7 @@ router.post('/exportExcel', (req, res) => {
                     headerStyle: styles.header,
                     cellStyle: styles.cell,
                     cellFormat: function (value, row) {
-                        return value;
-                    },
-                    width: '15'
-                },
-                extract_handover: {
-                    displayName: '提取组接收人',
-                    headerStyle: styles.header,
-                    cellStyle: styles.cell,
-                    cellFormat: function (value, row) {
-                        return value;
-                    },
-                    width: '15'
-                },
-                extract_handover_date: {
-                    displayName: '提取组接收时间',
-                    headerStyle: styles.header,
-                    cellStyle: styles.cell,
-                    cellFormat: function (value, row) {
-                        return value;
+                        return value || '';
                     },
                     width: '15'
                 },

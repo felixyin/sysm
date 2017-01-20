@@ -281,24 +281,6 @@ router.post('/exportExcel', (req, res) => {
                     },
                     width: '15'
                 },
-                storage_handover: {
-                    displayName: '建库组接收人',
-                    headerStyle: styles.header,
-                    cellStyle: styles.cell,
-                    cellFormat: function (value, row) {
-                        return value || '';
-                    },
-                    width: '15'
-                },
-                storage_handover_date: {
-                    displayName: '建库组接收时间',
-                    headerStyle: styles.header,
-                    cellStyle: styles.cell,
-                    cellFormat: function (value, row) {
-                        return value || '';
-                    },
-                    width: '15'
-                },
                 status: {
                     displayName: '状态',
                     headerStyle: styles.header,
@@ -384,7 +366,7 @@ router.post('/exportExcel', (req, res) => {
             let report = excel.buildExport(
                 [
                     {
-                        name: '标签接收数据导出',
+                        name: 'DNA提取数据导出',
                         heading: heading,
                         specification: specification,
                         data: dataset
@@ -392,7 +374,7 @@ router.post('/exportExcel', (req, res) => {
                 ]
             );
 
-            res.attachment('标签接收数据导出.xlsx'); // This is sails.js specific (in general you need to set headers)
+            res.attachment('DNA提取数据导出.xlsx'); // This is sails.js specific (in general you need to set headers)
             return res.send(report);
         } else {
             let msg = encodeURI('没有数据可导出');
