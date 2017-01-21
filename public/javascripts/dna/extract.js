@@ -340,7 +340,7 @@
                 var id = ids[i];
                 var row = $(grid_selector).jqGrid('getRowData', id);
                 var status = row.status;
-                if (status == 6) { // 6为审核通过
+                if (status == 6 /*提取审核-合格*/ ) { // 6为审核通过
                     idArray.push(id);
                 } else {
                     $(grid_selector).jqGrid('setSelection', id, false);

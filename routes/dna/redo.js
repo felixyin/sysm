@@ -49,7 +49,7 @@ router.post('/operate', (req, res) => {
  * 废弃
  */
 router.post('/delete', (req, res) => {
-    dnaService.delete(req.body, (err, result) => {
+    dnaService.delete(req.body.checker, req.body.ids, (err, result) => {
         res.send({
             changedRows: result.changedRows,
             err: err
