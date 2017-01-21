@@ -148,15 +148,12 @@ exports.selectDnaFlowByBarcodeShort = (barcodeShort, cb) => {
  */
 exports.redo = (params, cb) => {
     dnaService.backup(params.checker, params.ids, (err, result) => {
-        console.log(err);
         if (err)throw err;
-        console.log(result);
         if (result && result.insertId) {
             let clearColumnSql = `UPDATE dna_flow SET extract_handover=null, extract_handover_date=null, extract_qbite_deep=null,
                 extract_epoch_deep=null, extract_purity_deep=null, extract_part_size=null, extract_part_after_break=null, extracter=null,
                 extract_date=null, extract_checker=null, extract_check_date=null, extract_outer=null, extract_out_residue=null,status=8
             WHERE id IN (${params.ids})`;
-            console.log(clearColumnSql);
             db.pool.query(clearColumnSql, cb);
         } else {
             cb(new Error('保存失败!'), null);

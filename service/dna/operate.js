@@ -6,6 +6,7 @@ const sp = require('../../lib/pager/select-pager');
 const db = require('../../config/db');
 const util = require('../../lib/utils');
 const _ = require('underscore');
+const dnaService = require('../../service/dna/index');
 
 function getSqls(params) {
     let selectSql = `SELECT 
@@ -138,4 +139,24 @@ exports.insertCk = (ck, cb) => {
  */
 exports.selectDnaFlowByBarcodeShort = (barcodeShort, cb) => {
     db.pool.query('SELECT * FROM dna_flow AS t WHERE t.barcode_long=?', barcodeShort, cb);
+};
+
+/**
+ * 重做
+ * @param params
+ * @param cb
+ */
+exports.redo = (params, cb) => {
+    dnaService.backup(params.checker, params.ids, (err, result) => {
+        if (err)throw err;
+        if (result && result.insertId) {
+            let clearColumnSql = `UPDATE dna_flow SET operate_handover = NULL, operate_handover_date = NULL, operate_chip_code = NULL,
+                operate_reads_val = NULL, operate_q30_val = NULL, operater = NULL, operate_date = NULL, operate_checker = NULL,
+                operate_check_date = NULL, operate_outer = NULL, operate_out_residue = NULL,status=18
+            WHERE id IN (${params.ids})`;
+            db.pool.query(clearColumnSql, cb);
+        } else {
+            cb(new Error('保存失败!'), null);
+        }
+    });
 };

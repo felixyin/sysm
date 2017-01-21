@@ -37,7 +37,7 @@ app.use(session({
     name: 'sid',
     secret: 'sysm-felix-',
     resave: true,
-    rolling:true,
+    rolling: true,
     saveUninitialized: true,
     cookie: {maxAge: 60000 * 3000},
     store: new RedisStore({
@@ -84,6 +84,8 @@ app.use('/dna/operate', require('./routes/dna/operate'));
 app.use('/dna/report', require('./routes/dna/report'));
 //超级管理
 app.use('/dna/admin', require('./routes/dna/admin'));
+//重做模块
+app.use('/dna/redo', require('./routes/dna/redo'));
 
 //用户管理模块
 let user = require('./routes/user');

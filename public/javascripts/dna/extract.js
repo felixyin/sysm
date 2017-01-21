@@ -213,7 +213,7 @@
                 var id = ids[i];
                 if (id) {
                     var row = $(grid_selector).jqGrid('getRowData', id);
-                    if (row.status != 5) { // 提取且已保存
+                    if (row.status != 5 /*提取且已保存*/) { // 提取且已保存
                         $(grid_selector).jqGrid('setSelection', id, false);
                         warnRows.push(row.barcode_long);
                         // }else{
@@ -269,7 +269,7 @@
                                         Toast.show('部分选中行,在上一环节已没有剩余试管,已取消选中');
                                     }
                                     ids = $(grid_selector).jqGrid('getGridParam', 'selarrrow');
-                                    $.post('dna/extract/redo', {checker: userId, ids: ids.join(',')}, function (result) {
+                                    $.post('dna/redo/extract', {checker: userId, ids: ids.join(',')}, function (result) {
                                         if (result.changedRows > 0) {
                                             if (result.changedRows == 1) {
                                                 Toast.show(userId + ',审核成功!');
@@ -288,17 +288,31 @@
                                 "label": "废弃!",
                                 "className": "btn-sm btn-danger",
                                 "callback": function () {
-                                    $.post('dna/extract/addSh', {checker: userId, ids: ids.join(',')}, function (result) {
+                                    var warnRows = [];
+                                    for (var i in ids) {
+                                        var id = ids[i];
+                                        var row = $(grid_selector).jqGrid('getRowData', id);
+                                        var count = parseInt(row.sample_out_residue);
+                                        if (count < 1) { // 没有剩余试管用于重做
+                                            $(grid_selector).jqGrid('setSelection', id, false);
+                                            warnRows.push(id);
+                                        }
+                                    }
+                                    if (warnRows.length > 0) {
+                                        Toast.show('部分选中行,在上一环节已没有剩余试管,已取消选中');
+                                    }
+                                    ids = $(grid_selector).jqGrid('getGridParam', 'selarrrow');
+                                    $.post('dna/redo/delete', {checker: userId, ids: ids.join(',')}, function (result) {
                                         if (result.changedRows > 0) {
                                             if (result.changedRows == 1) {
-                                                Toast.show(userId + ',审核成功!');
+                                                Toast.show(userId + ',已废弃,审核成功!');
                                             } else {
-                                                Toast.show(userId + ',批量审核成功!');
+                                                Toast.show(userId + ',已废弃,批量审核成功!');
                                             }
                                             jQuery(grid_selector).trigger('reloadGrid');
                                         } else {
                                             Toast.show(userId + ',审核失败,请联系管理员!');
-                                            localStorage.setItem('_error_addSh_extract', result.err);
+                                            localStorage.setItem('_error_addSh', result.err);
                                         }
                                     });
                                 }

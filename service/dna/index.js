@@ -34,3 +34,15 @@ exports.backup = (checker, ids, cb) => {
     console.log(backSql);
     db.pool.query(backSql, cb);
 };
+
+/**
+ * 废弃
+ * @param checker
+ * @param ids
+ * @param cb
+ */
+exports.delete = (checker, ids, cb) => {
+    // let delSql = `DELETE FROM dna_flow AS t WHERE t.id in(${ids})`;
+    let delSql = `UPDATE dna_flow AS t SET t.status=0 WHERE t.id IN (${ids})`;
+    db.pool.query(delSql, cb);
+};

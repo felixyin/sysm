@@ -81,18 +81,6 @@ router.post('/getByBarcodeShort', (req, res) => {
 });
 
 /**
- * 重做
- */
-router.post('/redo', (req, res) => {
-    extractService.redo(req.body, (err, result) => {
-        res.send({
-            changedRows: result.changedRows,
-            err: err
-        });
-    });
-});
-
-/**
  * 导出excel
  */
 router.post('/exportExcel', (req, res) => {
