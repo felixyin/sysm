@@ -14,7 +14,7 @@
     W._sortorder = 'ASC';
     W._postData = {};
     W._colNames = ['序号', '条码编号', '医院名称', '样本编号', '采样日期', '接收日期', '姓名', '身份证号', '出生日期', '孕周', '妊娠情况',
-        '不良孕产史', '备注', '录入人员', '录入日期', '审批人员', '审批日期','采血管入库人', '采血管入库位置', '采血管入库时间', '', '状态'];
+        '不良孕产史', '备注', '录入人员', '录入日期', '审批人员', '审批日期', '采血管入库人', '采血管入库位置', '采血管入库时间', '', '状态'];
     W._colModel = [
         {name: 'id', width: 40, index: 'id', align: 'center', sortable: false, frozen: true},
         {name: 'barcode_long', width: 120, index: 'barcode_long', align: 'center', sortable: false, frozen: true},
@@ -35,9 +35,9 @@
         // {name: 'change_date', width: 100, index: 'change_date', align: 'center', sortable: true},
         {name: 'checker', width: 100, index: 'checker', align: 'center', sortable: true},
         {name: 'check_date', width: 100, index: 'check_date', align: 'center', sortable: true},
-        {name: 'warehouser', width: 100, index: 'warehouser', align: 'center', sortable: false },
-        {name: 'warehouse_place', width: 100, index: 'warehouse_place', align: 'center', sortable: false },
-        {name: 'warehouse_date', width: 130, index: 'warehouse_date', align: 'center', sortable: false },
+        {name: 'warehouser', width: 100, index: 'warehouser', align: 'center', sortable: false},
+        {name: 'warehouse_place', width: 100, index: 'warehouse_place', align: 'center', sortable: false},
+        {name: 'warehouse_date', width: 130, index: 'warehouse_date', align: 'center', sortable: false},
         // {name: 'barcode_short', width: 100, index: 'barcode_short', align: 'center', sortable: false},
         {name: 'status', hidden: true, hidedlg: true},
         {
@@ -289,7 +289,7 @@
             for (var i in ids) {
                 var id = ids[i];
                 var row = $(grid_selector).jqGrid('getRowData', id);
-                if (row.status == 1) {// 已录入采血单
+                if (row.status == 1 /*已录入采血单*/) {
                     idArray.push(id);
                 } else {
                     $(grid_selector).jqGrid('setSelection', id, false);
@@ -340,7 +340,7 @@
                 }
             }
             if (warnArray.length > 0) {
-                Toast.show('您选择的部分行不符合入库条件(未审批),已经取消选中');
+                Toast.show('您选择的部分行不符合入库条件,已经取消选中');
             }
             if (idArray.length > 0) {
                 W.selectUser('入库人员', function (userId) {
@@ -408,7 +408,7 @@
             for (var i in ids) {
                 var id = ids[i];
                 var row = $(grid_selector).jqGrid('getRowData', id);
-                if (row.status == 3) {// 已审批且入库
+                if (row.status == 3 /*已审批且入库*/ || row.status == 8/*提取审核-重提取*/) {
                     barcodeShortArray.push(row.barcode_long);
                 } else {
                     $(grid_selector).jqGrid('setSelection', id, false);
@@ -416,7 +416,7 @@
                 }
             }
             if (warnArray.length > 0) {
-                Toast.show('您选择的部分行不符合出库条件(未审批),已经取消选中');
+                Toast.show('您选择的部分行不符合出库条件,已经取消选中');
             }
             if (barcodeShortArray.length > 0) {
                 W.selectUser('出库人员', function (ckUserId) {

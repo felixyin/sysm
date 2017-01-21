@@ -3,7 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="976d0898-fc8b-4527-8c5d-bd526aaafd9f" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/layout_nomenu.jade" afterPath="$PROJECT_DIR$/views/layout_nomenu.jade" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/dna/extract.js" afterPath="$PROJECT_DIR$/public/javascripts/dna/extract.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/dna/operate.js" afterPath="$PROJECT_DIR$/public/javascripts/dna/operate.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/dna/receive.js" afterPath="$PROJECT_DIR$/public/javascripts/dna/receive.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/fragment/dnaBarcodeShortInput.js" afterPath="$PROJECT_DIR$/public/javascripts/fragment/dnaBarcodeShortInput.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service/dna/extract.js" afterPath="$PROJECT_DIR$/service/dna/extract.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service/dna/index.js" afterPath="$PROJECT_DIR$/service/dna/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/dna/fragment/dnaBarcodeShortInput.jade" afterPath="$PROJECT_DIR$/views/dna/fragment/dnaBarcodeShortInput.jade" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -23,38 +29,7 @@
     <favorites_list name="LRS_GAME" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="layout.jade" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/layout.jade">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="18">
-              <caret line="122" column="29" lean-forward="false" selection-start-line="122" selection-start-column="29" selection-end-line="122" selection-end-column="29" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="layout_forscreen.jade" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/layout_forscreen.jade">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="layout_nomenu.jade" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/views/layout_nomenu.jade">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="378">
-              <caret line="46" column="30" lean-forward="false" selection-start-line="46" selection-start-column="30" selection-end-line="46" selection-end-column="30" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -65,11 +40,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>include/rpc</find>
-      <find>fontawesome-webfont.woff</find>
-      <find>SettingIndex</find>
-      <find>SettingsIndex</find>
-      <find>barcode_short</find>
       <find>短条码编号</find>
       <find>长条码编号</find>
       <find>t</find>
@@ -95,6 +65,11 @@
       <find>storage_deep</find>
       <find>operate_chip_code</find>
       <find>checker</find>
+      <find>重做</find>
+      <find>row.extract_date</find>
+      <find>要求(</find>
+      <find>条件(</find>
+      <find>),</find>
     </findStrings>
     <replaceStrings>
       <replace>const</replace>
@@ -125,8 +100,8 @@
       <replace>条码编号</replace>
       <replace>采血管出库人</replace>
       <replace>提取组样本剩余量</replace>
-      <replace>样本剩余量</replace>
       <replace>return value || '';</replace>
+      <replace>样本剩余量</replace>
     </replaceStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$</dir>
@@ -142,7 +117,6 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/package.json" />
-        <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/routes/index.js" />
         <option value="$PROJECT_DIR$/views/dna/extract/edit.jade" />
         <option value="$PROJECT_DIR$/routes/index.js" />
@@ -154,7 +128,6 @@
         <option value="$PROJECT_DIR$/public/assets/misc/app.js" />
         <option value="$PROJECT_DIR$/routes/settings/index.js" />
         <option value="$PROJECT_DIR$/views/dna/receive/edit_cxg.jade" />
-        <option value="$PROJECT_DIR$/views/dna/fragment/dnaBarcodeShortInput.jade" />
         <option value="$PROJECT_DIR$/app.js" />
         <option value="$PROJECT_DIR$/public/javascripts/user/list.js" />
         <option value="$PROJECT_DIR$/views/dna/extract/list.jade" />
@@ -169,18 +142,14 @@
         <option value="$PROJECT_DIR$/views/layout.jade" />
         <option value="$PROJECT_DIR$/views/dna/storage/edit.jade" />
         <option value="$PROJECT_DIR$/views/dna/operate/edit.jade" />
-        <option value="$PROJECT_DIR$/service/dna/extract.js" />
         <option value="$PROJECT_DIR$/service/dna/storage.js" />
         <option value="$PROJECT_DIR$/service/dna/operate.js" />
         <option value="$PROJECT_DIR$/service/dna/report.js" />
-        <option value="$PROJECT_DIR$/public/javascripts/dna/extract.js" />
-        <option value="$PROJECT_DIR$/public/javascripts/dna/operate.js" />
         <option value="$PROJECT_DIR$/public/javascripts/dna/storage.js" />
         <option value="$PROJECT_DIR$/public/javascripts/dna/report.js" />
         <option value="$PROJECT_DIR$/views/dna/admin/list.jade" />
         <option value="$PROJECT_DIR$/views/dna/report/list.jade" />
         <option value="$PROJECT_DIR$/views/login.jade" />
-        <option value="$PROJECT_DIR$/public/javascripts/dna/receive.js" />
         <option value="$PROJECT_DIR$/public/javascripts/dna/admin.js" />
         <option value="$PROJECT_DIR$/public/javascripts/layout-footer.js" />
         <option value="$PROJECT_DIR$/bower_components/animsition/dist/css/animsition.css" />
@@ -192,6 +161,12 @@
         <option value="$PROJECT_DIR$/routes/dna/report.js" />
         <option value="$PROJECT_DIR$/routes/dna/admin.js" />
         <option value="$PROJECT_DIR$/views/layout_nomenu.jade" />
+        <option value="$PROJECT_DIR$/service/dna/extract.js" />
+        <option value="$PROJECT_DIR$/service/dna/index.js" />
+        <option value="$PROJECT_DIR$/public/javascripts/dna/extract.js" />
+        <option value="$PROJECT_DIR$/public/javascripts/dna/operate.js" />
+        <option value="$PROJECT_DIR$/public/javascripts/dna/receive.js" />
+        <option value="$PROJECT_DIR$/views/dna/fragment/dnaBarcodeShortInput.jade" />
       </list>
     </option>
   </component>
@@ -376,6 +351,68 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dna" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SYSM" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sysm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dna" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="receive" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SYSM" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sysm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dna" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fragment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SYSM" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sysm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="test" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -476,6 +513,46 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SYSM" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sysm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="javascripts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SYSM" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sysm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="javascripts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dna" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
     </panes>
@@ -523,9 +600,6 @@
       <envs />
       <method />
     </configuration>
-    <configuration default="false" name="gen-where.js" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" path-to-node="project" path-to-js-file="gen-where.js" working-dir="$PROJECT_DIR$/test/gen">
-      <method />
-    </configuration>
     <configuration default="false" name="gen-search.js" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" path-to-node="project" path-to-js-file="gen-search.js" working-dir="$PROJECT_DIR$/test/gen">
       <method />
     </configuration>
@@ -533,6 +607,15 @@
       <method />
     </configuration>
     <configuration default="false" name="gen-export.js" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" path-to-node="project" path-to-js-file="gen-export.js" working-dir="$PROJECT_DIR$/test/gen">
+      <method />
+    </configuration>
+    <configuration default="false" name="jade" type="js.build_tools.grunt" factoryName="Grunt.js" temporary="true">
+      <node-interpreter value="project" />
+      <gruntfile value="$PROJECT_DIR$/Gruntfile.js" />
+      <tasks>
+        <task value="jade" />
+      </tasks>
+      <envs />
       <method />
     </configuration>
     <configuration default="true" type="ChromiumRemoteDebugType" factoryName="Chromium Remote">
@@ -711,18 +794,18 @@
     <list size="6">
       <item index="0" class="java.lang.String" itemvalue="Node.js.debug" />
       <item index="1" class="java.lang.String" itemvalue="npm.my-start" />
-      <item index="2" class="java.lang.String" itemvalue="Node.js.gen-where.js" />
-      <item index="3" class="java.lang.String" itemvalue="Node.js.gen-search.js" />
-      <item index="4" class="java.lang.String" itemvalue="Node.js.gen-edit-form.js" />
-      <item index="5" class="java.lang.String" itemvalue="Node.js.gen-export.js" />
+      <item index="2" class="java.lang.String" itemvalue="Node.js.gen-search.js" />
+      <item index="3" class="java.lang.String" itemvalue="Node.js.gen-edit-form.js" />
+      <item index="4" class="java.lang.String" itemvalue="Node.js.gen-export.js" />
+      <item index="5" class="java.lang.String" itemvalue="Grunt.js.jade" />
     </list>
     <recent_temporary>
       <list size="5">
         <item index="0" class="java.lang.String" itemvalue="npm.my-start" />
-        <item index="1" class="java.lang.String" itemvalue="Node.js.gen-export.js" />
-        <item index="2" class="java.lang.String" itemvalue="Node.js.gen-edit-form.js" />
-        <item index="3" class="java.lang.String" itemvalue="Node.js.gen-search.js" />
-        <item index="4" class="java.lang.String" itemvalue="Node.js.gen-where.js" />
+        <item index="1" class="java.lang.String" itemvalue="Grunt.js.jade" />
+        <item index="2" class="java.lang.String" itemvalue="Node.js.gen-export.js" />
+        <item index="3" class="java.lang.String" itemvalue="Node.js.gen-edit-form.js" />
+        <item index="4" class="java.lang.String" itemvalue="Node.js.gen-search.js" />
       </list>
     </recent_temporary>
   </component>
@@ -776,7 +859,7 @@
       <workItem from="1484191284202" duration="13127000" />
       <workItem from="1484472776068" duration="6447000" />
       <workItem from="1484662937458" duration="7228000" />
-      <workItem from="1484729324172" duration="31614000" />
+      <workItem from="1484729324172" duration="35728000" />
     </task>
     <task id="LOCAL-00010" summary="yarn安装">
       <created>1484143569710</created>
@@ -953,26 +1036,33 @@
       <option name="project" value="LOCAL" />
       <updated>1484882035327</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="修复条码编号复制的bug&#10;加大列表中的复选框">
+      <created>1484917384124</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1484917384124</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <option name="clearContext" value="false" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="306501000" />
+    <option name="totallyTimeSpent" value="310615000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1920" height="1122" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="true" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.21526197" sideWeight="0.5021097" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3291262" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1858873" sideWeight="0.22317073" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2038835" sideWeight="0.4978903" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1858873" sideWeight="0.2223301" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2038835" sideWeight="0.4978903" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21338506" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3291262" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1858873" sideWeight="0.77682924" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Grunt " active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1858873" sideWeight="0.22317073" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Grunt " active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1858873" sideWeight="0.22317073" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26019418" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24954791" sideWeight="0.7735849" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20433997" sideWeight="0.17787743" order="4" side_tool="true" content_ui="tabs" />
@@ -1057,7 +1147,8 @@
     <MESSAGE value="超级管理模块,优化固定列" />
     <MESSAGE value="优化页面加载效果" />
     <MESSAGE value="导出excel修改和bug修复" />
-    <option name="LAST_COMMIT_MESSAGE" value="导出excel修改和bug修复" />
+    <MESSAGE value="修复条码编号复制的bug&#10;加大列表中的复选框" />
+    <option name="LAST_COMMIT_MESSAGE" value="修复条码编号复制的bug&#10;加大列表中的复选框" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1078,30 +1169,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/views/dna/extract/edit.jade">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="2" column="12" lean-forward="false" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/dna/receive/edit_ck.jade">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="522">
-          <caret line="29" column="51" lean-forward="false" selection-start-line="29" selection-start-column="51" selection-end-line="29" selection-end-column="51" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/dna/receive/edit_cxd.jade">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1422">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/user/fragment/editUserInfo.jade">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1237,34 +1304,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/javascripts/dna/storage.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="42" column="0" lean-forward="false" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
-          <folding>
-            <element signature="e#3162#5861#0" expanded="false" />
-            <marker date="1484845541000" expanded="true" signature="10999:11014" ph="..." />
-            <marker date="1484845541000" expanded="true" signature="11045:11060" ph="..." />
-            <marker date="1484845541000" expanded="true" signature="11221:11227" ph=" " />
-            <marker date="1484845541000" expanded="true" signature="11227:11233" ph=" " />
-            <marker date="1484845541000" expanded="true" signature="11233:11239" ph=" " />
-            <marker date="1484845541000" expanded="true" signature="11239:11245" ph=" " />
-            <marker date="1484845541000" expanded="true" signature="11246:11252" ph=" " />
-            <marker date="1484845541000" expanded="true" signature="11252:11258" ph=" " />
-            <marker date="1484845541000" expanded="true" signature="11258:11264" ph=" " />
-            <marker date="1484845541000" expanded="true" signature="11264:11270" ph=" " />
-            <marker date="1484845541000" expanded="true" signature="11270:11276" ph=" " />
-            <marker date="1484845541000" expanded="true" signature="11276:11282" ph=" " />
-            <marker date="1484845541000" expanded="true" signature="11282:11288" ph=" " />
-            <marker date="1484845541000" expanded="true" signature="11289:11295" ph=" " />
-            <marker date="1484845541000" expanded="true" signature="11295:11301" ph=" " />
-            <marker date="1484845541000" expanded="true" signature="11301:11307" ph=" " />
-            <marker date="1484845541000" expanded="true" signature="11307:11313" ph=" " />
-            <marker date="1484845541000" expanded="true" signature="11313:11319" ph=" " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/javascripts/user/list.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="244">
@@ -1274,62 +1313,6 @@
             <marker date="1484831956000" expanded="true" signature="5593:5628" ph="..." />
             <marker date="1484831956000" expanded="true" signature="6000:6012" ph="..." />
             <marker date="1484831956000" expanded="true" signature="6589:6609" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/javascripts/dna/extract.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="546">
-          <caret line="41" column="16" lean-forward="false" selection-start-line="41" selection-start-column="16" selection-end-line="41" selection-end-column="16" />
-          <folding>
-            <marker date="1484845541000" expanded="true" signature="10825:10840" ph="..." />
-            <marker date="1484845541000" expanded="true" signature="10871:10886" ph="..." />
-            <marker date="1484845541000" expanded="true" signature="11047:11053" ph=" " />
-            <marker date="1484845541000" expanded="true" signature="11053:11059" ph=" " />
-            <marker date="1484845541000" expanded="true" signature="11059:11065" ph=" " />
-            <marker date="1484845541000" expanded="true" signature="11065:11071" ph=" " />
-            <marker date="1484845541000" expanded="true" signature="11072:11078" ph=" " />
-            <marker date="1484845541000" expanded="true" signature="11078:11084" ph=" " />
-            <marker date="1484845541000" expanded="true" signature="11084:11090" ph=" " />
-            <marker date="1484845541000" expanded="true" signature="11090:11096" ph=" " />
-            <marker date="1484845541000" expanded="true" signature="11096:11102" ph=" " />
-            <marker date="1484845541000" expanded="true" signature="11102:11108" ph=" " />
-            <marker date="1484845541000" expanded="true" signature="11108:11114" ph=" " />
-            <marker date="1484845541000" expanded="true" signature="11115:11121" ph=" " />
-            <marker date="1484845541000" expanded="true" signature="11121:11127" ph=" " />
-            <marker date="1484845541000" expanded="true" signature="11127:11133" ph=" " />
-            <marker date="1484845541000" expanded="true" signature="11133:11139" ph=" " />
-            <marker date="1484845541000" expanded="true" signature="11139:11145" ph=" " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/javascripts/dna/operate.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="366">
-          <caret line="37" column="116" lean-forward="false" selection-start-line="37" selection-start-column="116" selection-end-line="37" selection-end-column="116" />
-          <folding>
-            <element signature="e#3163#5862#0" expanded="false" />
-            <element signature="e#6388#8091#0" expanded="false" />
-            <marker date="1484845541000" expanded="true" signature="11029:11044" ph="..." />
-            <marker date="1484845541000" expanded="true" signature="11075:11090" ph="..." />
-            <marker date="1484845541000" expanded="true" signature="11251:11257" ph=" " />
-            <marker date="1484845541000" expanded="true" signature="11257:11263" ph=" " />
-            <marker date="1484845541000" expanded="true" signature="11263:11269" ph=" " />
-            <marker date="1484845541000" expanded="true" signature="11269:11275" ph=" " />
-            <marker date="1484845541000" expanded="true" signature="11276:11282" ph=" " />
-            <marker date="1484845541000" expanded="true" signature="11282:11288" ph=" " />
-            <marker date="1484845541000" expanded="true" signature="11288:11294" ph=" " />
-            <marker date="1484845541000" expanded="true" signature="11294:11300" ph=" " />
-            <marker date="1484845541000" expanded="true" signature="11300:11306" ph=" " />
-            <marker date="1484845541000" expanded="true" signature="11306:11312" ph=" " />
-            <marker date="1484845541000" expanded="true" signature="11312:11318" ph=" " />
-            <marker date="1484845541000" expanded="true" signature="11319:11325" ph=" " />
-            <marker date="1484845541000" expanded="true" signature="11325:11331" ph=" " />
-            <marker date="1484845541000" expanded="true" signature="11331:11337" ph=" " />
-            <marker date="1484845541000" expanded="true" signature="11337:11343" ph=" " />
-            <marker date="1484845541000" expanded="true" signature="11343:11349" ph=" " />
           </folding>
         </state>
       </provider>
@@ -1392,16 +1375,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/javascripts/dna/receive.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="77" lean-forward="false" selection-start-line="18" selection-start-column="77" selection-end-line="18" selection-end-column="77" />
-          <folding>
-            <element signature="e#6281#8310#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/javascripts/dna/admin.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="55">
@@ -1456,32 +1429,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
           <caret line="17" column="29" lean-forward="true" selection-start-line="17" selection-start-column="29" selection-end-line="17" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/dna/receive.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="498" column="35" lean-forward="false" selection-start-line="498" selection-start-column="35" selection-end-line="498" selection-end-column="35" />
-          <folding>
-            <element signature="e#13736#16598#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/dna/extract.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-5994">
-          <caret line="16" column="43" lean-forward="true" selection-start-line="16" selection-start-column="43" selection-end-line="16" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/service/dna/extract.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1382">
-          <caret line="68" column="0" lean-forward="false" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1542,10 +1489,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/layout.jade">
+    <entry file="file://$PROJECT_DIR$/views/layout_nomenu.jade">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="122" column="29" lean-forward="false" selection-start-line="122" selection-start-column="29" selection-end-line="122" selection-end-column="29" />
+        <state relative-caret-position="-1026">
+          <caret line="46" column="44" lean-forward="true" selection-start-line="46" selection-start-column="44" selection-end-line="46" selection-end-column="44" />
           <folding />
         </state>
       </provider>
@@ -1558,10 +1505,154 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/layout_nomenu.jade">
+    <entry file="file://$PROJECT_DIR$/views/layout.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-882">
+          <caret line="132" column="49" lean-forward="false" selection-start-line="132" selection-start-column="49" selection-end-line="132" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/javascripts/dna/operate.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="326" column="42" lean-forward="false" selection-start-line="326" selection-start-column="42" selection-end-line="326" selection-end-column="42" />
+          <folding>
+            <element signature="e#3163#5862#0" expanded="false" />
+            <element signature="e#6388#8091#0" expanded="false" />
+            <marker date="1484973204000" expanded="true" signature="11024:11039" ph="..." />
+            <marker date="1484973204000" expanded="true" signature="11070:11085" ph="..." />
+            <marker date="1484973204000" expanded="true" signature="11246:11252" ph=" " />
+            <marker date="1484973204000" expanded="true" signature="11252:11258" ph=" " />
+            <marker date="1484973204000" expanded="true" signature="11258:11264" ph=" " />
+            <marker date="1484973204000" expanded="true" signature="11264:11270" ph=" " />
+            <marker date="1484973204000" expanded="true" signature="11271:11277" ph=" " />
+            <marker date="1484973204000" expanded="true" signature="11277:11283" ph=" " />
+            <marker date="1484973204000" expanded="true" signature="11283:11289" ph=" " />
+            <marker date="1484973204000" expanded="true" signature="11289:11295" ph=" " />
+            <marker date="1484973204000" expanded="true" signature="11295:11301" ph=" " />
+            <marker date="1484973204000" expanded="true" signature="11301:11307" ph=" " />
+            <marker date="1484973204000" expanded="true" signature="11307:11313" ph=" " />
+            <marker date="1484973204000" expanded="true" signature="11314:11320" ph=" " />
+            <marker date="1484973204000" expanded="true" signature="11320:11326" ph=" " />
+            <marker date="1484973204000" expanded="true" signature="11326:11332" ph=" " />
+            <marker date="1484973204000" expanded="true" signature="11332:11338" ph=" " />
+            <marker date="1484973204000" expanded="true" signature="11338:11344" ph=" " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/javascripts/dna/extract.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4932">
+          <caret line="337" column="42" lean-forward="false" selection-start-line="337" selection-start-column="42" selection-end-line="337" selection-end-column="42" />
+          <folding>
+            <marker date="1484973204000" expanded="true" signature="10814:10829" ph="..." />
+            <marker date="1484973204000" expanded="true" signature="10860:10875" ph="..." />
+            <marker date="1484973204000" expanded="true" signature="11036:11042" ph=" " />
+            <marker date="1484973204000" expanded="true" signature="11042:11048" ph=" " />
+            <marker date="1484973204000" expanded="true" signature="11048:11054" ph=" " />
+            <marker date="1484973204000" expanded="true" signature="11054:11060" ph=" " />
+            <marker date="1484973204000" expanded="true" signature="11061:11067" ph=" " />
+            <marker date="1484973204000" expanded="true" signature="11067:11073" ph=" " />
+            <marker date="1484973204000" expanded="true" signature="11073:11079" ph=" " />
+            <marker date="1484973204000" expanded="true" signature="11079:11085" ph=" " />
+            <marker date="1484973204000" expanded="true" signature="11085:11091" ph=" " />
+            <marker date="1484973204000" expanded="true" signature="11091:11097" ph=" " />
+            <marker date="1484973204000" expanded="true" signature="11097:11103" ph=" " />
+            <marker date="1484973204000" expanded="true" signature="11104:11110" ph=" " />
+            <marker date="1484973204000" expanded="true" signature="11110:11116" ph=" " />
+            <marker date="1484973204000" expanded="true" signature="11116:11122" ph=" " />
+            <marker date="1484973204000" expanded="true" signature="11122:11128" ph=" " />
+            <marker date="1484973204000" expanded="true" signature="11128:11134" ph=" " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/javascripts/dna/storage.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="131" column="20" lean-forward="false" selection-start-line="131" selection-start-column="20" selection-end-line="131" selection-end-column="20" />
+          <folding>
+            <element signature="e#3162#5861#0" expanded="false" />
+            <marker date="1484845541000" expanded="true" signature="10999:11014" ph="..." />
+            <marker date="1484845541000" expanded="true" signature="11045:11060" ph="..." />
+            <marker date="1484845541000" expanded="true" signature="11221:11227" ph=" " />
+            <marker date="1484845541000" expanded="true" signature="11227:11233" ph=" " />
+            <marker date="1484845541000" expanded="true" signature="11233:11239" ph=" " />
+            <marker date="1484845541000" expanded="true" signature="11239:11245" ph=" " />
+            <marker date="1484845541000" expanded="true" signature="11246:11252" ph=" " />
+            <marker date="1484845541000" expanded="true" signature="11252:11258" ph=" " />
+            <marker date="1484845541000" expanded="true" signature="11258:11264" ph=" " />
+            <marker date="1484845541000" expanded="true" signature="11264:11270" ph=" " />
+            <marker date="1484845541000" expanded="true" signature="11270:11276" ph=" " />
+            <marker date="1484845541000" expanded="true" signature="11276:11282" ph=" " />
+            <marker date="1484845541000" expanded="true" signature="11282:11288" ph=" " />
+            <marker date="1484845541000" expanded="true" signature="11289:11295" ph=" " />
+            <marker date="1484845541000" expanded="true" signature="11295:11301" ph=" " />
+            <marker date="1484845541000" expanded="true" signature="11301:11307" ph=" " />
+            <marker date="1484845541000" expanded="true" signature="11307:11313" ph=" " />
+            <marker date="1484845541000" expanded="true" signature="11313:11319" ph=" " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/dna/extract.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1062">
+          <caret line="86" column="20" lean-forward="false" selection-start-line="86" selection-start-column="20" selection-end-line="86" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service/dna/extract.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="412">
+          <caret line="138" column="2" lean-forward="false" selection-start-line="138" selection-start-column="2" selection-end-line="138" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service/dna/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="432">
+          <caret line="24" column="63" lean-forward="false" selection-start-line="24" selection-start-column="63" selection-end-line="24" selection-end-column="63" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/javascripts/dna/receive.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="410" column="20" lean-forward="false" selection-start-line="410" selection-start-column="20" selection-end-line="410" selection-end-column="20" />
+          <folding>
+            <element signature="e#6279#8308#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/dna/receive.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5706">
+          <caret line="498" column="35" lean-forward="false" selection-start-line="498" selection-start-column="35" selection-end-line="498" selection-end-column="35" />
+          <folding>
+            <element signature="e#13736#16598#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/dna/fragment/dnaBarcodeShortInput.jade">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="378">
-          <caret line="46" column="30" lean-forward="false" selection-start-line="46" selection-start-column="30" selection-end-line="46" selection-end-column="30" />
+          <caret line="44" column="0" lean-forward="false" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/dna/receive/edit_ck.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="30" column="59" lean-forward="false" selection-start-line="30" selection-start-column="59" selection-end-line="30" selection-end-column="59" />
           <folding />
         </state>
       </provider>

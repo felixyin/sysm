@@ -225,7 +225,7 @@
                 }
             }
             if (warnRows.length > 0) {
-                Toast.show('您选择的这些行不符合审批要求(未录入),已经取消选中:' + warnRows.join(','));
+                Toast.show('您选择的这些行不符合审批要求,已经取消选中:' + warnRows.join(','));
             }
             ids = $(grid_selector).jqGrid('getGridParam', 'selarrrow');
 
@@ -324,7 +324,7 @@
             }
 
             if (warnRows.length > 0) {
-                Toast.show('您选择的这些行不符合出库要求(未审批),已经取消选中:' + warnRows.join(','));
+                Toast.show('您选择的这些行不符合出库要求,已经取消选中:' + warnRows.join(','));
             }
             ids = $(grid_selector).jqGrid('getGridParam', 'selarrrow');
 

@@ -213,7 +213,7 @@
                 var id = ids[i];
                 if (id) {
                     var row = $(grid_selector).jqGrid('getRowData', id);
-                    if (row.extract_date != 5) { // 提取且已保存
+                    if (row.status != 5) { // 提取且已保存
                         $(grid_selector).jqGrid('setSelection', id, false);
                         warnRows.push(row.barcode_long);
                         // }else{
@@ -222,7 +222,7 @@
                 }
             }
             if (warnRows.length > 0) {
-                Toast.show('您选择的这些行不符合审批要求(未录入),已经取消选中:' + warnRows.join(','));
+                Toast.show('您选择的这些行不符合审批要求,已经取消选中:' + warnRows.join(','));
             }
             ids = $(grid_selector).jqGrid('getGridParam', 'selarrrow');
 
@@ -335,7 +335,7 @@
             }
 
             if (warnRows.length > 0) {
-                Toast.show('您选择的这些行不符合出库要求(未审批),已经取消选中:' + warnRows.join(','));
+                Toast.show('您选择的这些行不符合出库要求,已经取消选中:' + warnRows.join(','));
             }
             ids = $(grid_selector).jqGrid('getGridParam', 'selarrrow');
 
