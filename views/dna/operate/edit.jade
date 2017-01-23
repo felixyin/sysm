@@ -13,12 +13,12 @@ block content
                             span.help-inline.col-xs-6
                                 span.middle.hide Inline help text
                     .space-4
-                        .form-group
-                            label.col-xs-3.control-label.no-padding-right(for='ff-46') 样本剩余量
-                            .col-xs-9
-                                input#ff-46.col-xs-6(type='text', name='storage_out_residue', value='#{storage_out_residue || ""}', placeholder='')
-                                span.help-inline.col-xs-6
-                                    span.middle.hide Inline help text
+                    .form-group
+                        label.col-xs-3.control-label.no-padding-right(for='ff-46') 样本剩余量
+                        .col-xs-9
+                            input#ff-46.col-xs-6(type='text', name='storage_out_residue', value='#{storage_out_residue || ""}', placeholder='')
+                            span.help-inline.col-xs-6
+                                span.middle.hide Inline help text
                     .space-4
                     .form-group
                         label.col-xs-3.control-label.no-padding-right(for='ff-47') 上机芯片编码
@@ -45,6 +45,13 @@ block content
                         label.col-xs-3.control-label.no-padding-right(for='ff-50') 上机人
                         .col-xs-9
                             input#ff-50.col-xs-6(type='text', name='operater', value='#{operater || ""}', readonly, placeholder='')
+                            span.help-inline.col-xs-6
+                                span.middle.hide Inline help text
+                    .space-4
+                    .form-group.hide
+                        label.col-xs-3.control-label.no-padding-right(for='ff-20') 状态
+                        .col-xs-9
+                            input#ff-20.col-xs-6(type='text', name='status', value='#{status || ""}', placeholder='')
                             span.help-inline.col-xs-6
                                 span.middle.hide Inline help text
                     .space-4

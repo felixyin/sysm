@@ -43,9 +43,9 @@ block content
                         td 身份证
                         td
                             input.col-xs-10.col-sm-5(type='text' , name='id_card', placeholder='请输入身份证号')
-                        td 出生日期
+                        td 年龄
                         td
-                            input.col-xs-10.col-sm-5(type='text' , name='age', placeholder='请输入出生日期')
+                            input.col-xs-10.col-sm-5(type='number' , name='age', placeholder='请输入年龄')
                         td 孕周
                         td
                             input.col-xs-10.col-sm-5(type='text' , name='pregnancy_week', placeholder='请输入孕周')
@@ -288,9 +288,9 @@ block content
                 button.btn.btn-info.btn-sm(onclick="showEditDialog(this)")
                     i.icon-edit.bigger-110 &nbsp;&nbsp;&nbsp;修改信息
                 span
-                button#btn-dc-id.btn.btn-default.btn-sm(onclick="exportCvs(this)")
+                button#btn-dc-id.btn.btn-info.btn-sm(onclick="exportCvs(this)")
                     i.icon-download-alt.bigger-110 导出EXCEL
-                //button#btn-dy-id.btn.btn-default.btn-sm(onclick="dy(this)")
+                //button#btn-dy-id.btn.btn-info.btn-sm(onclick="dy(this)")
                     i.icon-print.bigger-110 打印
 
             table#grid-table

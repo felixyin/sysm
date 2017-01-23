@@ -26,7 +26,7 @@ router.get('/preEdit', (req, res) => {
             let row = rows[0];
             row.action = '/dna/operate/edit';
             row.operater = req.query.userId;
-            row.status = 5;// 提取已保存
+            row.status = 15;// 上机已保存
             res.render('dna/operate/edit', row);
         }
     });

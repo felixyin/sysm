@@ -53,62 +53,8 @@
                         case 0:
                             text = '已删除';
                             break;
-                        case 1:
-                            text = '已录入采血单';
-                            break;
-                        case 2:
-                            text = '已审批';
-                            break;
-                        case 3:
-                            text = '已入库';
-                            break;
-                        case 4:
-                            text = '交接后未提取';
-                            break;
-                        case 5:
-                            text = '提取且已保存';
-                            break;
-                        case 6:
-                            text = '提取审核-合格';
-                            break;
-                        case 7:
-                            text = '提取审核-废弃';
-                            break;
-                        case 8:
-                            text = '提取审核-重提取';
-                            break;
-                        case 9:
-                            text = '交接后未建库';
-                            break;
-                        case 10:
-                            text = '建库且已保存';
-                            break;
-                        case 11:
-                            text = '建库审核-合格';
-                            break;
-                        case 12:
-                            text = '建库审核-废弃';
-                            break;
-                        case 13:
-                            text = '建库审核-重建库';
-                            break;
-                        case 14:
-                            text = '交接后未上机';
-                            break;
-                        case 15:
-                            text = '上机已保存';
-                            break;
-                        case 16:
-                            text = '上机审核-合格';
-                            break;
-                        case 17:
-                            text = '上机审核-废弃';
-                            break;
-                        case 18:
-                            text = '上机审核-重上机';
-                            break;
                         case 19:
-                            text = '交接后未分析';
+                            text = '未分析';
                             break;
                         case 20:
                             text = '分析已保存';

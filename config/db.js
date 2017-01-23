@@ -9,7 +9,7 @@ const mysql = require('mysql');
  * 生产机配置
  */
 let poolOptions = {
-    host: process.env.MYSQL_IP || '127.0.0.1',
+    host: process.env.MYSQL_IP || '139.224.1.36',
     user: process.env.MYSQL_USERNAME || 'root',
     password: process.env.MYSQL_PASSWORD || 'Ybkk1027',
     database: process.env.MYSQL_SCHEMA || 'sysm',

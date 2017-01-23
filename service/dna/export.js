@@ -112,7 +112,7 @@ let specification = {
         width: '15'
     },
     age: {
-        displayName: '出生日期',
+        displayName: '年龄',
         headerStyle: styles.header,
         cellStyle: styles.cell,
         cellFormat: function (value, row) {

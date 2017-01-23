@@ -13,7 +13,7 @@ form#edit-form.form-horizontal(role='form', action='#{action}', method='post', t
             select#ff-20.col-xs-6( name='warehouse_place', value='#{warehouse_place || ""}', placeholder='')
                 option(value='未知') 未知
                 - var  n = 1;
-                while n < 100
+                while n < 1000
                     - var value = '冻存盒' + n++;
                     if value == warehouse_place
                         option(value='#{value}', selected='selected')=value

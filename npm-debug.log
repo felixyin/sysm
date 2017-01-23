@@ -1,19 +1,48 @@
 0 info it worked if it ends with ok
-1 verbose cli [ '/usr/local/bin/node', '/usr/local/bin/npm', 'start', 'index' ]
+1 verbose cli [ '/usr/local/bin/node',
+1 verbose cli   '/usr/local/lib/node_modules/npm/bin/npm-cli.js',
+1 verbose cli   'run',
+1 verbose cli   'my-start' ]
 2 info using npm@3.10.10
 3 info using node@v7.3.0
-4 verbose stack Error: missing script: start
-4 verbose stack     at run (/usr/local/lib/node_modules/npm/lib/run-script.js:151:19)
-4 verbose stack     at /usr/local/lib/node_modules/npm/lib/run-script.js:61:5
-4 verbose stack     at /usr/local/lib/node_modules/npm/node_modules/read-package-json/read-json.js:356:5
-4 verbose stack     at handleExists (/usr/local/lib/node_modules/npm/node_modules/read-package-json/read-json.js:329:20)
-4 verbose stack     at FSReqWrap.cb [as oncomplete] (fs.js:239:19)
-5 verbose cwd /Users/fy/workspace/WebstormProjects/sysm
-6 error Darwin 16.3.0
-7 error argv "/usr/local/bin/node" "/usr/local/bin/npm" "start" "index"
-8 error node v7.3.0
-9 error npm  v3.10.10
-10 error missing script: start
-11 error If you need help, you may report this error at:
-11 error     <https://github.com/npm/npm/issues>
-12 verbose exit [ 1, true ]
+4 verbose run-script [ 'premy-start', 'my-start', 'postmy-start' ]
+5 info lifecycle lrs@2.0.1~premy-start: lrs@2.0.1
+6 silly lifecycle lrs@2.0.1~premy-start: no script for premy-start, continuing
+7 info lifecycle lrs@2.0.1~my-start: lrs@2.0.1
+8 verbose lifecycle lrs@2.0.1~my-start: unsafe-perm in lifecycle true
+9 verbose lifecycle lrs@2.0.1~my-start: PATH: /usr/local/lib/node_modules/npm/bin/node-gyp-bin:/Users/fy/workspace/WebstormProjects/sysm/node_modules/.bin:/Users/fy/.bin:/usr/local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+10 verbose lifecycle lrs@2.0.1~my-start: CWD: /Users/fy/workspace/WebstormProjects/sysm
+11 silly lifecycle lrs@2.0.1~my-start: Args: [ '-c', 'node --harmony ./index' ]
+12 silly lifecycle lrs@2.0.1~my-start: Returned: code: 1  signal: null
+13 info lifecycle lrs@2.0.1~my-start: Failed to exec my-start script
+14 verbose stack Error: lrs@2.0.1 my-start: `node --harmony ./index`
+14 verbose stack Exit status 1
+14 verbose stack     at EventEmitter.<anonymous> (/usr/local/lib/node_modules/npm/lib/utils/lifecycle.js:255:16)
+14 verbose stack     at emitTwo (events.js:106:13)
+14 verbose stack     at EventEmitter.emit (events.js:191:7)
+14 verbose stack     at ChildProcess.<anonymous> (/usr/local/lib/node_modules/npm/lib/utils/spawn.js:40:14)
+14 verbose stack     at emitTwo (events.js:106:13)
+14 verbose stack     at ChildProcess.emit (events.js:191:7)
+14 verbose stack     at maybeClose (internal/child_process.js:885:16)
+14 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:226:5)
+15 verbose pkgid lrs@2.0.1
+16 verbose cwd /Users/fy/workspace/WebstormProjects/sysm
+17 error Darwin 16.3.0
+18 error argv "/usr/local/bin/node" "/usr/local/lib/node_modules/npm/bin/npm-cli.js" "run" "my-start"
+19 error node v7.3.0
+20 error npm  v3.10.10
+21 error code ELIFECYCLE
+22 error lrs@2.0.1 my-start: `node --harmony ./index`
+22 error Exit status 1
+23 error Failed at the lrs@2.0.1 my-start script 'node --harmony ./index'.
+23 error Make sure you have the latest version of node.js and npm installed.
+23 error If you do, this is most likely a problem with the lrs package,
+23 error not with npm itself.
+23 error Tell the author that this fails on your system:
+23 error     node --harmony ./index
+23 error You can get information on how to open an issue for this project with:
+23 error     npm bugs lrs
+23 error Or if that isn't available, you can get their info via:
+23 error     npm owner ls lrs
+23 error There is likely additional logging output above.
+24 verbose exit [ 1, true ]

@@ -24,18 +24,8 @@ router.get('/preAddCxd', (req, res) => {
         action: '/dna/receive/addCxd',
         inputter: req.query.userId,
         status: 1,
-
-        hospital: 'test2',
-        sample_code: 'test3',
-        sample_date: '2016-12-31 15:40:35',
-        receive_date: '2016-12-31 15:40:35',
-        real_name: 'test6',
-        id_card: 'test7',
-        age: '2016-12-31 15:40:35',
-        pregnancy_week: 889,
-        pregnancy_condition: 'test10',
-        pregnancy_bad_history: 'test11',
-        comments: 'test12',
+        sample_date: utils.now(),
+        receive_date: utils.now()
     });
 });
 
@@ -120,6 +110,18 @@ router.post('/addRk', (req, res) => {
         console.error(err);
         let errMsg = JSON.stringify(err);
         utils.jsonpAndEnd(res, `parent.addRkCb(${result ? result.changedRows : null}, '${errMsg}');`);
+    });
+});
+
+/**
+ * 导出条码打印机
+ */
+router.post('/printBarcode', (req, res) => {
+    receiveService.printBarcode(req.body.ids, (err, result) => {
+        res.send({
+            affectedRows: result.affectedRows,
+            err: err
+        });
     });
 });
 
@@ -268,7 +270,7 @@ router.post('/exportExcel', (req, res) => {
                     width: '15'
                 },
                 age: {
-                    displayName: '出生日期',
+                    displayName: '年龄',
                     headerStyle: styles.header,
                     cellStyle: styles.cell,
                     cellFormat: function (value, row) {

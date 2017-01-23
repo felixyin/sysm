@@ -10,18 +10,32 @@
     W.str = location.search;
     W._title = '样本接收管理';
     W._url = BASE_URL + "dna/receive/list";
-    W._sortname = 'input_date';
-    W._sortorder = 'ASC';
+    W._sortname = 'sample_date';
+    W._sortorder = 'DESC';
     W._postData = {};
-    W._colNames = ['序号', '条码编号', '医院名称', '样本编号', '采样日期', '接收日期', '姓名', '身份证号', '出生日期', '孕周', '妊娠情况',
+    W._colNames = ['序号', '条码编号', '医院名称', '样本编号', '采样日期', '接收日期', '姓名', '身份证号', '年龄', '孕周', '妊娠情况',
         '不良孕产史', '备注', '录入人员', '录入日期', '审批人员', '审批日期', '采血管入库人', '采血管入库位置', '采血管入库时间', '', '状态'];
     W._colModel = [
         {name: 'id', width: 40, index: 'id', align: 'center', sortable: false, frozen: true},
         {name: 'barcode_long', width: 120, index: 'barcode_long', align: 'center', sortable: false, frozen: true},
         {name: 'hospital', width: 120, index: 'hospital', align: 'center', sortable: false, frozen: true},
         {name: 'sample_code', width: 80, index: 'sample_code', align: 'center', sortable: false, frozen: true},
-        {name: 'sample_date', width: 130, index: 'sample_date', align: 'center', sortable: false, frozen: true},
-        {name: 'receive_date', width: 130, index: 'receive_date', align: 'center', sortable: false, frozen: true},
+        {
+            name: 'sample_date', width: 130, index: 'sample_date', align: 'center', sortable: false, frozen: true,
+            formatter: function (value, options, row) {
+                if (value) {
+                    return value.substring(0, 10);
+                }
+            }
+        },
+        {
+            name: 'receive_date', width: 130, index: 'receive_date', align: 'center', sortable: false, frozen: true,
+            formatter: function (value, options, row) {
+                if (value) {
+                    return value.substring(0, 10);
+                }
+            }
+        },
         {name: 'real_name', width: 80, index: 'real_name', align: 'center', sortable: false, frozen: true},
         {name: 'id_card', width: 150, index: 'id_card', align: 'center', sortable: true},
         {name: 'age', width: 130, index: 'age', align: 'center', sortable: true},
@@ -49,7 +63,7 @@
                         text = '已删除';
                         break;
                     case 1:
-                        text = '已录入采血单';
+                        text = '已录入';
                         break;
                     case 2:
                         text = '已审批';
@@ -58,58 +72,7 @@
                         text = '已入库';
                         break;
                     case 4:
-                        text = '交接后未提取';
-                        break;
-                    case 5:
-                        text = '提取且已保存';
-                        break;
-                    case 6:
-                        text = '提取审核-合格';
-                        break;
-                    case 7:
-                        text = '提取审核-废弃';
-                        break;
-                    case 8:
-                        text = '提取审核-重提取';
-                        break;
-                    case 9:
-                        text = '交接后未建库';
-                        break;
-                    case 10:
-                        text = '建库且已保存';
-                        break;
-                    case 11:
-                        text = '建库审核-合格';
-                        break;
-                    case 12:
-                        text = '建库审核-废弃';
-                        break;
-                    case 13:
-                        text = '建库审核-重建库';
-                        break;
-                    case 14:
-                        text = '交接后未上机';
-                        break;
-                    case 15:
-                        text = '上机已保存';
-                        break;
-                    case 16:
-                        text = '上机审核-合格';
-                        break;
-                    case 17:
-                        text = '上机审核-废弃';
-                        break;
-                    case 18:
-                        text = '上机审核-重上机';
-                        break;
-                    case 19:
-                        text = '交接后未分析';
-                        break;
-                    case 20:
-                        text = '分析已保存';
-                        break;
-                    case 21:
-                        text = '报告已发送';
+                        text = '已出库';
                         break;
                     default:
                         text = '';
@@ -502,4 +465,33 @@
         // console.error('Trigger:', e.trigger);
     });
 
+    /**
+     * 导出到条码打印机
+     */
+    W.printBarcode = function () {
+        var idArray = [];
+        var ids = $(grid_selector).jqGrid('getGridParam', 'selarrrow');
+        if (ids && ids.length) {
+            for (var i in ids) {
+                idArray.push(ids[i]);
+            }
+        }
+        if (idArray.length >= 1) {
+            $.post('dna/receive/printBarcode', {ids: idArray.join(',')}, function (result) {
+                if (result && result.affectedRows > 0) {
+                    if (result.affectedRows == 1) {
+                        Toast.show('导出条码打印机成功!');
+                    } else {
+                        Toast.show('批量导出条码打印机成功!');
+                    }
+                    jQuery(grid_selector).trigger('reloadGrid');
+                } else {
+                    Toast.show(userId + ',导出条码打印机失败,请联系管理员!');
+                    localStorage.setItem('_error_addSh', result.err);
+                }
+            });
+        } else {
+            Toast.show('请先勾选要复制的行');
+        }
+    };
 })(window);

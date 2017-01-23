@@ -48,7 +48,7 @@ function getSqls(params) {
     params.report_send_date && (whereSql += " AND report_send_date LIKE '%:report_send_date%' /*报告发送时间*/\n");
     let status = params.status;
     if (status == '-1' || status == undefined) { // 全部
-        // whereSql += " AND status IN (19,20,21) /*状态*/\n";
+        whereSql += " AND status IN (19,20,21) /*状态*/\n";
     } else {
         whereSql += " AND status = :status /*状态*/\n";
     }

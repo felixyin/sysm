@@ -28,7 +28,7 @@ function getSqls(params) {
     params.receive_date && (whereSql += " AND receive_date LIKE '%:receive_date%' /*接收日期*/\n");
     params.real_name && (whereSql += " AND real_name LIKE '%:real_name%' /*姓名*/\n");
     params.id_card && (whereSql += " AND id_card LIKE '%:id_card%' /*身份证*/\n");
-    params.age && (whereSql += " AND age LIKE '%:age%' /*出生日期*/\n");
+    params.age && (whereSql += " AND age LIKE '%:age%' /*年龄*/\n");
     params.pregnancy_week && (whereSql += " AND pregnancy_week LIKE '%:pregnancy_week%' /*孕周*/\n");
     params.pregnancy_condition && (whereSql += " AND pregnancy_condition LIKE '%:pregnancy_condition%' /*妊娠情况*/\n");
     params.pregnancy_bad_history && (whereSql += " AND pregnancy_bad_history LIKE '%:pregnancy_bad_history%' /*不良孕产史*/\n");

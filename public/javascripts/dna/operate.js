@@ -15,7 +15,7 @@
         W._sortorder = 'ASC';
         W._postData = {};
         W._colNames = ['序号', '条码编号', '建库组出库人', '建库组样本剩余量', '上机组接收人', '上机组接收时间', '建库浓度', '建库片段大小', '上机芯片编码',
-            '上机reads数', '上机q30值', '上机人', '上机时间', '上机审查人', '上机审查时间', '上机组出库人', '上机组样本剩余量',
+            '上机reads数', '上机q30值', '上机人', '上机时间', '上机审查人', '上机审查时间', '上机组出库人',
             '分析报告组接收人', '分析报告组接收时间', '', '状态'];
         W._colModel = [
             {name: 'id', width: 40, index: 'id', align: 'center', sortable: false, frozen: true},
@@ -35,7 +35,7 @@
             {name: 'operate_checker', width: 100, index: 'operate_checker', align: 'center', sortable: false},
             {name: 'operate_check_date', width: 130, index: 'operate_check_date', align: 'center', sortable: false},
             {name: 'operate_outer', width: 100, index: 'operate_outer', align: 'center', sortable: false},
-            {name: 'operate_out_residue', width: 100, index: 'operate_out_residue', align: 'center', sortable: false},
+            // {name: 'operate_out_residue', width: 100, index: 'operate_out_residue', align: 'center', sortable: false},
             {name: 'report_handover', width: 100, index: 'report_handover', align: 'center', sortable: false},
             {name: 'report_handover_date', width: 130, index: 'report_handover_date', align: 'center', sortable: false},
             {name: 'status', hidden: true, hidedlg: true},
@@ -47,47 +47,8 @@
                         case 0:
                             text = '已删除';
                             break;
-                        case 1:
-                            text = '已录入采血单';
-                            break;
-                        case 2:
-                            text = '已审批';
-                            break;
-                        case 3:
-                            text = '已入库';
-                            break;
-                        case 4:
-                            text = '交接后未提取';
-                            break;
-                        case 5:
-                            text = '提取且已保存';
-                            break;
-                        case 6:
-                            text = '提取审核-合格';
-                            break;
-                        case 7:
-                            text = '提取审核-废弃';
-                            break;
-                        case 8:
-                            text = '提取审核-重提取';
-                            break;
-                        case 9:
-                            text = '交接后未建库';
-                            break;
-                        case 10:
-                            text = '建库且已保存';
-                            break;
-                        case 11:
-                            text = '建库审核-合格';
-                            break;
-                        case 12:
-                            text = '建库审核-废弃';
-                            break;
-                        case 13:
-                            text = '建库审核-重建库';
-                            break;
                         case 14:
-                            text = '交接后未上机';
+                            text = '未上机';
                             break;
                         case 15:
                             text = '上机已保存';
@@ -102,13 +63,7 @@
                             text = '上机审核-重上机';
                             break;
                         case 19:
-                            text = '交接后未分析';
-                            break;
-                        case 20:
-                            text = '分析已保存';
-                            break;
-                        case 21:
-                            text = '报告已发送';
+                            text = '已交接';
                             break;
                         default:
                             text = '';

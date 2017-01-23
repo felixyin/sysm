@@ -50,7 +50,7 @@ function getSqls(params) {
     params.extract_out_residue && (whereSql += " AND extract_out_residue LIKE '%:extract_out_residue%' /*提取组样本剩余量*/\n");
     let status = params.status;
     if (status == '-1' || status == undefined) { // 全部
-        // whereSql += " AND status IN (4,5,6,7,8) /*状态*/\n";
+        whereSql += " AND status IN (4,5,6,7,8,9) /*状态*/\n";
     } else {
         whereSql += " AND status = :status /*状态*/\n";
     }

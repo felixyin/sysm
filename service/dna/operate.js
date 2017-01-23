@@ -50,7 +50,7 @@ function getSqls(params) {
     params.operate_out_residue && (whereSql += " AND operate_out_residue LIKE '%:operate_out_residue%' /*上机组样本剩余量*/\n");
     let status = params.status;
     if (status == '-1' || status == undefined) { // 全部
-        // whereSql += " AND status IN (14,15,16,17,18) /*状态*/\n";
+        whereSql += " AND status IN (14,15,16,17,18,19) /*状态*/\n";
     } else {
         whereSql += " AND status = :status /*状态*/\n";
     }
@@ -127,7 +127,7 @@ exports.insertCk = (ck, cb) => {
     let report_handover = ck.jjUserId;
     let ids = ck.ids;
     console.log(ids);
-    let updateSql = ['UPDATE dna_flow SET operate_outer="', operate_outer, '", report_handover="', report_handover, '", report_handover_date=NOW(), operate_out_residue=(operate_out_residue - 1), status=19 /*交接后未建库*/  WHERE id IN (', ids, ')'].join('');
+    let updateSql = ['UPDATE dna_flow SET operate_outer="', operate_outer, '", report_handover="', report_handover, '", report_handover_date=NOW(), status=19 /*交接后未建库*/  WHERE id IN (', ids, ')'].join('');
     console.log(updateSql);
     db.pool.query(updateSql, cb);
 };
