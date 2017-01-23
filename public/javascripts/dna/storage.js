@@ -14,30 +14,13 @@
         W._sortname = 'input_date';
         W._sortorder = 'ASC';
         W._postData = {};
-        W._colNames = ['序号', '条码编号', '提取出库人', '提取组样本剩余量', '建库组接收人', '建库组接收时间', 'qbite浓度', 'epoch浓度', '纯度', '片段大小', '打断后片段',
-            '建库浓度', '建库片段大小', '建库人', '建库时间', '建库审查人', '建库审查时间', '建库组出库人', '建库组样本剩余量', '', '状态'];
+        W._colNames = ['序号', '条码编号', '建库浓度(ng/ul)', '建库片段(bp)', '状态', '提取出库人', 'DNA剩余量(ul)', '建库组接收人', '建库组接收时间', 'Qubit浓度(ng/ul)', 'epoch浓度(ng/ul)', '纯度(%)', '片段大小(bp)', '打断后片段(bp)',
+            '建库人', '建库时间', '建库审查人', '建库审查时间', '建库组出库人', ''];
         W._colModel = [
             {name: 'id', width: 40, index: 'id', align: 'center', sortable: false, frozen: true},
             {name: 'barcode_long', width: 120, index: 'barcode_long', align: 'center', sortable: false, frozen: true},
-            // {name: 'barcode_short', width: 100, index: 'barcode_short', align: 'center', sortable: false, frozen: true},
-            {name: 'extract_outer', width: 100, index: 'extract_outer', align: 'center', sortable: false},
-            {name: 'extract_out_residue', width: 100, index: 'extract_out_residue', align: 'center', sortable: false},
-            {name: 'storage_handover', width: 100, index: 'storage_handover', align: 'center', sortable: false},
-            {name: 'storage_handover_date', width: 130, index: 'storage_handover_date', align: 'center', sortable: false},
-            {name: 'extract_qbite_deep', width: 100, index: 'extract_qbite_deep', align: 'center', sortable: false},
-            {name: 'extract_epoch_deep', width: 100, index: 'extract_epoch_deep', align: 'center', sortable: false},
-            {name: 'extract_purity_deep', width: 100, index: 'extract_purity_deep', align: 'center', sortable: false},
-            {name: 'extract_part_size', width: 100, index: 'extract_part_size', align: 'center', sortable: false},
-            {name: 'extract_part_after_break', width: 100, index: 'extract_part_after_break', align: 'center', sortable: false},
-            {name: 'storage_deep', width: 100, index: 'storage_deep', align: 'center', sortable: false},
-            {name: 'storage_part_size', width: 100, index: 'storage_part_size', align: 'center', sortable: false},
-            {name: 'storager', width: 100, index: 'storager', align: 'center', sortable: false},
-            {name: 'storage_date', width: 130, index: 'storage_date', align: 'center', sortable: false},
-            {name: 'storage_checker', width: 100, index: 'storage_checker', align: 'center', sortable: false},
-            {name: 'storage_check_date', width: 130, index: 'storage_check_date', align: 'center', sortable: false},
-            {name: 'storage_outer', width: 100, index: 'storage_outer', align: 'center', sortable: false},
-            {name: 'storage_out_residue', width: 100, index: 'storage_out_residue', align: 'center', sortable: false},
-            {name: 'status', hidden: true, hidedlg: true},
+            {name: 'storage_deep', width: 100, index: 'storage_deep', align: 'center', sortable: false, frozen: true},
+            {name: 'storage_part_size', width: 100, index: 'storage_part_size', align: 'center', sortable: false, frozen: true},
             {
                 name: 'status1', width: 100, index: 'status', align: 'center', sortable: false,
                 formatter: function (value, options, row) {
@@ -50,16 +33,16 @@
                             text = '未建库';
                             break;
                         case 10:
-                            text = '建库且已保存';
+                            text = '已建库';
                             break;
                         case 11:
-                            text = '建库审核-合格';
+                            text = '合格';
                             break;
                         case 12:
-                            text = '建库审核-废弃';
+                            text = '废弃';
                             break;
                         case 13:
-                            text = '建库审核-重建库';
+                            text = '重建库';
                             break;
                         case 14:
                             text = '已交接';
@@ -68,8 +51,25 @@
                             text = '';
                     }
                     return text;
-                }
-            }
+                },
+                frozen: true
+            },
+            {name: 'extract_outer', width: 100, index: 'extract_outer', align: 'center', sortable: false},
+            {name: 'extract_out_residue', width: 100, index: 'extract_out_residue', align: 'center', sortable: false},
+            {name: 'storage_handover', width: 100, index: 'storage_handover', align: 'center', sortable: false},
+            {name: 'storage_handover_date', width: 130, index: 'storage_handover_date', align: 'center', sortable: false},
+            {name: 'extract_qbite_deep', width: 100, index: 'extract_qbite_deep', align: 'center', sortable: false},
+            {name: 'extract_epoch_deep', width: 100, index: 'extract_epoch_deep', align: 'center', sortable: false},
+            {name: 'extract_purity_deep', width: 100, index: 'extract_purity_deep', align: 'center', sortable: false},
+            {name: 'extract_part_size', width: 100, index: 'extract_part_size', align: 'center', sortable: false},
+            {name: 'extract_part_after_break', width: 100, index: 'extract_part_after_break', align: 'center', sortable: false},
+            {name: 'storager', width: 100, index: 'storager', align: 'center', sortable: false},
+            {name: 'storage_date', width: 130, index: 'storage_date', align: 'center', sortable: false},
+            {name: 'storage_checker', width: 100, index: 'storage_checker', align: 'center', sortable: false},
+            {name: 'storage_check_date', width: 130, index: 'storage_check_date', align: 'center', sortable: false},
+            {name: 'storage_outer', width: 100, index: 'storage_outer', align: 'center', sortable: false},
+            {name: 'status', hidden: true, hidedlg: true},
+
         ];
 
         W.updateActionIcons = function () {
@@ -169,7 +169,7 @@
                 var id = ids[i];
                 if (id) {
                     var row = $(grid_selector).jqGrid('getRowData', id);
-                    if (row.status != 10 /*建库且已保存*/) {
+                    if (row.status != 10 /*已建库*/) {
                         $(grid_selector).jqGrid('setSelection', id, false);
                         warnRows.push(row.barcode_long);
                         // }else{

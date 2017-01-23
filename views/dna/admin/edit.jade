@@ -211,35 +211,35 @@ block content
                                 span.middle.hide Inline help text
                     .space-4
                     .form-group
-                        label.col-xs-3.control-label.no-padding-right(for='ff-24') qbite浓度
+                        label.col-xs-3.control-label.no-padding-right(for='ff-24') Qubit浓度(ng/ul)
                         .col-xs-9
                             input#ff-24.col-xs-6(type='text', name='extract_qbite_deep', value='#{extract_qbite_deep || ""}', placeholder='')
                             span.help-inline.col-xs-6
                                 span.middle.hide Inline help text
                     .space-4
                     .form-group
-                        label.col-xs-3.control-label.no-padding-right(for='ff-25') epoch浓度
+                        label.col-xs-3.control-label.no-padding-right(for='ff-25') epoch浓度(ng/ul)
                         .col-xs-9
                             input#ff-25.col-xs-6(type='text', name='extract_epoch_deep', value='#{extract_epoch_deep || ""}', placeholder='')
                             span.help-inline.col-xs-6
                                 span.middle.hide Inline help text
                     .space-4
                     .form-group
-                        label.col-xs-3.control-label.no-padding-right(for='ff-26') 纯度
+                        label.col-xs-3.control-label.no-padding-right(for='ff-26') 纯度(%)
                         .col-xs-9
                             input#ff-26.col-xs-6(type='text', name='extract_purity_deep', value='#{extract_purity_deep || ""}', placeholder='')
                             span.help-inline.col-xs-6
                                 span.middle.hide Inline help text
                     .space-4
                     .form-group
-                        label.col-xs-3.control-label.no-padding-right(for='ff-27') 片段大小
+                        label.col-xs-3.control-label.no-padding-right(for='ff-27') 片段大小(bp)
                         .col-xs-9
                             input#ff-27.col-xs-6(type='text', name='extract_part_size', value='#{extract_part_size || ""}', placeholder='')
                             span.help-inline.col-xs-6
                                 span.middle.hide Inline help text
                     .space-4
                     .form-group
-                        label.col-xs-3.control-label.no-padding-right(for='ff-28') 打断后片段
+                        label.col-xs-3.control-label.no-padding-right(for='ff-28') 打断后片段(bp)
                         .col-xs-9
                             input#ff-28.col-xs-6(type='text', name='extract_part_after_break', value='#{extract_part_after_break || ""}', placeholder='')
                             span.help-inline.col-xs-6
@@ -302,14 +302,14 @@ block content
                                 span.middle.hide Inline help text
                     .space-4
                     .form-group
-                        label.col-xs-3.control-label.no-padding-right(for='ff-37') 建库浓度
+                        label.col-xs-3.control-label.no-padding-right(for='ff-37') 建库浓度(ng/ul)
                         .col-xs-9
                             input#ff-37.col-xs-6(type='text', name='storage_deep', value='#{storage_deep || ""}', placeholder='')
                             span.help-inline.col-xs-6
                                 span.middle.hide Inline help text
                     .space-4
                     .form-group
-                        label.col-xs-3.control-label.no-padding-right(for='ff-38') 建库片段大小
+                        label.col-xs-3.control-label.no-padding-right(for='ff-38') 建库片段大小(bp)
                         .col-xs-9
                             input#ff-38.col-xs-6(type='text', name='storage_part_size', value='#{storage_part_size || ""}', placeholder='')
                             span.help-inline.col-xs-6
@@ -508,7 +508,7 @@ block content
                         label.col-xs-3.control-label.no-padding-right(for='ff-65') 状态
                         .col-xs-9
                             select#ff-65.col-xs-6( name='status', value='#{status || ""}', placeholder='')
-                                each label,value in {0: '已删除', 1: '已录入采血单', 2: '已审批', 3: '已入库', 4: '交接后未提取', 5: '提取且已保存', 6: '提取审核-合格', 7: '提取审核-废弃', 8: '提取审核-重提取', 9: '交接后未建库', 10: '建库且已保存', 11: '建库审核-合格', 12: '建库审核-废弃', 13: '建库审核-重建库', 14: '交接后未上机', 15: '上机已保存', 16: '上机审核-合格', 17: '上机审核-废弃', 18: '上机审核-重上机', 19: '交接后未分析', 20: '分析已保存', 21: '报告已发送'}
+                                each label,value in {0: '已删除', 1: '已录入', 2: '已审批', 3: '已入库', 4: '已出库', 5: '已提取', 6: '提取合格', 7: '提取废弃', 8: '重提取', 9: '提取已交接', 10: '已建库', 11: '建库合格', 12: '建库废弃', 13: '重建库', 14: '建库已交接', 15: '已上机', 16: '上机合格', 17: '上机废弃', 18: '重上机', 19: '上机已交接', 20: '已分析', 21: '报告已发送'}
                                     if value == status
                                         option(value='#{value}', selected='selected')=label
                                     else

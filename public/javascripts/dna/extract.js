@@ -14,29 +14,15 @@
         W._sortname = 'input_date';
         W._sortorder = 'ASC';
         W._postData = {};
-        W._colNames = ['序号', '条码编号', '采血管出库人', '接收组样本剩余量', '提取组接收人', '提取组接收时间',
-            'qbite浓度', 'epoch浓度', '纯度', '片段大小', '打断后片段', '提取人员', '提取时间', '提取审核人', '提取审核时间',
-            '提取出库人', '提取组样本剩余量', '', '状态'];
+        W._colNames = ['序号', '条码编号', 'Qubit浓度(ng/ul)', '纯度(%)', '片段大小(bp)', '状态', '采血管出库人', '接收组样本剩余量', '提取组接收人',
+            '提取组接收时间', 'epoch浓度(ng/ul)', '打断后片段(bp)', '提取人员', '提取时间', '提取审核人', '提取审核时间', '提取出库人', ''];
         W._colModel = [
             {name: 'id', width: 40, index: 'id', align: 'center', sortable: false, frozen: true},
             {name: 'barcode_long', width: 120, index: 'barcode_long', align: 'center', sortable: false, frozen: true},
             // {name: 'barcode_short', width: 100, index: 'barcode_short', align: 'center', sortable: false, frozen: true},
-            {name: 'sample_outer', width: 100, index: 'sample_outer', align: 'center', sortable: false},
-            {name: 'sample_out_residue', width: 100, index: 'sample_out_residue', align: 'center', sortable: false},
-            {name: 'extract_handover', width: 100, index: 'extract_handover', align: 'center', sortable: false},
-            {name: 'extract_handover_date', width: 130, index: 'extract_handover_date', align: 'center', sortable: false},
-            {name: 'extract_qbite_deep', width: 100, index: 'extract_qbite_deep', align: 'center', sortable: false},
-            {name: 'extract_epoch_deep', width: 100, index: 'extract_epoch_deep', align: 'center', sortable: false},
-            {name: 'extract_purity_deep', width: 100, index: 'extract_purity_deep', align: 'center', sortable: false},
-            {name: 'extract_part_size', width: 100, index: 'extract_part_size', align: 'center', sortable: false},
-            {name: 'extract_part_after_break', width: 100, index: 'extract_part_after_break', align: 'center', sortable: false},
-            {name: 'extracter', width: 100, index: 'extracter', align: 'center', sortable: false},
-            {name: 'extract_date', width: 130, index: 'extract_date', align: 'center', sortable: false},
-            {name: 'extract_checker', width: 100, index: 'extract_checker', align: 'center', sortable: false},
-            {name: 'extract_check_date', width: 130, index: 'extract_check_date', align: 'center', sortable: false},
-            {name: 'extract_outer', width: 100, index: 'extract_outer', align: 'center', sortable: false},
-            {name: 'extract_out_residue', width: 100, index: 'extract_out_residue', align: 'center', sortable: false},
-            {name: 'status', hidden: true, hidedlg: true},
+            {name: 'extract_qbite_deep', width: 100, index: 'extract_qbite_deep', align: 'center', sortable: false, frozen: true},
+            {name: 'extract_purity_deep', width: 100, index: 'extract_purity_deep', align: 'center', sortable: false, frozen: true},
+            {name: 'extract_part_size', width: 100, index: 'extract_part_size', align: 'center', sortable: false, frozen: true},
             {
                 name: 'status1', width: 100, index: 'status', align: 'center', sortable: false,
                 formatter: function (value, options, row) {
@@ -49,16 +35,16 @@
                             text = '未提取';
                             break;
                         case 5:
-                            text = '提取且已保存';
+                            text = '已提取';
                             break;
                         case 6:
-                            text = '提取审核-合格';
+                            text = '合格';
                             break;
                         case 7:
-                            text = '提取审核-废弃';
+                            text = '废弃';
                             break;
                         case 8:
-                            text = '提取审核-重提取';
+                            text = '重提取';
                             break;
                         case 9:
                             text = '已交接';
@@ -67,8 +53,22 @@
                             text = '';
                     }
                     return text;
-                }
-            }
+                },
+                frozen: true
+            },
+            {name: 'sample_outer', width: 100, index: 'sample_outer', align: 'center', sortable: false},
+            {name: 'sample_out_residue', width: 100, index: 'sample_out_residue', align: 'center', sortable: false},
+            {name: 'extract_handover', width: 100, index: 'extract_handover', align: 'center', sortable: false},
+            {name: 'extract_handover_date', width: 130, index: 'extract_handover_date', align: 'center', sortable: false},
+            {name: 'extract_epoch_deep', width: 100, index: 'extract_epoch_deep', align: 'center', sortable: false},
+            {name: 'extract_part_after_break', width: 100, index: 'extract_part_after_break', align: 'center', sortable: false},
+            {name: 'extracter', width: 100, index: 'extracter', align: 'center', sortable: false},
+            {name: 'extract_date', width: 130, index: 'extract_date', align: 'center', sortable: false},
+            {name: 'extract_checker', width: 100, index: 'extract_checker', align: 'center', sortable: false},
+            {name: 'extract_check_date', width: 130, index: 'extract_check_date', align: 'center', sortable: false},
+            {name: 'extract_outer', width: 100, index: 'extract_outer', align: 'center', sortable: false},
+            {name: 'status', hidden: true, hidedlg: true},
+
         ];
 
         W.updateActionIcons = function () {
@@ -168,7 +168,7 @@
                 var id = ids[i];
                 if (id) {
                     var row = $(grid_selector).jqGrid('getRowData', id);
-                    if (row.status != 5 /*提取且已保存*/) { // 提取且已保存
+                    if (row.status != 5 /*已提取*/) { // 已提取
                         $(grid_selector).jqGrid('setSelection', id, false);
                         warnRows.push(row.barcode_long);
                         // }else{
@@ -295,7 +295,7 @@
                 var id = ids[i];
                 var row = $(grid_selector).jqGrid('getRowData', id);
                 var status = row.status;
-                if (status == 6 /*提取审核-合格*/ ) { // 6为审核通过
+                if (status == 6 /*提取合格*/) { // 6为审核通过
                     idArray.push(id);
                 } else {
                     $(grid_selector).jqGrid('setSelection', id, false);

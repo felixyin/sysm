@@ -42,7 +42,7 @@
                 if (rows && rows.length == 1) {
                     var row = rows[0];
                     var count = row.sample_out_residue;
-                    if (row.status == 3 /*已审批且入库*/ || row.status == 8/*提取审核-重提取*/) { //已审批
+                    if (row.status == 3 /*已审批且入库*/ || row.status == 8/*重提取*/) { //已审批
                         if (count == 0) {
                             Toast.show('可能此条码的试管已经全部出库了:' + barcode_long);
                             $('#fg-dtmbh-#{idx}').slideUp(800, function () {

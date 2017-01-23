@@ -5,9 +5,9 @@ html(lang='en')
     head
         meta(charset='utf-8')
         base(href='/')
-        title 兴瑞生物科技实验室管理系统
-        meta(name='keywords', content='兴瑞生物科技实验室管理系统')
-        meta(name='description', content='兴瑞生物科技实验室管理系统,青岛恒之城科技股份有限公司制作')
+        title 兴瑞基因检测实验室管理系统
+        meta(name='keywords', content='兴瑞基因检测实验室管理系统')
+        meta(name='description', content='兴瑞基因检测实验室管理系统,青岛恒之城科技股份有限公司制作')
         meta(name='viewport', content='width=device-width, initial-scale=1.0')
         block css
             // basic styles
@@ -42,9 +42,19 @@ html(lang='en')
                     border-width: 4px;
                 }
 
+                .frozen-div {
+                    overflow-y: hidden !important;
+                    /*border: 1px solid black !important;*/
+                    background-color: #2d6987!important;
+                }
+
+                .frozen-div > table > thead > tr > th{
+                    background-color: lightblue!important;
+                }
+
                 .cbox {
-                    width: 18px !important;
-                    height: 18px !important;
+                    width: 16px !important;
+                    height: 16px !important;
                     cursor: pointer;
                 }
         block script

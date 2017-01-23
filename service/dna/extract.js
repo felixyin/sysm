@@ -37,11 +37,11 @@ function getSqls(params) {
     params.sample_out_residue && (whereSql += " AND sample_out_residue LIKE '%:sample_out_residue%' /*接收组样本剩余量*/\n");
     params.extract_handover && (whereSql += " AND extract_handover LIKE '%:extract_handover%' /*提取组接收人*/\n");
     params.extract_handover_date && (whereSql += " AND extract_handover_date LIKE '%:extract_handover_date%' /*提取组接收时间*/\n");
-    params.extract_qbite_deep && (whereSql += " AND extract_qbite_deep LIKE '%:extract_qbite_deep%' /*qbite浓度*/\n");
-    params.extract_epoch_deep && (whereSql += " AND extract_epoch_deep LIKE '%:extract_epoch_deep%' /*epoch浓度*/\n");
-    params.extract_purity_deep && (whereSql += " AND extract_purity_deep LIKE '%:extract_purity_deep%' /*纯度*/\n");
-    params.extract_part_size && (whereSql += " AND extract_part_size LIKE '%:extract_part_size%' /*片段大小*/\n");
-    params.extract_part_after_break && (whereSql += " AND extract_part_after_break LIKE '%:extract_part_after_break%' /*打断后片段*/\n");
+    params.extract_qbite_deep && (whereSql += " AND extract_qbite_deep LIKE '%:extract_qbite_deep%' /*Qubit浓度(ng/ul)*/\n");
+    params.extract_epoch_deep && (whereSql += " AND extract_epoch_deep LIKE '%:extract_epoch_deep%' /*epoch浓度(ng/ul)*/\n");
+    params.extract_purity_deep && (whereSql += " AND extract_purity_deep LIKE '%:extract_purity_deep%' /*纯度(%)*/\n");
+    params.extract_part_size && (whereSql += " AND extract_part_size LIKE '%:extract_part_size%' /*片段大小(bp)*/\n");
+    params.extract_part_after_break && (whereSql += " AND extract_part_after_break LIKE '%:extract_part_after_break%' /*打断后片段(bp)*/\n");
     params.extracter && (whereSql += " AND extracter LIKE '%:extracter%' /*提取人员*/\n");
     params.extract_date && (whereSql += " AND extract_date LIKE '%:extract_date%' /*提取时间*/\n");
     params.extract_checker && (whereSql += " AND extract_checker LIKE '%:extract_checker%' /*提取审核人*/\n");
@@ -127,7 +127,7 @@ exports.insertCk = (ck, cb) => {
     let storage_handover = ck.jjUserId;
     let ids = ck.ids;
     console.log(ids);
-    let updateSql = ['UPDATE dna_flow SET extract_outer="', extract_outer, '", storage_handover="', storage_handover, '", storage_handover_date=NOW(), extract_out_residue=(extract_out_residue - 1), status=9 /*交接后未建库*/  WHERE id IN (', ids, ')'].join('');
+    let updateSql = ['UPDATE dna_flow SET extract_outer="', extract_outer, '", storage_handover="', storage_handover, '", storage_handover_date=NOW(), status=9 /*提取已交接*/  WHERE id IN (', ids, ')'].join('');
     console.log(updateSql);
     db.pool.query(updateSql, cb);
 };

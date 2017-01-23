@@ -65,22 +65,22 @@ block content
                         td 上机组样本剩余量
                         td
                             input.col-xs-10.col-sm-5(type='text' , name='operate_out_residue', placeholder='请输入上机组样本剩余量')
-                        td 建库浓度
+                        td 建库浓度(ng/ul)
                         td
-                            input.col-xs-10.col-sm-5(type='text' , name='storage_deep', placeholder='请输入建库浓度')
+                            input.col-xs-10.col-sm-5(type='text' , name='storage_deep', placeholder='请输入建库浓度(ng/ul)')
                     tr
-                        td 建库片段大小
+                        td 建库片段大小(bp)
                         td
-                            input.col-xs-10.col-sm-5(type='text' , name='storage_part_size', placeholder='请输入建库片段大小')
+                            input.col-xs-10.col-sm-5(type='text' , name='storage_part_size', placeholder='请输入建库片段大小(bp)')
                         td 状态
                         td
                             select#status.col-xs-12.clo-sm-10(style="width:180px;", name='status',placeholder='')
                                 option(value='-1') 全部
                                 option(value='14') 未上机
-                                option(value='15') 上机已保存
-                                option(value='16') 上机审核-合格
-                                option(value='17') 上机审核-废弃
-                                option(value='18') 上机审核-重上机
+                                option(value='15') 已上机
+                                option(value='16') 合格
+                                option(value='17') 废弃
+                                option(value='18') 重上机
                                 option(value='19') 已交接
                         td
                         td

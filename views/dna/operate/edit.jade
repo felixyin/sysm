@@ -16,7 +16,7 @@ block content
                     .form-group
                         label.col-xs-3.control-label.no-padding-right(for='ff-46') 样本剩余量
                         .col-xs-9
-                            input#ff-46.col-xs-6(type='text', name='storage_out_residue', value='#{storage_out_residue || ""}', placeholder='')
+                            input#ff-46.col-xs-6(type='number', name='storage_out_residue', value='#{storage_out_residue || ""}', placeholder='')
                             span.help-inline.col-xs-6
                                 span.middle.hide Inline help text
                     .space-4
@@ -30,14 +30,14 @@ block content
                     .form-group
                         label.col-xs-3.control-label.no-padding-right(for='ff-48') 上机reads数
                         .col-xs-9
-                            input#ff-48.col-xs-6(type='text', name='operate_reads_val', value='#{operate_reads_val || ""}', placeholder='')
+                            input#ff-48.col-xs-6(type='number', name='operate_reads_val', value='#{operate_reads_val || ""}', placeholder='')
                             span.help-inline.col-xs-6
                                 span.middle.hide Inline help text
                     .space-4
                     .form-group
                         label.col-xs-3.control-label.no-padding-right(for='ff-49') 上机q30值
                         .col-xs-9
-                            input#ff-49.col-xs-6(type='text', name='operate_q30_val', value='#{operate_q30_val || ""}', placeholder='')
+                            input#ff-49.col-xs-6(type='number', name='operate_q30_val', value='#{operate_q30_val || ""}', placeholder='')
                             span.help-inline.col-xs-6
                                 span.middle.hide Inline help text
                     .space-4

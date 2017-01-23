@@ -252,7 +252,7 @@
             for (var i in ids) {
                 var id = ids[i];
                 var row = $(grid_selector).jqGrid('getRowData', id);
-                if (row.status == 1 /*已录入采血单*/) {
+                if (row.status == 1 /*已录入*/) {
                     idArray.push(id);
                 } else {
                     $(grid_selector).jqGrid('setSelection', id, false);
@@ -371,7 +371,7 @@
             for (var i in ids) {
                 var id = ids[i];
                 var row = $(grid_selector).jqGrid('getRowData', id);
-                if (row.status == 3 /*已审批且入库*/ || row.status == 8/*提取审核-重提取*/) {
+                if (row.status == 3 /*已审批且入库*/ || row.status == 8/*重提取*/) {
                     barcodeShortArray.push(row.barcode_long);
                 } else {
                     $(grid_selector).jqGrid('setSelection', id, false);

@@ -14,31 +14,15 @@
         W._sortname = 'input_date';
         W._sortorder = 'ASC';
         W._postData = {};
-        W._colNames = ['序号', '条码编号', '建库组出库人', '建库组样本剩余量', '上机组接收人', '上机组接收时间', '建库浓度', '建库片段大小', '上机芯片编码',
-            '上机reads数', '上机q30值', '上机人', '上机时间', '上机审查人', '上机审查时间', '上机组出库人',
-            '分析报告组接收人', '分析报告组接收时间', '', '状态'];
+        W._colNames = ['序号', '条码编号', '上机芯片编码', '上机reads数', '上机q30值', '状态', '建库组出库人', '建库组样本剩余量', '上机组接收人', '上机组接收时间',
+            '建库浓度(ng/ul)', '建库片段大小(bp)', '上机人', '上机时间', '上机审查人', '上机审查时间', '上机组出库人', '分析报告组接收人', '分析报告组接收时间', ''];
         W._colModel = [
             {name: 'id', width: 40, index: 'id', align: 'center', sortable: false, frozen: true},
             {name: 'barcode_long', width: 120, index: 'barcode_long', align: 'center', sortable: false, frozen: true},
             // {name: 'barcode_short', width: 100, index: 'barcode_short', align: 'center', sortable: false, frozen: true},
-            {name: 'storage_outer', width: 100, index: 'storage_outer', align: 'center', sortable: false},
-            {name: 'storage_out_residue', width: 100, index: 'storage_out_residue', align: 'center', sortable: false},
-            {name: 'operate_handover', width: 100, index: 'operate_handover', align: 'center', sortable: false},
-            {name: 'operate_handover_date', width: 130, index: 'operate_handover_date', align: 'center', sortable: false},
-            {name: 'storage_deep', width: 100, index: 'storage_deep', align: 'center', sortable: false},
-            {name: 'storage_part_size', width: 100, index: 'storage_part_size', align: 'center', sortable: false},
-            {name: 'operate_chip_code', width: 100, index: 'operate_chip_code', align: 'center', sortable: false},
-            {name: 'operate_reads_val', width: 100, index: 'operate_reads_val', align: 'center', sortable: false},
-            {name: 'operate_q30_val', width: 100, index: 'operate_q30_val', align: 'center', sortable: false},
-            {name: 'operater', width: 100, index: 'operater', align: 'center', sortable: false},
-            {name: 'operate_date', width: 130, index: 'operate_date', align: 'center', sortable: false},
-            {name: 'operate_checker', width: 100, index: 'operate_checker', align: 'center', sortable: false},
-            {name: 'operate_check_date', width: 130, index: 'operate_check_date', align: 'center', sortable: false},
-            {name: 'operate_outer', width: 100, index: 'operate_outer', align: 'center', sortable: false},
-            // {name: 'operate_out_residue', width: 100, index: 'operate_out_residue', align: 'center', sortable: false},
-            {name: 'report_handover', width: 100, index: 'report_handover', align: 'center', sortable: false},
-            {name: 'report_handover_date', width: 130, index: 'report_handover_date', align: 'center', sortable: false},
-            {name: 'status', hidden: true, hidedlg: true},
+            {name: 'operate_chip_code', width: 100, index: 'operate_chip_code', align: 'center', sortable: false, frozen: true},
+            {name: 'operate_reads_val', width: 100, index: 'operate_reads_val', align: 'center', sortable: false, frozen: true},
+            {name: 'operate_q30_val', width: 100, index: 'operate_q30_val', align: 'center', sortable: false, frozen: true},
             {
                 name: 'status1', width: 100, index: 'status', align: 'center', sortable: false,
                 formatter: function (value, options, row) {
@@ -51,16 +35,16 @@
                             text = '未上机';
                             break;
                         case 15:
-                            text = '上机已保存';
+                            text = '已上机';
                             break;
                         case 16:
-                            text = '上机审核-合格';
+                            text = '合格';
                             break;
                         case 17:
-                            text = '上机审核-废弃';
+                            text = '废弃';
                             break;
                         case 18:
-                            text = '上机审核-重上机';
+                            text = '重上机';
                             break;
                         case 19:
                             text = '已交接';
@@ -69,8 +53,25 @@
                             text = '';
                     }
                     return text;
-                }
-            }
+                },
+                frozen: true
+            },
+            {name: 'storage_outer', width: 100, index: 'storage_outer', align: 'center', sortable: false},
+            {name: 'storage_out_residue', width: 100, index: 'storage_out_residue', align: 'center', sortable: false},
+            {name: 'operate_handover', width: 100, index: 'operate_handover', align: 'center', sortable: false},
+            {name: 'operate_handover_date', width: 130, index: 'operate_handover_date', align: 'center', sortable: false},
+            {name: 'storage_deep', width: 100, index: 'storage_deep', align: 'center', sortable: false},
+            {name: 'storage_part_size', width: 100, index: 'storage_part_size', align: 'center', sortable: false},
+            {name: 'operater', width: 100, index: 'operater', align: 'center', sortable: false},
+            {name: 'operate_date', width: 130, index: 'operate_date', align: 'center', sortable: false},
+            {name: 'operate_checker', width: 100, index: 'operate_checker', align: 'center', sortable: false},
+            {name: 'operate_check_date', width: 130, index: 'operate_check_date', align: 'center', sortable: false},
+            {name: 'operate_outer', width: 100, index: 'operate_outer', align: 'center', sortable: false},
+            // {name: 'operate_out_residue', width: 100, index: 'operate_out_residue', align: 'center', sortable: false},
+            {name: 'report_handover', width: 100, index: 'report_handover', align: 'center', sortable: false},
+            {name: 'report_handover_date', width: 130, index: 'report_handover_date', align: 'center', sortable: false},
+            {name: 'status', hidden: true, hidedlg: true},
+
         ];
 
         W.updateActionIcons = function () {
@@ -171,7 +172,7 @@
                 var id = ids[i];
                 if (id) {
                     var row = $(grid_selector).jqGrid('getRowData', id);
-                    if (row.status != 15 /*上机已保存*/) {
+                    if (row.status != 15 /*已上机*/) {
                         $(grid_selector).jqGrid('setSelection', id, false);
                         warnRows.push(row.barcode_long);
                         // }else{

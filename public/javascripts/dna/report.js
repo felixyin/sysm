@@ -14,21 +14,13 @@
         W._sortname = 'input_date';
         W._sortorder = 'ASC';
         W._postData = {};
-        W._colNames = ['序号', '条码编号', '上机组发送人',  '分析报告组接收人', '分析报告组接收时间', '上机芯片编码',
-            '上机reads数', '上机q30值', '分析结果', '建议', '是否发送', '分析人', '分析时间', '报告发送人', '报告发送时间', '', '状态'];
+        W._colNames = ['序号', '条码编号', '分析结果', '建议', '是否需要发送', '状态', '上机组发送人', '分析报告组接收人', '分析报告组接收时间', '上机芯片编码',
+            '上机reads数', '上机q30值', '分析人', '分析时间', '报告发送人', '报告发送时间', ''];
         W._colModel = [
             {name: 'id', width: 40, index: 'id', align: 'center', sortable: false, frozen: true},
             {name: 'barcode_long', width: 120, index: 'barcode_long', align: 'center', sortable: false, frozen: true},
-            // {name: 'barcode_short', width: 100, index: 'barcode_short', align: 'center', sortable: false, frozen: true},
-            {name: 'operate_outer', width: 100, index: 'operate_outer', align: 'center', sortable: false},
-            // {name: 'operate_out_residue', width: 100, index: 'operate_out_residue', align: 'center'},
-            {name: 'report_handover', width: 100, index: 'report_handover', align: 'center', sortable: false},
-            {name: 'report_handover_date', width: 130, index: 'report_handover_date', align: 'center', sortable: false},
-            {name: 'operate_chip_code', width: 100, index: 'operate_chip_code', align: 'center', sortable: false},
-            {name: 'operate_reads_val', width: 100, index: 'operate_reads_val', align: 'center', sortable: false},
-            {name: 'operate_q30_val', width: 100, index: 'operate_q30_val', align: 'center', sortable: false},
-            {name: 'report_result', width: 100, index: 'report_result', align: 'center', sortable: false},
-            {name: 'report_advice', width: 100, index: 'report_advice', align: 'center', sortable: false},
+            {name: 'report_result', width: 100, index: 'report_result', align: 'center', sortable: false, frozen: true},
+            {name: 'report_advice', width: 100, index: 'report_advice', align: 'center', sortable: false, frozen: true},
             {
                 name: 'report_is_send', width: 100, index: 'report_is_send', align: 'center', sortable: false, formatter: function (value, options, row) {
                 if (value == 1) {
@@ -38,13 +30,8 @@
                 } else {
                     return '';
                 }
-            }
+            }, frozen: true
             },
-            {name: 'reporter', width: 100, index: 'reporter', align: 'center', sortable: false},
-            {name: 'report_date', width: 130, index: 'report_date', align: 'center', sortable: false},
-            {name: 'report_sender', width: 100, index: 'report_sender', align: 'center', sortable: false},
-            {name: 'report_send_date', width: 130, index: 'report_send_date', align: 'center', sortable: false},
-            {name: 'status', hidden: true, hidedlg: true},
             {
                 name: 'status1', width: 100, index: 'status', align: 'center', sortable: false,
                 formatter: function (value, options, row) {
@@ -57,7 +44,7 @@
                             text = '未分析';
                             break;
                         case 20:
-                            text = '分析已保存';
+                            text = '已分析';
                             break;
                         case 21:
                             text = '报告已发送';
@@ -66,8 +53,22 @@
                             text = '';
                     }
                     return text;
-                }
-            }
+                }, frozen: true
+            },
+            // {name: 'barcode_short', width: 100, index: 'barcode_short', align: 'center', sortable: false, frozen: true},
+            {name: 'operate_outer', width: 100, index: 'operate_outer', align: 'center', sortable: false},
+            // {name: 'operate_out_residue', width: 100, index: 'operate_out_residue', align: 'center'},
+            {name: 'report_handover', width: 100, index: 'report_handover', align: 'center', sortable: false},
+            {name: 'report_handover_date', width: 130, index: 'report_handover_date', align: 'center', sortable: false},
+            {name: 'operate_chip_code', width: 100, index: 'operate_chip_code', align: 'center', sortable: false},
+            {name: 'operate_reads_val', width: 100, index: 'operate_reads_val', align: 'center', sortable: false},
+            {name: 'operate_q30_val', width: 100, index: 'operate_q30_val', align: 'center', sortable: false},
+            {name: 'reporter', width: 100, index: 'reporter', align: 'center', sortable: false},
+            {name: 'report_date', width: 130, index: 'report_date', align: 'center', sortable: false},
+            {name: 'report_sender', width: 100, index: 'report_sender', align: 'center', sortable: false},
+            {name: 'report_send_date', width: 130, index: 'report_send_date', align: 'center', sortable: false},
+            {name: 'status', hidden: true, hidedlg: true},
+
         ];
 
         W.updateActionIcons = function () {

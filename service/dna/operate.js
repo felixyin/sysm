@@ -37,8 +37,8 @@ function getSqls(params) {
     params.storage_out_residue && (whereSql += " AND storage_out_residue LIKE '%:storage_out_residue%' /*建库组样本剩余量*/\n");
     params.operate_handover && (whereSql += " AND operate_handover LIKE '%:operate_handover%' /*上机组接收人*/\n");
     params.operate_handover_date && (whereSql += " AND operate_handover_date LIKE '%:operate_handover_date%' /*上机组接收时间*/\n");
-    params.storage_deep && (whereSql += " AND storage_deep LIKE '%:storage_deep%' /*建库浓度*/\n");
-    params.storage_part_size && (whereSql += " AND storage_part_size LIKE '%:storage_part_size%' /*建库片段大小*/\n");
+    params.storage_deep && (whereSql += " AND storage_deep LIKE '%:storage_deep%' /*建库浓度(ng/ul)*/\n");
+    params.storage_part_size && (whereSql += " AND storage_part_size LIKE '%:storage_part_size%' /*建库片段大小(bp)*/\n");
     params.operate_chip_code && (whereSql += " AND operate_chip_code LIKE '%:operate_chip_code%' /*上机芯片编码*/\n");
     params.operate_reads_val && (whereSql += " AND operate_reads_val LIKE '%:operate_reads_val%' /*上机reads数*/\n");
     params.operate_q30_val && (whereSql += " AND operate_q30_val LIKE '%:operate_q30_val%' /*上机q30值*/\n");
@@ -127,7 +127,7 @@ exports.insertCk = (ck, cb) => {
     let report_handover = ck.jjUserId;
     let ids = ck.ids;
     console.log(ids);
-    let updateSql = ['UPDATE dna_flow SET operate_outer="', operate_outer, '", report_handover="', report_handover, '", report_handover_date=NOW(), status=19 /*交接后未建库*/  WHERE id IN (', ids, ')'].join('');
+    let updateSql = ['UPDATE dna_flow SET operate_outer="', operate_outer, '", report_handover="', report_handover, '", report_handover_date=NOW(), status=19 /*提取已交接*/  WHERE id IN (', ids, ')'].join('');
     console.log(updateSql);
     db.pool.query(updateSql, cb);
 };
