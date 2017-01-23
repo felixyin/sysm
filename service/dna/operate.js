@@ -112,7 +112,7 @@ exports.selectDnaFlowById = (id, cb) => {
  */
 exports.updateSh = (sh, cb) => {
     console.log(sh.ids);
-    let sql = 'UPDATE dna_flow AS t SET t.operate_checker="' + sh.checker + '", t.operate_check_date=NOW(), t.operate_out_residue =2, t.status=16 WHERE t.id in (' + sh.ids + ')';
+    let sql = 'UPDATE dna_flow AS t SET t.operate_checker="' + sh.checker + '", t.operate_check_date=NOW(), t.status=16 WHERE t.id in (' + sh.ids + ')';
     console.log(sql);
     db.pool.query(sql, cb);
 };
