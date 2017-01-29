@@ -37,17 +37,14 @@
                 formatter: function (value, options, row) {
                     var text = '';
                     switch (row.status) {
-                        case 0:
-                            text = '已删除';
-                            break;
                         case 19:
-                            text = '未分析';
+                            text = ['<span class="label label-default">','未分析',''].join('');
                             break;
                         case 20:
-                            text = '已分析';
+                            text = ['<span class="label label-info">','已分析',''].join('');
                             break;
                         case 21:
-                            text = '报告已发送';
+                            text = ['<span class="label label-success">','报告已发送',''].join('');
                             break;
                         default:
                             text = '';

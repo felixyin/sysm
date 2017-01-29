@@ -26,26 +26,23 @@
                 formatter: function (value, options, row) {
                     var text = '';
                     switch (row.status) {
-                        case 0:
-                            text = '已删除';
-                            break;
                         case 9:
-                            text = '未建库';
+                            text = ['<span class="label label-default">','未建库',''].join('');
                             break;
                         case 10:
-                            text = '已建库';
+                            text = ['<span class="label label-info">','已建库',''].join('');
                             break;
                         case 11:
-                            text = '合格';
+                            text = ['<span class="label label-success">','合格',''].join('');
                             break;
                         case 12:
-                            text = '废弃';
+                            text = ['<span class="label label-danger">','废弃',''].join('');
                             break;
                         case 13:
-                            text = '重建库';
+                            text = ['<span class="label label-warning">','重建库',''].join('');
                             break;
                         case 14:
-                            text = '已交接';
+                            text = ['<span class="label label-purple">','已交接',''].join('');
                             break;
                         default:
                             text = '';

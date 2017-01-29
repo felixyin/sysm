@@ -13,8 +13,8 @@
     W._sortname = 'sample_date';
     W._sortorder = 'DESC';
     W._postData = {};
-    W._colNames = ['序号', '条码编号', '医院名称', '样本编号', '采样日期', '接收日期', '姓名', '身份证号', '年龄', '孕周', '妊娠情况',
-        '不良孕产史', '备注', '录入人员', '录入日期', '审批人员', '审批日期', '采血管入库人', '采血管入库位置', '采血管入库时间', '', '状态'];
+    W._colNames = ['序号', '条码编号', '医院名称', '样本编号', '采样日期', '接收日期', '姓名', '状态', '身份证号', '年龄', '孕周', '妊娠情况',
+        '不良孕产史', '备注', '录入人员', '录入日期', '审批人员', '审批日期', '采血管入库人', '采血管入库位置', '采血管入库时间', ''];
     W._colModel = [
         {name: 'id', width: 40, index: 'id', align: 'center', sortable: false, frozen: true},
         {name: 'barcode_long', width: 120, index: 'barcode_long', align: 'center', sortable: false, frozen: true},
@@ -37,6 +37,32 @@
             }
         },
         {name: 'real_name', width: 80, index: 'real_name', align: 'center', sortable: false, frozen: true},
+        {
+            name: 'status1', width: 100, index: 'status', align: 'center', sortable: false,
+            formatter: function (value, options, row) {
+                var text = '';
+                switch (row.status) {
+                    case 0:
+                        text = ['<span class="label label-danger">', '已删除', ''].join('');
+                        break;
+                    case 1:
+                        text = ['<span class="label label-info">', '已录入', ''].join('');
+                        break;
+                    case 2:
+                        text = ['<span class="label label-success">', '已审批', ''].join('');
+                        break;
+                    case 3:
+                        text = ['<span class="label label-primary">', '已入库', ''].join('');
+                        break;
+                    case 4:
+                        text = ['<span class="label label-purple">', '已出库', ''].join('');
+                        break;
+                    default:
+                        text = '';
+                }
+                return text;
+            }, frozen: true
+        },
         {name: 'id_card', width: 150, index: 'id_card', align: 'center', sortable: true},
         {name: 'age', width: 130, index: 'age', align: 'center', sortable: true},
         {name: 'pregnancy_week', width: 100, index: 'pregnancy_week', align: 'center', sortable: true},
@@ -53,33 +79,7 @@
         {name: 'warehouse_place', width: 100, index: 'warehouse_place', align: 'center', sortable: false},
         {name: 'warehouse_date', width: 130, index: 'warehouse_date', align: 'center', sortable: false},
         // {name: 'barcode_short', width: 100, index: 'barcode_short', align: 'center', sortable: false},
-        {name: 'status', hidden: true, hidedlg: true},
-        {
-            name: 'status1', width: 100, index: 'status', align: 'center', sortable: false,
-            formatter: function (value, options, row) {
-                var text = '';
-                switch (row.status) {
-                    case 0:
-                        text = '已删除';
-                        break;
-                    case 1:
-                        text = '已录入';
-                        break;
-                    case 2:
-                        text = '已审批';
-                        break;
-                    case 3:
-                        text = '已入库';
-                        break;
-                    case 4:
-                        text = '已出库';
-                        break;
-                    default:
-                        text = '';
-                }
-                return text;
-            }
-        }
+        {name: 'status', hidden: true, hidedlg: true}
     ];
 
     W.updateActionIcons = function () {

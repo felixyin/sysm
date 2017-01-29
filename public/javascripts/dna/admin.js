@@ -32,70 +32,70 @@
                     var text = '';
                     switch (row.status) {
                         case 0:
-                            text = '已删除';
+                            text = ['<span class="label label-danger">','已删除',''].join('');
                             break;
                         case 1:
-                            text = '已录入';
+                            text = ['<span class="label label-info">','已录入',''].join('');
                             break;
                         case 2:
-                            text = '已审批';
+                            text = ['<span class="label label-success">','已审批',''].join('');
                             break;
                         case 3:
-                            text = '已入库';
+                            text = ['<span class="label label-primary">','已入库',''].join('');
                             break;
                         case 4:
-                            text = '已出库';
+                            text = ['<span class="label label-purple">','已出库',''].join('');
                             break;
                         case 5:
-                            text = '已提取';
+                            text = ['<span class="label label-info">','已提取',''].join('');
                             break;
                         case 6:
-                            text = '提取合格';
+                            text = ['<span class="label label-success">','提取合格',''].join('');
                             break;
                         case 7:
-                            text = '提取废弃';
+                            text = ['<span class="label label-danger">','提取废弃',''].join('');
                             break;
                         case 8:
-                            text = '重提取';
+                            text = ['<span class="label label-warning">','重提取',''].join('');
                             break;
                         case 9:
-                            text = '提取已交接';
+                            text = ['<span class="label label-default">','提取已交接',''].join('');
                             break;
                         case 10:
-                            text = '已建库';
+                            text = ['<span class="label label-info">','已建库',''].join('');
                             break;
                         case 11:
-                            text = '建库合格';
+                            text = ['<span class="label label-success">','建库合格',''].join('');
                             break;
                         case 12:
-                            text = '建库废弃';
+                            text = ['<span class="label label-danger">','建库废弃',''].join('');
                             break;
                         case 13:
-                            text = '重建库';
+                            text = ['<span class="label label-warning">','重建库',''].join('');
                             break;
                         case 14:
-                            text = '建库已交接';
+                            text = ['<span class="label label-default">','建库已交接',''].join('');
                             break;
                         case 15:
-                            text = '已上机';
+                            text = ['<span class="label label-info">','已上机',''].join('');
                             break;
                         case 16:
-                            text = '上机合格';
+                            text = ['<span class="label label-success">','上机合格',''].join('');
                             break;
                         case 17:
-                            text = '上机废弃';
+                            text = ['<span class="label label-danger">','上机废弃',''].join('');
                             break;
                         case 18:
-                            text = '重上机';
+                            text = ['<span class="label label-warning">','重上机',''].join('');
                             break;
                         case 19:
-                            text = '上机已交接';
+                            text = ['<span class="label label-default">','上机已交接',''].join('');
                             break;
                         case 20:
-                            text = '已分析';
+                            text = ['<span class="label label-info">','已分析',''].join('');
                             break;
                         case 21:
-                            text = '报告已发送';
+                            text = ['<span class="label label-success">','报告已发送',''].join('');
                             break;
                         default:
                             text = '';

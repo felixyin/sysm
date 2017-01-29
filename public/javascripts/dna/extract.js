@@ -28,26 +28,23 @@
                 formatter: function (value, options, row) {
                     var text = '';
                     switch (row.status) {
-                        case 0:
-                            text = '已删除';
-                            break;
                         case 4:
-                            text = '未提取';
+                            text = ['<span class="label label-default">','未提取',''].join('');
                             break;
                         case 5:
-                            text = '已提取';
+                            text = ['<span class="label label-info">','已提取',''].join('');
                             break;
                         case 6:
-                            text = '合格';
+                            text = ['<span class="label label-success">','合格',''].join('');
                             break;
                         case 7:
-                            text = '废弃';
+                            text = ['<span class="label label-danger">','废弃',''].join('');
                             break;
                         case 8:
-                            text = '重提取';
+                            text = ['<span class="label label-warning">','重提取',''].join('');
                             break;
                         case 9:
-                            text = '已交接';
+                            text = ['<span class="label label-purple">','已交接',''].join('');
                             break;
                         default:
                             text = '';
