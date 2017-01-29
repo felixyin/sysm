@@ -17,7 +17,7 @@ function getSqls(params) {
         storage_out_residue, operate_handover, operate_handover_date, operate_chip_code, operate_reads_val, operate_q30_val, operater, operate_date,
         operate_checker, operate_check_date, operate_outer, operate_out_residue, report_handover, report_handover_date, report_result, report_advice, 
         report_is_send, reporter, report_date, report_sender, report_send_date, status
-    FROM dna_flow `;
+    FROM view_dna_flow `;
 
     let whereSql = " WHERE 1 = 1 \n";
     params.id && (whereSql += " AND id LIKE '%:id%' /**/\n");
