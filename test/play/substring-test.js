@@ -9,10 +9,10 @@
 var fs = require('fs');
 
 function genUploadFileObj(path) {
-    var f = fs.readFileSync(path);
-    f.destination = path.substring(0, path.lastIndexOf('/') + 1);
-    f.originalname = path.substring(path.lastIndexOf('/') + 1);
-    return f;
+	var f = fs.readFileSync(path);
+	f.destination = path.substring(0, path.lastIndexOf('/') + 1);
+	f.originalname = path.substring(path.lastIndexOf('/') + 1);
+	return f;
 }
 
 var ff = genUploadFileObj('/home/fy/workspaces/laotang/laotang_zsy_sb_manage/test/eventproxy-test.js');

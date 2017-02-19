@@ -6,5 +6,5 @@
 var S = require('../service/checkout/index');
 
 S.updateTimeForEndGame(50, function (err, result) {
-    console.log(result);
+	console.log(result);
 });
