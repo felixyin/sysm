@@ -1,0 +1,67 @@
+
+.main-content {
+  margin-left: 0 !important;
+}
+
+.ui-jqgrid-view > .ui-jqgrid-titlebar {
+  background: lightgray;
+}
+
+.breadcrumbs, #sidebar-collapse, .alert, .page-header {
+  display: none;
+}
+
+.menu-text {
+  font-size: 18px;
+  margin-left: 10px;
+}
+
+.searchTable {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 5px;
+  margin-bottom: 10px;
+}
+
+.searchTable tr td:nth-child(odd) {
+  text-align: right;
+  width: 100px;
+  height: 33px;
+}
+
+.searchTable tr td:nth-child(even) {
+  width: 200px;
+  height: 33px;
+}
+
+.searchTable tr td:nth-last-child(1) {
+  width: auto;
+  float: left;
+}
+
+.searchTable input {
+  width: 180px;
+}
+
+.searchTable tr td button:nth-child(1) {
+  width: 95px;
+  margin-right: 10px;
+}
+
+.ui-front {
+  /* FIXME TODO */
+  /*z-index: 10000 !important;*/
+}
+
+/* dialog css */
+.ui-dialog-titlebar-close{
+  display:none;
+}
+.my-dialog-save-btn{
+  width:110px;
+}
+
+table {
+  max-width: 100%;
+  background-color: white;
+}
