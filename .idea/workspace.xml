@@ -1,36 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="976d0898-fc8b-4527-8c5d-bd526aaafd9f" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/jsLinters/jshint.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/learn/workout.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/jsLinters/jslint.xml" afterPath="$PROJECT_DIR$/.idea/jsLinters/jslint.xml" />
+    <list default="true" id="976d0898-fc8b-4527-8c5d-bd526aaafd9f" name="Default" comment=" 静态资源绝对路径修改为相对路径，使得对 ngnix 反向代理兼容，防止静态资源404">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/npm-debug.log" afterPath="$PROJECT_DIR$/npm-debug.log" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/misc/app.js" afterPath="$PROJECT_DIR$/public/assets/misc/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/gen/gen-col-modal.js" afterPath="$PROJECT_DIR$/test/gen/gen-col-modal.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/gen/gen-edit-form.js" afterPath="$PROJECT_DIR$/test/gen/gen-edit-form.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/gen/gen-export.js" afterPath="$PROJECT_DIR$/test/gen/gen-export.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/gen/gen-option.js" afterPath="$PROJECT_DIR$/test/gen/gen-option.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/gen/gen-search.js" afterPath="$PROJECT_DIR$/test/gen/gen-search.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/gen/gen-test-json.js" afterPath="$PROJECT_DIR$/test/gen/gen-test-json.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/gen/gen-where.js" afterPath="$PROJECT_DIR$/test/gen/gen-where.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/play/class-test.js" afterPath="$PROJECT_DIR$/test/play/class-test.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/play/co-test.js" afterPath="$PROJECT_DIR$/test/play/co-test.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/play/co-test2.js" afterPath="$PROJECT_DIR$/test/play/co-test2.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/play/dir-walk-test.js" afterPath="$PROJECT_DIR$/test/play/dir-walk-test.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/play/es7-test.js" afterPath="$PROJECT_DIR$/test/play/es7-test.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/play/eventproxy-test.js" afterPath="$PROJECT_DIR$/test/play/eventproxy-test.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/play/substring-test.js" afterPath="$PROJECT_DIR$/test/play/substring-test.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/play/test-game-settings.js" afterPath="$PROJECT_DIR$/test/play/test-game-settings.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/play/test-service.js" afterPath="$PROJECT_DIR$/test/play/test-service.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/play/time-test.js" afterPath="$PROJECT_DIR$/test/play/time-test.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/play/zip-test.js" afterPath="$PROJECT_DIR$/test/play/zip-test.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/play/zip-test2.js" afterPath="$PROJECT_DIR$/test/play/zip-test2.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/layout.jade" afterPath="$PROJECT_DIR$/views/layout.jade" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/layout_login.jade" afterPath="$PROJECT_DIR$/views/layout_login.jade" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/layout_nomenu.jade" afterPath="$PROJECT_DIR$/views/layout_nomenu.jade" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -51,11 +23,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="layout.jade" pinned="false" current-in-tab="false">
+      <file leaf-file-name="layout.jade" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/views/layout.jade">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="108">
-              <caret line="6" column="20" lean-forward="false" selection-start-line="6" selection-start-column="20" selection-end-line="6" selection-end-column="20" />
+            <state relative-caret-position="360">
+              <caret line="20" column="42" lean-forward="true" selection-start-line="20" selection-start-column="42" selection-end-line="20" selection-end-column="42" />
               <folding />
             </state>
           </provider>
@@ -91,10 +63,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/assets/misc/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="244">
+            <state relative-caret-position="-2216">
               <caret line="70" column="26" lean-forward="false" selection-start-line="70" selection-start-column="26" selection-end-line="70" selection-end-column="26" />
               <folding />
             </state>
@@ -763,7 +735,7 @@
       <workItem from="1486562021248" duration="4151000" />
       <workItem from="1486685556035" duration="2078000" />
       <workItem from="1487248851485" duration="22000" />
-      <workItem from="1487482308983" duration="762000" />
+      <workItem from="1487482308983" duration="1863000" />
     </task>
     <task id="LOCAL-00010" summary="yarn安装">
       <created>1484143569710</created>
@@ -1010,19 +982,26 @@
       <option name="project" value="LOCAL" />
       <updated>1485677354102</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary=" 静态资源绝对路径修改为相对路径，使得对 ngnix 反向代理兼容，防止静态资源404">
+      <created>1487483187714</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1487483187714</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <option name="clearContext" value="false" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="356761000" />
+    <option name="totallyTimeSpent" value="357862000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="973" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="true" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.21526197" sideWeight="0.5021097" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="true" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.21566401" sideWeight="0.5021097" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3291262" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18324292" sideWeight="0.18091168" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20317821" sideWeight="0.4978903" order="2" side_tool="false" content_ui="tabs" />
@@ -1030,7 +1009,7 @@
       <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3291262" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18324292" sideWeight="0.81908834" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Grunt " active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18324292" sideWeight="0.17934166" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2599319" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2599319" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24954791" sideWeight="0.7735849" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20433997" sideWeight="0.17787743" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26867118" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1092,7 +1071,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="去掉短条码编号" />
     <MESSAGE value="去掉下一步的接收人和接收时间的显示和搜索&#10;解决非chrome浏览器下拉按钮变小的问题" />
     <MESSAGE value="所有的模块,的状态搜索,显示所有选项." />
     <MESSAGE value="去掉采血管更换的状态&#10;标本接收管理增加入库功能" />
@@ -1117,7 +1095,8 @@
     <MESSAGE value="剩余量修改为手动输入" />
     <MESSAGE value="左侧菜单滚动条样式优化" />
     <MESSAGE value="优化超级管理,显示逆向流程数据" />
-    <option name="LAST_COMMIT_MESSAGE" value="优化超级管理,显示逆向流程数据" />
+    <MESSAGE value=" 静态资源绝对路径修改为相对路径，使得对 ngnix 反向代理兼容，防止静态资源404" />
+    <option name="LAST_COMMIT_MESSAGE" value=" 静态资源绝对路径修改为相对路径，使得对 ngnix 反向代理兼容，防止静态资源404" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1456,14 +1435,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/layout.jade">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="6" column="20" lean-forward="false" selection-start-line="6" selection-start-column="20" selection-end-line="6" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/routes/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="208">
@@ -1498,8 +1469,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public/assets/misc/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="244">
+        <state relative-caret-position="-2216">
           <caret line="70" column="26" lean-forward="false" selection-start-line="70" selection-start-column="26" selection-end-line="70" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/layout.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="20" column="42" lean-forward="true" selection-start-line="20" selection-start-column="42" selection-end-line="20" selection-end-column="42" />
           <folding />
         </state>
       </provider>
