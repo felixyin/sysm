@@ -49,6 +49,20 @@ router.post('/edit', (req, res) => {
 });
 
 /**
+ * 彻底删除数据
+ */
+router.post('/delete', (req, res) => {
+    let ids = req.body.ids;
+    adminService.deleteDnaByIds(ids, (err, result) => {
+        if (err)throw err;
+        res.send({
+            affectedRows: result.affectedRows,
+            err: err
+        });
+    });
+});
+
+/**
  * 导出excel
  */
 router.post('/exportExcel', (req, res) => {

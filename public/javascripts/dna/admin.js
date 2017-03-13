@@ -26,76 +26,76 @@
             {name: 'barcode_long', width: 100, index: 'barcode_long', align: 'center', sortable: false, frozen: true},
             {name: 'hospital', width: 100, index: 'hospital', align: 'center', sortable: false, frozen: true},
             {name: 'sample_code', width: 100, index: 'sample_code', align: 'center', sortable: false, frozen: true},
-             {
+            {
                 name: 'status1', width: 100, index: 'status', align: 'center', sortable: false, frozen: true,
                 formatter: function (value, options, row) {
                     var text = '';
                     switch (row.status) {
                         case 0:
-                            text = ['<span class="label label-danger">','已删除',''].join('');
+                            text = ['<span class="label label-danger">', '已删除', ''].join('');
                             break;
                         case 1:
-                            text = ['<span class="label label-info">','已录入',''].join('');
+                            text = ['<span class="label label-info">', '已录入', ''].join('');
                             break;
                         case 2:
-                            text = ['<span class="label label-success">','已审批',''].join('');
+                            text = ['<span class="label label-success">', '已审批', ''].join('');
                             break;
                         case 3:
-                            text = ['<span class="label label-primary">','已入库',''].join('');
+                            text = ['<span class="label label-primary">', '已入库', ''].join('');
                             break;
                         case 4:
-                            text = ['<span class="label label-purple">','已出库',''].join('');
+                            text = ['<span class="label label-purple">', '已出库', ''].join('');
                             break;
                         case 5:
-                            text = ['<span class="label label-info">','已提取',''].join('');
+                            text = ['<span class="label label-info">', '已提取', ''].join('');
                             break;
                         case 6:
-                            text = ['<span class="label label-success">','提取合格',''].join('');
+                            text = ['<span class="label label-success">', '提取合格', ''].join('');
                             break;
                         case 7:
-                            text = ['<span class="label label-danger">','提取废弃',''].join('');
+                            text = ['<span class="label label-danger">', '提取废弃', ''].join('');
                             break;
                         case 8:
-                            text = ['<span class="label label-warning">','重提取',''].join('');
+                            text = ['<span class="label label-warning">', '重提取', ''].join('');
                             break;
                         case 9:
-                            text = ['<span class="label label-default">','提取已交接',''].join('');
+                            text = ['<span class="label label-default">', '提取已交接', ''].join('');
                             break;
                         case 10:
-                            text = ['<span class="label label-info">','已建库',''].join('');
+                            text = ['<span class="label label-info">', '已建库', ''].join('');
                             break;
                         case 11:
-                            text = ['<span class="label label-success">','建库合格',''].join('');
+                            text = ['<span class="label label-success">', '建库合格', ''].join('');
                             break;
                         case 12:
-                            text = ['<span class="label label-danger">','建库废弃',''].join('');
+                            text = ['<span class="label label-danger">', '建库废弃', ''].join('');
                             break;
                         case 13:
-                            text = ['<span class="label label-warning">','重建库',''].join('');
+                            text = ['<span class="label label-warning">', '重建库', ''].join('');
                             break;
                         case 14:
-                            text = ['<span class="label label-default">','建库已交接',''].join('');
+                            text = ['<span class="label label-default">', '建库已交接', ''].join('');
                             break;
                         case 15:
-                            text = ['<span class="label label-info">','已上机',''].join('');
+                            text = ['<span class="label label-info">', '已上机', ''].join('');
                             break;
                         case 16:
-                            text = ['<span class="label label-success">','上机合格',''].join('');
+                            text = ['<span class="label label-success">', '上机合格', ''].join('');
                             break;
                         case 17:
-                            text = ['<span class="label label-danger">','上机废弃',''].join('');
+                            text = ['<span class="label label-danger">', '上机废弃', ''].join('');
                             break;
                         case 18:
-                            text = ['<span class="label label-warning">','重上机',''].join('');
+                            text = ['<span class="label label-warning">', '重上机', ''].join('');
                             break;
                         case 19:
-                            text = ['<span class="label label-default">','上机已交接',''].join('');
+                            text = ['<span class="label label-default">', '上机已交接', ''].join('');
                             break;
                         case 20:
-                            text = ['<span class="label label-info">','已分析',''].join('');
+                            text = ['<span class="label label-info">', '已分析', ''].join('');
                             break;
                         case 21:
-                            text = ['<span class="label label-success">','报告已发送',''].join('');
+                            text = ['<span class="label label-success">', '报告已发送', ''].join('');
                             break;
                         default:
                             text = '';
@@ -243,6 +243,35 @@
         } else {
             Toast.show('保存失败,请联系管理员!');
             localStorage.setItem('_error_editExtract_Cb', error);
+        }
+    };
+
+    /**
+     * 显示删除的对话框
+     */
+    W.showDeleteDialog = function () {
+        var ids = $(grid_selector).jqGrid('getGridParam', 'selarrrow');
+        if (ids && ids.length >= 1) {
+            bootbox.confirm("删除后不可恢复！！！您确定要彻底删除此数据吗？？？", function (result) {
+                if (result) {
+                    $.post('dna/admin/delete', {
+                        ids: ids.join(',')
+                    }, function (result) {
+                        if (result.affectedRows > 0) {
+                            Toast.show(result.affectedRows + '条数据，数据已经彻底删除！');
+                            jQuery(grid_selector).trigger('reloadGrid');
+                        } else {
+                            Toast.show('没有数据被删除！');
+                            localStorage.setItem('_error_delete', result.err);
+                        }
+                    });
+                } else {
+                    Toast.show('您取消了删除操作!');
+                    jQuery(grid_selector).trigger('reloadGrid');
+                }
+            });
+        } else {
+            Toast.show('请先勾选一行数据');
         }
     };
 

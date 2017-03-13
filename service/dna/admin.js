@@ -146,6 +146,21 @@ exports.updateDnaFlowById = (dnaFlow, cb) => {
 };
 
 /**
+ * 彻底删除数据
+ * @param ids
+ * @param cb
+ */
+exports.deleteDnaByIds = (ids, cb) => {
+    db.pool.query(`DELETE FROM dna_flow WHERE id IN (${ids})`, (err, result) => {
+        if (err)throw err;
+        db.pool.query(`DELETE FROM dna_flow_his WHERE id IN (${ids})`, (err2, result2) => {
+            result2.affectedRows += result.affectedRows;
+            cb(err || err2 || null, result2);
+        });
+    });
+};
+
+/**
  * 查询数据,根据id
  * @param id
  * @param cb
