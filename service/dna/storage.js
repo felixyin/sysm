@@ -22,6 +22,7 @@ function getSqls(params) {
         extract_part_size,
         extract_part_after_break,
         storage_deep,
+        storage_index,
         storage_part_size,
         storager,
         storage_date,
@@ -45,6 +46,7 @@ function getSqls(params) {
     params.extract_part_size && (whereSql += " AND extract_part_size LIKE '%:extract_part_size%' /*片段大小(bp)*/\n");
     params.extract_part_after_break && (whereSql += " AND extract_part_after_break LIKE '%:extract_part_after_break%' /*打断后片段(bp)*/\n");
     params.storage_deep && (whereSql += " AND storage_deep LIKE '%:storage_deep%' /*建库浓度(ng/ul)*/\n");
+    params.storage_index && (whereSql += " AND storage_index LIKE '%:storage_index%' /*建库index号*/\n");
     params.storage_part_size && (whereSql += " AND storage_part_size LIKE '%:storage_part_size%' /*建库片段大小(bp)*/\n");
     params.storager && (whereSql += " AND storager LIKE '%:storager%' /*建库人*/\n");
     params.storage_date && (whereSql += " AND storage_date LIKE '%:storage_date%' /*建库时间*/\n");
@@ -155,8 +157,8 @@ exports.redo = (params, cb) => {
         if (err)throw err;
         if (result && result.insertId) {
             let clearColumnSql = `UPDATE dna_flow SET storage_handover = NULL, storage_handover_date = NULL, storage_deep = NULL,
-                    storage_part_size = NULL, storager = NULL, storage_date = NULL, storage_checker = NULL, storage_check_date = NULL,
-                    storage_outer = NULL, storage_out_residue = NULL, status=13
+             storage_index = NULL, storage_part_size = NULL, storager = NULL, storage_date = NULL, storage_checker = NULL,
+             storage_check_date = NULL, storage_outer = NULL, storage_out_residue = NULL, status=13
             WHERE id IN (${params.ids})`;
             db.pool.query(clearColumnSql, cb);
         } else {

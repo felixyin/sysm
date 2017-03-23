@@ -14,12 +14,14 @@
         W._sortname = 'input_date';
         W._sortorder = 'ASC';
         W._postData = {};
-        W._colNames = ['序号', '条码编号', '建库浓度(ng/ul)', '建库片段(bp)', '状态', '提取出库人', 'DNA剩余量(ul)', '建库组接收人', '建库组接收时间', 'Qubit浓度(ng/ul)', 'epoch浓度(ng/ul)', '纯度(%)', '片段大小(bp)', '打断后片段(bp)',
+        W._colNames = ['序号', '条码编号', '建库浓度(ng/ul)', '建库index号', '建库片段(bp)', '状态', '提取出库人', 'DNA剩余量(ul)',
+            '建库组接收人', '建库组接收时间', 'Qubit浓度(ng/ul)', 'epoch浓度(ng/ul)', '纯度(%)', '片段大小(bp)', '打断后片段(bp)',
             '建库人', '建库时间', '建库审查人', '建库审查时间', '建库组出库人', ''];
         W._colModel = [
             {name: 'id', width: 40, index: 'id', align: 'center', sortable: false, frozen: true},
             {name: 'barcode_long', width: 120, index: 'barcode_long', align: 'center', sortable: false, frozen: true},
             {name: 'storage_deep', width: 100, index: 'storage_deep', align: 'center', sortable: false, frozen: true},
+            {name: 'storage_index', width: 100, index: 'storage_index', align: 'center', sortable: false, frozen: true},
             {name: 'storage_part_size', width: 100, index: 'storage_part_size', align: 'center', sortable: false, frozen: true},
             {
                 name: 'status1', width: 100, index: 'status', align: 'center', sortable: false,
