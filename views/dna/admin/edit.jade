@@ -309,6 +309,13 @@ block content
                                 span.middle.hide Inline help text
                     .space-4
                     .form-group
+                        label.col-xs-3.control-label.no-padding-right(for='ff-373') 建库index号
+                        .col-xs-9
+                            input#ff-373.col-xs-6(type='text', name='storage_index', value='#{storage_index || ""}', placeholder='')
+                            span.help-inline.col-xs-6
+                                span.middle.hide Inline help text
+                    .space-4
+                    .form-group
                         label.col-xs-3.control-label.no-padding-right(for='ff-38') 建库片段大小(bp)
                         .col-xs-9
                             input#ff-38.col-xs-6(type='text', name='storage_part_size', value='#{storage_part_size || ""}', placeholder='')

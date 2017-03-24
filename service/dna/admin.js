@@ -13,7 +13,7 @@ function getSqls(params) {
         comments, inputter, input_date, changer, change_date, checker, check_date, warehouser, warehouse_place, warehouse_date, sample_outer,
         sample_out_residue, extract_handover, extract_handover_date, extract_qbite_deep, extract_epoch_deep, extract_purity_deep, extract_part_size, 
         extract_part_after_break, extracter, extract_date, extract_checker, extract_check_date, extract_outer, extract_out_residue, storage_handover, 
-        storage_handover_date, storage_deep, storage_part_size, storager, storage_date, storage_checker, storage_check_date, storage_outer, 
+        storage_handover_date, storage_deep, storage_index, storage_part_size, storager, storage_date, storage_checker, storage_check_date, storage_outer, 
         storage_out_residue, operate_handover, operate_handover_date, operate_chip_code, operate_reads_val, operate_q30_val, operater, operate_date,
         operate_checker, operate_check_date, operate_outer, operate_out_residue, report_handover, report_handover_date, report_result, report_advice, 
         report_is_send, reporter, report_date, report_sender, report_send_date, status
@@ -70,6 +70,7 @@ function getSqls(params) {
     params.storage_handover && (whereSql += " AND storage_handover LIKE '%:storage_handover%' /*建库组接收人*/\n");
     params.storage_handover_date && (whereSql += " AND storage_handover_date LIKE '%:storage_handover_date%' /*建库组接收时间*/\n");
     params.storage_deep && (whereSql += " AND storage_deep LIKE '%:storage_deep%' /*建库浓度(ng/ul)*/\n");
+    params.storage_index && (whereSql += " AND storage_index LIKE '%:storage_index%' /*建库index号*/\n");
     params.storage_part_size && (whereSql += " AND storage_part_size LIKE '%:storage_part_size%' /*建库片段大小(bp)*/\n");
     params.storager && (whereSql += " AND storager LIKE '%:storager%' /*建库人*/\n");
     params.storage_date && (whereSql += " AND storage_date LIKE '%:storage_date%' /*建库时间*/\n");
