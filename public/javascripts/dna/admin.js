@@ -198,11 +198,17 @@
 
         };
 
-        $(".ipt-date").datepicker({
+        $(".ipt-date,.input-daterange").datepicker({
             language: 'zh-CN',
             format: "yyyy-MM-dd",
             autoclose: true,
             pickerPosition: "bottom-right"
+        });
+
+        $('.ipt-range-date').daterangepicker({
+            format: 'YY-MM-DD'
+        }).prev().on(ace.click_event, function () {
+            $(this).next().focus();
         });
 
         $('.ipt-person').selectUser();

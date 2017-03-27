@@ -32,10 +32,10 @@ block content
                     tr
                         td 采样日期
                         td
-                            input.col-xs-10.col-sm-5.ipt-date(type='text' , name='sample_date', placeholder='请输入采样日期')
+                            input.col-xs-10.col-sm-5.ipt-range-date(type='text' , name='sample_date', placeholder='请输入采样日期')
                         td 接收日期
                         td
-                            input.col-xs-10.col-sm-5.ipt-date(type='text' , name='receive_date', placeholder='请输入接收日期')
+                            input.col-xs-10.col-sm-5.ipt-range-date(type='text' , name='receive_date', placeholder='请输入接收日期')
                         td 姓名
                         td
                             input.col-xs-10.col-sm-5(type='text' , name='real_name', placeholder='请输入姓名')
@@ -65,20 +65,20 @@ block content
                             input.col-xs-10.col-sm-5(type='text' , name='inputter', placeholder='请输入录入人员')
                         td 录入日期
                         td
-                            input.col-xs-10.col-sm-5.ipt-date(type='text' , name='input_date', placeholder='请输入录入日期')
+                            input.col-xs-10.col-sm-5.ipt-range-date(type='text' , name='input_date', placeholder='请输入录入日期')
                         td 换管人员
                         td
                             input.col-xs-10.col-sm-5(type='text' , name='changer', placeholder='请输入换管人员')
                     tr
                         td 换管日期
                         td
-                            input.col-xs-10.col-sm-5.ipt-date(type='text' , name='change_date', placeholder='请输入换管日期')
+                            input.col-xs-10.col-sm-5.ipt-range-date(type='text' , name='change_date', placeholder='请输入换管日期')
                         td 审批人员
                         td
                             input.col-xs-10.col-sm-5(type='text' , name='checker', placeholder='请输入审批人员')
                         td 审批日期
                         td
-                            input.col-xs-10.col-sm-5.ipt-date(type='text' , name='check_date', placeholder='请输入审批日期')
+                            input.col-xs-10.col-sm-5.ipt-range-date(type='text' , name='check_date', placeholder='请输入审批日期')
                     tr
                         td 采血管入库人
                         td
@@ -88,7 +88,7 @@ block content
                             input.col-xs-10.col-sm-5(type='text' , name='warehouse_place', placeholder='请输入采血管入库位置')
                         td 采血管入库时间
                         td
-                            input.col-xs-10.col-sm-5.ipt-date(type='text' , name='warehouse_date', placeholder='请输入采血管入库时间')
+                            input.col-xs-10.col-sm-5.ipt-range-date(type='text' , name='warehouse_date', placeholder='请输入采血管入库时间')
                     tr
                         td 采血管出库人
                         td
@@ -102,7 +102,7 @@ block content
                     tr
                         td 提取组接收时间
                         td
-                            input.col-xs-10.col-sm-5.ipt-date(type='text' , name='extract_handover_date', placeholder='请输入提取组接收时间')
+                            input.col-xs-10.col-sm-5.ipt-range-date(type='text' , name='extract_handover_date', placeholder='请输入提取组接收时间')
                         td Qubit浓度(ng/ul)
                         td
                             input.col-xs-10.col-sm-5(type='text' , name='extract_qbite_deep', placeholder='请输入Qubit浓度(ng/ul)')
@@ -125,14 +125,14 @@ block content
                             input.col-xs-10.col-sm-5(type='text' , name='extracter', placeholder='请输入提取人员')
                         td 提取时间
                         td
-                            input.col-xs-10.col-sm-5.ipt-date(type='text' , name='extract_date', placeholder='请输入提取时间')
+                            input.col-xs-10.col-sm-5.ipt-range-date(type='text' , name='extract_date', placeholder='请输入提取时间')
                         td 提取审核人
                         td
                             input.col-xs-10.col-sm-5(type='text' , name='extract_checker', placeholder='请输入提取审核人')
                     tr
                         td 提取审核时间
                         td
-                            input.col-xs-10.col-sm-5.ipt-date(type='text' , name='extract_check_date', placeholder='请输入提取审核时间')
+                            input.col-xs-10.col-sm-5.ipt-range-date(type='text' , name='extract_check_date', placeholder='请输入提取审核时间')
                         td 提取出库人
                         td
                             input.col-xs-10.col-sm-5(type='text' , name='extract_outer', placeholder='请输入提取出库人')
@@ -145,7 +145,7 @@ block content
                             input.col-xs-10.col-sm-5(type='text' , name='storage_handover', placeholder='请输入建库组接收人')
                         td 建库组接收时间
                         td
-                            input.col-xs-10.col-sm-5.ipt-date(type='text' , name='storage_handover_date', placeholder='请输入建库组接收时间')
+                            input.col-xs-10.col-sm-5.ipt-range-date(type='text' , name='storage_handover_date', placeholder='请输入建库组接收时间')
                         td 建库浓度(ng/ul)
                         td
                             input.col-xs-10.col-sm-5(type='text' , name='storage_deep', placeholder='请输入建库浓度(ng/ul)')
@@ -162,13 +162,13 @@ block content
                     tr
                         td 建库时间
                         td
-                            input.col-xs-10.col-sm-5.ipt-date(type='text' , name='storage_date', placeholder='请输入建库时间')
+                            input.col-xs-10.col-sm-5.ipt-range-date(type='text' , name='storage_date', placeholder='请输入建库时间')
                         td 建库审查人
                         td
                             input.col-xs-10.col-sm-5(type='text' , name='storage_checker', placeholder='请输入建库审查人')
                         td 建库审查时间
                         td
-                            input.col-xs-10.col-sm-5.ipt-date(type='text' , name='storage_check_date', placeholder='请输入建库审查时间')
+                            input.col-xs-10.col-sm-5.ipt-range-date(type='text' , name='storage_check_date', placeholder='请输入建库审查时间')
                     tr
                         td 建库组出库人
                         td
@@ -182,7 +182,7 @@ block content
                     tr
                         td 上机组接收时间
                         td
-                            input.col-xs-10.col-sm-5.ipt-date(type='text' , name='operate_handover_date', placeholder='请输入上机组接收时间')
+                            input.col-xs-10.col-sm-5.ipt-range-date(type='text' , name='operate_handover_date', placeholder='请输入上机组接收时间')
                         td 上机芯片编码
                         td
                             input.col-xs-10.col-sm-5(type='text' , name='operate_chip_code', placeholder='请输入上机芯片编码')
@@ -198,14 +198,14 @@ block content
                             input.col-xs-10.col-sm-5(type='text' , name='operater', placeholder='请输入上机人')
                         td 上机时间
                         td
-                            input.col-xs-10.col-sm-5.ipt-date(type='text' , name='operate_date', placeholder='请输入上机时间')
+                            input.col-xs-10.col-sm-5.ipt-range-date(type='text' , name='operate_date', placeholder='请输入上机时间')
                     tr
                         td 上机审查人
                         td
                             input.col-xs-10.col-sm-5(type='text' , name='operate_checker', placeholder='请输入上机审查人')
                         td 上机审查时间
                         td
-                            input.col-xs-10.col-sm-5.ipt-date(type='text' , name='operate_check_date', placeholder='请输入上机审查时间')
+                            input.col-xs-10.col-sm-5.ipt-range-date(type='text' , name='operate_check_date', placeholder='请输入上机审查时间')
                         td 上机组出库人
                         td
                             input.col-xs-10.col-sm-5(type='text' , name='operate_outer', placeholder='请输入上机组出库人')
@@ -218,7 +218,7 @@ block content
                             input.col-xs-10.col-sm-5(type='text' , name='report_handover', placeholder='请输入分析报告组接收人')
                         td 分析报告组接收时间
                         td
-                            input.col-xs-10.col-sm-5.ipt-date(type='text' , name='report_handover_date', placeholder='请输入分析报告组接收时间')
+                            input.col-xs-10.col-sm-5.ipt-range-date(type='text' , name='report_handover_date', placeholder='请输入分析报告组接收时间')
                     tr
                         td 分析结果
                         td
@@ -238,14 +238,14 @@ block content
                             input.col-xs-10.col-sm-5(type='text' , name='reporter', placeholder='请输入分析人')
                         td 分析时间
                         td
-                            input.col-xs-10.col-sm-5.ipt-date(type='text' , name='report_date', placeholder='请输入分析时间')
+                            input.col-xs-10.col-sm-5.ipt-range-date(type='text' , name='report_date', placeholder='请输入分析时间')
                         td 报告发送人
                         td
                             input.col-xs-10.col-sm-5(type='text' , name='report_sender', placeholder='请输入报告发送人')
                     tr
                         td 报告发送时间
                         td
-                            input.col-xs-10.col-sm-5.ipt-date(type='text' , name='report_send_date', placeholder='请输入报告发送时间')
+                            input.col-xs-10.col-sm-5.ipt-range-date(type='text' , name='report_send_date', placeholder='请输入报告发送时间')
                         td 状态
                         td
                             select#status.col-xs-12.clo-sm-10(style="width:180px;", name='status',placeholder='')
