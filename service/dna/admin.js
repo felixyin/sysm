@@ -120,6 +120,10 @@ function getSqls(params) {
  */
 exports.list = (req, res) => {
     let sqls = getSqls(req.body);
+    if (req.body.sidx) {
+        req.session.sidx = req.body.sidx;
+        req.session.sord = req.body.sord;
+    }
     sp.selectPager(req, res, db, sqls.selectSql, sqls.whereSql);
 };
 
@@ -128,9 +132,14 @@ exports.list = (req, res) => {
  * @params params
  * @params cb
  */
-exports.listAll = (params, cb) => {
-    let sqls = getSqls(params);
-    sp.selectAll(db, sqls.sql, params, cb);
+exports.listAll = (req, cb) => {
+    let sqls = getSqls(req.body);
+    if (req.session.sidx) {
+        req.body.sidx = req.session.sidx;
+        req.body.sord = req.session.sord;
+        sqls.sql += ' ORDER BY `:sidx` :sord';
+    }
+    sp.selectAll(db, sqls.sql, req.body, cb);
 };
 
 /**

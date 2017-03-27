@@ -66,7 +66,7 @@ router.post('/delete', (req, res) => {
  * 导出excel
  */
 router.post('/exportExcel', (req, res) => {
-    adminService.listAll(req.body, (err, rows) => {
+    adminService.listAll(req, (err, rows) => {
         if (err)throw err;
         if (rows && rows.length > 0) {
             let dataset = JSON.parse(JSON.stringify(rows));
