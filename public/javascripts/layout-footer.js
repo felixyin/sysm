@@ -51,6 +51,7 @@ if (typeof _colNames != 'undefined') {
         mtype: "POST",//提交方式
         height: _height,
         colNames: _colNames,
+        sortable:true,
         sortname: _sortname,//默认排序列
         sortorder: _sortorder,//排序方式 asc desc
         //            colNames:['添加日期', '手机号码', '银行卡号','备注','操作'],
