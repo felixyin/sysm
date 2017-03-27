@@ -456,6 +456,15 @@ router.post('/exportExcel', (req, res) => {
                     },
                     width: '15'
                 },
+                storage_index: {
+                    displayName: '建库index号',
+                    headerStyle: styles.header,
+                    cellStyle: styles.cell,
+                    cellFormat: function (value, row) {
+                        return value || '';
+                    },
+                    width: '15'
+                },
                 storage_part_size: {
                     displayName: '建库片段大小(bp)',
                     headerStyle: styles.header,
