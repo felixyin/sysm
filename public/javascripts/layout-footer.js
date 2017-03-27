@@ -167,6 +167,14 @@ if (typeof _colNames != 'undefined') {
 
     jQuery(grid_selector).jqGrid('setFrozenColumns');
 
+    $('.ui-pg-selbox').change(function () {
+        window.localStorage.setItem('__pg-sel-val', $(this).val());
+    });
+    var __pg_sel_val = window.localStorage.getItem('__pg-sel-val');
+    if(__pg_sel_val){
+        $('.ui-pg-selbox').val(__pg_sel_val);
+    }
+
 }
 function style_edit_form(form) {
     //enable datepicker on "sdate" field and switches for "stock" field
