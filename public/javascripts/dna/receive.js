@@ -66,8 +66,8 @@
         {name: 'id_card', width: 150, index: 'id_card', align: 'center', sortable: true},
         {name: 'age', width: 130, index: 'age', align: 'center', sortable: true},
         {name: 'pregnancy_week', width: 100, index: 'pregnancy_week', align: 'center', sortable: true},
-        {name: 'pregnancy_condition', width: 100, index: 'pregnancy_condition', align: 'center', sortable: false},
-        {name: 'pregnancy_bad_history', width: 100, index: 'pregnancy_bad_history', align: 'center', sortable: false},
+        {name: 'pregnancy_condition', width: 100, index: 'pregnancy_condition', align: 'center', sortable: true},
+        {name: 'pregnancy_bad_history', width: 100, index: 'pregnancy_bad_history', align: 'center', sortable: true},
         {name: 'comments', width: 100, index: 'comments', align: 'center', sortable: true},
         {name: 'inputter', width: 100, index: 'inputter', align: 'center', sortable: true},
         {name: 'input_date', width: 100, index: 'input_date', align: 'center', sortable: true},
@@ -75,10 +75,10 @@
         // {name: 'change_date', width: 100, index: 'change_date', align: 'center', sortable: true},
         {name: 'checker', width: 100, index: 'checker', align: 'center', sortable: true},
         {name: 'check_date', width: 100, index: 'check_date', align: 'center', sortable: true},
-        {name: 'warehouser', width: 100, index: 'warehouser', align: 'center', sortable: false},
-        {name: 'warehouse_place', width: 100, index: 'warehouse_place', align: 'center', sortable: false},
-        {name: 'warehouse_date', width: 130, index: 'warehouse_date', align: 'center', sortable: false},
-        // {name: 'barcode_short', width: 100, index: 'barcode_short', align: 'center', sortable: false},
+        {name: 'warehouser', width: 100, index: 'warehouser', align: 'center', sortable: true},
+        {name: 'warehouse_place', width: 100, index: 'warehouse_place', align: 'center', sortable: true},
+        {name: 'warehouse_date', width: 130, index: 'warehouse_date', align: 'center', sortable: true},
+        // {name: 'barcode_short', width: 100, index: 'barcode_short', align: 'center', sortable: true},
         {name: 'status', hidden: true, hidedlg: true}
     ];
 
