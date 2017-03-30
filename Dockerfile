@@ -10,7 +10,7 @@ RUN apt-get update; \
 
 RUN apt-get -y install git
 
-RUN sudo npm install bower -g --allow-root
+RUN npm install bower -g
 
 #编译运行node项目，使用npm安装程序的所有依赖,利用taobao的npm安装
 
