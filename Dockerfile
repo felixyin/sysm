@@ -16,7 +16,7 @@ RUN npm install bower -g
 
 RUN mkdir -p /usr/src/node; \
     cd /usr/src/node; \
-    git clone git@github.com:felixyin/sysm.git -b master; \
+    git clone https://github.com/felixyin/sysm.git -b master; \
     cd sysm; \
     bower install;\
     npm install --registry=https://registry.npm.taobao.org;\
