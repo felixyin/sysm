@@ -18,9 +18,11 @@ RUN npm install pm2 bower -g --registry=https://registry.npm.taobao.org;
 RUN mkdir -p /usr/src/node; \
     cd /usr/src/node; \
     git clone https://github.com/felixyin/sysm.git -b master; \
-    cd sysm; \
-    bower install;\
-    npm install --registry=https://registry.npm.taobao.org;
+    cd sysm;
+
+RUN bower install;
+
+RUN npm install --registry=https://registry.npm.taobao.org;
 
 #--registry=https://registry.npm.taobao.org;
 
