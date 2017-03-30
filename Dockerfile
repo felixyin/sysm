@@ -10,13 +10,13 @@ RUN apt-get update; \
 
 RUN apt-get -y install git
 
-RUN npm install bower -g
+RUN npm install bower -g --allow-root
 
 #编译运行node项目，使用npm安装程序的所有依赖,利用taobao的npm安装
 
 RUN mkdir /usr/src/node; \
     cd /usr/src/node; \
-    sudo git clone git@github.com:felixyin/sysm.git -b master; \
+    git clone git@github.com:felixyin/sysm.git -b master; \
     cd sysm; \
     bower install;\
     npm install --registry=https://registry.npm.taobao.org;\
