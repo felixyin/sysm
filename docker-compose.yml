@@ -1,10 +1,31 @@
 version: '2'
 services:
-  dog:
-    image: nginx
-    ports:
-      - "8080:80"
-  cat:
-    image: nginx
-    ports:
-      - "8081:80"
+    web:
+      container_name: sysm-web
+      build: .
+#      image: felixyin/sysm-web:latest
+      volumes:
+        - .:/code
+      ports:
+        - '8081:8080'
+      links:
+        - db
+    db:
+      container_name: sysm-mysql
+      build: ./docker/mysql/
+#      image: felixyin/sysm-mysql
+      ports:
+        - '3307:3306'
+      volumes:
+        - /Users/fy/workspace/webstorm/sysm/docker/mysql/data:/var/lib/mysql
+      environment:
+        - MYSQL_ROOT_PASSWORD=Ybkk1027
+    redis:
+      container_name: sysm-redis
+      build: ./docker/redis/
+#      image: felixyin/sysm-redis
+      ports:
+        - '6379:32776'
+      volumes:
+        - /Users/fy/workspace/webstorm/sysm/docker/redis/data:/data
+

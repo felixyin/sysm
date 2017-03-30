@@ -3,6 +3,11 @@
 
 运行环境：docker 17.03.1
 
+
+## 全自动运行方法：
+在当前目录下运行：docker-compose up -d
+
+## 手动运行方法：
 1. 安装mysql、redis依赖：
   - 安装mysql和初始化数据库，参照docker/mysql/readme.md
   - 安装redis，参照docker/redis/readme.md
@@ -12,7 +17,7 @@
   - 编译镜像：docker build -t felixyin/sysm ./
   - 运行：docker run  -d --name sysm-web -p 8081:8080 --link sysm-mysql:db --link sysm-redis:redis felixyin/sysm
   
-> 第二种运行项目的方法：
+> 第三种运行项目的方法：
 >  - docker pull felixyin/sysm
 >  - docker run  -d --name sysm-web -p 8081:8080 --link sysm-mysql:db --link sysm-redis:redis felixyin/sysm:latest
   
