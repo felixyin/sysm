@@ -12,7 +12,7 @@ WORKDIR /usr/src/node/sysm
 #RUN apt-get -y install git
 
 # 安装npm模块
-RUN npm install pm2 bower -g
+RUN npm install pm2 bower -g --registry=https://registry.npm.taobao.org;
 
 # clone github上项目源码，安装依赖库
 RUN mkdir -p /usr/src/node; \
@@ -20,7 +20,7 @@ RUN mkdir -p /usr/src/node; \
     git clone https://github.com/felixyin/sysm.git -b master; \
     cd sysm; \
     bower install;\
-    npm install;\
+    npm install --registry=https://registry.npm.taobao.org;
 
 #--registry=https://registry.npm.taobao.org;
 
@@ -28,4 +28,4 @@ RUN mkdir -p /usr/src/node; \
 EXPOSE 8080
 
 # 启动应用
-CMD pm2 start index -i 3
+CMD ["pm2","start","index","-i","3"]
