@@ -1,6 +1,12 @@
 
 在当前目录运行：
 
+### 文件说明：
+- Dump20170325.sql ，初始化数据库的sql脚本
+- data ， mysql 数据文件所在目录
+- cnf ，替换mysql服务器的配置
+
+### 安装
 1. 创建镜像 : 
 
 docker build -t felixyin/sysm-mysql ./
