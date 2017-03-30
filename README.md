@@ -10,9 +10,9 @@
 2. 运行项目：
   - cd [root目录]
   - 编译镜像：docker build -t felixyin/sysm ./
-  - 运行：docker run  -d --name sysm-node -p 8081:8080 --link sysm-mysql:db --link sysm-redis:redis felixyin/sysm:latest
+  - 运行：docker run  -d --name sysm-web -p 8081:8080 --link sysm-mysql:db --link sysm-redis:redis felixyin/sysm
   
 > 第二种运行项目的方法：
 >  - docker pull felixyin/sysm
->  - docker run  -d --name sysm-node -p 8081:8080 --link sysm-mysql:db --link sysm-redis:redis felixyin/sysm:latest
+>  - docker run  -d --name sysm-web -p 8081:8080 --link sysm-mysql:db --link sysm-redis:redis felixyin/sysm:latest
   

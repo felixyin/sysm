@@ -1,4 +1,5 @@
 GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'Ybkk1027' WITH GRANT OPTION;
+update user set host='%' where user='root' and host='localhost';
 
 CREATE DATABASE  IF NOT EXISTS `sysm` /*!40100 DEFAULT CHARACTER SET utf8 COLLATE utf8_bin */;
 USE `sysm`;
