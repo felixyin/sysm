@@ -28,4 +28,4 @@ RUN mkdir -p /usr/src/node; \
 EXPOSE 8080
 
 # 启动应用
-CMD ["pm2","start","index","-i","3"]
+CMD ["npm","run","my-start"]
