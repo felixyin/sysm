@@ -15,7 +15,7 @@ const settingService = require('../../service/settings/index');
  * @param cb
  */
 exports.selectUserByRole = function (role, cb) {
-    db.pool.query('SELECT * FROM user WHERE role = ?', role, cb);
+    db.pool.query('SELECT * FROM user WHERE `role` = ?', role, cb);
 };
 
 exports.selectAllJudgment = function (cb) {
@@ -32,7 +32,7 @@ exports.list = function (req, res, next) {
     let whereSql = " WHERE 1 = 1 \n";
     req.body.realName && (whereSql += " AND realName LIKE '%:realName%' /*真实姓名*/");
     req.body.username && (whereSql += " AND username LIKE '%:username%' /*用户名*/");
-    req.body.role && (whereSql += " AND role LIKE '%:role%' /*角色*/");
+    req.body.role && (whereSql += " AND `role` LIKE '%:role%' /*角色*/");
     req.body.status && (whereSql += " AND status = :status /*角色*/");
 
     sp.selectPager(req, res, db, selectSql, whereSql);
@@ -75,7 +75,7 @@ exports.login = function (username, password, callback) {
     if (username.length < 5 || username.length > 25) return callback({rs: false, ms: '用户名长度需在5到25之间'});
     if (!password) return callback({rs: false, ms: '密码不能为空'});
     if (password.length < 6 || password.length > 20) return callback({rs: false, ms: '密码长度需在6到20之间'});
-    let loginSql = 'SELECT id,password,status,role FROM user WHERE username = ?';
+    let loginSql = 'SELECT id,password,status,`role` FROM user WHERE username = ?';
     db.pool.query(loginSql, username, function (error, row, field) {
         console.log(error);
         if (row && row[0]) {
@@ -113,7 +113,7 @@ exports.getRoles = function (id, cb) {
     settingService.getAllAuth((err, roles) => {
         if (!roles) new Error('系统中不存在任何角色');
 
-        let selectSql = `SELECT role FROM user WHERE id = ?`;
+        let selectSql = `SELECT u.role FROM user u WHERE id = ?`;
 
         if (!id) {
 

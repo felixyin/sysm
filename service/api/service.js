@@ -24,7 +24,7 @@ module.exports.login = function (username, password, callback) {
     if (password.length < 4 || password.length > 10) {
         return callback({rs: false, ms: '密码长度需在４到10之间'});
     }
-    let loginSql = 'SELECT id,password,status,role FROM user WHERE username = ?';
+    let loginSql = 'SELECT id,password,status,`role` FROM user WHERE username = ?';
     db.pool.query(loginSql, username, function (error, row, field) {
         if (row && row[0]) {
             let user = row[0];
