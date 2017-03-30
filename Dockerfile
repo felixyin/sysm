@@ -26,4 +26,4 @@ RUN mkdir -p /usr/src/node; \
 EXPOSE 8080
 
 #运行命令
-CMD ["npm", "my-start"]
+CMD ["npm", "run", "my-start"]
