@@ -10,11 +10,11 @@ RUN apt-get update; \
 
 RUN apt-get -y install git
 
-RUN npm install bower -g --allow-root
+RUN sudo npm install bower -g --allow-root
 
 #编译运行node项目，使用npm安装程序的所有依赖,利用taobao的npm安装
 
-RUN mkdir /usr/src/node; \
+RUN mkdir -p /usr/src/node; \
     cd /usr/src/node; \
     git clone git@github.com:felixyin/sysm.git -b master; \
     cd sysm; \
