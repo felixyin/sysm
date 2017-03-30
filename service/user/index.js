@@ -77,6 +77,7 @@ exports.login = function (username, password, callback) {
     if (password.length < 6 || password.length > 20) return callback({rs: false, ms: '密码长度需在6到20之间'});
     let loginSql = 'SELECT id,password,status,role FROM user WHERE username = ?';
     db.pool.query(loginSql, username, function (error, row, field) {
+        console.log(error);
         if (row && row[0]) {
             let user = row[0];
             if (password === user.password) {
