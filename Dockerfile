@@ -20,7 +20,9 @@ RUN mkdir -p /usr/src/node; \
     git clone https://github.com/felixyin/sysm.git -b master; \
     cd sysm; \
     bower install;\
-    npm install --registry=https://registry.npm.taobao.org;\
+    npm install;\
+
+#--registry=https://registry.npm.taobao.org;
 
 # 暴露container的端口
 EXPOSE 8080
