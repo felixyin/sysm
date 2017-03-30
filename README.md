@@ -6,9 +6,10 @@
 
 
 ## 全自动运行方法：
- - 在当前目录下运行：docker-compose up -d
+ - 创建容器和启动：docker-compose up -d
  - 打开浏览器访问：http://localhost:8081
  - 停止请用：docker-compose down
+
 
 ## 手动运行方法：
 1. 安装mysql、redis依赖：
@@ -31,4 +32,5 @@
 
 ## 代码提交和持续集成
 1. 支持git，代码提交到github
-2. 运行docker-compose up -d会自动更新代码、测试、编译、运行
+2. 代码更新：docker exec -it felixyin/sysm-web bash update
+2. 重新启动：docker-compose restart

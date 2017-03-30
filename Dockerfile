@@ -5,6 +5,11 @@ MAINTAINER felixyin<ybkk1027@gmail.com>
 
 WORKDIR /usr/src/node/sysm
 
+# 手动更新代码、编辑、测试脚本
+COPY update.sh /usr/local/bin/update
+
+RUN chmod uo+x /usr/local/bin/update
+
 # 基础镜像中已经安装基本工具和运行时
 RUN apt-get update; \
     apt-get -y upgrade
@@ -36,4 +41,4 @@ RUN npm install --registry=https://registry.npm.taobao.org;
 EXPOSE 8080
 
 # pm2 启动应用，前台运行，设置日志格式
-CMD pm2 start index -i 3 --no-daemon --merge-logs --log-date-format="YYYY-MM-DD HH:mm Z"
+CMD  pm2 start index -i 3 --no-daemon --merge-logs --log-date-format="YYYY-MM-DD HH:mm Z"
