@@ -10,12 +10,12 @@ const mysql = require('mysql');
  */
 let poolOptions = {
     // host: process.env.MYSQL_IP || '139.224.1.36',
-    host: process.env.MYSQL_IP || 'db',
-    user: process.env.MYSQL_USERNAME || 'root',
-    password: process.env.MYSQL_PASSWORD || 'Xr2017.',
-    database: process.env.MYSQL_SCHEMA || 'sysm',
+    host: 'db',
+    user: 'root',
+    password: 'Ybkk1027',
+    database: 'sysm',
     dateStrings: true,
-    connectionLimit: process.env.MYSQL_CONNECTION_LIMIT || 10
+    connectionLimit: 10
 };
 /*
  var poolOptions = {

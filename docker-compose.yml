@@ -1,0 +1,10 @@
+version: '2'
+services:
+  dog:
+    image: nginx
+    ports:
+      - "8080:80"
+  cat:
+    image: nginx
+    ports:
+      - "8081:80"
