@@ -4,8 +4,11 @@
 运行环境：docker 17.03.1
 
 
+
 ## 全自动运行方法：
-在当前目录下运行：docker-compose up -d
+ - 在当前目录下运行：docker-compose up -d
+ - 打开浏览器访问：http://localhost:8081
+ - 停止请用：docker-compose down
 
 ## 手动运行方法：
 1. 安装mysql、redis依赖：
@@ -14,10 +17,18 @@
   
 2. 运行项目：
   - cd [root目录]
-  - 编译镜像：docker build -t felixyin/sysm ./
+  - 编译镜像：docker build -t felixyin/sysm ./  或者是：docker pull felixyin/sysm
   - 运行：docker run  -d --name sysm-web -p 8081:8080 --link sysm-mysql:db --link sysm-redis:redis felixyin/sysm
   
-> 第三种运行项目的方法：
->  - docker pull felixyin/sysm
->  - docker run  -d --name sysm-web -p 8081:8080 --link sysm-mysql:db --link sysm-redis:redis felixyin/sysm:latest
-  
+
+## 数据目录：
+
+1. mysql数据目录：
+  系统启动后，会自动"挂载" **docker/mysql/data** 目录作为mysql的数据存放位置
+2. redis数据目录：
+  系统启动后，会自动"挂载" **docker/redis/data** 目录作为mysql的数据存放位置
+
+
+## 代码提交和持续集成
+1. 支持git，代码提交到github
+2. 运行docker-compose up -d会自动更新代码、测试、编译、运行
