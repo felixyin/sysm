@@ -23,7 +23,7 @@ RUN mkdir /usr/src/node; \
 
 
 #暴露container的端口
-EXPOSE 8888
+EXPOSE 8080
 
 #运行命令
 CMD ["npm", "my-start"]
