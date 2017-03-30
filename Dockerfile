@@ -25,7 +25,7 @@ RUN mkdir -p /usr/src/node; \
     cd sysm;
 
 # 安装web静态资源
-RUN bower install;
+RUN bower install --allow-root;
 
 # 安装node依赖库
 RUN npm install --registry=https://registry.npm.taobao.org;
