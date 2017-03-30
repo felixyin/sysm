@@ -6,22 +6,28 @@ MAINTAINER felixyin<ybkk1027@gmail.com>
 WORKDIR /usr/src/node/sysm
 
 # 基础镜像中已经安装基本工具和运行时
-#RUN apt-get update; \
-#    apt-get -y upgrade
+RUN apt-get update; \
+    apt-get -y upgrade
 
+# node 镜像中已存在
 #RUN apt-get -y install git
+
+# 方便查看日志和修改文件
+RUN apt-get -y install vim
 
 # 安装npm模块
 RUN npm install pm2 bower -g --registry=https://registry.npm.taobao.org;
 
-# clone github上项目源码，安装依赖库
+# clone github上项目源码
 RUN mkdir -p /usr/src/node; \
     cd /usr/src/node; \
     git clone https://github.com/felixyin/sysm.git -b master; \
     cd sysm;
 
+# 安装web静态资源
 RUN bower install;
 
+# 安装node依赖库
 RUN npm install --registry=https://registry.npm.taobao.org;
 
 #--registry=https://registry.npm.taobao.org;
@@ -29,5 +35,5 @@ RUN npm install --registry=https://registry.npm.taobao.org;
 # 暴露container的端口
 EXPOSE 8080
 
-# 启动应用
+# pm2 启动应用，前台运行，设置日志格式
 CMD pm2 start index -i 3 --no-daemon --merge-logs --log-date-format="YYYY-MM-DD HH:mm Z"
