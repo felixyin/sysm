@@ -24,10 +24,16 @@ RUN apt-get -y install vim
 RUN npm install pm2 bower -g --registry=https://registry.npm.taobao.org;
 
 # clone github上项目源码
-RUN mkdir -p /usr/src/node; \
-    cd /usr/src/node; \
-    git clone https://github.com/felixyin/sysm.git -b master; \
-    cd sysm;
+#RUN mkdir -p /usr/src/node; \
+#    cd /usr/src/node; \
+#    git clone https://github.com/felixyin/sysm.git -b master; \
+#    cd sysm;
+
+RUN mkdir -p /usr/src/node/sysm;
+
+COPY ./ /usr/src/node/sysm;
+
+RUN cd /usr/src/node/sysm;
 
 # 安装web静态资源
 RUN bower install --allow-root;
