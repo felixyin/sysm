@@ -30,10 +30,12 @@ RUN npm install pm2 bower -g --registry=https://registry.npm.taobao.org;
 #    cd sysm;
 
 RUN mkdir -p /usr/src/node/sysm;
+VOLUME ./ /usr/src/node/sysm;
 
-COPY ./ /usr/src/node/sysm;
-
-RUN cd /usr/src/node/sysm;
+#
+#RUN mkdir -p /usr/src/node/;
+#COPY ../sysm/ /usr/src/node/;
+#RUN cd /usr/src/node/sysm;
 
 # 安装web静态资源
 RUN bower install --allow-root;
