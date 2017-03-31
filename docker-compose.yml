@@ -7,17 +7,18 @@ services:
       volumes:
         - .:/code
       ports:
-        - '8082:8080'
+        - '8082:8082'
       links:
         - db
+        - redis
     db:
       container_name: sysm-mysql
       build: ./docker/mysql/
 #      image: felixyin/sysm-mysql
       ports:
-        - '3307:3306'
+        - '3307:3307'
       volumes:
-        - /Users/fy/workspace/webstorm/sysm/docker/mysql/data:/var/lib/mysql
+        - ./docker/mysql/data:/var/lib/mysql
       environment:
         - MYSQL_ROOT_PASSWORD=Ybkk1027
     redis:
@@ -25,7 +26,7 @@ services:
       build: ./docker/redis/
 #      image: felixyin/sysm-redis
       ports:
-        - '6379:32776'
+        - '6380:6380'
       volumes:
-        - /Users/fy/workspace/webstorm/sysm/docker/redis/data:/data
+        - ./docker/redis/data:/data
 

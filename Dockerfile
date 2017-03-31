@@ -49,7 +49,7 @@ RUN npm install --registry=https://registry.npm.taobao.org;
 #--registry=https://registry.npm.taobao.org;
 
 # 暴露container的端口
-EXPOSE 8080
+EXPOSE 8082
 
 # pm2 启动应用，前台运行，设置日志格式
 CMD  pm2 start index -i 3 --no-daemon --merge-logs --log-date-format="YYYY-MM-DD HH:mm Z"

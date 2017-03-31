@@ -12,6 +12,7 @@ let poolOptions = {
     // host: process.env.MYSQL_IP || '139.224.1.36',
     host: 'sysm-mysql',
     user: 'root',
+    port: 3307,
     password: 'Ybkk1027',
     database: 'sysm',
     dateStrings: true,

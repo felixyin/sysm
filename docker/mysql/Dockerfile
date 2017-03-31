@@ -7,7 +7,7 @@ WORKDIR ./
 
 VOLUME /var/lib/mysql /etc/mysql/conf.d/
 
-COPY Dump20170325.sql /docker-entrypoint-initdb.d/
+COPY Dump.sql /docker-entrypoint-initdb.d/
 
 #RUN service mysql start
 
@@ -15,5 +15,5 @@ COPY Dump20170325.sql /docker-entrypoint-initdb.d/
 
 #RUN service mysql stop
 
-EXPOSE 3306
+EXPOSE 3307
 
