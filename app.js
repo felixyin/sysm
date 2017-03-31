@@ -41,9 +41,9 @@ app.use(session({
     saveUninitialized: true,
     cookie: {maxAge: 60000 * 3000},
     store: new RedisStore({
-        "host": "sysm-redis",
-        "port": "6380",
-        "pass": "123456",
+        "host": "redis",
+        "port": "6379",
+        // "pass": "123456",
         "db": 1,
         "ttl": 1800,
         "logErrors": true

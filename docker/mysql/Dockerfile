@@ -4,10 +4,11 @@ MAINTAINER FelixYin<ybkk1027@gmail.com>
 
 WORKDIR ./
 
-
 VOLUME /var/lib/mysql /etc/mysql/conf.d/
 
-COPY Dump.sql /docker-entrypoint-initdb.d/
+COPY auth.sql /docker-entrypoint-initdb.d/
+
+COPY dump.sql /docker-entrypoint-initdb.d/
 
 #RUN service mysql start
 
@@ -15,5 +16,5 @@ COPY Dump.sql /docker-entrypoint-initdb.d/
 
 #RUN service mysql stop
 
-EXPOSE 3307
+EXPOSE 3306
 

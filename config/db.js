@@ -10,9 +10,9 @@ const mysql = require('mysql');
  */
 let poolOptions = {
     // host: process.env.MYSQL_IP || '139.224.1.36',
-    host: 'sysm-mysql',
+    host: 'mysql',
     user: 'root',
-    port: 3307,
+    port: 3306,
     password: 'Ybkk1027',
     database: 'sysm',
     dateStrings: true,

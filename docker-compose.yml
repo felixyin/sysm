@@ -7,16 +7,16 @@ services:
       volumes:
         - .:/code
       ports:
-        - '8082:8082'
+        - '8082:8080'
       links:
-        - db
+        - mysql
         - redis
-    db:
+    mysql:
       container_name: sysm-mysql
       build: ./docker/mysql/
 #      image: felixyin/sysm-mysql
       ports:
-        - '3307:3307'
+        - '3307:3306'
       volumes:
         - ./docker/mysql/data:/var/lib/mysql
       environment:
@@ -26,7 +26,7 @@ services:
       build: ./docker/redis/
 #      image: felixyin/sysm-redis
       ports:
-        - '6380:6380'
+        - '6380:6379'
       volumes:
         - ./docker/redis/data:/data
 

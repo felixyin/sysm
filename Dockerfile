@@ -31,11 +31,11 @@ RUN npm install pm2 bower -g --registry=https://registry.npm.taobao.org;
 # end
 
 # v2: 本地项目代码复制到容器中
-ADD ./ /usr/src/node/sysm/;
+ADD ./ /usr/src/node/sysm/
 
-WORKDIR /usr/src/node/sysm/;
+WORKDIR /usr/src/node/sysm/
 
-VOLUME /usr/src/node/sysm/;
+VOLUME /usr/src/node/sysm/
 # end
 
 #RUN cd /usr/src/node/sysm/;
