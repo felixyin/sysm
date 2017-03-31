@@ -7,7 +7,7 @@ services:
       volumes:
         - .:/code
       ports:
-        - '8081:8080'
+        - '8082:8080'
       links:
         - db
     db:
