@@ -16,7 +16,7 @@ let poolOptions = {
     password: 'Xr2017.',
     database: 'sysm',
     dateStrings: true,
-    connectionLimit: 10
+    connectionLimit: 20
 };
 /*
  var poolOptions = {
