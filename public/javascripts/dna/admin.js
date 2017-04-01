@@ -21,13 +21,22 @@
             '建库组样本剩余量', '上机组接收人', '上机组接收时间', '上机芯片编码', '上机reads数', '上机q30值', '上机人', '上机时间', '上机审查人', '上机审查时间',
             '上机组出库人', '上机组样本剩余量', '分析报告组接收人', '分析报告组接收时间', '分析结果', '建议', '是否发送', '分析人', '分析时间',
             '报告发送人', '报告发送时间', ''];
+        // W._groupHeader = function () {
+        //     jQuery(grid_selector).jqGrid('setGroupHeaders', {
+        //         useColSpanStyle: true,
+        //         groupHeaders:[
+        //             // {startColumnName: 'id', numberOfColumns: 5, titleText: '<em>Price</em>'},
+        //             {startColumnName: 'sample_date', numberOfColumns: 17, titleText: 'Shiping'}
+        //         ]
+        //     });
+        // };
         W._colModel = [
-            {name: 'id', width: 100, index: 'id', align: 'center', sortable: false, frozen: true},
-            {name: 'barcode_long', width: 100, index: 'barcode_long', align: 'center', sortable: false, frozen: true},
-            {name: 'hospital', width: 100, index: 'hospital', align: 'center', sortable: false, frozen: true},
-            {name: 'sample_code', width: 100, index: 'sample_code', align: 'center', sortable: false, frozen: true},
+            {name: 'id', width: 100, index: 'id', align: 'center', sortable: true, frozen: true},
+            {name: 'barcode_long', width: 100, index: 'barcode_long', align: 'center', sortable: true, frozen: true},
+            {name: 'hospital', width: 100, index: 'hospital', align: 'center', sortable: true, frozen: true},
+            {name: 'sample_code', width: 100, index: 'sample_code', align: 'center', sortable: true, frozen: true},
             {
-                name: 'status1', width: 100, index: 'status', align: 'center', sortable: false, frozen: true,
+                name: 'status1', width: 100, index: 'status', align: 'center', sortable: true, frozen: true,
                 formatter: function (value, options, row) {
                     var text = '';
                     switch (row.status) {
@@ -198,17 +207,15 @@
 
         };
 
-        $(".ipt-date,.input-daterange").datepicker({
-            language: 'zh-CN',
-            format: "yyyy-MM-dd",
-            autoclose: true,
-            pickerPosition: "bottom-right"
-        });
+        // $(".ipt-date,.input-daterange").datepicker({
+        //     language: 'zh-CN',
+        //     format: "yyyy-MM-dd",
+        //     autoclose: true,
+        //     pickerPosition: "bottom-right"
+        // });
 
-        $('.ipt-range-date').daterangepicker({
+        $('.ipt-date,.ipt-range-date').daterangepicker({
             format: 'YY-MM-DD'
-        }).prev().on(ace.click_event, function () {
-            $(this).next().focus();
         });
 
         $('.ipt-person').selectUser();

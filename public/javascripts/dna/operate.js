@@ -17,14 +17,14 @@
         W._colNames = ['序号', '条码编号', '上机芯片编码', '上机reads数', '上机q30值', '状态', '建库组出库人', '建库组样本剩余量', '上机组接收人', '上机组接收时间',
             '建库浓度(ng/ul)', '建库片段大小(bp)', '上机人', '上机时间', '上机审查人', '上机审查时间', '上机组出库人', '分析报告组接收人', '分析报告组接收时间', ''];
         W._colModel = [
-            {name: 'id', width: 40, index: 'id', align: 'center', sortable: false, frozen: true},
-            {name: 'barcode_long', width: 120, index: 'barcode_long', align: 'center', sortable: false, frozen: true},
-            // {name: 'barcode_short', width: 100, index: 'barcode_short', align: 'center', sortable: false, frozen: true},
-            {name: 'operate_chip_code', width: 100, index: 'operate_chip_code', align: 'center', sortable: false, frozen: true},
-            {name: 'operate_reads_val', width: 100, index: 'operate_reads_val', align: 'center', sortable: false, frozen: true},
-            {name: 'operate_q30_val', width: 100, index: 'operate_q30_val', align: 'center', sortable: false, frozen: true},
+            {name: 'id', width: 40, index: 'id', align: 'center', sortable: true, frozen: true},
+            {name: 'barcode_long', width: 120, index: 'barcode_long', align: 'center', sortable: true, frozen: true},
+            // {name: 'barcode_short', width: 100, index: 'barcode_short', align: 'center', sortable: true, frozen: true},
+            {name: 'operate_chip_code', width: 100, index: 'operate_chip_code', align: 'center', sortable: true, frozen: true},
+            {name: 'operate_reads_val', width: 100, index: 'operate_reads_val', align: 'center', sortable: true, frozen: true},
+            {name: 'operate_q30_val', width: 100, index: 'operate_q30_val', align: 'center', sortable: true, frozen: true},
             {
-                name: 'status1', width: 100, index: 'status', align: 'center', sortable: false,
+                name: 'status1', width: 100, index: 'status', align: 'center', sortable: true,
                 formatter: function (value, options, row) {
                     var text = '';
                     switch (row.status) {

@@ -51,7 +51,7 @@ if (typeof _colNames != 'undefined') {
         mtype: "POST",//提交方式
         height: _height,
         colNames: _colNames,
-        sortable:true,
+        sortable: false,
         sortname: _sortname,//默认排序列
         sortorder: _sortorder,//排序方式 asc desc
         //            colNames:['添加日期', '手机号码', '银行卡号','备注','操作'],
@@ -85,6 +85,10 @@ if (typeof _colNames != 'undefined') {
         caption: _title,
         autowidth: true
     });
+
+    // jQuery(grid_selector).jqGrid('setFrozenColumns');
+    // jQuery(grid_selector).jqGrid('destroyFrozenColumns');
+    // jQuery(grid_selector).jqGrid("setGridParam", { sortable: true});
 
     //navButtons
     jQuery(grid_selector).jqGrid('navGrid', pager_selector,
@@ -176,6 +180,11 @@ if (typeof _colNames != 'undefined') {
     }
 
 }
+
+// if (_groupHeader){
+//     _groupHeader();
+// }
+
 function style_edit_form(form) {
     //enable datepicker on "sdate" field and switches for "stock" field
     form.find('input[name=sdate]').datepicker({format: 'yyyy-mm-dd', autoclose: true})

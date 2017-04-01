@@ -16,12 +16,12 @@
     W._colNames = ['序号', '条码编号', '医院名称', '样本编号', '采样日期', '接收日期', '姓名', '状态', '身份证号', '年龄', '孕周', '妊娠情况',
         '不良孕产史', '备注', '录入人员', '录入日期', '审批人员', '审批日期', '采血管入库人', '采血管入库位置', '采血管入库时间', ''];
     W._colModel = [
-        {name: 'id', width: 40, index: 'id', align: 'center', sortable: false, frozen: true},
-        {name: 'barcode_long', width: 120, index: 'barcode_long', align: 'center', sortable: false, frozen: true},
-        {name: 'hospital', width: 120, index: 'hospital', align: 'center', sortable: false, frozen: true},
-        {name: 'sample_code', width: 80, index: 'sample_code', align: 'center', sortable: false, frozen: true},
+        {name: 'id', width: 40, index: 'id', align: 'center', sortable: true, frozen: true},
+        {name: 'barcode_long', width: 120, index: 'barcode_long', align: 'center', sortable: true, frozen: true},
+        {name: 'hospital', width: 120, index: 'hospital', align: 'center', sortable: true, frozen: true},
+        {name: 'sample_code', width: 80, index: 'sample_code', align: 'center', sortable: true, frozen: true},
         {
-            name: 'sample_date', width: 130, index: 'sample_date', align: 'center', sortable: false, frozen: true,
+            name: 'sample_date', width: 130, index: 'sample_date', align: 'center', sortable: true, frozen: true,
             formatter: function (value, options, row) {
                 if (value) {
                     return value.substring(0, 10);
@@ -29,16 +29,16 @@
             }
         },
         {
-            name: 'receive_date', width: 130, index: 'receive_date', align: 'center', sortable: false, frozen: true,
+            name: 'receive_date', width: 130, index: 'receive_date', align: 'center', sortable: true, frozen: true,
             formatter: function (value, options, row) {
                 if (value) {
                     return value.substring(0, 10);
                 }
             }
         },
-        {name: 'real_name', width: 80, index: 'real_name', align: 'center', sortable: false, frozen: true},
+        {name: 'real_name', width: 80, index: 'real_name', align: 'center', sortable: true, frozen: true},
         {
-            name: 'status1', width: 100, index: 'status', align: 'center', sortable: false,
+            name: 'status1', width: 100, index: 'status', align: 'center', sortable: true,
             formatter: function (value, options, row) {
                 var text = '';
                 switch (row.status) {

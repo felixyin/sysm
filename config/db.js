@@ -9,11 +9,11 @@ const mysql = require('mysql');
  * 生产机配置
  */
 let poolOptions = {
-    // host: process.env.MYSQL_IP || '139.224.1.36',
-    host: 'mysql',
+    host: '139.224.1.36',
+    // host: 'mysql',
     user: 'root',
     port: 3306,
-    password: 'Ybkk1027',
+    password: 'Xr2017.',
     database: 'sysm',
     dateStrings: true,
     connectionLimit: 10

@@ -17,12 +17,12 @@
         W._colNames = ['序号', '条码编号', '分析结果', '建议', '是否需要发送', '状态', '上机组发送人', '分析报告组接收人', '分析报告组接收时间', '上机芯片编码',
             '上机reads数', '上机q30值', '分析人', '分析时间', '报告发送人', '报告发送时间', ''];
         W._colModel = [
-            {name: 'id', width: 40, index: 'id', align: 'center', sortable: false, frozen: true},
-            {name: 'barcode_long', width: 120, index: 'barcode_long', align: 'center', sortable: false, frozen: true},
-            {name: 'report_result', width: 100, index: 'report_result', align: 'center', sortable: false, frozen: true},
-            {name: 'report_advice', width: 100, index: 'report_advice', align: 'center', sortable: false, frozen: true},
+            {name: 'id', width: 40, index: 'id', align: 'center', sortable: true, frozen: true},
+            {name: 'barcode_long', width: 120, index: 'barcode_long', align: 'center', sortable: true, frozen: true},
+            {name: 'report_result', width: 100, index: 'report_result', align: 'center', sortable: true, frozen: true},
+            {name: 'report_advice', width: 100, index: 'report_advice', align: 'center', sortable: true, frozen: true},
             {
-                name: 'report_is_send', width: 100, index: 'report_is_send', align: 'center', sortable: false, formatter: function (value, options, row) {
+                name: 'report_is_send', width: 100, index: 'report_is_send', align: 'center', sortable: true, formatter: function (value, options, row) {
                 if (value == 1) {
                     return '不发送';
                 } else if (value == 2) {
@@ -33,7 +33,7 @@
             }, frozen: true
             },
             {
-                name: 'status1', width: 100, index: 'status', align: 'center', sortable: false,
+                name: 'status1', width: 100, index: 'status', align: 'center', sortable: true,
                 formatter: function (value, options, row) {
                     var text = '';
                     switch (row.status) {

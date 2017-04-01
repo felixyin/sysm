@@ -307,6 +307,11 @@ block content
                     i.icon-download-alt.bigger-110 导出EXCEL
                 //button#btn-dy-id.btn.btn-info.btn-sm(onclick="dy(this)")
                     i.icon-print.bigger-110 打印
+                span
+                label.pull-right.inline(style="margin-top:10px;")
+                    small.muted 表格显示模式:
+                    input#id-button-borders.ace.ace-switch.ace-switch-5(checked="", type="checkbox", onclick="switchTableModel(this)")
+                    span.lbl
 
             table#grid-table
             #grid-pager

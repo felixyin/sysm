@@ -57,7 +57,7 @@ function afterDomReady(selector, cb) {
 /**
  * 显示更多搜索选项
  */
-function showSearchMore(id,hideSearchRows, localStorageKey) {
+function showSearchMore(id, hideSearchRows, localStorageKey) {
     var _dna_is_search_more = localStorage.getItem(localStorageKey);
     if (_dna_is_search_more == 'true') {
         getSearchTr(hideSearchRows).show();
@@ -328,5 +328,21 @@ function showSearchMore(id,hideSearchRows, localStorageKey) {
             });
         }
     });
+
+
+    /**
+     * 切换是否固定列或排序显示
+     */
+    W.switchTableModel = function (owner) {
+        var isFrozen = $(owner).prop('checked');
+        if (isFrozen) { //固定列模式
+            jQuery(grid_selector).jqGrid("setGridParam", { sortable: false});
+            jQuery(grid_selector).jqGrid('setFrozenColumns');
+            jQuery(grid_selector).trigger("reloadGrid");
+        } else { //排序模式
+            jQuery(grid_selector).jqGrid("setGridParam", { sortable: true});
+            jQuery(grid_selector).jqGrid('destroyFrozenColumns');
+        }
+    };
 
 })(window);
