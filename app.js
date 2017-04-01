@@ -42,8 +42,8 @@ app.use(session({
     cookie: {maxAge: 60000 * 3000},
     store: new RedisStore({
         // "host": "redis",
-        // "host": "139.224.1.36",
-        "host": "localhost",
+        "host": "139.224.1.36",
+        // "host": "localhost",
         "port": "6379",
         "pass": "123456",
         "db": 1,
