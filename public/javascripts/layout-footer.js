@@ -4,10 +4,24 @@
 'use strict';
 
 if ($('.animsition').size() === 1) {
+    var ret = [
+        "fade", "fade-up", "fade-up-sm", "fade-up-lg", "fade-down", "fade-down-sm", "fade-down-lg", "fade-left",
+        "fade-left-sm", "fade-left-lg", "fade-right", "fade-right-sm", "fade-right-lg", "rotate", "rotate-sm",
+        "rotate-lg", "flip-x", "flip-x-nr", "flip-x-fr", "flip-y", "flip-y-nr", "flip-y-fr", "zoom", "zoom-sm",
+        "zoom-lg"];
+    var i = Math.floor(Math.random() * ret.length);
+    var an = ret[i];
+    var list = an.split('-');
+
+    list.splice(1, 0, 'in')
+    var inClass = list.join('-');
+
+    list.splice(1, 1, 'out');
+    var outClass = list.join('-');
 
     $('.animsition').animsition({
-        inClass: 'flip-in-y-fr ' ,
-        outClass: 'flip-out-y-fr '
+        inClass: inClass,
+        outClass: outClass
     });
 }
 
@@ -175,7 +189,7 @@ if (typeof _colNames != 'undefined') {
         window.localStorage.setItem('__pg-sel-val', $(this).val());
     });
     var __pg_sel_val = window.localStorage.getItem('__pg-sel-val');
-    if(__pg_sel_val){
+    if (__pg_sel_val) {
         $('.ui-pg-selbox').val(__pg_sel_val);
     }
 
