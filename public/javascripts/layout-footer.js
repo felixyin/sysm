@@ -195,6 +195,10 @@ if (typeof _colNames != 'undefined') {
 
 }
 
+$(function() {
+    jQuery(grid_selector).setGridHeight( top.document.body.clientHeight - 455);
+});
+
 // if (_groupHeader){
 //     _groupHeader();
 // }

@@ -124,7 +124,7 @@
 
     $('.ipt-person').selectUser();
 
-    showSearchMore($('#btn-search-more'), [2], '_dna_receive_is_search_more');
+    // showSearchMore($('#btn-search-more'), [2], '_dna_receive_is_search_more');
 
     /**
      * 录入采血单

@@ -109,7 +109,7 @@
             pickerPosition: "bottom-right"
         });
 
-        showSearchMore($('#btn-search-more'), [1, 2], '_dna_report_is_search_more');
+        showSearchMore($('#btn-search-more'), [1], '_dna_report_is_search_more');
 
     }();
 

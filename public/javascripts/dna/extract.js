@@ -107,7 +107,7 @@
 
         $('.ipt-person').selectUser();
 
-        showSearchMore($('#btn-search-more'), [2, 3], '_dna_extract_is_search_more');
+        showSearchMore($('#btn-search-more'), [ 3], '_dna_extract_is_search_more');
     }();
 
     /**

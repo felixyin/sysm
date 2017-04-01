@@ -110,7 +110,7 @@
 
         $('.ipt-person').selectUser();
 
-        showSearchMore($('#btn-search-more'), [2, 3, 4], '_dna_operate_is_search_more');
+        showSearchMore($('#btn-search-more'), [ 3, 4], '_dna_operate_is_search_more');
 
     }();
 
