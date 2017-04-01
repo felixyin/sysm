@@ -21,11 +21,11 @@ function getSqls(params) {
     let show_is_his = params.show_is_his;
     console.log(show_is_his);
     if (show_is_his === '1') {
-        selectSql += " dna_flow";
+        selectSql += " view_dna_flow";
     } else if (show_is_his === '2') {
         selectSql += " dna_flow_his";
     } else {
-        selectSql += " view_dna_flow";
+        selectSql += " dna_flow";
     }
 
     let whereSql = " WHERE 1 = 1 \n";
