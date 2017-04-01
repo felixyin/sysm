@@ -9,8 +9,9 @@ const mysql = require('mysql');
  * 生产机配置
  */
 let poolOptions = {
-    host: '139.224.1.36',
+    // host: '139.224.1.36',
     // host: 'mysql',
+    host: 'localhost',
     user: 'root',
     port: 3306,
     password: 'Xr2017.',
