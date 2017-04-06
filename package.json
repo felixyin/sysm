@@ -60,6 +60,8 @@
     "xmlhttprequest": "^1.7.0"
   },
   "devDependencies": {
+    "css-loader": "^0.28.0",
+    "file-loader": "^0.11.1",
     "grunt": "^0.4.5",
     "grunt-babel": "^6.0.0",
     "grunt-contrib-clean": "^1.0.0",
@@ -69,7 +71,11 @@
     "grunt-contrib-uglify": "^2.0.0",
     "grunt-contrib-watch": "^1.0.0",
     "grunt-jade-runtime": "0.0.1",
-    "grunt-strip": "~0.2.1"
+    "grunt-strip": "~0.2.1",
+    "image-webpack-loader": "^3.3.0",
+    "style-loader": "^0.16.1",
+    "url-loader": "^0.5.8",
+    "webpack": "^2.3.3"
   },
   "bin": {
     "lrs": "./index"

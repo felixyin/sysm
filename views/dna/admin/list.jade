@@ -5,16 +5,6 @@ extends ../../layout_nomenu
 
 block content
 
-    style.
-        .my-toolbar > .btn-group, .my-toolbar > button {
-            margin-right: 10px;
-        }
-
-        .btn-group > .btn-sm, .btn-group + .btn-sm {
-            border-width: 4px;
-        }
-
-
     .main-content
         .page-content
             form#search-form-id
@@ -287,24 +277,24 @@ block content
                         td
                             #btn-search.btn-group
                                 button.btn.btn-info.btn-sm(type='submit')
-                                    i.icon-edit.bigger-110 &nbsp;&nbsp;&nbsp;搜索
+                                    i.icon.iconfont.icon-chaxun.bigger-110 &nbsp;&nbsp;搜&nbsp;索
                                 button.btn.btn-info.dropdown-toggle.btn-sm(data-toggle='dropdown')
                                     i.icon-angle-down.icon-only
                                 ul.dropdown-menu.dropdown-yellow
                                     li
                                         a#btn-search-more(href='javascript:void(0);') 显示更多搜索项
                             button.btn.btn-sm(type='reset')
-                                i.icon-undo.bigger-110 重置
+                                i.icon.iconfont.icon-qingchu.bigger-110
 
             div.my-toolbar
                 button.btn.btn-info.btn-sm(onclick="showEditDialog(this)")
-                    i.icon-edit.bigger-110 &nbsp;&nbsp;&nbsp;修改信息
+                    i.icon-edit.bigger-110 &nbsp;修改信息
                 span
                 button.btn.btn-info.btn-sm(onclick="showDeleteDialog(this)")
-                    i.icon-edit.bigger-110 &nbsp;&nbsp;&nbsp;彻底删除
+                    i.icon.iconfont.icon-shanchu.bigger-110 &nbsp;彻底删除
                 span
                 button#btn-dc-id.btn.btn-info.btn-sm(onclick="exportCvs(this)")
-                    i.icon-download-alt.bigger-110 导出EXCEL
+                    i.icon.iconfont.icon-x-xlsx.bigger-110 &nbsp;导出EXCEL
                 //button#btn-dy-id.btn.btn-info.btn-sm(onclick="dy(this)")
                     i.icon-print.bigger-110 打印
                 span

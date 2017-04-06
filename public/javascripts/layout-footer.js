@@ -195,10 +195,12 @@ if (typeof _colNames != 'undefined') {
 
 }
 
-$(function() {
-    jQuery(grid_selector).setGridHeight( top.document.body.clientHeight - 455);
+$(function () {
+    var grid = jQuery(grid_selector);
+    if (grid.size()) {
+        grid.setGridHeight(top.document.body.clientHeight - 420);
+    }
 });
-
 // if (_groupHeader){
 //     _groupHeader();
 // }
