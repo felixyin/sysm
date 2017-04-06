@@ -17,7 +17,7 @@ db.pool.getConnection(function (err, conn) {
 			let input =
 `td ${row.cc}
 td
-    input.col-xs-10.col-sm-5(type='text' , name='${row.cn}', placeholder='请输入${row.cc}')`;
+    input.col-xs-10.col-sm-5(type='text' , name='${row.cn}')`;
 			console.log(input);
 
 		}
