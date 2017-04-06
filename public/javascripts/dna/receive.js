@@ -83,11 +83,11 @@
     ];
 
     W.updateActionIcons = function () {
-        $('#btn-cxd').children('button').prop('disabled', false).first().children('i').html('&nbsp;&nbsp;&nbsp;批量录入采血单');
-        // $('#btn-cxg').children('button').prop('disabled', false).first().children('i').html('&nbsp;&nbsp;&nbsp;批量更换采血管');
-        $('#btn-sh').children('button').prop('disabled', true).first().children('i').html('&nbsp;&nbsp;&nbsp;审核');
-        $('#btn-rk').children('button').prop('disabled', true).first().children('i').html('&nbsp;&nbsp;&nbsp;入库');
-        $('#btn-ck').children('button').prop('disabled', false).first().children('i').html('&nbsp;&nbsp;&nbsp;批量出库');
+        $('#btn-cxd').children('button').prop('disabled', false).first().children('i').html('&nbsp;批量录入采血单');
+        // $('#btn-cxg').children('button').prop('disabled', false).first().children('i').html('&nbsp;批量更换采血管');
+        $('#btn-sh').children('button').prop('disabled', true).first().children('i').html('&nbsp;审核');
+        $('#btn-rk').children('button').prop('disabled', true).first().children('i').html('&nbsp;入库');
+        $('#btn-ck').children('button').prop('disabled', false).first().children('i').html('&nbsp;批量出库');
     };
     W.updateActionIcons();
 
@@ -95,23 +95,23 @@
         var myIds = $(grid_selector).jqGrid('getGridParam', 'selarrrow');
         var selectedLength = myIds.length;
         if (selectedLength == 1) {
-            $('#btn-cxd').children('button').prop('disabled', false).first().children('i').html('&nbsp;&nbsp;&nbsp;修改采血单');
-            // $('#btn-cxg').children('button').prop('disabled', false).first().children('i').html('&nbsp;&nbsp;&nbsp;更换采血管');
-            $('#btn-sh').children('button').prop('disabled', false).first().children('i').html('&nbsp;&nbsp;&nbsp;审核');
-            $('#btn-rk').children('button').prop('disabled', false).first().children('i').html('&nbsp;&nbsp;&nbsp;入库');
-            $('#btn-ck').children('button').prop('disabled', false).first().children('i').html('&nbsp;&nbsp;&nbsp;出库');
+            $('#btn-cxd').children('button').prop('disabled', false).first().children('i').html('&nbsp;修改采血单');
+            // $('#btn-cxg').children('button').prop('disabled', false).first().children('i').html('&nbsp;更换采血管');
+            $('#btn-sh').children('button').prop('disabled', false).first().children('i').html('&nbsp;审核');
+            $('#btn-rk').children('button').prop('disabled', false).first().children('i').html('&nbsp;入库');
+            $('#btn-ck').children('button').prop('disabled', false).first().children('i').html('&nbsp;出库');
         } else if (selectedLength > 1) {
-            $('#btn-cxd').children('button').prop('disabled', true).first().children('i').html('&nbsp;&nbsp;&nbsp;批量录入采血单');
+            $('#btn-cxd').children('button').prop('disabled', true).first().children('i').html('&nbsp;批量录入采血单');
             // $('#btn-cxg').children('button').prop('disabled', true);
-            $('#btn-sh').children('button').prop('disabled', false).first().children('i').html('&nbsp;&nbsp;&nbsp;批量审核');
-            $('#btn-rk').children('button').prop('disabled', false).first().children('i').html('&nbsp;&nbsp;&nbsp;批量入库');
-            $('#btn-ck').children('button').prop('disabled', false).first().children('i').html('&nbsp;&nbsp;&nbsp;批量出库');
+            $('#btn-sh').children('button').prop('disabled', false).first().children('i').html('&nbsp;批量审核');
+            $('#btn-rk').children('button').prop('disabled', false).first().children('i').html('&nbsp;批量入库');
+            $('#btn-ck').children('button').prop('disabled', false).first().children('i').html('&nbsp;批量出库');
         } else { // 0
-            $('#btn-cxd').children('button').prop('disabled', false).first().children('i').html('&nbsp;&nbsp;&nbsp;批量录入采血单');
-            // $('#btn-cxg').children('button').prop('disabled', false).first().children('i').html('&nbsp;&nbsp;&nbsp;批量更换采血管');
-            $('#btn-sh').children('button').prop('disabled', true).first().children('i').html('&nbsp;&nbsp;&nbsp;审核');
-            $('#btn-rk').children('button').prop('disabled', true).first().children('i').html('&nbsp;&nbsp;&nbsp;入库');
-            $('#btn-ck').children('button').prop('disabled', false).first().children('i').html('&nbsp;&nbsp;&nbsp;批量出库');
+            $('#btn-cxd').children('button').prop('disabled', false).first().children('i').html('&nbsp;批量录入采血单');
+            // $('#btn-cxg').children('button').prop('disabled', false).first().children('i').html('&nbsp;批量更换采血管');
+            $('#btn-sh').children('button').prop('disabled', true).first().children('i').html('&nbsp;审核');
+            $('#btn-rk').children('button').prop('disabled', true).first().children('i').html('&nbsp;入库');
+            $('#btn-ck').children('button').prop('disabled', false).first().children('i').html('&nbsp;批量出库');
         }
     };
 

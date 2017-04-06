@@ -72,9 +72,9 @@
         ];
 
         W.updateActionIcons = function () {
-            $('#btn-cxd').children('button').prop('disabled', true).first().children('i').html('&nbsp;&nbsp;&nbsp;录入建库信息');
-            $('#btn-sh').children('button').prop('disabled', true).first().children('i').html('&nbsp;&nbsp;&nbsp;审核');
-            $('#btn-ck').children('button').prop('disabled', false).first().children('i').html('&nbsp;&nbsp;&nbsp;批量出库');
+            $('#btn-cxd').children('button').prop('disabled', true).first().children('i').html('&nbsp;录入建库信息');
+            $('#btn-sh').children('button').prop('disabled', true).first().children('i').html('&nbsp;审核');
+            $('#btn-ck').children('button').prop('disabled', false).first().children('i').html('&nbsp;批量出库');
         };
         W.updateActionIcons();
 
@@ -84,20 +84,20 @@
             if (selectedLength == 1) {
                 var row = $(grid_selector).jqGrid('getRowData', myIds[0]);
                 if (row.extract_date) { // 修改
-                    $('#btn-cxd').children('button').prop('disabled', false).first().children('i').html('&nbsp;&nbsp;&nbsp;修改建库信息');
+                    $('#btn-cxd').children('button').prop('disabled', false).first().children('i').html('&nbsp;修改建库信息');
                 } else {
-                    $('#btn-cxd').children('button').prop('disabled', false).first().children('i').html('&nbsp;&nbsp;&nbsp;录入建库信息');
+                    $('#btn-cxd').children('button').prop('disabled', false).first().children('i').html('&nbsp;录入建库信息');
                 }
-                $('#btn-sh').children('button').prop('disabled', false).first().children('i').html('&nbsp;&nbsp;&nbsp;审核');
-                $('#btn-ck').children('button').prop('disabled', false).first().children('i').html('&nbsp;&nbsp;&nbsp;出库');
+                $('#btn-sh').children('button').prop('disabled', false).first().children('i').html('&nbsp;审核');
+                $('#btn-ck').children('button').prop('disabled', false).first().children('i').html('&nbsp;出库');
             } else if (selectedLength > 1) {
-                $('#btn-cxd').children('button').prop('disabled', true).first().children('i').html('&nbsp;&nbsp;&nbsp;录入建库信息');
-                $('#btn-sh').children('button').prop('disabled', false).first().children('i').html('&nbsp;&nbsp;&nbsp;批量审核');
-                $('#btn-ck').children('button').prop('disabled', false).first().children('i').html('&nbsp;&nbsp;&nbsp;批量出库');
+                $('#btn-cxd').children('button').prop('disabled', true).first().children('i').html('&nbsp;录入建库信息');
+                $('#btn-sh').children('button').prop('disabled', false).first().children('i').html('&nbsp;批量审核');
+                $('#btn-ck').children('button').prop('disabled', false).first().children('i').html('&nbsp;批量出库');
             } else { // 0
-                $('#btn-cxd').children('button').prop('disabled', true).first().children('i').html('&nbsp;&nbsp;&nbsp;录入建库信息');
-                $('#btn-sh').children('button').prop('disabled', true).first().children('i').html('&nbsp;&nbsp;&nbsp;审核');
-                $('#btn-ck').children('button').prop('disabled', false).first().children('i').html('&nbsp;&nbsp;&nbsp;批量出库');
+                $('#btn-cxd').children('button').prop('disabled', true).first().children('i').html('&nbsp;录入建库信息');
+                $('#btn-sh').children('button').prop('disabled', true).first().children('i').html('&nbsp;审核');
+                $('#btn-ck').children('button').prop('disabled', false).first().children('i').html('&nbsp;批量出库');
             }
         };
 

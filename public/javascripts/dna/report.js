@@ -69,10 +69,10 @@
         ];
 
         W.updateActionIcons = function () {
-            $('#btn-cxd').children('button').prop('disabled', true).first().children('i').html('&nbsp;&nbsp;&nbsp;录入分析报告信息');
-            // $('#btn-sh').children('button').prop('disabled', true).first().children('i').html('&nbsp;&nbsp;&nbsp;审核');
-            $('#btn-fs').children('button').prop('disabled', true).first().children('i').html('&nbsp;&nbsp;&nbsp;发送');
-            // $('#btn-ck').children('button').prop('disabled', false).first().children('i').html('&nbsp;&nbsp;&nbsp;批量发送');
+            $('#btn-cxd').children('button').prop('disabled', true).first().children('i').html('&nbsp;录入分析报告信息');
+            // $('#btn-sh').children('button').prop('disabled', true).first().children('i').html('&nbsp;审核');
+            $('#btn-fs').children('button').prop('disabled', true).first().children('i').html('&nbsp;发送');
+            // $('#btn-ck').children('button').prop('disabled', false).first().children('i').html('&nbsp;批量发送');
         };
         W.updateActionIcons();
 
@@ -82,23 +82,23 @@
             if (selectedLength == 1) {
                 var row = $(grid_selector).jqGrid('getRowData', myIds[0]);
                 if (row.report_date) { // 修改
-                    $('#btn-cxd').children('button').prop('disabled', false).first().children('i').html('&nbsp;&nbsp;&nbsp;修改分析报告信息');
+                    $('#btn-cxd').children('button').prop('disabled', false).first().children('i').html('&nbsp;修改分析报告信息');
                 } else {
-                    $('#btn-cxd').children('button').prop('disabled', false).first().children('i').html('&nbsp;&nbsp;&nbsp;录入分析报告信息');
+                    $('#btn-cxd').children('button').prop('disabled', false).first().children('i').html('&nbsp;录入分析报告信息');
                 }
-                // $('#btn-sh').children('button').prop('disabled', false).first().children('i').html('&nbsp;&nbsp;&nbsp;审核');
-                $('#btn-fs').children('button').prop('disabled', false).first().children('i').html('&nbsp;&nbsp;&nbsp;发送');
-                // $('#btn-ck').children('button').prop('disabled', false).first().children('i').html('&nbsp;&nbsp;&nbsp;发送');
+                // $('#btn-sh').children('button').prop('disabled', false).first().children('i').html('&nbsp;审核');
+                $('#btn-fs').children('button').prop('disabled', false).first().children('i').html('&nbsp;发送');
+                // $('#btn-ck').children('button').prop('disabled', false).first().children('i').html('&nbsp;发送');
             } else if (selectedLength > 1) {
-                $('#btn-cxd').children('button').prop('disabled', true).first().children('i').html('&nbsp;&nbsp;&nbsp;录入分析报告信息');
-                // $('#btn-sh').children('button').prop('disabled', false).first().children('i').html('&nbsp;&nbsp;&nbsp;批量审核');
-                $('#btn-fs').children('button').prop('disabled', false).first().children('i').html('&nbsp;&nbsp;&nbsp;批量发送');
-                // $('#btn-ck').children('button').prop('disabled', false).first().children('i').html('&nbsp;&nbsp;&nbsp;批量发送');
+                $('#btn-cxd').children('button').prop('disabled', true).first().children('i').html('&nbsp;录入分析报告信息');
+                // $('#btn-sh').children('button').prop('disabled', false).first().children('i').html('&nbsp;批量审核');
+                $('#btn-fs').children('button').prop('disabled', false).first().children('i').html('&nbsp;批量发送');
+                // $('#btn-ck').children('button').prop('disabled', false).first().children('i').html('&nbsp;批量发送');
             } else { // 0
-                $('#btn-cxd').children('button').prop('disabled', true).first().children('i').html('&nbsp;&nbsp;&nbsp;录入分析报告信息');
-                // $('#btn-sh').children('button').prop('disabled', true).first().children('i').html('&nbsp;&nbsp;&nbsp;审核');
-                $('#btn-fs').children('button').prop('disabled', true).first().children('i').html('&nbsp;&nbsp;&nbsp;发送');
-                // $('#btn-ck').children('button').prop('disabled', false).first().children('i').html('&nbsp;&nbsp;&nbsp;批量发送');
+                $('#btn-cxd').children('button').prop('disabled', true).first().children('i').html('&nbsp;录入分析报告信息');
+                // $('#btn-sh').children('button').prop('disabled', true).first().children('i').html('&nbsp;审核');
+                $('#btn-fs').children('button').prop('disabled', true).first().children('i').html('&nbsp;发送');
+                // $('#btn-ck').children('button').prop('disabled', false).first().children('i').html('&nbsp;批量发送');
             }
         };
 
