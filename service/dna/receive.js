@@ -9,7 +9,7 @@ const _ = require('underscore');
 
 function getSql(params) {
     let selectSql = `SELECT 
-        id, barcode_long, hospital, sample_code, sample_date, receive_date, real_name, id_card, age, pregnancy_week, pregnancy_condition,
+        id, barcode_long, hospital, sample_code, sample_date, receive_date, real_name, id_card, age, pregnancy_week, pregnancy_day, pregnancy_condition,
         pregnancy_bad_history, comments, inputter, input_date, checker, check_date, warehouser, warehouse_place, warehouse_date,
         sample_outer, sample_out_residue, status
     FROM dna_flow `;
@@ -23,6 +23,7 @@ function getSql(params) {
     params.id_card && (whereSql += " AND id_card LIKE '%:id_card%' /*身份证*/\n");
     params.age && (whereSql += " AND age LIKE '%:age%' /*年龄*/\n");
     params.pregnancy_week && (whereSql += " AND pregnancy_week LIKE '%:pregnancy_week%' /*孕周*/\n");
+    params.pregnancy_day && (whereSql += " AND pregnancy_day LIKE '%:pregnancy_day%' /*孕天*/\n");
     params.pregnancy_condition && (whereSql += " AND pregnancy_condition LIKE '%:pregnancy_condition%' /*妊娠情况*/\n");
     params.pregnancy_bad_history && (whereSql += " AND pregnancy_bad_history LIKE '%:pregnancy_bad_history%' /*不良孕产史*/\n");
     params.comments && (whereSql += " AND comments LIKE '%:comments%' /*备注*/\n");

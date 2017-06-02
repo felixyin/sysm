@@ -49,7 +49,9 @@ block content
                         td
                         td
                     tr
-
+                        td 孕天
+                        td
+                            input.col-xs-10.col-sm-5(type='text' , name='pregnancy_day')
                         td 状态
                         td
                             select#status.col-xs-12.clo-sm-10(style="width:180px;", name='status',placeholder='')
@@ -59,8 +61,6 @@ block content
                                 option(value='2') 已审批
                                 option(value='3') 已入库
                                 option(value='4') 已出库
-                        td
-                        td
                         td
                         td
                             #btn-search.btn-group

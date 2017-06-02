@@ -14,7 +14,7 @@
         W._sortname = 'input_date';
         W._sortorder = 'ASC';
         W._postData = {};
-        W._colNames = ['序号', '条码编号', '医院名称', '样本编号', '状态', '采样日期', '接收日期', '姓名', '身份证号', '年龄', '孕周', '妊娠情况', '不良孕产史',
+        W._colNames = ['序号', '条码编号', '医院名称', '样本编号', '状态', '采样日期', '接收日期', '姓名', '身份证号', '年龄', '孕周', '孕天', '妊娠情况', '不良孕产史',
             '备注', '录入人员', '录入日期', '审批人员', '审批日期', '采血管入库人', '采血管入库位置', '采血管入库时间', '采血管出库人', '接收组样本剩余量', '提取组接收人',
             '提取组接收时间', 'Qubit浓度(ng/ul)', 'epoch浓度(ng/ul)', '纯度(%)', '片段大小(bp)', '打断后片段(bp)', '提取人员', '提取时间', '提取审核人', '提取审核时间', '提取出库人',
             '提取组样本剩余量', '建库组接收人', '建库组接收时间', '建库浓度(ng/ul)', '建库index号', '建库片段大小(bp)', '建库人', '建库时间', '建库审查人', '建库审查时间', '建库组出库人',
@@ -117,11 +117,8 @@
             {name: 'real_name', width: 80, index: 'real_name', align: 'center', sortable: true},
             {name: 'id_card', width: 150, index: 'id_card', align: 'center', sortable: true},
             {name: 'age', width: 50, index: 'age', align: 'center', sortable: true},
-            {
-                name: 'pregnancy_week', width: 60, index: 'pregnancy_week', align: 'center', sortable: true, formatter: function (value, options, row) {
-                return value;
-            }
-            },
+            {name: 'pregnancy_week', width: 60, index: 'pregnancy_week', align: 'center', sortable: true},
+            {name: 'pregnancy_day', width: 60, index: 'pregnancy_day', align: 'center', sortable: true},
             {name: 'pregnancy_condition', width: 100, index: 'pregnancy_condition', align: 'center', sortable: true},
             {name: 'pregnancy_bad_history', width: 100, index: 'pregnancy_bad_history', align: 'center', sortable: true},
             {name: 'comments', width: 100, index: 'comments', align: 'center', sortable: true},

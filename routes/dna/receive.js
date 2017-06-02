@@ -287,6 +287,15 @@ router.post('/exportExcel', (req, res) => {
                     },
                     width: '15'
                 },
+                pregnancy_day: {
+                    displayName: '孕天',
+                    headerStyle: styles.header,
+                    cellStyle: styles.cell,
+                    cellFormat: function (value, row) {
+                        return value || '';
+                    },
+                    width: '15'
+                },
                 pregnancy_condition: {
                     displayName: '妊娠情况',
                     headerStyle: styles.header,

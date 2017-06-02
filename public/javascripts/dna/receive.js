@@ -13,7 +13,7 @@
     W._sortname = 'sample_date';
     W._sortorder = 'DESC';
     W._postData = {};
-    W._colNames = ['序号', '条码编号', '医院名称', '样本编号', '采样日期', '接收日期', '姓名', '状态', '身份证号', '年龄', '孕周', '妊娠情况',
+    W._colNames = ['序号', '条码编号', '医院名称', '样本编号', '采样日期', '接收日期', '姓名', '状态', '身份证号', '年龄', '孕周', '孕天', '妊娠情况',
         '不良孕产史', '备注', '录入人员', '录入日期', '审批人员', '审批日期', '采血管入库人', '采血管入库位置', '采血管入库时间', ''];
     W._colModel = [
         {name: 'id', width: 40, index: 'id', align: 'center', sortable: true, frozen: true},
@@ -66,6 +66,7 @@
         {name: 'id_card', width: 150, index: 'id_card', align: 'center', sortable: true},
         {name: 'age', width: 130, index: 'age', align: 'center', sortable: true},
         {name: 'pregnancy_week', width: 100, index: 'pregnancy_week', align: 'center', sortable: true},
+        {name: 'pregnancy_day', width: 100, index: 'pregnancy_day', align: 'center', sortable: true},
         {name: 'pregnancy_condition', width: 100, index: 'pregnancy_condition', align: 'center', sortable: true},
         {name: 'pregnancy_bad_history', width: 100, index: 'pregnancy_bad_history', align: 'center', sortable: true},
         {name: 'comments', width: 100, index: 'comments', align: 'center', sortable: true},
