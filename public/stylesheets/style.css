@@ -105,3 +105,10 @@ table {
 .page-content {
     padding: 8px 16px 2px!important;
 }
+
+/* fixbug 解决某些列内容超出后导致行高太高的问题：添加省略号解决 */
+.ui-jqgrid-btable tr.jqgrow td {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow : ellipsis;
+}

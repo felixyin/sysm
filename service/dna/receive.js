@@ -124,7 +124,7 @@ exports.updateCxg = (cxg, cb) => {
 /**
  * 审核
  * @param sh
- * @param cb
+ * @param cb                                                               接收日期字段是：receive_date，审核操作数据库的脚本（下面的sql）没有找到这个字段呀？？？？
  */
 exports.updateSh = (sh, cb) => {
     console.log(sh.ids);
